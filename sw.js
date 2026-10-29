@@ -1,5 +1,5 @@
 // Service worker do Informativo Agro: rede primeiro (dados sempre frescos), cache só como reserva offline.
-const CACHE = "informativo-agro-v5";
+const CACHE = "informativo-agro-v6";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./logo.svg",
   "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png", "./favicon.png"];
 self.addEventListener("install", e => {
@@ -12,6 +12,7 @@ self.addEventListener("activate", e => {
 });
 self.addEventListener("fetch", e => {
   const req = e.request;
+  // nunca intercepta/guarda requisições de outros domínios (ex.: gc.zgo.at, *.goatcounter.com)
   if (req.method !== "GET" || new URL(req.url).origin !== self.location.origin) return;
   e.respondWith(
     fetch(req, {cache: "no-store"}).then(res => {
