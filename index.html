@@ -37,11 +37,11 @@
 <meta name="application-name" content="Informativo Agro">
 <script>try{var t=localStorage.getItem("tema");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
-:root{--ic2o:.5;--g:#1E8C47;--g2:#17703C;--gl:#7DC24B;--bg:#F4F6F1;--card:#fff;--tx:#1d261f;--mu:#6b7768;--ln:#e4e9e0;--up:#178a3e;--dn:#c62828;--upb:#e6f4ea;--dnb:#fdecea;
+:root{--us:#1F5FA8;--ic2o:.5;--g:#1E8C47;--g2:#17703C;--gl:#7DC24B;--bg:#F4F6F1;--card:#fff;--tx:#1d261f;--mu:#6b7768;--ln:#e4e9e0;--up:#178a3e;--dn:#c62828;--upb:#e6f4ea;--dnb:#fdecea;
  --top:rgba(244,246,241,.94);--sub:#fafbf8;--zb:#eef1ec;--seg:#e7ece3;--act:#f3f7f1;--wb:#7a5a00;--wbg:#fff7e0;--wln:#f1e1b0;--sbx:#8a6a00;--sbg:#fff4d1;--sm:#27302a;--spark:#8a968a;--chart:#3f7f5a;--grid:#e4e9e0;--late:#a06a00}
-:root[data-theme=dark]{color-scheme:dark;--ic2o:.55;--g:#2E9E57;--g2:#7fd19b;--gl:#4f9a3a;--bg:#0f1411;--card:#171e19;--tx:#e6ece6;--mu:#9aa79b;--ln:#2a342c;--up:#5fd08a;--dn:#ff7b72;--upb:#163222;--dnb:#3a1d1b;
+:root[data-theme=dark]{color-scheme:dark;--us:#8FB8FF;--ic2o:.55;--g:#2E9E57;--g2:#7fd19b;--gl:#4f9a3a;--bg:#0f1411;--card:#171e19;--tx:#e6ece6;--mu:#9aa79b;--ln:#2a342c;--up:#5fd08a;--dn:#ff7b72;--upb:#163222;--dnb:#3a1d1b;
  --top:rgba(15,20,17,.92);--sub:#141a16;--zb:#232b25;--seg:#222a24;--act:#1f2822;--wb:#f0cf7a;--wbg:#2e2614;--wln:#4a3d1c;--sbx:#f0cf7a;--sbg:#2e2614;--sm:#d7ded7;--spark:#7d8a7e;--chart:#7fc79a;--grid:#2a342c;--late:#f0b955}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--ic2o:.55;--g:#2E9E57;--g2:#7fd19b;--gl:#4f9a3a;--bg:#0f1411;--card:#171e19;--tx:#e6ece6;--mu:#9aa79b;--ln:#2a342c;--up:#5fd08a;--dn:#ff7b72;--upb:#163222;--dnb:#3a1d1b;
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--us:#8FB8FF;--ic2o:.55;--g:#2E9E57;--g2:#7fd19b;--gl:#4f9a3a;--bg:#0f1411;--card:#171e19;--tx:#e6ece6;--mu:#9aa79b;--ln:#2a342c;--up:#5fd08a;--dn:#ff7b72;--upb:#163222;--dnb:#3a1d1b;
  --top:rgba(15,20,17,.92);--sub:#141a16;--zb:#232b25;--seg:#222a24;--act:#1f2822;--wb:#f0cf7a;--wbg:#2e2614;--wln:#4a3d1c;--sbx:#f0cf7a;--sbg:#2e2614;--sm:#d7ded7;--spark:#7d8a7e;--chart:#7fc79a;--grid:#2a342c;--late:#f0b955}}
 a.tile,a.row,a.al,a.ex,a.di,a.nmore{color:inherit;text-decoration:none}
 a:focus-visible,button:focus-visible{outline:3px solid var(--gl);outline-offset:2px;border-radius:10px}
@@ -60,6 +60,7 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);
 @media(min-width:620px){.sum{grid-template-columns:repeat(3,1fr)}}
 .tile{display:block;background:var(--card);border-radius:14px;padding:12px;box-shadow:0 1px 2px rgba(0,0,0,.05);cursor:pointer;border:1px solid var(--ln)}
 .tile .n{font-size:13px;font-weight:600}.tile .s{font-size:11.5px;color:var(--mu)}
+.mvw{white-space:nowrap}.cu{font-size:.68em;font-weight:700;margin-right:.22em;color:var(--g2);letter-spacing:-.01em}.cu.us{color:var(--us)}.un{font-size:.66em;font-weight:500;color:var(--mu);margin-left:.08em;white-space:nowrap}.big .cu{font-size:.5em;vertical-align:.38em}.big .un{font-size:.45em}.axu{font-size:12px;color:var(--mu);margin:2px 2px 4px}.axu b{color:var(--g2)}.axu b.us{color:var(--us)}.tip .cu{font-size:.8em}.tip .un{font-size:.85em}.cub{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:0 5px;margin-left:6px;vertical-align:1px;border:1px solid currentColor;color:var(--g2);text-transform:none;letter-spacing:0}.cub.us{color:var(--us)}
 .tile .v{font-size:20px;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
 .tile .u{font-size:11.5px;color:var(--mu);font-weight:500;margin:1px 0 6px}
 .tile svg{display:block;width:100%;height:28px;margin-top:6px}
@@ -213,7 +214,7 @@ header h1,header .d{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 <div class="wrap">
 <div class="top">
 <header><button class="menu" id="mbtn" aria-label="Abrir menu" onclick="openDrawer()"><img src="logo.svg" alt=""><span class="hb"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></span></button>
-<div><h1>Informativo diário do agro</h1><div class="d" id="hd"></div></div><a class="dl" href="Informativo_agro.xlsx" download aria-label="Baixar planilha (xlsx)"><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span class="dlt">Planilha</span></a></header>
+<div><h1>Informativo diário do agro</h1><div class="d" id="hd"></div></div></header>
 </div>
 <div id="main"></div>
 <footer id="foot"></footer>
@@ -223,7 +224,7 @@ header h1,header .d{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 <aside id="drawer" aria-label="Menu">
  <div class="dwh"><img src="logo.svg" alt=""><div><b>Informativo do agro</b><small id="dwd"></small></div></div>
  <div class="dwb" id="dwb"></div>
- <div class="dwf"><div class="theme" role="group" aria-label="Tema"><button onclick="setTheme('auto')" id="th_auto">Automático</button><button onclick="setTheme('light')" id="th_light">Claro</button><button onclick="setTheme('dark')" id="th_dark">Escuro</button></div><a href="Informativo_agro.xlsx" download><svg class="ico sm" aria-hidden="true"><use href="#i-download"/></svg> Baixar planilha (xlsx)</a>Fontes: CEPEA/ESALQ, BCB, B3, Datagro, Scot, CBOT e ICE via Notícias Agrícolas. Nenhum valor é estimado. Notícias: manchetes dos feeds públicos dos veículos.</div>
+ <div class="dwf"><div class="theme" role="group" aria-label="Tema"><button onclick="setTheme('auto')" id="th_auto">Automático</button><button onclick="setTheme('light')" id="th_light">Claro</button><button onclick="setTheme('dark')" id="th_dark">Escuro</button></div>Fontes: CEPEA/ESALQ, BCB, B3, Datagro, Scot, CBOT e ICE via Notícias Agrícolas. Nenhum valor é estimado. Notícias: manchetes dos feeds públicos dos veículos.</div>
 </aside>
 
 <div id="nov" onclick="closeNews()"></div>
@@ -236,6 +237,27 @@ const DATA={"items":[{"key":"soja","name":"Soja","unit":"R$/sc 60 kg","dec":2,"c
 const I={};DATA.items.forEach(x=>I[x.key]=x);
 const ico=(n,c)=>n?`<svg class="ico${c?" "+c:""}" aria-hidden="true" focusable="false"><use href="#i-${n}"/></svg>`:"";
 const fmt=(v,d)=>v==null?"—":v.toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+// v9: moeda e unidade junto de cada valor (só apresentação; os números são os publicados pela fonte)
+// unidade da série -> [símbolo, sufixo curto, descrição por extenso]
+const UNI={"R$/sc 60 kg":["R$","/sc 60 kg","reais por saca de 60 kg"],"R$/sc 50 kg":["R$","/sc 50 kg","reais por saca de 50 kg"],
+ "R$/t":["R$","/t","reais por tonelada"],"R$/@":["R$","/@","reais por arroba (15 kg)"],"R$/cabeça":["R$","/cabeça","reais por cabeça"],
+ "R$/kg":["R$","/kg","reais por quilo"],"R$/litro":["R$","/L","reais por litro"],"R$/cx 30 dz":["R$","/cx 30 dz","reais por caixa de 30 dúzias"],
+ "R$/cx 40,8 kg":["R$","/cx 40,8 kg","reais por caixa de 40,8 kg"],"R$/sc":["R$","/sc","reais por saca"],
+ "R$/US$":["R$","/US$","reais por dólar"],"US$/sc 60 kg":["US$","/sc 60 kg","dólares por saca de 60 kg"],
+ "US$/bushel":["US$","/bu","dólares por bushel"],"US$/t curta":["US$","/t curta","dólares por tonelada curta (907 kg)"],
+ "US$/libra-peso":["US$","/lb","dólares por libra-peso (453,6 g)"],"US$/t":["US$","/t","dólares por tonelada"],
+ "centavos de R$/lp":["R$","¢/lp","centavos de real por libra-peso"],"pontos":[""," pts","pontos"]};
+const cu=x=>{const u=x.key==="usd"?"R$/US$":x.unit;return UNI[u]||["","",u||""]};
+// centavos de R$: o número já está em centavos; o símbolo fica "R$¢" (sem espaço) para não confundir com R$
+const cuP=z=>z[1].startsWith("¢")?"R$¢":z[0];
+const cuS=z=>z[1].startsWith("¢")?z[1].slice(1):z[1];
+// HTML: símbolo + número + sufixo (ns = sem sufixo)
+function mv(v,d,x,ns){if(v==null)return "—";const z=cu(x),p=cuP(z),sf=cuS(z);
+ return `<span class="mvw">`+(p?`<span class="cu${z[0]==="US$"?" us":""}">${p}</span>`:"")+fmt(v,d)+(sf&&!ns?`<span class="un">${sf}</span>`:"")+`</span>`}
+// texto puro (leitores de tela, alertas, dica do gráfico)
+function mt(v,d,x,ns){if(v==null)return "—";const z=cu(x),p=cuP(z),sf=cuS(z);return (p?p+" ":"")+fmt(v,d)+(ns?"":sf)}
+const ud=x=>cu(x)[2];  // unidade por extenso
+const cub=x=>{const z=cu(x);return z[0]?`<span class="cub${z[0]==="US$"?" us":""}">${z[0]==="US$"?"em dólar":"em real"}</span>`:""};
 const fd=s=>s?s.slice(8,10)+"/"+s.slice(5,7)+"/"+s.slice(0,4):"—";
 const fds=s=>s?s.slice(8,10)+"/"+s.slice(5,7):"—";
 const MES=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
@@ -284,9 +306,9 @@ const NAV=[
   {id:"arroz",label:"Arroz",ic:"arroz",g:[["",["arroz"]]]},
   {id:"feijao",label:"Feijão",ic:"feijao",g:[["Carioca",["feijao_car_sp","feijao_car_itapeva","feijao_car_lgo","feijao_car_nmg","feijao_car_sorriso"]],["Preto",["feijao_preto_curitiba","feijao_preto_itapeva","feijao_preto_sulpr","feijao_preto_oestesc"]]]},
   {id:"algodao",label:"Algodão",ic:"algodao",g:[["",["algodao"]]]},
-  {id:"cafe",label:"Café",ic:"cafe",g:[["Físico",["cafe_arabica","cafe_conilon"]],["Futuro B3",["fut_cafe"]]]},
+  {id:"cafe",label:"Café",ic:"cafe",g:[["Físico · CEPEA",["cafe_arabica","cafe_conilon"]],["Futuro B3",["fut_cafe"]]],note:"cafe"},
   {id:"cana",label:"Cana, açúcar e etanol",ic:"cana",g:[["Açúcar",["acucar"]],["Etanol · semanal",["etanol_hid","etanol_anid"]]]},
-  {id:"cacau",label:"Cacau",ic:"cacau",g:[["Mercado físico",["cacau_ba","cacau_es","cacau_pa"]],["Bolsa",["cacau_ny"]]]},
+  {id:"cacau",label:"Cacau",ic:"cacau",g:[["Mercado físico",["cacau_ba","cacau_es","cacau_pa"]],["Bolsa de Nova York",["cacau_ny"]]],note:"cacau"},
   {id:"laranja",label:"Laranja",ic:"laranja",g:[["",["laranja_ind","laranja_pera"]]]},
   {id:"mandioca",label:"Mandioca",ic:"mandioca",g:[["Raiz · semanal",["mandioca_nop","mandioca_ass","mandioca_esm"]]]}]},
  {id:"mercado",label:"Mercado",ic:"mercado",items:[
@@ -307,8 +329,8 @@ const OLD={graos:"soja",pecuaria:"boi",estado:"boi",cafe:"cafe",b3:"b3",chicago:
 let cur=QP.get("p")&&(QP.get("p")==="resumo"||NI[QP.get("p")])?QP.get("p"):(OLD[QP.get("tab")]||"resumo");
 let openSec=cur!=="resumo"?NI[cur].sec.id:null;
 
-function row(x,sw){const n=sw?x.sub:x.name,s=sw?x.unit:x.sub+" · "+x.unit;return `<a class="row" href="#${x.key}" onclick="return nav(event,()=>openDet('${x.key}'))" aria-label="${esc(x.name+" "+x.sub)}: ${fmt(x.v,x.dec)} ${esc(x.unit)}, ${pctTxt(x.chg)}, em ${fd(x.d)}. Abrir detalhes"><div><div class="n">${n}</div><div class="s">${s}${stale(x)}</div></div>${spark(x.h)}
-<div class="r"><div class="v">${fmt(x.v,x.dec)}</div>${pill(x.chg)}</div></a>`}
+function row(x,sw){const n=sw?x.sub:x.name,s=sw?ud(x):x.sub;return `<a class="row" href="#${x.key}" onclick="return nav(event,()=>openDet('${x.key}'))" aria-label="${esc(x.name+" "+x.sub)}: ${esc(mt(x.v,x.dec,x,1))}, ${esc(ud(x))}, ${pctTxt(x.chg)}, em ${fd(x.d)}. Abrir detalhes"><div><div class="n">${n}</div><div class="s">${s}${stale(x)}</div></div>${spark(x.h)}
+<div class="r"><div class="v">${mv(x.v,x.dec,x)}</div>${pill(x.chg)}</div></a>`}
 function ph(n,s){return `<div class="row ph"><div><div class="n">${n}<span class="soon">em breve</span></div><div class="s">${s}</div></div><div></div><div class="r"><div class="v">—</div><span class="pill z">—</span></div></div>`}
 
 function drawer(){
@@ -324,13 +346,13 @@ function themeBtns(){const t=document.documentElement.dataset.theme||"auto";["au
 
 function resumo(){
  const SUM=["soja","milho","boi","cafe_arabica","usd","ibov"];
- let h=`<div class="crumb"><div class="ttl">Resumo do dia</div></div><div class="sum">`+SUM.map(k=>{const x=I[k];return `<a class="tile" href="#${k}" onclick="return nav(event,()=>openDet('${k}'))" aria-label="${esc(x.name)}, ${esc(x.sub)}: ${fmt(x.v,x.dec)} ${esc(x.unit)}, ${pctTxt(x.chg)}, em ${fd(x.d)}. Abrir detalhes"><div class="n">${ico(KI[k],"sm")}${x.name}</div><div class="s">${x.sub}${stale(x)}</div>
-<div class="v">${fmt(x.v,x.dec)}</div><div class="u">${x.unit}</div>${pill(x.chg)}${spark(x.h)}<div class="sl30" aria-hidden="true">tendência · 30 pregões</div></a>`}).join("")+`</div>`;
+ let h=`<div class="crumb"><div class="ttl">Resumo do dia</div></div><div class="sum">`+SUM.map(k=>{const x=I[k];return `<a class="tile" href="#${k}" onclick="return nav(event,()=>openDet('${k}'))" aria-label="${esc(x.name)}, ${esc(x.sub)}: ${esc(mt(x.v,x.dec,x,1))}, ${esc(ud(x))}, ${pctTxt(x.chg)}, em ${fd(x.d)}. Abrir detalhes"><div class="n">${ico(KI[k],"sm")}${x.name}</div><div class="s">${x.sub}${stale(x)}</div>
+<div class="v">${mv(x.v,x.dec,x,1)}</div><div class="u">${ud(x)}</div>${pill(x.chg)}${spark(x.h)}<div class="sl30" aria-hidden="true">tendência · 30 pregões</div></a>`}).join("")+`</div>`;
  // alertas: exatamente a lista do gerador (alerts.json / resumo da noite), cada um com a própria data
  const al=(DATA.alerts||[]).filter(a=>I[a.key]);
  const FQ={semanal:" · semanal",mensal:" · mensal"};
  const adt=a=>a.freq==="mensal"?`ref. ${MES[+a.date.slice(5,7)-1]}/${a.date.slice(2,4)}`:a.freq==="semanal"?`semana até ${fds(a.date)}`:fds(a.date);
- h+=`<h2>Alertas <span style="text-transform:none;letter-spacing:0;font-weight:500">· variação acima de 2% na última cotação</span></h2><div class="alerts">`+(al.length?al.map(a=>`<a class="al" href="#${a.key}" onclick="return nav(event,()=>openDet('${a.key}'))" aria-label="Alerta: ${esc(a.name+" "+a.sub)}, ${pctTxt(a.chg_pct)} em ${fd(a.date)}"><span class="ic ${a.chg_pct>0?"up":"dn"}">${ico(KI[a.key]||"ibov")}</span><div class="t">${a.name} <small>${a.sub} · ${fmt(a.value,a.dec!=null?a.dec:I[a.key].dec)} ${a.unit} · ${adt(a)}${FQ[a.freq]||""}</small></div>${pill(a.chg_pct)}</a>`).join(""):'<div class="none">Nenhuma cotação recente variou mais de 2%.</div>')+`</div>`;
+ h+=`<h2>Alertas <span style="text-transform:none;letter-spacing:0;font-weight:500">· variação acima de 2% na última cotação</span></h2><div class="alerts">`+(al.length?al.map(a=>`<a class="al" href="#${a.key}" onclick="return nav(event,()=>openDet('${a.key}'))" aria-label="Alerta: ${esc(a.name+" "+a.sub)}, ${pctTxt(a.chg_pct)} em ${fd(a.date)}"><span class="ic ${a.chg_pct>0?"up":"dn"}">${ico(KI[a.key]||"ibov")}</span><div class="t">${a.name} <small>${a.sub} · ${mt(a.value,a.dec!=null?a.dec:I[a.key].dec,I[a.key])} · ${adt(a)}${FQ[a.freq]||""}</small></div>${pill(a.chg_pct)}</a>`).join(""):'<div class="none">Nenhuma cotação recente variou mais de 2%.</div>')+`</div>`;
  h+=lastAgro();
  h+=`<h2>Explorar</h2><div class="explore">`+NAV.filter(s=>!s.news).map(s=>`<a class="ex" href="?p=${s.items[0].id}" onclick="return nav(event,()=>{openSec='${s.id}';openDrawer()})" aria-label="Explorar ${s.label}: ${s.items.length} produtos"><div class="e">${ico(s.ic)}</div><div class="l">${s.label}</div><div class="c">${s.items.length} produtos</div></a>`).join("")+`</div><div class="hint">Dica: arraste a tela para a direita (ou toque no logo) para abrir o menu.</div>`;
  return h}
@@ -340,13 +362,15 @@ function estado(){
  const sp=s.find(x=>x.key==="boi_SP");const vsp=x=>!sp||x===sp?(x===sp?'<span class="vs">referência</span>':""):`<span class="vs">${x.v>=sp.v?"+":"−"}${fmt(Math.abs((x.v/sp.v-1)*100),1)}% vs SP</span>`;
  let h=`<div class="list rank"><div class="sec">Boi gordo por estado · R$/@ · Datagro · ${fd(s[0].d)}</div>`+s.map((x,i)=>`<a class="row" href="#${x.key}" onclick="return nav(event,()=>openDet('${x.key}'))" aria-label="${i+1}º ${esc(x.sub)}: R$ ${fmt(x.v,2)} por arroba, ${pctTxt(x.chg)}, em ${fd(x.d)}. Abrir detalhes"><div class="pos">${i+1}º</div>
  <div><div class="n">${x.sub} <span style="color:var(--mu);font-weight:500">${x.key.slice(4)}</span>${vsp(x)}${x.st?stale(x):""}</div><div class="bar" style="width:${(100*x.v/mx).toFixed(1)}%"></div></div>
- <div class="r"><div class="v">${fmt(x.v,2)}</div>${pill(x.chg)}</div></a>`).join("")+`<div class="note">Barras em escala real (começam do zero). Diferença entre o mais caro e o mais barato: R$ ${fmt(mx-mn,2)}/@ (${fmt((mx/mn-1)*100,1)}%).</div></div>`;
+ <div class="r"><div class="v">${mv(x.v,2,x)}</div>${pill(x.chg)}</div></a>`).join("")+`<div class="note">Barras em escala real (começam do zero). Diferença entre o mais caro e o mais barato: R$ ${fmt(mx-mn,2)}/@ (${fmt((mx/mn-1)*100,1)}%).</div></div>`;
  const sc=DATA.scot;
- if(sc&&sc.date&&sc.rows.length)h+=`<details><summary>Ver mais praças (Scot Consultoria · ${fd(sc.date)}, ${sc.rows.length} praças)</summary><div class="list"><table class="t"><tr><th>Praça</th><th>Boi à vista</th><th>Boi 30 dias</th><th>Vaca à vista</th></tr>`+
+ if(sc&&sc.date&&sc.rows.length)h+=`<details><summary>Ver mais praças (Scot Consultoria · ${fd(sc.date)}, ${sc.rows.length} praças)</summary><div class="list"><table class="t"><tr><th>Praça</th><th>Boi à vista (R$)</th><th>Boi 30 dias (R$)</th><th>Vaca à vista (R$)</th></tr>`+
   sc.rows.map(r=>`<tr><td>${r.praca}</td><td>${fmt(r.vista,2)}</td><td>${fmt(r.prazo,2)}</td><td>${fmt(r.vaca,2)}</td></tr>`).join("")+`</table><div class="note">Valores em R$/@, exceto onde a praça indica (kg). A Scot só publica o dia atual; o histórico é guardado diariamente desde 29/10/2026.</div></div></details>`;
  return h}
 
-const NOTES={b3:"Futuros: preço de fechamento do pregão (sai até as 19h30), no contrato de referência: o vencimento mais próximo a partir do mês seguinte. A troca para o contrato seguinte acontece no 1º dia útil do mês de vencimento e fica marcada no gráfico. Pode diferir alguns centavos do ajuste oficial da B3.",
+const NOTES={cafe:"Atenção à moeda: o indicador físico do CEPEA é em reais por saca de 60 kg (R$); o futuro da B3 é cotado em dólares por saca de 60 kg (US$). Os valores são os publicados por cada fonte, sem conversão.",
+ cacau:"Mercado físico em reais (R$), cada estado na unidade publicada (BA por arroba, ES por saca, PA por quilo). A bolsa de Nova York (ICE) é em dólares por tonelada (US$/t). Sem conversão.",
+ b3:"Moedas: boi e milho em reais (R$); soja e café em dólares (US$); dólar futuro em reais por dólar. Futuros: preço de fechamento do pregão (sai até as 19h30), no contrato de referência: o vencimento mais próximo a partir do mês seguinte. A troca para o contrato seguinte acontece no 1º dia útil do mês de vencimento e fica marcada no gráfico. Pode diferir alguns centavos do ajuste oficial da B3.",
  chicago:"Bolsa de Chicago (CBOT/CME), contrato de referência (vencimento mais próximo a partir do mês seguinte). Preços em dólar, como publicados. A troca de contrato fica marcada no gráfico."};
 
 function product(it){
@@ -357,9 +381,10 @@ function product(it){
  it.g.forEach(([lab,ks])=>{const xs=ks.filter(k=>I[k]);
   if(!xs.length){if(PLACE[it.id])body+=(lab?`<div class="sec">${lab}</div>`:"")+ph(it.label,"série em implantação");return}
   const sw=xs.length>1&&xs.every(k=>I[k].name===I[xs[0]].name);const lb=lab||(sw?I[xs[0]].name:"");
-  body+=(lb?`<div class="sec">${lb}</div>`:"")+xs.map(k=>has(k)?row(I[k],sw):(sw?ph(I[k].sub,I[k].unit):ph(I[k].name,I[k].sub+" · "+I[k].unit))).join("")});
+  const cs=[...new Set(xs.map(k=>cu(I[k])[0]))],mix=it.g.length>1&&new Set(it.g.flatMap(g=>g[1].filter(k=>I[k]).map(k=>cu(I[k])[0]))).size>1;
+  body+=(lb?`<div class="sec">${lb}${mix&&cs.length===1?cub(I[xs[0]]):""}</div>`:"")+xs.map(k=>has(k)?row(I[k],sw):(sw?ph(I[k].sub,ud(I[k])):ph(I[k].name,I[k].sub+" · "+ud(I[k])))).join("")});
  if(it.leite&&!LEITE.some(k=>I[k])&&DATA.leite&&DATA.leite.date){const L=DATA.leite;
-  body+=`<div class="sec">Preço ao produtor · mensal · página de ${fd(L.date)}</div>`+Object.entries(L.rows).map(([uf,b])=>`<div class="row" style="cursor:default"><div><div class="n">${uf}</div><div class="s">R$/litro · CEPEA</div></div><div></div><div class="r"><div class="v">${fmt(b[0],4)}</div>${pill(b[1])}</div></div>`).join("")}
+  body+=`<div class="sec">Preço ao produtor · mensal · página de ${fd(L.date)}</div>`+Object.entries(L.rows).map(([uf,b])=>`<div class="row" style="cursor:default"><div><div class="n">${uf}</div><div class="s">reais por litro · CEPEA</div></div><div></div><div class="r"><div class="v">${mv(b[0],4,{unit:"R$/litro"})}</div>${pill(b[1])}</div></div>`).join("")}
  if(it.ph)body+=it.ph.map(([n,u])=>ph(n,u+" · sem fonte pública diária confiável ainda")).join("");
  if(body)h+=`<div class="list">${body}</div>`;
  if(it.estado)h+=estado();
@@ -445,6 +470,7 @@ function cvars(){const cs=getComputedStyle(document.documentElement),g=(n,d)=>cs
 // amostragem só para desenhar períodos longos: mantém pontos reais (1 a cada k), o último e os dias de troca de contrato
 function sample(h,rl){if(h.length<=MAXPTS)return [h,1];const k=Math.ceil(h.length/MAXPTS),keep=new Set((rl||[]).map(r=>r[0]));
  return [h.filter((z,i)=>i%k===0||i===h.length-1||keep.has(z[0])),k]}
+let CX=null;
 function chart(h,rl,dec){rl=rl||[];CH=null;if(h.length<2)return "<div class='note'>Histórico insuficiente.</div>";
  const V=cvars(),p=h.map(x=>x[1]),mn=Math.min(...p),mx=Math.max(...p),r=(mx-mn)||1;
  const X=i=>PL+i/(h.length-1)*(CW-PL-PR),Y=v=>PT+(1-(v-mn)/r)*(CHH-PT-PB);
@@ -469,15 +495,15 @@ function ptr(e){if(!CH)return;if(e.type==="pointermove"&&e.pointerType!=="mouse"
  const box=e.currentTarget,svg=box.querySelector("svg"),tip=box.querySelector(".tip");if(!svg||!tip)return;
  const R=svg.getBoundingClientRect(),vx=(e.clientX-R.left)/R.width*CW,V=cvars(),xh=svg.querySelector(".xh");let px,html="",dots="";
  if(CH.t==="l"){const h=CH.h;let i=Math.round((vx-PL)/(CW-PL-PR)*(h.length-1));i=Math.max(0,Math.min(h.length-1,i));px=CH.X(i);
-  dots=`<circle cx="${px}" cy="${CH.Y(h[i][1])}" r="4.5" fill="${V.c}" stroke="${V.card}" stroke-width="2"/>`;html=`<b>${fmt(h[i][1],CH.dec)}</b><span>${fd(h[i][0])}</span>`}
+  dots=`<circle cx="${px}" cy="${CH.Y(h[i][1])}" r="4.5" fill="${V.c}" stroke="${V.card}" stroke-width="2"/>`;html=`<b>${CX?mv(h[i][1],CH.dec,CX):fmt(h[i][1],CH.dec)}</b><span>${fd(h[i][0])}</span>`}
  else{const t=Math.max(0,Math.min(365,(vx-PL)/(CW-PL-PR)*365));px=CH.X(t);
   CH.yrs.forEach(([y,p],i)=>{let b=null,bd=1e9;p.forEach(q=>{const d=Math.abs(q[0]-t);if(d<bd){bd=d;b=q}});
-   if(b&&bd<=6){dots+=`<circle cx="${CH.X(b[0])}" cy="${CH.Y(b[1])}" r="4" fill="${CH.col(i)}" stroke="${V.card}" stroke-width="2"/>`;html+=`<div><i style="background:${CH.col(i)}"></i>${y}: <b>${fmt(b[1],CH.dec)}</b> <span>${fds(b[2])}</span></div>`}});
+   if(b&&bd<=6){dots+=`<circle cx="${CH.X(b[0])}" cy="${CH.Y(b[1])}" r="4" fill="${CH.col(i)}" stroke="${V.card}" stroke-width="2"/>`;html+=`<div><i style="background:${CH.col(i)}"></i>${y}: <b>${CX?mv(b[1],CH.dec,CX,1):fmt(b[1],CH.dec)}</b> <span>${fds(b[2])}</span></div>`}});
   if(!html)html=`<span>sem cotação nesta época</span>`}
  xh.innerHTML=`<line x1="${px}" x2="${px}" y1="${PT}" y2="${CHH-PB}" stroke="${V.mu}" stroke-width="1" stroke-dasharray="3 3"/>`+dots;
  tip.innerHTML=html;tip.hidden=false;tip.style.left=Math.max(18,Math.min(82,px/CW*100))+"%"}
 function ptrOut(e){if(e.pointerType!=="mouse")return;const box=e.currentTarget,t=box.querySelector(".tip"),x=box.querySelector(".xh");if(t)t.hidden=true;if(x)x.innerHTML=""}
-function renderDet(){const x=I[dk];document.getElementById("dtitle").textContent=x.name;loadHist(dk);
+function renderDet(){const x=I[dk];CX=x;document.getElementById("dtitle").textContent=x.name;loadHist(dk);
  const H0=HIST[dk],ok=H0&&typeof H0==="object";const hd=ok?H0.h:(x.h||[]),rolls=ok?H0.rolls:(x.rolls||[]);
  const last=hd.length?new Date(hd[hd.length-1][0]):null;
  const cut=per&&last?new Date(last-per*864e5).toISOString().slice(0,10):"";const sub=hd.filter(z=>z[0]>=cut);
@@ -490,25 +516,25 @@ function renderDet(){const x=I[dk];document.getElementById("dtitle").textContent
  if(saz){const yrs=sazYears(hd);ch=sazChart(yrs,x.dec);
   legend=`<div class="leg">`+yrs.map(([y],i)=>`<span><i style="background:${CH.col(i)}"></i>${y}${i===0?" (atual)":""}</span>`).join("")+`</div><div class="note">Cada linha é um ano, do 1º de janeiro a 31 de dezembro, com as cotações publicadas. Toque no gráfico para comparar a mesma época.</div>`}
  else{const [smp,k]=sample(sub,rl);ch=chart(smp,rl,x.dec);if(k>1)extra=`<div class="note">Período longo: o gráfico desenha 1 a cada ${k} registros (valores reais); mínimo e máximo abaixo usam todos.</div>`}
- document.getElementById("dbody").innerHTML=`<div style="color:var(--mu);font-size:13px">${x.sub} · ${x.unit}</div>
- <div class="big">${fmt(x.v,x.dec)}</div><div>${pill(x.chg)} <span style="color:var(--mu);font-size:13px">em ${fd(x.d)}${x.st?' <span class="late">(atrasado)</span>':""}${x.pv!=null?` · anterior ${fmt(x.pv,x.dec)} (${fds(x.pd)}${x.pc&&x.pc!==x.contract?", "+x.pc:""})`:""}</span></div>
+ document.getElementById("dbody").innerHTML=`<div style="color:var(--mu);font-size:13px">${x.sub} · ${ud(x)}${cub(x)}</div>
+ <div class="big">${mv(x.v,x.dec,x)}</div><div>${pill(x.chg)} <span style="color:var(--mu);font-size:13px">em ${fd(x.d)}${x.st?' <span class="late">(atrasado)</span>':""}${x.pv!=null?` · anterior ${mt(x.pv,x.dec,x,1)} (${fds(x.pd)}${x.pc&&x.pc!==x.contract?", "+x.pc:""})`:""}</span></div>
  <div class="seg"${saz?' style="opacity:.45"':""}>${PER.map(([d,l])=>`<button class="${d===per&&!saz?"on":""}" aria-pressed="${d===per&&!saz}" onclick="per=${d};saz=false;renderDet()">${l}</button>`).join("")}</div>
  ${canSaz?`<button class="sazb ${saz?"on":""}" aria-pressed="${saz}" onclick="saz=!saz;renderDet()">${ico("ibov")} ${saz?"Voltar ao gráfico normal":"Sazonal: comparar com anos anteriores"}</button>`:""}
- <div class="chart" onpointerdown="ptr(event)" onpointermove="ptr(event)" onpointerleave="ptrOut(event)">${wait?'<div class="note">Carregando histórico completo…</div>':ch}<div class="tip" role="status" aria-live="polite" hidden></div></div>
+ <div class="axu">Valores do gráfico em <b class="${cu(x)[0]==="US$"?"us":""}">${cuP(cu(x))}${cuS(cu(x))}</b> (${ud(x)})</div><div class="chart" onpointerdown="ptr(event)" onpointermove="ptr(event)" onpointerleave="ptrOut(event)">${wait?'<div class="note">Carregando histórico completo…</div>':ch}<div class="tip" role="status" aria-live="polite" hidden></div></div>
  ${legend}${saz?"":extra}
  ${!saz&&rl.length?`<div class="roll"><b>${rl.length===1?"Troca de contrato":"Trocas de contrato"} no período</b> (linha tracejada): ${rl.length>8?rl.length+" trocas":rl.map(r=>`${fds(r[0])}/${r[0].slice(2,4)} ${r[1]} → ${r[2]}`).join(" · ")}.<br>O salto no gráfico nesses dias vem da mudança de contrato, não de variação do mercado; a variação do dia mostrada é a publicada para o contrato novo.</div>`:""}
  ${!saz&&short?`<div class="note">Histórico disponível desde ${fd(hd[0][0])}.</div>`:""}
  ${!saz&&!wait&&!per&&hd.length?`<div class="note">Máx: todo o histórico guardado, desde ${fd(hd[0][0])}.</div>`:""}
  <div class="kpis">
-  <div class="kpi"><div class="l">Média da semana${x.contract?" ("+x.contract+")":""}</div><div class="x">${fmt(x.wk,x.dec)}</div><div class="y">${x.wkn} dia(s) com cotação</div></div>
-  <div class="kpi"><div class="l">Média do mês (${x.d?MES[+x.d.slice(5,7)-1]:"—"})${x.contract?" ("+x.contract+")":""}</div><div class="x">${fmt(x.mo,x.dec)}</div><div class="y">${x.mon} dia(s) com cotação</div></div>
-  <div class="kpi"><div class="l">Há 1 ano</div><div class="x">${fmt(x.yav,x.dec)}</div><div class="y">${x.yad?`em ${fd(x.yad)}${x.yac?" · contrato "+x.yac:""} · hoje ${yac>=0?"+":""}${fmt(yac,1)}%`:"sem histórico de 1 ano"}</div></div>
-  <div class="kpi"><div class="l">Mín. e máx. no período${saz?" ("+(PER.find(z=>z[0]===per)||[0,""])[1]+")":""}</div><div class="x" style="font-size:15px">${fmt(pmin,x.dec)} – ${fmt(pmax,x.dec)}</div><div class="y">${sub.length} registros</div></div>
+  <div class="kpi"><div class="l">Média da semana${x.contract?" ("+x.contract+")":""}</div><div class="x">${mv(x.wk,x.dec,x)}</div><div class="y">${x.wkn} dia(s) com cotação</div></div>
+  <div class="kpi"><div class="l">Média do mês (${x.d?MES[+x.d.slice(5,7)-1]:"—"})${x.contract?" ("+x.contract+")":""}</div><div class="x">${mv(x.mo,x.dec,x)}</div><div class="y">${x.mon} dia(s) com cotação</div></div>
+  <div class="kpi"><div class="l">Há 1 ano</div><div class="x">${mv(x.yav,x.dec,x)}</div><div class="y">${x.yad?`em ${fd(x.yad)}${x.yac?" · contrato "+x.yac:""} · hoje ${yac>=0?"+":""}${fmt(yac,1)}%`:"sem histórico de 1 ano"}</div></div>
+  <div class="kpi"><div class="l">Mín. e máx. no período${saz?" ("+(PER.find(z=>z[0]===per)||[0,""])[1]+")":""}</div><div class="x" style="font-size:15px">${mv(pmin,x.dec,x,1)} – ${mv(pmax,x.dec,x,1)}</div><div class="y">${sub.length} registros</div></div>
  </div><div class="note">Fonte: ${x.src}.</div>`}
 render();themeBtns();
 matchMedia("(prefers-color-scheme: dark)").addEventListener&&matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{if(dk)renderDet()});
 if(location.hash&&I[location.hash.slice(1)]){const k=location.hash.slice(1);history.replaceState(null,"",location.pathname+location.search);openDet(k)}
-document.getElementById("foot").innerHTML=`Fontes: CEPEA/ESALQ, Banco Central (PTAX), B3 (Ibovespa), Datagro, Scot Consultoria, Mercado do Cacau, além de B3, CBOT e ICE via Notícias Agrícolas. Onde não houve publicação aparece “—”. Nenhum valor é estimado. Notícias: manchetes e links dos feeds públicos de Canal Rural, Globo Rural, Notícias Agrícolas, Agrolink, Estadão, g1, Valor, InfoMoney, Exame, Folha, CNN Brasil e Poder360; os resumos são do Informativo e a matéria completa abre no site do veículo.<br>Atualizado em ${DATA.updated} (horário de Brasília). <a href="Informativo_agro.xlsx" download style="color:var(--g2)">Baixar planilha (xlsx)</a><br>Ícones: desenhos próprios do Informativo; ícones de interface: Tabler Icons (MIT) — <a href="LICENSES-icones.txt" style="color:var(--g2)">licença</a>.`;
+document.getElementById("foot").innerHTML=`Fontes: CEPEA/ESALQ, Banco Central (PTAX), B3 (Ibovespa), Datagro, Scot Consultoria, Mercado do Cacau, além de B3, CBOT e ICE via Notícias Agrícolas. Onde não houve publicação aparece “—”. Nenhum valor é estimado. Notícias: manchetes e links dos feeds públicos de Canal Rural, Globo Rural, Notícias Agrícolas, Agrolink, Estadão, g1, Valor, InfoMoney, Exame, Folha, CNN Brasil e Poder360; os resumos são do Informativo e a matéria completa abre no site do veículo.<br>Atualizado em ${DATA.updated} (horário de Brasília).<br>Ícones: desenhos próprios do Informativo; ícones de interface: Tabler Icons (MIT) — <a href="LICENSES-icones.txt" style="color:var(--g2)">licença</a>.`;
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js",{scope:"./"}).catch(()=>{});});}
 </script>
 <script data-goatcounter="https://informativo-agro.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
