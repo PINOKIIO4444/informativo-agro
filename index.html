@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informativo diário do agro</title>
+<meta name="description" content="Cotações diárias de soja, milho, boi gordo (CEPEA/ESALQ) e dólar PTAX (BCB).">
+<style>
+:root{--bg:#f6f8f4;--card:#fff;--ink:#1f2a1f;--mut:#6b7768;--line:#e3e8df;--up:#1d7a3a;--down:#b3261e;--acc:#2f6f3e}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.4}
+.wrap{max-width:1100px;margin:0 auto;padding:16px}
+header h1{margin:8px 0 2px;font-size:1.6rem;color:var(--acc)}
+header p{margin:0;color:var(--mut);font-size:.95rem}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.k-name{font-size:.85rem;color:var(--mut)}
+.k-val{font-size:1.7rem;font-weight:700;margin:4px 0}
+.k-unit{font-size:.85rem;color:var(--mut);font-weight:400}
+.k-meta{font-size:.85rem;color:var(--mut)}
+.up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--mut)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:20px 0 8px}
+.bar h2{margin:0;font-size:1.2rem}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+.seg button{border:0;background:transparent;padding:6px 14px;font:inherit;font-size:.9rem;cursor:pointer;color:var(--ink)}
+.seg button.on{background:var(--acc);color:#fff}
+.charts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr))}
+.chart h3{margin:0 0 6px;font-size:1rem}
+.chart svg{width:100%;height:auto;display:block}
+.chart .rng{font-size:.8rem;color:var(--mut)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem;background:#fff}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{background:#eef3ea;font-weight:600}
+.foot{font-size:.85rem;color:var(--mut);margin:20px 0 30px}
+.foot a{color:var(--acc)}.foot a.dl{color:#fff}
+.dl{display:inline-block;margin-top:6px;padding:8px 14px;border-radius:8px;background:var(--acc);color:#fff;text-decoration:none;font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Informativo diário do agro</h1>
+<p id="upd"></p>
+</header>
+<section class="grid" id="kpis"></section>
+<div class="bar"><h2>Gráficos</h2>
+<div class="seg" id="seg"><button data-p="30">30 dias</button><button data-p="90">90 dias</button><button data-p="all" class="on">Tudo</button></div></div>
+<section class="charts" id="charts"></section>
+<div class="bar"><h2>Últimos 15 dias</h2></div>
+<div class="tbl card" style="padding:0"><table id="tbl"></table></div>
+<div class="foot card">
+<b>Fontes:</b> soja (Paranaguá/PR, R$/sc 60 kg), milho (Campinas/SP, R$/sc 60 kg) e boi gordo (SP, R$/@) — indicadores CEPEA/ESALQ, consultados via Notícias Agrícolas; dólar — PTAX venda do Banco Central do Brasil (BCB).
+Atualização nos dias úteis, por volta das 19h30 (horário de Brasília). Campos em branco (—) indicam valor ainda não publicado; nenhum número é estimado.<br>
+<a class="dl" href="Informativo_agro.xlsx" download>Baixar planilha (xlsx)</a>
+</div>
+</div>
+<script>
+const DATA = {"rows": [{"d": "2026-09-17", "soja": 162.02, "milho": 69.25, "boi": 352.55, "usd": 5.1521, "obs": "Fontes S1–S4; consulta 28/09/2026"}, {"d": "2026-09-18", "soja": 161.89, "milho": 69.29, "boi": 352.9, "usd": 5.1575, "obs": "Fontes S1–S4; consulta 28/09/2026"}, {"d": "2026-09-21", "soja": 161.52, "milho": 69.62, "boi": 354.65, "usd": 5.1117, "obs": "Fontes S1–S4; consulta 28/09/2026"}, {"d": "2026-09-22", "soja": 161.93, "milho": 69.74, "boi": 356.1, "usd": 5.1161, "obs": "Fontes S1–S4; consulta 28/09/2026"}, {"d": "2026-09-23", "soja": 161.65, "milho": 69.82, "boi": 357.4, "usd": 5.1414, "obs": "Fontes S1–S4; consulta 28/09/2026"}, {"d": "2026-09-24", "soja": 161.84, "milho": 69.81, "boi": 358.2, "usd": 5.1795, "obs": "Fontes S1–S4; consulta 28/09/2026"}, {"d": "2026-09-25", "soja": 161.0, "milho": 69.65, "boi": 358.8, "usd": 5.1991, "obs": "Fontes S1–S4; consulta 28/09/2026"}, {"d": "2026-09-28", "soja": 160.43, "milho": 69.48, "boi": 359.95, "usd": 5.2132, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); corrigido: dólar era 5.22; consulta 28/10/2026"}, {"d": "2026-09-29", "soja": 161.27, "milho": 69.2, "boi": 363.05, "usd": 5.2204, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); corrigido: dólar era 5.2166; consulta 28/10/2026"}, {"d": "2026-09-30", "soja": 161.56, "milho": 68.67, "boi": 364.3, "usd": 5.1809, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); corrigido: dólar era 5.1743; consulta 28/10/2026"}, {"d": "2026-10-01", "soja": 160.9, "milho": 68.58, "boi": 366.5, "usd": 5.2079, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); corrigido: dólar era 5.2073; consulta 28/10/2026"}, {"d": "2026-10-02", "soja": 159.94, "milho": 68.53, "boi": 369.9, "usd": 5.2238, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); corrigido: dólar era 5.2232; consulta 28/10/2026"}, {"d": "2026-10-05", "soja": 158.09, "milho": 67.26, "boi": 372.95, "usd": 4.9859, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); corrigido: dólar era 4.9853; consulta 28/10/2026"}, {"d": "2026-10-06", "soja": 155.67, "milho": 67.23, "boi": 373.25, "usd": 4.9698, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); corrigido: dólar era 4.9692; consulta 28/10/2026"}, {"d": "2026-10-07", "soja": 153.9, "milho": 67.24, "boi": 376.1, "usd": 4.9935, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); corrigido: dólar era 4.9929; consulta 28/10/2026"}, {"d": "2026-10-08", "soja": 154.91, "milho": 67.18, "boi": 376.3, "usd": 5.0119, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); corrigido: dólar era 5.0113; consulta 28/10/2026"}, {"d": "2026-10-09", "soja": 154.75, "milho": 67.35, "boi": 377.8, "usd": 4.9892, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-13", "soja": 154.15, "milho": 65.59, "boi": 378.0, "usd": 5.0096, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-14", "soja": 154.29, "milho": 65.43, "boi": 379.4, "usd": 5.0441, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-15", "soja": 154.7, "milho": 64.81, "boi": 380.2, "usd": 5.0521, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-16", "soja": 154.61, "milho": 64.85, "boi": 380.7, "usd": 5.0826, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-19", "soja": 154.24, "milho": 64.74, "boi": 380.7, "usd": 5.0564, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-20", "soja": 153.4, "milho": 64.34, "boi": 380.45, "usd": 5.014, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-21", "soja": 152.13, "milho": 64.3, "boi": 380.4, "usd": 5.0277, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-22", "soja": 151.92, "milho": 64.24, "boi": 380.55, "usd": 5.0383, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-23", "soja": 152.41, "milho": 64.27, "boi": 381.4, "usd": 5.0377, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-26", "soja": 155.55, "milho": 64.24, "boi": 381.4, "usd": 5.5007, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-27", "soja": 157.41, "milho": 64.87, "boi": 386.3, "usd": 5.3346, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}, {"d": "2026-10-28", "soja": 157.42, "milho": 64.73, "boi": 389.05, "usd": 5.342, "obs": "CEPEA/ESALQ via Notícias Agrícolas (S1–S3); PTAX venda BCB/Olinda (S4); consulta 28/10/2026"}], "xlsx_sha256": "633770ee9a2eaf4c81289c0c3808da14b3209443577ad22f7b7884f0c28d359a", "updated": "29/10/2026 08:50", "template_sha256": "f4bc5011d64aeccf1d2c4dec4779a32e1d35bbb74174a0505e3d97d69f547823"};
+const S = [
+ {k:"soja",n:"Soja Paranaguá",u:"R$/sc 60 kg",d:2,c:"#2f6f3e"},
+ {k:"milho",n:"Milho Campinas",u:"R$/sc 60 kg",d:2,c:"#c08a00"},
+ {k:"boi",n:"Boi gordo SP",u:"R$/@",d:2,c:"#8a4b2a"},
+ {k:"usd",n:"Dólar PTAX venda",u:"R$/US$",d:4,c:"#2a5d8a"}];
+const rows = DATA.rows;
+const fmt=(v,d)=>v==null?"—":v.toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const fd=s=>{const[a,m,d]=s.split("-");return `${d}/${m}/${a}`};
+const pct=(a,b)=>(a==null||b==null||b===0)?null:(a/b-1)*100;
+const pf=p=>p==null?'<span class="flat">—</span>':`<span class="${p>0.0001?"up":p<-0.0001?"down":"flat"}">${p>0?"▲ +":p<0?"▼ ":""}${p.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2})}%</span>`;
+document.getElementById("upd").textContent=`Atualizado em ${DATA.updated} (horário de Brasília)`;
+// KPIs: último valor publicado de cada série vs. dia publicado anterior
+const kp=document.getElementById("kpis");
+for(const s of S){
+ const pub=rows.filter(r=>r[s.k]!=null);
+ const last=pub[pub.length-1], prev=pub[pub.length-2];
+ const p=last&&prev?pct(last[s.k],prev[s.k]):null;
+ kp.insertAdjacentHTML("beforeend",`<div class="card" data-k="${s.k}"><div class="k-name">${s.n}</div>
+ <div class="k-val">${last?"R$ "+fmt(last[s.k],s.d):"—"} <span class="k-unit">${s.u}</span></div>
+ <div class="k-meta">${pf(p)} vs. ${prev?fd(prev.d)+" (R$ "+fmt(prev[s.k],s.d)+")":"—"}</div>
+ <div class="k-meta">Data: ${last?fd(last.d):"—"}</div></div>`);
+}
+// Gráficos SVG
+function chart(s,per){
+ let pts=rows.map(r=>({d:r.d,v:r[s.k]})).filter(p=>p.v!=null);
+ if(per!=="all"&&pts.length){const end=new Date(pts[pts.length-1].d+"T12:00:00");const st=new Date(end);st.setDate(st.getDate()-(+per));const ss=st.toISOString().slice(0,10);pts=pts.filter(p=>p.d>=ss);}
+ const W=520,H=220,L=58,R=12,T=12,B=28;
+ if(pts.length<1)return `<p class="rng">Sem dados no período.</p>`;
+ let mn=Math.min(...pts.map(p=>p.v)),mx=Math.max(...pts.map(p=>p.v));if(mn===mx){mn-=1;mx+=1;}const pad=(mx-mn)*.08;mn-=pad;mx+=pad;
+ const t0=new Date(pts[0].d).getTime(),t1=new Date(pts[pts.length-1].d).getTime()||t0+1;
+ const x=d=>L+(t1===t0?(W-L-R)/2:(new Date(d).getTime()-t0)/(t1-t0)*(W-L-R)),y=v=>T+(1-(v-mn)/(mx-mn))*(H-T-B);
+ let g="";for(let i=0;i<=4;i++){const v=mn+(mx-mn)*i/4,yy=y(v);g+=`<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="#e3e8df"/><text x="${L-6}" y="${yy+4}" text-anchor="end" font-size="11" fill="#6b7768">${fmt(v,s.d===4?3:0)}</text>`;}
+ const lab=[pts[0],pts[Math.floor((pts.length-1)/2)],pts[pts.length-1]];const seen=new Set();
+ for(const p of lab){if(seen.has(p.d))continue;seen.add(p.d);const xx=x(p.d);g+=`<text x="${xx}" y="${H-8}" text-anchor="${xx<L+30?"start":xx>W-R-30?"end":"middle"}" font-size="11" fill="#6b7768">${fd(p.d).slice(0,5)}</text>`;}
+ const path=pts.map((p,i)=>`${i?"L":"M"}${x(p.d).toFixed(1)},${y(p.v).toFixed(1)}`).join("");
+ const dots=pts.length<=40?pts.map(p=>`<circle cx="${x(p.d)}" cy="${y(p.v)}" r="2.6" fill="${s.c}"><title>${fd(p.d)}: R$ ${fmt(p.v,s.d)}</title></circle>`).join(""):"";
+ const f=pts[0],l=pts[pts.length-1];
+ return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${s.n}">${g}<path d="${path}" fill="none" stroke="${s.c}" stroke-width="2.2"/>${dots}</svg>
+ <div class="rng">${fd(f.d)} → ${fd(l.d)}: R$ ${fmt(f.v,s.d)} → R$ ${fmt(l.v,s.d)} (${pf(pct(l.v,f.v))}) · mín R$ ${fmt(Math.min(...pts.map(p=>p.v)),s.d)} · máx R$ ${fmt(Math.max(...pts.map(p=>p.v)),s.d)}</div>`;
+}
+function draw(per){document.getElementById("charts").innerHTML=S.map(s=>`<div class="card chart"><h3>${s.n} <span class="k-unit">(${s.u})</span></h3>${chart(s,per)}</div>`).join("");}
+document.querySelectorAll("#seg button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#seg button").forEach(x=>x.classList.remove("on"));b.classList.add("on");draw(b.dataset.p);});
+draw("all");
+// Tabela
+const last15=rows.slice(-15).reverse();
+let h=`<thead><tr><th>Data</th>${S.map(s=>`<th>${s.n}<br><span class="k-unit">${s.u}</span></th>`).join("")}</tr></thead><tbody>`;
+for(const r of last15){h+=`<tr><td>${fd(r.d)}</td>${S.map(s=>`<td>${fmt(r[s.k],s.d)}</td>`).join("")}</tr>`;}
+document.getElementById("tbl").innerHTML=h+"</tbody>";
+</script>
+</body>
+</html>
