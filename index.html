@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1E8C47">
 <title>Informativo diário do agro</title>
-<meta name="description" content="Cotações diárias do agro: proteína animal, agricultura e mercado — boi, suínos, frango, ovos, leite, grãos, café, cana, cacau, laranja, B3, dólar e Chicago.">
+<meta name="description" content="Cotações diárias e notícias do agro: proteína animal, agricultura e mercado — boi, suínos, frango, ovos, leite, grãos, café, cana, cacau, laranja, B3, dólar e Chicago.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="logo.svg">
@@ -117,6 +117,29 @@ nav.chips::-webkit-scrollbar{display:none}
 .dsub .di .soon{margin-left:auto}
 .dwf{border-top:1px solid var(--ln);padding:12px 16px calc(12px + env(safe-area-inset-bottom));font-size:12px;color:var(--mu)}
 .dwf a{display:block;text-align:center;font-weight:700;color:var(--g2);text-decoration:none;border:1px solid var(--ln);border-radius:999px;padding:9px;margin-bottom:8px;font-size:14px}
+/* ---- v5: notícias ---- */
+.nl{background:var(--card);border:1px solid var(--ln);border-radius:14px;overflow:hidden;margin-top:12px}
+.ni{display:block;width:100%;text-align:left;border:0;background:none;font-family:inherit;color:var(--tx);padding:12px;border-bottom:1px solid var(--ln);cursor:pointer}
+.ni:last-child{border-bottom:0}.ni:active{background:#f3f7f1}
+.ni .h{font-size:15px;font-weight:650;line-height:1.32}
+.ni .m{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:6px;font-size:12px;color:var(--mu)}
+.ni .m b{color:var(--tx);font-weight:600}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:999px;padding:1px 7px;text-transform:uppercase;letter-spacing:.04em}
+.tag.agro{color:#17703C;background:#e6f4ea}.tag.mercado{color:#1d4ed8;background:#e8eefc}.tag.politica{color:#8a3b00;background:#fdeee2}
+.rs{font-size:11px;color:var(--g2);font-weight:700}
+.nmore{display:block;text-align:center;font-size:14px;font-weight:700;color:var(--g2);padding:11px;border-top:1px solid var(--ln);cursor:pointer;background:#fafbf8}
+#nov{position:fixed;inset:0;background:rgba(15,20,16,.45);z-index:50;opacity:0;pointer-events:none;transition:opacity .2s}
+#nov.on{opacity:1;pointer-events:auto}
+#nsh{position:fixed;left:0;right:0;bottom:0;z-index:51;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -4px 20px rgba(0,0,0,.15);transform:translateY(105%);transition:transform .25s cubic-bezier(.2,.8,.2,1);max-height:86vh;overflow-y:auto;padding:8px 18px calc(18px + env(safe-area-inset-bottom));max-width:760px;margin:0 auto}
+#nsh.on{transform:none}
+#nsh .grab{width:40px;height:5px;border-radius:3px;background:#d5dbd1;margin:2px auto 10px}
+#nsh .x{position:absolute;right:12px;top:10px;width:34px;height:34px;border-radius:50%;border:1px solid var(--ln);background:#fff;font-size:16px;cursor:pointer}
+#nsh h3{font-size:19px;line-height:1.3;margin:8px 0 6px}
+#nsh .m{font-size:12.5px;color:var(--mu)}#nsh .m b{color:var(--tx)}
+#nsh .sm{font-size:15.5px;line-height:1.55;margin:14px 0 4px;color:#27302a}
+#nsh .sl{font-size:11.5px;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:14px}
+#nsh .go{display:block;text-align:center;background:var(--g);color:#fff;text-decoration:none;font-weight:700;font-size:15.5px;border-radius:12px;padding:13px;margin-top:16px}
+#nsh .disc{font-size:11.5px;color:var(--mu);margin-top:10px;line-height:1.45;text-align:center}
 @media(min-width:1024px){
  #drawer{transform:none;box-shadow:none;border-right:1px solid var(--ln);z-index:8}
  #ov{display:none}
@@ -139,8 +162,11 @@ nav.chips::-webkit-scrollbar{display:none}
 <aside id="drawer" aria-label="Menu">
  <div class="dwh"><img src="logo.svg" alt=""><div><b>Informativo do agro</b><small id="dwd"></small></div></div>
  <div class="dwb" id="dwb"></div>
- <div class="dwf"><a href="Informativo_agro.xlsx" download>⬇ Baixar planilha (xlsx)</a>Fontes: CEPEA/ESALQ, BCB, B3, Datagro, Scot, CBOT e ICE via Notícias Agrícolas. Nenhum valor é estimado.</div>
+ <div class="dwf"><a href="Informativo_agro.xlsx" download>⬇ Baixar planilha (xlsx)</a>Fontes: CEPEA/ESALQ, BCB, B3, Datagro, Scot, CBOT e ICE via Notícias Agrícolas. Nenhum valor é estimado. Notícias: manchetes dos feeds públicos dos veículos.</div>
 </aside>
+
+<div id="nov" onclick="closeNews()"></div>
+<div id="nsh" role="dialog" aria-modal="true" aria-label="Resumo da notícia"><div class="grab"></div><button class="x" aria-label="Fechar" onclick="closeNews()">✕</button><div id="nbody"></div></div>
 
 <div id="det"><div class="dh"><button class="back" onclick="closeDet()">‹ Voltar</button><div id="dtitle" style="font-weight:700"></div></div><div class="dbody" id="dbody"></div></div>
 
@@ -167,6 +193,10 @@ const has=k=>I[k]&&I[k].v!=null;
 // ---------------- menu: seções e produtos ----------------
 const LEITE=["leite_brasil","leite_mg","leite_go","leite_sp","leite_pr","leite_sc","leite_rs","leite_ba","leite_rj","leite_es"];
 const NAV=[
+ {id:"noticias",label:"Notícias",ic:"📰",news:true,items:[
+  {id:"n_agro",label:"Agro",ic:"🌾",news:"agro"},
+  {id:"n_mercado",label:"Mercado e negócios",ic:"💼",news:"mercado"},
+  {id:"n_politica",label:"Política",ic:"🏛️",news:"politica"}]},
  {id:"pecuaria",label:"Proteína animal",ic:"🐂",items:[
   {id:"boi",label:"Boi gordo",ic:"🐂",g:[["Indicador CEPEA/B3",["boi"]],["Futuro B3",["fut_boi"]]],estado:true},
   {id:"bezerro",label:"Bezerro",ic:"🐄",g:[["",["bezerro"]]]},
@@ -195,8 +225,8 @@ const NAV=[
   {id:"chicago",label:"Chicago (CBOT)",ic:"🇺🇸",g:[["",["cbot_soja","cbot_milho","cbot_farelo","cbot_oleo"]]],note:"chicago"},
   {id:"insumos",label:"Insumos e fertilizantes",ic:"🧪",g:[],ph:[["Ureia","R$/t"],["MAP","R$/t"],["KCl (cloreto de potássio)","R$/t"]]}]}];
 const NI={};NAV.forEach(s=>s.items.forEach(it=>{it.sec=s;NI[it.id]=it}));
-const keysOf=it=>it.g.flatMap(g=>g[1]);
-const avail=it=>keysOf(it).some(has)||(it.leite&&DATA.leite&&DATA.leite.date);
+const keysOf=it=>(it.g||[]).flatMap(g=>g[1]);
+const avail=it=>it.news?true:keysOf(it).some(has)||(it.leite&&DATA.leite&&DATA.leite.date);
 const PLACE={suinos:1,frango:1,ovos:1,leite:1,tilapia:1,sorgo:1,trigo:1,arroz:1,feijao:1,cana:1,cacau:1,laranja:1,mandioca:1};
 
 // ---------------- estado da navegação ----------------
@@ -212,7 +242,7 @@ function ph(n,s){return `<div class="row ph"><div><div class="n">${n}<span class
 function drawer(){
  let h=`<button class="di ${cur==="resumo"?"on":""}" onclick="go('resumo')"><span class="ic">🏠</span><span class="lb">Resumo do dia</span></button>`;
  NAV.forEach(s=>{const op=openSec===s.id;
-  h+=`<button class="dsec ${op?"open":""}" aria-expanded="${op}" onclick="toggleSec('${s.id}')"><span class="ic">${s.ic}</span>${s.label}<span class="n">${s.items.length}</span><span class="ar">›</span></button><div class="dsub ${op?"open":""}">`+
+  h+=`<button class="dsec ${op?"open":""}" aria-expanded="${op}" onclick="toggleSec('${s.id}')"><span class="ic">${s.ic}</span>${s.label}<span class="n">${s.news?"":s.items.length}</span><span class="ar">›</span></button><div class="dsub ${op?"open":""}">`+
   s.items.map(it=>`<button class="di ${cur===it.id?"on":""}" onclick="go('${it.id}')"><span class="ic">${it.ic}</span><span class="lb">${it.label}</span>${avail(it)?"":'<span class="soon">em breve</span>'}</button>`).join("")+`</div>`});
  document.getElementById("dwb").innerHTML=h}
 function toggleSec(id){openSec=openSec===id?null:id;drawer()}
@@ -223,7 +253,8 @@ function resumo(){
 <div class="v">${fmt(x.v,x.dec)}</div><div class="u">${x.unit}</div>${pill(x.chg)}${spark(x.h)}</div>`}).join("")+`</div>`;
  const al=DATA.alerts.map(a=>I[a.key]).filter(Boolean);
  h+=`<h2>Alertas do dia <span style="text-transform:none;letter-spacing:0;font-weight:500">· variação acima de 2%</span></h2><div class="alerts">`+(al.length?al.map(x=>`<div class="al" onclick="openDet('${x.key}')"><span class="ic">${x.chg>0?"🟢":"🔴"}</span><div class="t">${x.name} <small>${x.sub} · ${fmt(x.v,x.dec)} ${x.unit}</small></div>${pill(x.chg)}</div>`).join(""):'<div class="none">Nenhum preço variou mais de 2% hoje.</div>')+`</div>`;
- h+=`<h2>Explorar</h2><div class="explore">`+NAV.map(s=>`<div class="ex" onclick="openSec='${s.id}';openDrawer()"><div class="e">${s.ic}</div><div class="l">${s.label}</div><div class="c">${s.items.length} produtos</div></div>`).join("")+`</div><div class="hint">Dica: arraste a tela para a direita (ou toque no logo) para abrir o menu.</div>`;
+ h+=lastAgro();
+ h+=`<h2>Explorar</h2><div class="explore">`+NAV.filter(s=>!s.news).map(s=>`<div class="ex" onclick="openSec='${s.id}';openDrawer()"><div class="e">${s.ic}</div><div class="l">${s.label}</div><div class="c">${s.items.length} produtos</div></div>`).join("")+`</div><div class="hint">Dica: arraste a tela para a direita (ou toque no logo) para abrir o menu.</div>`;
  return h}
 
 function estado(){
@@ -240,7 +271,7 @@ const NOTES={b3:"Futuros: preço de fechamento do pregão (sai até as 19h30), n
  chicago:"Bolsa de Chicago (CBOT/CME), contrato de referência (vencimento mais próximo a partir do mês seguinte). Preços em dólar, como publicados. A troca de contrato fica marcada no gráfico."};
 
 function product(it){
- const s=it.sec;
+ const s=it.sec;if(it.news)return newsPage(it);
  let h=`<div class="crumb"><div class="sec2">${s.label}</div><div class="ttl">${it.ic} ${it.label}</div></div>
  <nav class="chips" id="chips">`+s.items.map(o=>`<button class="chip ${o.id===it.id?"on":""}" onclick="go('${o.id}')">${o.label}</button>`).join("")+`</nav>`;
  let body="";
@@ -257,6 +288,37 @@ function product(it){
  if(it.id==="insumos")h+=`<div class="note">Ureia, MAP e KCl: ainda não há uma fonte pública com publicação diária ou semanal regular que possa ser lida automaticamente. Nada é mostrado até haver um número publicado.</div>`;
  return h}
 
+// ---------------- notícias ----------------
+let NEWS=(DATA.news&&DATA.news.items)?DATA.news:{updated:null,items:[]};
+const NCAT={agro:"Agro",mercado:"Mercado e negócios",politica:"Política"},NTAG={agro:"Agro",mercado:"Mercado",politica:"Política"};
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+const dkey=d=>d.toLocaleDateString("sv-SE",{timeZone:"America/Sao_Paulo"});
+function when(p){const d=new Date(p),n=new Date(),hm=d.toLocaleTimeString("pt-BR",{timeZone:"America/Sao_Paulo",hour:"2-digit",minute:"2-digit"});
+ const m=Math.round((n-d)/6e4);if(m>=0&&m<60)return m<=1?"agora":`há ${m} min`;
+ const k=dkey(d);if(k===dkey(n))return `hoje, ${hm}`;if(k===dkey(new Date(n-864e5)))return `ontem, ${hm}`;
+ return d.toLocaleDateString("pt-BR",{timeZone:"America/Sao_Paulo",day:"2-digit",month:"2-digit"})+", "+hm}
+function full(p){const d=new Date(p);return d.toLocaleDateString("pt-BR",{timeZone:"America/Sao_Paulo",weekday:"long",day:"2-digit",month:"2-digit"})+" às "+d.toLocaleTimeString("pt-BR",{timeZone:"America/Sao_Paulo",hour:"2-digit",minute:"2-digit"})}
+const newsOf=c=>NEWS.items.map((x,i)=>Object.assign({i},x)).filter(x=>x.c===c);
+function nrow(x){return `<button class="ni" onclick="openNews(${x.i})"><div class="h">${esc(x.t)}</div><div class="m"><b>${esc(x.s)}</b>· ${when(x.p)} <span class="tag ${x.c}">${NTAG[x.c]}</span>${x.r?'<span class="rs">· resumo</span>':""}</div></button>`}
+function lastAgro(){const seen=new Set(),xs=[];for(const x of newsOf("agro")){if(!seen.has(x.s)){seen.add(x.s);xs.push(x)}if(xs.length===3)break}if(!xs.length)return "";
+ return `<h2>Últimas do agro</h2><div class="nl">`+xs.map(nrow).join("")+`<a class="nmore" onclick="go('n_agro')">Ver todas as notícias ›</a></div>`}
+function newsPage(it){const s=it.sec,xs=newsOf(it.news);
+ let h=`<div class="crumb"><div class="sec2">${s.label}</div><div class="ttl">${it.ic} ${it.label}</div></div>
+ <nav class="chips" id="chips">`+s.items.map(o=>`<button class="chip ${o.id===it.id?"on":""}" onclick="go('${o.id}')">${o.label}</button>`).join("")+`</nav>`;
+ h+=xs.length?`<div class="nl">`+xs.map(nrow).join("")+`</div>`:`<div class="nl"><div class="none" style="padding:14px">Nenhuma notícia nas últimas 48 horas.</div></div>`;
+ h+=`<div class="note">Manchetes dos feeds públicos de ${[...new Set(xs.map(x=>x.s))].join(", ")||"—"}. Toque numa notícia para ver o resumo; a matéria completa abre no site do veículo.${NEWS.updated?` Atualizado ${when(NEWS.updated)}.`:""}</div>`;
+ return h}
+const NOV=document.getElementById("nov"),NSH=document.getElementById("nsh");
+function openNews(i){const x=NEWS.items[i];if(!x)return;
+ document.getElementById("nbody").innerHTML=`<span class="tag ${x.c}">${NCAT[x.c]}</span><h3>${esc(x.t)}</h3><div class="m"><b>${esc(x.s)}</b> · ${full(x.p)}</div>`+
+ (x.r?`<div class="sl">Resumo</div><div class="sm">${esc(x.r)}</div>`:"")+
+ `<a class="go" href="${esc(x.u)}" target="_blank" rel="noopener noreferrer">Ler na íntegra no ${esc(x.s)} ↗</a>`+
+ `<div class="disc">${x.r?"Resumo escrito pelo Informativo com base no texto publicado pelo veículo. ":""}A matéria completa é do ${esc(x.s)} e abre no site original.</div>`;
+ closeDrawer();NSH.scrollTop=0;NOV.classList.add("on");NSH.classList.add("on");document.body.style.overflow="hidden";history.pushState({n:i},"","#n")}
+function closeNews(back=true){NOV.classList.remove("on");NSH.classList.remove("on");if(!document.getElementById("det").classList.contains("on"))document.body.style.overflow="";if(back&&location.hash==="#n")history.back()}
+window.addEventListener("popstate",()=>{if(NSH.classList.contains("on"))closeNews(false)});
+fetch("news.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.items&&j.updated!==NEWS.updated){NEWS=j;if(!NSH.classList.contains("on"))render()}}).catch(()=>{});
+
 function render(){
  document.getElementById("main").innerHTML=cur==="resumo"?resumo():product(NI[cur]);
  drawer();
@@ -271,7 +333,7 @@ function openDrawer(){if(wide()){drawer();return}drawer();DW.classList.add("on")
 function closeDrawer(){DW.classList.remove("on");OV.classList.remove("on");DW.style.transform="";OV.style.opacity="";if(!document.getElementById("det").classList.contains("on"))document.body.style.overflow=""}
 let tx=null,ty=0,t0=0,mode=null,dx=0;
 const W=()=>DW.getBoundingClientRect().width;
-document.addEventListener("touchstart",e=>{if(wide()||document.getElementById("det").classList.contains("on"))return;const t=e.touches[0];
+document.addEventListener("touchstart",e=>{if(wide()||document.getElementById("det").classList.contains("on")||NSH.classList.contains("on"))return;const t=e.touches[0];
  const open=DW.classList.contains("on");if(!open&&(t.clientX>innerWidth*0.6||e.target.closest("nav.chips,.chart,table,details")))return;tx=t.clientX;ty=t.clientY;t0=Date.now();dx=0;mode=open?"close?":"open?"},{passive:true});
 document.addEventListener("touchmove",e=>{if(tx==null)return;const t=e.touches[0];dx=t.clientX-tx;const dy=t.clientY-ty;
  if(mode.endsWith("?")){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;if(Math.abs(dy)>Math.abs(dx)){tx=null;return}mode=mode.slice(0,-1);DW.classList.add("drag");OV.classList.add("drag","on")}
@@ -316,7 +378,7 @@ function renderDet(){const x=I[dk];document.getElementById("dtitle").textContent
  </div><div class="note">Fonte: ${x.src}.</div>`}
 render();
 if(location.hash&&I[location.hash.slice(1)]){const k=location.hash.slice(1);history.replaceState(null,"",location.pathname+location.search);openDet(k)}
-document.getElementById("foot").innerHTML=`Fontes: CEPEA/ESALQ, Banco Central (PTAX), B3 (Ibovespa), Datagro, Scot Consultoria, Mercado do Cacau, além de B3, CBOT e ICE via Notícias Agrícolas. Onde não houve publicação aparece “—”. Nenhum valor é estimado.<br>Atualizado em ${DATA.updated} (horário de Brasília). <a href="Informativo_agro.xlsx" download style="color:var(--g2)">Baixar planilha (xlsx)</a>`;
+document.getElementById("foot").innerHTML=`Fontes: CEPEA/ESALQ, Banco Central (PTAX), B3 (Ibovespa), Datagro, Scot Consultoria, Mercado do Cacau, além de B3, CBOT e ICE via Notícias Agrícolas. Onde não houve publicação aparece “—”. Nenhum valor é estimado. Notícias: manchetes e links dos feeds públicos de Canal Rural, Globo Rural, Notícias Agrícolas, Agrolink, Estadão, g1, Valor, InfoMoney, Exame, Folha, CNN Brasil e Poder360; os resumos são do Informativo e a matéria completa abre no site do veículo.<br>Atualizado em ${DATA.updated} (horário de Brasília). <a href="Informativo_agro.xlsx" download style="color:var(--g2)">Baixar planilha (xlsx)</a>`;
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js",{scope:"./"}).catch(()=>{});});}
 </script>
 </body>
