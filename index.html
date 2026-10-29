@@ -41,7 +41,11 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);
 .al{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--ln);cursor:pointer}
 .al:last-child{border:0}.al .ic{font-size:16px}.al .t{flex:1;font-size:14px}.al .t small{display:block;color:var(--mu);font-size:12px}
 .none{color:var(--mu);font-size:14px;padding:10px 0}
-nav.chips{position:sticky;top:0;z-index:5;background:var(--bg);margin:18px -14px 0;padding:10px 14px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--ln)}
+.chipbar{position:sticky;top:0;z-index:5;background:var(--bg);margin:4px -14px 0;border-bottom:1px solid var(--ln)}
+.chipbar::after{content:"";position:absolute;top:0;right:0;bottom:0;width:36px;pointer-events:none;background:linear-gradient(to right,rgba(244,246,241,0),var(--bg) 85%);transition:opacity .2s}
+.chipbar.end::after{opacity:0}
+nav.chips{padding:10px 14px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+#resumo h2:first-child{margin-top:14px}
 nav.chips::-webkit-scrollbar{display:none}
 .chip{flex:none;border:1px solid var(--ln);background:#fff;color:var(--tx);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer}
 .chip.on{background:var(--g);border-color:var(--g);color:#fff}
@@ -83,13 +87,16 @@ footer{font-size:12px;color:var(--mu);margin-top:24px;line-height:1.5}
 <div class="wrap">
 <header><img src="logo.svg" alt=""><div><h1>Informativo diário do agro</h1><div class="d" id="hd"></div></div><a class="dl" href="Informativo_agro.xlsx" download>⬇ Planilha</a></header>
 
+<div class="chipbar" id="chipbar"><nav class="chips" id="chips" aria-label="Categorias"></nav></div>
+
+<section id="resumo">
 <h2>Resumo do dia</h2>
 <div class="sum" id="sum"></div>
 
 <h2>Alertas do dia <span style="text-transform:none;letter-spacing:0;font-weight:500">· variação acima de 2%</span></h2>
 <div class="alerts" id="alerts"></div>
+</section>
 
-<nav class="chips" id="chips"></nav>
 <div id="tab"></div>
 
 <footer id="foot"></footer>
@@ -122,12 +129,20 @@ document.getElementById("alerts").innerHTML=al.length?al.map(x=>`<div class="al"
  :'<div class="none">Nenhum preço variou mais de 2% hoje.</div>';
 
 // abas
-const TABS=[["graos","Grãos"],["pecuaria","Pecuária"],["estado","Boi por estado"],["cafe","Café"],["b3","B3 e dólar"],["chicago","Chicago"],["outros","Outros"]];
-const QP=new URLSearchParams(location.search);let cur=TABS.some(t=>t[0]===QP.get("tab"))?QP.get("tab"):"graos";
+const TABS=[["resumo","Resumo"],["graos","Grãos"],["pecuaria","Pecuária"],["estado","Boi por estado"],["cafe","Café"],["b3","B3 e dólar"],["chicago","Chicago"],["outros","Outros"]];
+const QP=new URLSearchParams(location.search);let cur=TABS.some(t=>t[0]===QP.get("tab"))?QP.get("tab"):"resumo";
 function row(x){return `<div class="row" onclick="openDet('${x.key}')"><div><div class="n">${x.name}</div><div class="s">${x.sub} · ${x.unit}${stale(x)}</div></div>${spark(x.h)}
 <div class="r"><div class="v">${fmt(x.v,x.dec)}</div>${pill(x.chg)}</div></div>`}
+const CH=document.getElementById("chips"),CB=document.getElementById("chipbar");
+CH.innerHTML=TABS.map(([k,l])=>`<button class="chip" data-k="${k}" onclick="setTab('${k}')">${l}</button>`).join("");
+function fade(){CB.classList.toggle("end",CH.scrollLeft+CH.clientWidth>=CH.scrollWidth-4)}
+CH.addEventListener("scroll",fade,{passive:true});window.addEventListener("resize",fade);
+function showChip(smooth){const b=CH.querySelector(".chip.on");if(!b)return;const l=b.offsetLeft-CH.offsetLeft,target=l-(CH.clientWidth-b.offsetWidth)/2;
+ CH.scrollTo({left:Math.max(0,target),behavior:smooth?"smooth":"auto"})}
 function renderTab(){
- document.getElementById("chips").innerHTML=TABS.map(([k,l])=>`<button class="chip ${k===cur?"on":""}" onclick="setTab('${k}')">${l}</button>`).join("");
+ CH.querySelectorAll(".chip").forEach(b=>{const on=b.dataset.k===cur;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)});
+ document.getElementById("resumo").style.display=cur==="resumo"?"":"none";
+ if(cur==="resumo"){document.getElementById("tab").innerHTML="";return}
  const it=DATA.items.filter(x=>x.cat===cur);let h="";
  if(cur==="estado"){
   const s=it.filter(x=>x.v!=null).sort((a,b)=>b.v-a.v),mx=s.length?s[0].v:0,mn=s.length?Math.min(...s.map(x=>x.v)):0;
@@ -147,7 +162,7 @@ function renderTab(){
  }
  document.getElementById("tab").innerHTML=h;
 }
-function setTab(k){cur=k;renderTab();const n=document.getElementById("chips");if(n.getBoundingClientRect().top<=0)n.scrollIntoView()}
+function setTab(k){cur=k;renderTab();showChip(true);if(CB.getBoundingClientRect().top<=0)window.scrollTo(0,CB.offsetTop-0)}
 
 // detalhe
 let dk=null,per=30;
@@ -181,8 +196,7 @@ function renderDet(){const x=I[dk];document.getElementById("dtitle").textContent
   <div class="kpi"><div class="l">Há 1 ano</div><div class="x">${fmt(x.yav,x.dec)}</div><div class="y">${x.yad?`em ${fd(x.yad)}${x.yac?" · contrato "+x.yac:""} · hoje ${yac>=0?"+":""}${fmt(yac,1)}%`:"sem histórico de 1 ano"}</div></div>
   <div class="kpi"><div class="l">Mín. e máx. no período</div><div class="x" style="font-size:15px">${fmt(pmin,x.dec)} – ${fmt(pmax,x.dec)}</div><div class="y">${sub.length} pregões</div></div>
  </div><div class="note">Fonte: ${x.src}.</div>`}
-renderTab();
-if(QP.get("tab"))setTimeout(()=>document.getElementById("chips").scrollIntoView(),0);
+renderTab();showChip(false);fade();
 if(location.hash&&I[location.hash.slice(1)]){const k=location.hash.slice(1);history.replaceState(null,"",location.pathname);openDet(k)}
 document.getElementById("foot").innerHTML=`Fontes: CEPEA/ESALQ, Banco Central (PTAX), B3 (Ibovespa), Datagro e Scot Consultoria, além de B3 e CBOT via Notícias Agrícolas. Onde não houve publicação aparece “—”. Nenhum valor é estimado.<br>Atualizado em ${DATA.updated} (horário de Brasília). <a href="Informativo_agro.xlsx" download style="color:var(--g2)">Baixar planilha (xlsx)</a>`;
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js",{scope:"./"}).catch(()=>{});});}
