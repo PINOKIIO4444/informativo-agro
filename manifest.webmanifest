@@ -1,7 +1,7 @@
 {
   "name": "Informativo Agro",
   "short_name": "Agro",
-  "description": "Cotações diárias do agro: grãos, pecuária, boi por estado, café, B3, dólar e Chicago.",
+  "description": "Cotações diárias do agro: grãos, proteína animal, boi por estado, café, B3, dólar e Chicago.",
   "lang": "pt-BR",
   "id": "./",
   "start_url": "./",
