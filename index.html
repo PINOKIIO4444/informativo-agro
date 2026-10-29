@@ -324,7 +324,8 @@ function render(){
  drawer();
  const b=document.querySelector("#chips .chip.on");if(b){const C=document.getElementById("chips");C.scrollLeft=b.offsetLeft-C.offsetLeft-(C.clientWidth-b.offsetWidth)/2}
 }
-function go(id){cur=id;if(id!=="resumo")openSec=NI[id].sec.id;history.replaceState(null,"",location.pathname+(id==="resumo"?"":"?p="+id));render();closeDrawer();window.scrollTo(0,0)}
+function gcView(id){try{if(window.goatcounter&&typeof window.goatcounter.count==="function")window.goatcounter.count({path:"/"+id,event:false})}catch(e){}}
+function go(id){cur=id;setTimeout(()=>gcView(id),0);if(id!=="resumo")openSec=NI[id].sec.id;history.replaceState(null,"",location.pathname+(id==="resumo"?"":"?p="+id));render();closeDrawer();window.scrollTo(0,0)}
 
 // ---------------- gaveta: abrir/fechar e gestos ----------------
 const DW=document.getElementById("drawer"),OV=document.getElementById("ov");
@@ -381,5 +382,6 @@ if(location.hash&&I[location.hash.slice(1)]){const k=location.hash.slice(1);hist
 document.getElementById("foot").innerHTML=`Fontes: CEPEA/ESALQ, Banco Central (PTAX), B3 (Ibovespa), Datagro, Scot Consultoria, Mercado do Cacau, além de B3, CBOT e ICE via Notícias Agrícolas. Onde não houve publicação aparece “—”. Nenhum valor é estimado. Notícias: manchetes e links dos feeds públicos de Canal Rural, Globo Rural, Notícias Agrícolas, Agrolink, Estadão, g1, Valor, InfoMoney, Exame, Folha, CNN Brasil e Poder360; os resumos são do Informativo e a matéria completa abre no site do veículo.<br>Atualizado em ${DATA.updated} (horário de Brasília). <a href="Informativo_agro.xlsx" download style="color:var(--g2)">Baixar planilha (xlsx)</a>`;
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js",{scope:"./"}).catch(()=>{});});}
 </script>
+<script data-goatcounter="https://informativo-agro.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
