@@ -1,7 +1,7 @@
 {
   "name": "Informativo Agro",
   "short_name": "Agro",
-  "description": "Cotações diárias de soja, milho, boi gordo (CEPEA/ESALQ) e dólar PTAX (BCB).",
+  "description": "Cotações diárias do agro: grãos, pecuária, boi por estado, café, B3, dólar e Chicago.",
   "lang": "pt-BR",
   "id": "./",
   "start_url": "./",
