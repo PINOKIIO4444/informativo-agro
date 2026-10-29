@@ -1,0 +1,15 @@
+{
+ "ref": "2026-10-28",
+ "updated": "29/10/2026 10:29",
+ "alerts": [
+  {
+   "key": "ibov",
+   "name": "Ibovespa",
+   "sub": "B3",
+   "value": 171006.1,
+   "unit": "pontos",
+   "chg_pct": -2.68,
+   "date": "2026-10-28"
+  }
+ ]
+}
