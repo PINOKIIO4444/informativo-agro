@@ -1,5 +1,50 @@
 {
- "ref": "2026-10-29",
- "updated": "29/10/2026 13:42",
- "alerts": []
+ "ref": "2026-10-28",
+ "updated": "29/10/2026 16:53",
+ "alerts": [
+  {
+   "key": "ibov",
+   "name": "Ibovespa",
+   "sub": "B3",
+   "value": 171006.1,
+   "unit": "pontos",
+   "dec": 0,
+   "chg_pct": -2.68,
+   "date": "2026-10-28",
+   "freq": "diária"
+  },
+  {
+   "key": "sorgo_go",
+   "name": "Sorgo",
+   "sub": "Rio Verde (GO) · Comigo",
+   "value": 42.5,
+   "unit": "R$/sc 60 kg",
+   "dec": 2,
+   "chg_pct": 2.41,
+   "date": "2026-10-28",
+   "freq": "diária"
+  },
+  {
+   "key": "cacau_ny",
+   "name": "Cacau",
+   "sub": "ICE Nova York · dez/26",
+   "value": 5456.0,
+   "unit": "US$/t",
+   "dec": 0,
+   "chg_pct": -2.17,
+   "date": "2026-10-28",
+   "freq": "diária"
+  },
+  {
+   "key": "laranja_pera",
+   "name": "Laranja pera in natura",
+   "sub": "SP · a prazo",
+   "value": 32.14,
+   "unit": "R$/cx 40,8 kg",
+   "dec": 2,
+   "chg_pct": 2.13,
+   "date": "2026-10-28",
+   "freq": "diária"
+  }
+ ]
 }
