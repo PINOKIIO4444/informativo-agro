@@ -208,6 +208,11 @@ nav.chips::-webkit-scrollbar{display:none}
 .ex .e{color:var(--g2);font-size:28px;line-height:1}
 .crumb .ttl{display:flex;align-items:center;gap:8px}.ico.tt{color:var(--g2);width:26px;height:26px}
 .tile .n{display:flex;align-items:center;gap:6px}.tile .n .ico{color:var(--g2)}
+.tile{transition:transform .08s ease,border-color .15s,box-shadow .15s;-webkit-tap-highlight-color:transparent;color:inherit;text-decoration:none}
+.tile.go .chev{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--zb);color:var(--g2)}.tile.go .chev .ico{color:var(--g2)}
+.tile:active{transform:scale(.97)}@media(hover:hover){.tile:hover{border-color:var(--gl);box-shadow:0 2px 8px rgba(0,0,0,.08)}}
+.tile .s2{font-size:11.5px;color:var(--mu);font-weight:600}.tile>.s2{margin-top:6px;margin-bottom:-4px}
+.tile .t2{margin-top:6px;padding-top:6px;border-top:1px solid var(--ln);display:flex;flex-direction:column;gap:2px}.tile .t2v{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:14.5px;font-weight:700;font-variant-numeric:tabular-nums}.tile .t2v .pill{font-size:11px}
 .al .ic{font-size:20px}.al .ic.up{color:var(--up)}.al .ic.dn{color:var(--dn)}
 .menu .hb{display:flex;align-items:center;justify-content:center}.menu .hb .ico{width:11px;height:11px;stroke-width:3}
 .dl{display:inline-flex;align-items:center;gap:6px}.dl .ico{width:17px;height:17px}
@@ -384,10 +389,14 @@ function setTheme(t){try{t==="auto"?localStorage.removeItem("tema"):localStorage
  if(t==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=t;themeBtns();if(dk)renderDet()}
 function themeBtns(){const t=document.documentElement.dataset.theme||"auto";["auto","light","dark"].forEach(k=>{const b=document.getElementById("th_"+k);if(b){b.classList.toggle("on",k===t);b.setAttribute("aria-pressed",k===t)}})}
 
+// v14: caixinhas que levam à página do produto (boi gordo → página Boi gordo; café → página Café, arábica e conilon)
+const TGO={boi:"boi",cafe_arabica:"cafe"};
 function resumo(){
  const SUM=["soja","milho","boi","cafe_arabica","usd","ibov"];
- let h=`<div class="crumb"><div class="ttl">Resumo do dia</div></div><div class="sum">`+SUM.map(k=>{const x=I[k];return `<a class="tile" href="#${k}" onclick="return nav(event,()=>openDet('${k}'))" aria-label="${esc(x.name)}, ${esc(x.sub)}: ${esc(mt(x.v,x.dec,x,1))}, ${esc(ud(x))}, ${pctX(x)}, em ${fd(x.d)}. Abrir detalhes"><div class="n">${ico(KI[k],"sm")}${x.name}</div><div class="s">${x.sub}${stale(x)}</div>
-<div class="v">${mv(x.v,x.dec,x,1)}</div><div class="u">${ud(x)}</div>${pl(x)}${spark(x.h)}<div class="sl30" aria-hidden="true">tendência · 30 pregões</div>${x.cr?`<div class="fs">Fonte: ${esc(x.cr[0])}</div>`:""}</a>`}).join("")+`</div>`;
+ let h=`<div class="crumb"><div class="ttl">Resumo do dia</div></div><div class="sum">`+SUM.map(k=>{const x=I[k],pg=TGO[k],c2=k==="cafe_arabica"&&has("cafe_conilon")?I.cafe_conilon:null;
+  const lab=pg?`Abrir página ${NI[pg].label}`:"Abrir detalhes",act=pg?`go('${pg}')`:`openDet('${k}')`;
+  return `<a class="tile${pg?" go":""}" href="${pg?"?p="+pg:"#"+k}" onclick="return nav(event,()=>${act})" aria-label="${esc(x.name)}, ${esc(x.sub)}: ${esc(mt(x.v,x.dec,x,1))}, ${esc(ud(x))}, ${pctX(x)}, em ${fd(x.d)}${c2?`; ${esc(c2.name)}: ${esc(mt(c2.v,c2.dec,c2,1))}, ${pctX(c2)}`:""}. ${lab}"><div class="n">${ico(KI[k],"sm")}${pg==="cafe"?"Café":x.name}${pg?`<span class="chev" aria-hidden="true">${ico("seta","sm")}</span>`:""}</div><div class="s">${x.sub}${stale(x)}</div>
+${pg==="cafe"?'<div class="s2">Arábica</div>':""}<div class="v">${mv(x.v,x.dec,x,1)}</div><div class="u">${ud(x)}</div>${pl(x)}${c2?`<div class="t2"><span class="s2">Conilon${c2.d!==x.d?" · "+fds(c2.d):""}</span><span class="t2v">${mv(c2.v,c2.dec,c2,1)} ${pl(c2)}</span></div>`:""}${spark(x.h)}<div class="sl30" aria-hidden="true">tendência · 30 pregões</div>${x.cr?`<div class="fs">Fonte: ${esc(x.cr[0])}</div>`:""}</a>`}).join("")+`</div>`;
  // alertas: exatamente a lista do gerador (alerts.json / resumo da noite), cada um com a própria data
  const al=(DATA.alerts||[]).filter(a=>I[a.key]);
  const FQ={semanal:" · semanal",mensal:" · mensal"};
