@@ -1,7 +1,29 @@
 {
  "ref": "2026-10-29",
- "updated": "29/10/2026 19:39",
+ "updated": "29/10/2026 23:36",
  "alerts": [
+  {
+   "key": "ice_suco",
+   "name": "Suco de laranja (FCOJ)",
+   "sub": "ICE Nova York · nov/26",
+   "value": 128.55,
+   "unit": "centavos de US$/lb",
+   "dec": 2,
+   "chg_pct": -7.22,
+   "date": "2026-10-29",
+   "freq": "diária"
+  },
+  {
+   "key": "brent",
+   "name": "Petróleo Brent",
+   "sub": "spot (FOB Europa) · EIA",
+   "value": 123.1,
+   "unit": "US$/barril",
+   "dec": 2,
+   "chg_pct": -3.92,
+   "date": "2026-10-27",
+   "freq": "diária"
+  },
   {
    "key": "cacau_es",
    "name": "Cacau",
@@ -22,6 +44,17 @@
    "dec": 2,
    "chg_pct": -2.72,
    "date": "2026-10-29",
+   "freq": "diária"
+  },
+  {
+   "key": "vaca_SP",
+   "name": "Vaca gorda",
+   "sub": "São Paulo",
+   "value": 359.58,
+   "unit": "R$/@",
+   "dec": 2,
+   "chg_pct": 2.56,
+   "date": "2026-10-28",
    "freq": "diária"
   },
   {
