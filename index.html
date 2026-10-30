@@ -37,11 +37,11 @@
 <meta name="application-name" content="Informativo Agro">
 <script>try{var t=localStorage.getItem("tema");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
-:root{--us:#1F5FA8;--ic2o:.5;--g:#1E8C47;--g2:#17703C;--gl:#7DC24B;--bg:#F4F6F1;--card:#fff;--tx:#1d261f;--mu:#6b7768;--ln:#e4e9e0;--up:#178a3e;--dn:#c62828;--upb:#e6f4ea;--dnb:#fdecea;
+:root{--us:#1F5FA8;--ic2o:.5;--g:#1E8C47;--g2:#17703C;--gl:#7DC24B;--bg:#F4F6F1;--card:#fff;--tx:#1d261f;--mu:#5c6859;--ln:#e4e9e0;--up:#178a3e;--dn:#c62828;--upb:#e6f4ea;--dnb:#fdecea;
  --top:rgba(244,246,241,.94);--sub:#fafbf8;--zb:#eef1ec;--seg:#e7ece3;--act:#f3f7f1;--wb:#7a5a00;--wbg:#fff7e0;--wln:#f1e1b0;--sbx:#8a6a00;--sbg:#fff4d1;--sm:#27302a;--spark:#8a968a;--chart:#3f7f5a;--grid:#e4e9e0;--late:#a06a00}
-:root[data-theme=dark]{color-scheme:dark;--us:#8FB8FF;--ic2o:.55;--g:#2E9E57;--g2:#7fd19b;--gl:#4f9a3a;--bg:#0f1411;--card:#171e19;--tx:#e6ece6;--mu:#9aa79b;--ln:#2a342c;--up:#5fd08a;--dn:#ff7b72;--upb:#163222;--dnb:#3a1d1b;
+:root[data-theme=dark]{color-scheme:dark;--us:#8FB8FF;--ic2o:.55;--g:#2E9E57;--g2:#7fd19b;--gl:#4f9a3a;--bg:#0f1411;--card:#171e19;--tx:#e6ece6;--mu:#a9b6aa;--ln:#2a342c;--up:#5fd08a;--dn:#ff7b72;--upb:#163222;--dnb:#3a1d1b;
  --top:rgba(15,20,17,.92);--sub:#141a16;--zb:#232b25;--seg:#222a24;--act:#1f2822;--wb:#f0cf7a;--wbg:#2e2614;--wln:#4a3d1c;--sbx:#f0cf7a;--sbg:#2e2614;--sm:#d7ded7;--spark:#7d8a7e;--chart:#7fc79a;--grid:#2a342c;--late:#f0b955}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--us:#8FB8FF;--ic2o:.55;--g:#2E9E57;--g2:#7fd19b;--gl:#4f9a3a;--bg:#0f1411;--card:#171e19;--tx:#e6ece6;--mu:#9aa79b;--ln:#2a342c;--up:#5fd08a;--dn:#ff7b72;--upb:#163222;--dnb:#3a1d1b;
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--us:#8FB8FF;--ic2o:.55;--g:#2E9E57;--g2:#7fd19b;--gl:#4f9a3a;--bg:#0f1411;--card:#171e19;--tx:#e6ece6;--mu:#a9b6aa;--ln:#2a342c;--up:#5fd08a;--dn:#ff7b72;--upb:#163222;--dnb:#3a1d1b;
  --top:rgba(15,20,17,.92);--sub:#141a16;--zb:#232b25;--seg:#222a24;--act:#1f2822;--wb:#f0cf7a;--wbg:#2e2614;--wln:#4a3d1c;--sbx:#f0cf7a;--sbg:#2e2614;--sm:#d7ded7;--spark:#7d8a7e;--chart:#7fc79a;--grid:#2a342c;--late:#f0b955}}
 a.tile,a.row,a.al,a.ex,a.di,a.nmore{color:inherit;text-decoration:none}
 a:focus-visible,button:focus-visible{outline:3px solid var(--gl);outline-offset:2px;border-radius:10px}
@@ -59,7 +59,7 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);
 .sum{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media(min-width:620px){.sum{grid-template-columns:repeat(3,1fr)}}
 .tile{display:block;background:var(--card);border-radius:14px;padding:12px;box-shadow:0 1px 2px rgba(0,0,0,.05);cursor:pointer;border:1px solid var(--ln)}
-.tile .n{font-size:13px;font-weight:600}.tile .s{font-size:11.5px;color:var(--mu)}
+.tile .n{font-size:13px;font-weight:600}.tile .s{font-size:12px;color:var(--mu)}
 .mvw{white-space:nowrap}.cu{font-size:.68em;font-weight:700;margin-right:.22em;color:var(--g2);letter-spacing:-.01em}.cu.us{color:var(--us)}.un{font-size:.66em;font-weight:500;color:var(--mu);margin-left:.08em;white-space:nowrap}.big .cu{font-size:.5em;vertical-align:.38em}.big .un{font-size:.45em}.axu{font-size:12px;color:var(--mu);margin:2px 2px 4px}.axu b{color:var(--g2)}.axu b.us{color:var(--us)}.tip .cu{font-size:.8em}.tip .un{font-size:.85em}.cub{display:inline-block;font-size:10.5px;font-weight:700;border-radius:5px;padding:0 5px;margin-left:6px;vertical-align:1px;border:1px solid currentColor;color:var(--g2);text-transform:none;letter-spacing:0}.cub.us{color:var(--us)}
 .tile .v{font-size:20px;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
 .tile .u{font-size:11.5px;color:var(--mu);font-weight:500;margin:1px 0 6px}
@@ -77,7 +77,7 @@ nav.chips::-webkit-scrollbar{display:none}
 .list{background:var(--card);border-radius:14px;border:1px solid var(--ln);margin-top:12px;overflow:hidden}
 .row{display:grid;grid-template-columns:1fr 64px auto;align-items:center;gap:10px;padding:12px;border-bottom:1px solid var(--ln);cursor:pointer}
 .row:last-child{border:0}.row:active{background:var(--act)}
-.row .n{font-size:15px;font-weight:600}.row .s{font-size:12px;color:var(--mu);margin-top:1px}
+.row .n{font-size:15px;font-weight:600}.row .s{font-size:12.5px;color:var(--mu);margin-top:1px}
 .row svg{width:64px;height:26px}
 .row .r{text-align:right;min-width:96px}.row .v{font-size:15.5px;font-weight:700;font-variant-numeric:tabular-nums}
 .row .u{font-size:11px;color:var(--mu)}.row .pill{margin-top:3px}
@@ -86,13 +86,15 @@ nav.chips::-webkit-scrollbar{display:none}
 .rank .row{grid-template-columns:28px 1fr auto}
 .rank .pos{font-weight:700;color:var(--mu);text-align:center}
 .note{font-size:12px;color:var(--mu);padding:10px 12px;line-height:1.45}
-.fs{font-size:11px;color:var(--mu);margin-top:2px;opacity:.9}.tile .fs{margin-top:4px}
-.src{font-size:12px;color:var(--mu);padding:10px 12px;line-height:1.6}.src a,.note a,footer a{color:var(--g2)}
+.fs{font-size:11.5px;color:var(--mu);margin-top:2px;opacity:.9}.tile .fs{margin-top:4px}
+.src{font-size:12px;color:var(--mu);padding:10px 12px;line-height:1.6}.src a,.note a,footer a,.dsl{color:var(--g2)}
+.kt{display:inline-block;font-size:10.5px;font-weight:600;color:var(--mu);border:1px solid var(--ln);border-radius:999px;padding:0 6px;margin-left:6px;vertical-align:1px}
 .calc{display:inline-block;font-size:10.5px;font-weight:700;color:var(--g2);border:1px solid var(--ln);border-radius:999px;padding:0 6px;margin-left:6px;vertical-align:1px;text-transform:none;letter-spacing:0}
 .ufs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;scrollbar-width:none}.ufs::-webkit-scrollbar{display:none}
 .ufs button{flex:none;border:1px solid var(--ln);background:var(--card);color:var(--tx);border-radius:999px;padding:6px 11px;font-size:13px;font-weight:600;cursor:pointer}
 .ufs button.on{background:var(--g2);color:#fff;border-color:var(--g2)}
 table.t.rp td:not(:first-child),table.t.rp th:not(:first-child){white-space:nowrap}table.t.rp td:first-child{font-size:13px}
+table.t.sc th,table.t.sc td{padding:8px 5px}table.t.sc td:first-child{font-size:13px}table.t.sc td.uu{text-align:left;font-size:12px}table.t.sc th:nth-child(2){text-align:left}
 table.t tr.gh td{background:var(--sub);font-size:11.5px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.04em;text-align:left}
 table.t{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums}
 table.t th,table.t td{padding:8px 10px;border-bottom:1px solid var(--ln);text-align:right}
@@ -117,9 +119,11 @@ footer .fl .ico{width:18px;height:18px}footer .fu{font-size:12px;color:var(--mu)
 .seg button.on{background:var(--card);color:var(--tx);box-shadow:0 1px 2px rgba(0,0,0,.08)}
 .chart{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:8px}
 .chart svg{width:100%;height:auto;display:block}
+.pvar{font-size:13.5px;color:var(--mu);margin:2px 0 6px}.pvar b{color:var(--tx)}.pvar b.up{color:var(--up)}.pvar b.dn{color:var(--dn)}.uu{color:var(--mu);white-space:nowrap}
+.avg{font-size:12.5px;color:var(--mu);margin-top:6px}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
 .kpi{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:10px 12px}
-.kpi .l{font-size:12px;color:var(--mu)}.kpi .x{font-size:17px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}.kpi .y{font-size:12px;color:var(--mu);margin-top:2px}
+.kpi .l{font-size:12.5px;color:var(--mu)}.kpi .x{font-size:17px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}.kpi .y{font-size:12.5px;color:var(--mu);margin-top:2px}
 
 /* ---- v4: cabeçalho + gaveta lateral (estilo X) ---- */
 .top{position:sticky;top:0;z-index:10;background:var(--top);backdrop-filter:saturate(180%) blur(8px);-webkit-backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--ln);margin:0 -14px;padding:0 14px}
@@ -275,7 +279,13 @@ function mv(v,d,x,ns){if(v==null)return "—";const z=cu(x),p=cuP(z),sf=cuS(z);
 // texto puro (leitores de tela, alertas, dica do gráfico)
 function mt(v,d,x,ns){if(v==null)return "—";const z=cu(x),p=cuP(z),sf=cuS(z);return (p?p+" ":"")+fmt(v,d)+(ns?"":sf)}
 const ud=x=>cu(x)[2];  // unidade por extenso
-const cub=x=>{const z=cu(x);return z[0]?`<span class="cub${z[0]==="US$"?" us":""}">${z[0]==="US$"?"em dólar":"em real"}</span>`:""};
+// v13: tipo de cotação (só o que a fonte diz: página "indicador" na fonte, contrato futuro, cotação de praça/cooperativa)
+const KT=x=>x.calc?"":x.contract?"futuro":x.cr&&/\/indicador[\/-]/.test(x.cr[2]||"")?"indicador":x.cr&&/praça indicada/.test(x.cr[1]||"")?"praça":"";
+const ktag=(x,pt)=>{let t=KT(x);if(t==="futuro"&&/futuro/i.test(x.name))t="";if(pt&&PTY(x))t=t?t+" · "+PTY(x):PTY(x);return t?`<span class="kt">${t}</span>`:""};
+// tipo de preço do futuro como publicado (coluna "Fechamento" na página da B3/CBOT no Notícias Agrícolas); ICE: a fonte não diz → sem rótulo
+const PTY=x=>x.contract&&x.cr&&(x.cr[0]==="B3"||x.cr[0]==="CME/CBOT")?"fechamento":"";
+const subX=(x,pt)=>x.contract?x.sub.replace(x.contract,"venc. "+x.contract)+(pt&&PTY(x)?" · "+PTY(x):""):x.sub;
+const cub=x=>{const z=cu(x);return z[0]?`<span class="cub${z[0]==="US$"?" us":""}">${z[0]==="US$"?"valores nominais em US$":"valores nominais em R$"}</span>`:""};
 const fd=s=>s?s.slice(8,10)+"/"+s.slice(5,7)+"/"+s.slice(0,4):"—";
 const fds=s=>s?s.slice(8,10)+"/"+s.slice(5,7):"—";
 const MES=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
@@ -298,8 +308,8 @@ function stale(x){if(!x.d)return "";
 // (rotina das 19h15 com os dados do dia); senão "Cotações de DD/MM · atualizado DD/MM HH:MM".
 const UPD=DATA.updated||"";const UPDISO=UPD.length>=10?UPD.slice(6,10)+"-"+UPD.slice(3,5)+"-"+UPD.slice(0,2):"";
 const HDR=UPDISO===REF?`Fechamento ${fds(REF)} · ${UPD.slice(11,16)}`:`Cotações ${fds(REF)} · atualizado ${UPD.slice(0,5)} ${UPD.slice(11,16)}`;
-document.getElementById("hd").textContent=HDR;document.getElementById("hd").title=(UPDISO===REF?"Fechamento de "+fd(REF):"Cotações de "+fd(REF))+" · atualizado em "+UPD+" (Brasília)";
-document.getElementById("dwd").textContent=HDR;
+// v13: dois horários separados (cotações e notícias), horário de Brasília; preenchidos em hdr() (chamado no render)
+const CUPD=UPD?UPD.slice(0,5)+" "+UPD.slice(11,16):"—";
 // links acessíveis: <a href> de verdade (teclado, leitor de tela, abrir em nova aba); clique normal mantém o app de página única
 const nav=(e,f)=>{if(e&&(e.ctrlKey||e.metaKey||e.shiftKey||e.button===1))return true;f();return false};
 const pctTxt=c=>c==null?"sem variação":`${c>0?"alta":"queda"} de ${fmt(Math.abs(c),2)}%`;
@@ -358,7 +368,7 @@ const OLD={graos:"soja",pecuaria:"boi",estado:"boi",cafe:"cafe",b3:"b3",chicago:
 let cur=QP.get("p")&&(QP.get("p")==="resumo"||QP.get("p")==="fontes"||NI[QP.get("p")])?QP.get("p"):(OLD[QP.get("tab")]||"resumo");
 let openSec=NI[cur]?NI[cur].sec.id:null;
 
-function row(x,sw){const n=sw?x.sub:x.name,s=sw?ud(x):x.sub;return `<a class="row" href="#${x.key}" onclick="return nav(event,()=>openDet('${x.key}'))" aria-label="${esc(x.name+" "+x.sub)}: ${esc(mt(x.v,x.dec,x,1))}, ${esc(ud(x))}, ${pctX(x)}, em ${fd(x.d)}. Abrir detalhes"><div><div class="n">${n}${x.calc?'<span class="calc">calculado</span>':""}</div><div class="s">${s}${stale(x)}</div>${x.cr?`<div class="fs">Fonte: ${esc(x.cr[0])}</div>`:""}</div>${spark(x.h)}
+function row(x,sw){const n=sw?subX(x):x.name,s=sw?ud(x):subX(x);return `<a class="row" href="#${x.key}" onclick="return nav(event,()=>openDet('${x.key}'))" aria-label="${esc(x.name+" "+x.sub)}: ${esc(mt(x.v,x.dec,x,1))}, ${esc(ud(x))}, ${pctX(x)}, em ${fd(x.d)}. Abrir detalhes"><div><div class="n">${n}${x.calc?'<span class="calc">calculado</span>':""}${ktag(x,1)}</div><div class="s">${s}${stale(x)}</div>${x.cr?`<div class="fs">Fonte: ${esc(x.cr[0])}</div>`:""}</div>${spark(x.h)}
 <div class="r"><div class="v">${mv(x.v,x.dec,x)}</div>${pl(x)}</div></a>`}
 function ph(n,s){return `<div class="row ph"><div><div class="n">${n}<span class="soon">em breve</span></div><div class="s">${s}</div></div><div></div><div class="r"><div class="v">—</div><span class="pill z">—</span></div></div>`}
 
@@ -384,7 +394,7 @@ function resumo(){
  const adt=a=>a.freq==="mensal"?`ref. ${MES[+a.date.slice(5,7)-1]}/${a.date.slice(2,4)}`:a.freq==="semanal"?`semana até ${fds(a.date)}`:fds(a.date);
  h+=`<h2>Alertas <span style="text-transform:none;letter-spacing:0;font-weight:500">· variação acima de 2% na última cotação</span></h2><div class="alerts">`+(al.length?al.map(a=>`<a class="al" href="#${a.key}" onclick="return nav(event,()=>openDet('${a.key}'))" aria-label="Alerta: ${esc(a.name+" "+a.sub)}, ${pctTxt(a.chg_pct)} em ${fd(a.date)}"><span class="ic ${a.chg_pct>0?"up":"dn"}">${ico(KI[a.key]||"ibov")}</span><div class="t">${a.name} <small>${a.sub} · ${mt(a.value,a.dec!=null?a.dec:I[a.key].dec,I[a.key])} · ${adt(a)}${FQ[a.freq]||""}</small></div>${pill(a.chg_pct)}</a>`).join(""):'<div class="none">Nenhuma cotação recente variou mais de 2%.</div>')+`</div>`;
  h+=lastAgro();
- h+=`<h2>Explorar</h2><div class="explore">`+NAV.filter(s=>!s.news).map(s=>`<a class="ex" href="?p=${s.items[0].id}" onclick="return nav(event,()=>{openSec='${s.id}';openDrawer()})" aria-label="Explorar ${s.label}: ${s.items.length} produtos"><div class="e">${ico(s.ic)}</div><div class="l">${s.label}</div><div class="c">${s.items.length} produtos</div></a>`).join("")+`</div><div class="hint">Dica: arraste a tela para a direita (ou toque no logo) para abrir o menu.</div>`;
+ h+=`<h2>Explorar</h2><div class="explore">`+NAV.filter(s=>!s.news).map(s=>`<a class="ex" href="?p=${s.items[0].id}" onclick="return nav(event,()=>go('${s.items[0].id}'))" aria-label="Abrir ${s.label}: ${s.items.length} páginas, começando por ${s.items[0].label}"><div class="e">${ico(s.ic)}</div><div class="l">${s.label}</div><div class="c">${s.items.length} páginas ›</div></a>`).join("")+`</div><div class="hint">Dica: arraste a tela para a direita (ou toque no logo) para abrir o menu.</div>`;
  return h}
 
 function estado(){
@@ -394,8 +404,8 @@ function estado(){
  <div><div class="n">${x.sub} <span style="color:var(--mu);font-weight:500">${x.key.slice(4)}</span>${vsp(x)}${x.st?stale(x):""}</div><div class="bar" style="width:${(100*x.v/mx).toFixed(1)}%"></div></div>
  <div class="r"><div class="v">${mv(x.v,2,x)}</div>${pl(x)}</div></a>`).join("")+`<div class="note">Barras em escala real (começam do zero). Diferença entre o mais caro e o mais barato: R$ ${fmt(mx-mn,2)}/@ (${fmt((mx/mn-1)*100,1)}%).</div></div>`;
  const sc=DATA.scot;
- if(sc&&sc.date&&sc.rows.length)h+=`<details><summary>Ver mais praças (Scot Consultoria · ${fd(sc.date)}, ${sc.rows.length} praças)</summary><div class="list"><table class="t"><tr><th>Praça</th><th>Boi à vista (R$)</th><th>Boi 30 dias (R$)</th><th>Vaca à vista (R$)</th></tr>`+
-  sc.rows.map(r=>`<tr><td>${r.praca}</td><td>${fmt(r.vista,2)}</td><td>${fmt(r.prazo,2)}</td><td>${fmt(r.vaca,2)}</td></tr>`).join("")+`</table><div class="note">Valores em R$/@, exceto onde a praça indica (kg). A Scot só publica o dia atual; o histórico é guardado diariamente desde 29/10/2026.</div></div></details>`;
+ if(sc&&sc.date&&sc.rows.length)h+=`<details><summary>Ver mais praças (Scot Consultoria · ${fd(sc.date)}, ${sc.rows.length} praças)</summary><div class="list"><table class="t sc"><tr><th>Praça</th><th>Unid.</th><th>Boi à vista</th><th>Boi 30 dias</th><th>Vaca à vista</th></tr>`+
+  sc.rows.map(r=>{const kg=/\(kg\)/i.test(r.praca);return `<tr><td>${r.praca.replace(/\s*\(kg\)/i,"")}</td><td class="uu">${kg?"R$/kg":"R$/@"}</td><td>${fmt(r.vista,2)}</td><td>${fmt(r.prazo,2)}</td><td>${fmt(r.vaca,2)}</td></tr>`}).join("")+`</table><div class="note">Unidade como publicada pela Scot em cada praça. A Scot só publica o dia atual; histórico guardado desde 29/10/2026.</div></div></details>`;
  return h}
 
 const LIC=c=>c&&c[3]?` · licença <a href="${c[4]}" target="_blank" rel="noopener">${c[3]}</a>`:"";
@@ -520,7 +530,9 @@ function closeDet(){document.getElementById("det").classList.remove("on");docume
 document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(NSH.classList.contains("on"))closeNews();else if(document.getElementById("det").classList.contains("on"))closeDet();else if(DW.classList.contains("on"))closeDrawer()});
 window.addEventListener("popstate",()=>{document.getElementById("det").classList.remove("on");document.body.style.overflow=""});
 // ---------------- gráfico v7: períodos longos (hist/<chave>.json sob demanda), toque/mouse mostra valor e data, sazonal ----------------
-const CW=400,CHH=250,PL=6,PR=52,PT=14,PB=24,MAXPTS=600;
+const CW=400,CHH=250,PL=6,PR=64,PT=14,PB=26,MAXPTS=600;
+// v13: texto do gráfico com tamanho real ~12–13px em qualquer largura (o SVG escala com a tela)
+function FZ(){const e=document.getElementById("dbody"),w=e&&e.clientWidth?e.clientWidth-24:340;return Math.min(14,Math.max(5.5,12.5*CW/Math.max(w,1)))}
 const PER=[[30,"30d"],[90,"90d"],[365,"1 ano"],[1826,"5 anos"],[0,"Máx"]];
 const SCOL=["", "#d9822b","#5b7db1","#9a9a9a"];
 let HIST={},CH=null,saz=false;
@@ -536,9 +548,9 @@ function chart(h,rl,dec){rl=rl||[];CH=null;if(h.length<2)return "<div class='not
  const V=cvars(),p=h.map(x=>x[1]),mn=Math.min(...p),mx=Math.max(...p),fl=mx===mn,lo=fl?mn-1:mn,r=fl?2:(mx-mn);
  const X=i=>PL+i/(h.length-1)*(CW-PL-PR),Y=v=>PT+(1-(v-lo)/r)*(CHH-PT-PB);
  const pts=h.map((x,i)=>`${X(i).toFixed(1)},${Y(x[1]).toFixed(1)}`).join(" ");
- let g="";(fl?[mn]:[mn,(mn+mx)/2,mx]).forEach(v=>{g+=`<line x1="${PL}" x2="${CW-PR}" y1="${Y(v)}" y2="${Y(v)}" stroke="${V.gr}"/><text x="${CW-PR+6}" y="${Y(v)+4}" font-size="11" fill="${V.mu}">${fmt(v,v>=1000?0:2)}</text>`});
+ let g="";(fl?[mn]:[mn,(mn+mx)/2,mx]).forEach(v=>{g+=`<line x1="${PL}" x2="${CW-PR}" y1="${Y(v)}" y2="${Y(v)}" stroke="${V.gr}"/><text x="${CW-PR+6}" y="${Y(v)+4}" font-size="${FZ().toFixed(1)}" fill="${V.mu}">${fmt(v,v>=1000?0:2)}</text>`});
  rl.forEach(r=>{const i=h.findIndex(z=>z[0]===r[0]);if(i>0){const x=X(i).toFixed(1);g+=`<line x1="${x}" x2="${x}" y1="${PT}" y2="${CHH-PB}" stroke="#c9a227" stroke-dasharray="4 3"/>`+(rl.length<=3?`<text x="${x}" y="${PT+9}" font-size="10" fill="#c9a227" text-anchor="middle">troca</text>`:"")}});
- g+=`<text x="${PL}" y="${CHH-6}" font-size="12" fill="${V.mu}">${fd(h[0][0])}</text><text x="${CW-PR}" y="${CHH-6}" font-size="12" fill="${V.mu}" text-anchor="end">${fd(h[h.length-1][0])}</text>`;
+ g+=`<text x="${PL}" y="${CHH-6}" font-size="${FZ().toFixed(1)}" fill="${V.mu}">${cfd(h[0][0])}</text><text x="${CW-PR}" y="${CHH-6}" font-size="${FZ().toFixed(1)}" fill="${V.mu}" text-anchor="end">${cfd(h[h.length-1][0])}</text>`;
  CH={t:"l",h,X,Y,dec};
  return `<svg viewBox="0 0 ${CW} ${CHH}" role="img" aria-label="Gráfico de ${fd(h[0][0])} a ${fd(h[h.length-1][0])}. Toque ou passe o mouse para ver valor e data">${g}<polygon points="${X(0)},${CHH-PB} ${pts} ${X(h.length-1)},${CHH-PB}" fill="${V.c}" opacity=".08"/><polyline points="${pts}" fill="none" stroke="${V.c}" stroke-width="2.2" stroke-linejoin="round"/><g class="xh"></g></svg>`}
 const doy=s=>(Date.UTC(+s.slice(0,4),+s.slice(5,7)-1,+s.slice(8,10))-Date.UTC(+s.slice(0,4),0,1))/864e5;
@@ -546,8 +558,8 @@ function sazYears(full){const Y0=+full[full.length-1][0].slice(0,4),out=[];
  for(let y=Y0;y>=Y0-3;y--){const p=full.filter(z=>+z[0].slice(0,4)===y);if(p.length>=3)out.push([y,p.map(z=>[doy(z[0]),z[1],z[0]])])}return out}
 function sazChart(yrs,dec){CH=null;const V=cvars(),all=yrs.flatMap(z=>z[1].map(q=>q[1])),mn=Math.min(...all),mx=Math.max(...all),r=(mx-mn)||1;
  const X=t=>PL+t/365*(CW-PL-PR),Y=v=>PT+(1-(v-mn)/r)*(CHH-PT-PB);const col=i=>i===0?V.c:SCOL[i];
- let g="";[mn,(mn+mx)/2,mx].forEach(v=>{g+=`<line x1="${PL}" x2="${CW-PR}" y1="${Y(v)}" y2="${Y(v)}" stroke="${V.gr}"/><text x="${CW-PR+6}" y="${Y(v)+4}" font-size="11" fill="${V.mu}">${fmt(v,v>=1000?0:2)}</text>`});
- MES.forEach((m,i)=>{const t=doy(`2001-${String(i+1).padStart(2,"0")}-01`);g+=`<text x="${X(t+15)}" y="${CHH-6}" font-size="10.5" fill="${V.mu}" text-anchor="middle">${m[0].toUpperCase()}</text>`});
+ let g="";[mn,(mn+mx)/2,mx].forEach(v=>{g+=`<line x1="${PL}" x2="${CW-PR}" y1="${Y(v)}" y2="${Y(v)}" stroke="${V.gr}"/><text x="${CW-PR+6}" y="${Y(v)+4}" font-size="${FZ().toFixed(1)}" fill="${V.mu}">${fmt(v,v>=1000?0:2)}</text>`});
+ MES.forEach((m,i)=>{const t=doy(`2001-${String(i+1).padStart(2,"0")}-01`);g+=`<text x="${X(t+15)}" y="${CHH-6}" font-size="${(FZ()*.9).toFixed(1)}" fill="${V.mu}" text-anchor="middle">${m[0].toUpperCase()}</text>`});
  yrs.slice().reverse().forEach(([y,p])=>{const i=yrs.findIndex(z=>z[0]===y);
   g+=`<polyline points="${p.map(q=>`${X(q[0]).toFixed(1)},${Y(q[1]).toFixed(1)}`).join(" ")}" fill="none" stroke="${col(i)}" stroke-width="${i===0?2.6:1.6}" stroke-linejoin="round"${i===0?"":' opacity=".9"'}/>`});
  CH={t:"s",yrs,X,Y,dec,col};
@@ -577,12 +589,12 @@ function renderDet(){const x=I[dk];CX=x;document.getElementById("dtitle").textCo
  if(saz){const yrs=sazYears(hd);ch=sazChart(yrs,x.dec);
   legend=`<div class="leg">`+yrs.map(([y],i)=>`<span><i style="background:${CH.col(i)}"></i>${y}${i===0?" (atual)":""}</span>`).join("")+`</div><div class="note">Cada linha é um ano, do 1º de janeiro a 31 de dezembro, com as cotações publicadas. Toque no gráfico para comparar a mesma época.</div>`}
  else{const [smp,k]=sample(sub,rl);ch=chart(smp,rl,x.dec);if(k>1)extra=`<div class="note">Período longo: o gráfico desenha 1 a cada ${k} registros (valores reais); mínimo e máximo abaixo usam todos.</div>`}
- document.getElementById("dbody").innerHTML=`<div style="color:var(--mu);font-size:13px">${x.sub} · ${ud(x)}${cub(x)}</div>
+ document.getElementById("dbody").innerHTML=`<div style="color:var(--mu);font-size:13.5px">${subX(x,1)} · ${ud(x)}${cub(x)}${ktag(x)}${x.cr&&x.cr[2]?` · <a class="dsl" href="${esc(x.cr[2])}" target="_blank" rel="noopener">${esc(x.cr[0])} ↗</a>`:""}</div>
  <div class="big">${mv(x.v,x.dec,x)}</div><div>${pl(x)} <span style="color:var(--mu);font-size:13px">${x.freq==="mensal"?"ref.":x.freq==="semanal"?"semana até":"em"} ${fdm(x,x.d)}${x.st?' <span class="late">(atrasado)</span>':""}${x.pv!=null?` · anterior ${mt(x.pv,x.dec,x,1)} (${fdm(x,x.pd,1)}${x.pc&&x.pc!==x.contract?", "+x.pc:""})`:""}</span></div>
  <div class="seg"${saz?' style="opacity:.45"':""}>${PER.map(([d,l])=>`<button class="${d===per&&!saz?"on":""}" aria-pressed="${d===per&&!saz}" onclick="per=${d};saz=false;renderDet()">${l}</button>`).join("")}</div>
  ${canSaz?`<button class="sazb ${saz?"on":""}" aria-pressed="${saz}" onclick="saz=!saz;renderDet()">${ico("ibov")} ${saz?"Voltar ao gráfico normal":"Sazonal: comparar com anos anteriores"}</button>`:""}
  <div class="axu">Valores do gráfico em <b class="${cu(x)[0]==="US$"?"us":""}">${cuP(cu(x))}${cuS(cu(x))}</b> (${ud(x)})</div><div class="chart" onpointerdown="ptr(event)" onpointermove="ptr(event)" onpointerleave="ptrOut(event)">${wait?'<div class="note">Carregando histórico completo…</div>':ch}<div class="tip" role="status" aria-live="polite" hidden></div></div>
- ${legend}${saz?"":extra}
+ ${legend}${saz?"":extra}${saz||wait?"":pvar(x,sub,rl)}
  ${!saz&&rl.length?`<div class="roll"><b>${rl.length===1?"Troca de contrato":"Trocas de contrato"} no período</b> (linha tracejada): ${rl.length>8?rl.length+" trocas":rl.map(r=>`${fds(r[0])}/${r[0].slice(2,4)} ${r[1]} → ${r[2]}`).join(" · ")}.<br>O salto no gráfico nesses dias vem da mudança de contrato, não de variação do mercado; a variação do dia mostrada é a publicada para o contrato novo.</div>`:""}
  ${!saz&&short?`<div class="note">Histórico disponível desde ${fd(hd[0][0])}.</div>`:""}
  ${!saz&&!wait&&!per&&hd.length?`<div class="note">Máx: todo o histórico guardado, desde ${fd(hd[0][0])}.</div>`:""}
@@ -593,7 +605,16 @@ function renderDet(){const x=I[dk];CX=x;document.getElementById("dtitle").textCo
   <div class="kpi"><div class="l">Média do mês (${x.d?MES[+x.d.slice(5,7)-1]:"—"})${x.contract?" ("+x.contract+")":""}</div><div class="x">${mv(x.mo,x.dec,x)}</div><div class="y">${x.mon} dia(s) com cotação</div></div>`}
   <div class="kpi"><div class="l">Há 1 ano</div><div class="x">${mv(x.yav,x.dec,x)}</div><div class="y">${x.yad?`${x.freq==="mensal"?"ref.":"em"} ${fdm(x,x.yad)}${x.yac?" · contrato "+x.yac:""} · hoje ${x.pp?((x.v-x.yav)>=0?"+":"")+fmt(x.v-x.yav,2)+" p.p.":(yac>=0?"+":"")+fmt(yac,1)+"%"}`:"sem histórico de 1 ano"}</div></div>
   <div class="kpi"><div class="l">Mín. e máx. no período${saz?" ("+(PER.find(z=>z[0]===per)||[0,""])[1]+")":""}</div><div class="x" style="font-size:15px">${mv(pmin,x.dec,x,1)} – ${mv(pmax,x.dec,x,1)}</div><div class="y">${sub.length} registros</div></div>
- </div>${detSrc(x)}`}
+ </div>${x.freq!=="mensal"&&x.freq!=="semanal"?'<div class="avg">Médias simples dos dias com cotação publicada.</div>':""}${detSrc(x)}`}
+// v13: variação acumulada do período = primeiro e último registro do período (série completa, não a amostra do gráfico);
+// com troca de contrato no período, conta só desde a última troca (mesmo contrato)
+function pvar(x,sub,rl){if(sub.length<2)return "";let a=sub[0],lb="No período";const b=sub[sub.length-1];
+ if(rl.length){const r=rl[rl.length-1],j=sub.findIndex(z=>z[0]>=r[0]);if(j<0||j>=sub.length-1)return "";a=sub[j];lb="Desde a troca para "+r[2]}
+ const d=x.pp?b[1]-a[1]:(a[1]?(b[1]/a[1]-1)*100:null);if(d==null)return "";
+ const sg=d>0.00049?"▲ +":d<-0.00049?"▼ −":"",cl=d>0.00049?"up":d<-0.00049?"dn":"";
+ return `<div class="pvar">${lb}: <b class="${cl}">${sg}${fmt(Math.abs(d),2)}${x.pp?" p.p.":"%"}</b> · ${pdt(x,a[0])} → ${pdt(x,b[0])}</div>`}
+function cfd(s){return CX&&CX.freq==="mensal"?fdm(CX,s):fd(s)}
+function pdt(x,s){return x.freq==="mensal"?fdm(x,s,1):fds(s)+"/"+s.slice(2,4)}
 function detSrc(x){const c=x.cr;if(!c)return `<div class="note">Fonte: ${x.src}.</div>`;
  if(x.calc)return `<div class="note"><b>Calculado com dados do Informativo</b> (não é cotação publicada): ${esc(x.src.replace(/^Calculado com dados do Informativo:\s*/,""))}. Dados de origem: ${(x.cin||[]).map(z=>SL(z)+LIC(z)).join(" · ")}.</div>`;
  const b3v=c&&c[0]==="B3"&&x.contract?" Variação (%) publicada pela B3, sobre o preço de referência do pregão anterior.":"";
@@ -601,7 +622,10 @@ function detSrc(x){const c=x.cr;if(!c)return `<div class="note">Fonte: ${x.src}.
 render();themeBtns();
 matchMedia("(prefers-color-scheme: dark)").addEventListener&&matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{if(dk)renderDet()});
 if(location.hash&&I[location.hash.slice(1)]){const k=location.hash.slice(1);history.replaceState(null,"",location.pathname+location.search);openDet(k)}
-function upd(){return `Atualizado em ${DATA.updated} (horário de Brasília)`}
+function NUPD(){const u=NEWS&&NEWS.updated;return u&&u.length>=16?u.slice(8,10)+"/"+u.slice(5,7)+" "+u.slice(11,16):"—"}
+function hdr(){const t=`Cotações ${CUPD} · Notícias ${NUPD()}`,e=document.getElementById("hd");e.textContent=t;
+ e.title=`Cotações de ${fd(REF)}, atualizadas em ${UPD||"—"} · Notícias atualizadas em ${NUPD()} (horário de Brasília)`;document.getElementById("dwd").textContent=t}
+function upd(){hdr();return `Cotações de ${fds(REF)}: atualizadas em ${CUPD} · Notícias: ${NUPD()} (horário de Brasília)`}
 function fontes(){const A=(u,t)=>`<a href="${u}" target="_blank" rel="noopener">${t} ↗</a>`;
  const fi=(t,sm)=>`<div class="fi">${t}${sm?`<small>${sm}</small>`:""}</div>`;
  let h=`<div class="crumb"><div class="ttl">${ico("fontes","tt")}Fontes e licenças</div></div>`;
