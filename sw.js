@@ -1,5 +1,5 @@
 // Service worker do Informativo Agro: rede primeiro (dados sempre frescos), cache só como reserva offline.
-const CACHE = "informativo-agro-v10";
+const CACHE = "informativo-agro-v11";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./logo.svg",
   "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png", "./favicon.png"];
 self.addEventListener("install", e => {
