@@ -243,7 +243,7 @@ header h1,header .d{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 <footer id="foot"></footer>
 </div>
 
-<div id="ov" onclick="closeDrawer()"></div>
+<div id="ov" onclick="userCloseDrawer()"></div>
 <aside id="drawer" aria-label="Menu">
  <div class="dwh"><img src="logo.svg" alt=""><div><b>Informativo do agro</b><small id="dwd"></small></div></div>
  <div class="dwb" id="dwb"></div>
@@ -500,9 +500,8 @@ function openNews(i){const x=NEWS.items[i];if(!x)return;
  (x.r?`<div class="sl">Resumo</div><div class="sm">${esc(x.r)}</div>`:"")+
  `<a class="go" href="${esc(x.u)}" target="_blank" rel="noopener noreferrer">Ler na íntegra no ${esc(x.s)} ↗</a>`+
  `<div class="disc">${x.r?"Resumo escrito pelo Informativo com base no texto publicado pelo veículo. ":""}A matéria completa é do ${esc(x.s)} e abre no site original.</div>`;
- closeDrawer();NSH.scrollTop=0;NOV.classList.add("on");NSH.classList.add("on");document.body.style.overflow="hidden";history.pushState({n:i},"","#n");NSH.querySelector(".x").focus()}
-function closeNews(back=true){NOV.classList.remove("on");NSH.classList.remove("on");if(!document.getElementById("det").classList.contains("on"))document.body.style.overflow="";if(back&&location.hash==="#n")history.back()}
-window.addEventListener("popstate",()=>{if(NSH.classList.contains("on"))closeNews(false)});
+ closeDrawer();NSH.scrollTop=0;NOV.classList.add("on");NSH.classList.add("on");document.body.style.overflow="hidden";if(HS().n!==i)hpush({p:cur,n:i},"#n");NSH.querySelector(".x").focus()}
+function closeNews(back=true){if(back&&HS().n!=null){history.back();return}NOV.classList.remove("on");NSH.classList.remove("on");if(!document.getElementById("det").classList.contains("on"))document.body.style.overflow=""}
 fetch("news.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.items&&j.updated!==NEWS.updated){NEWS=j;if(!NSH.classList.contains("on"))render()}}).catch(()=>{});
 
 function render(){
@@ -511,12 +510,38 @@ function render(){
  const b=document.querySelector("#chips .chip.on");if(b){const C=document.getElementById("chips");C.scrollLeft=b.offsetLeft-C.offsetLeft-(C.clientWidth-b.offsetWidth)/2}
 }
 function gcView(id){try{if(window.goatcounter&&typeof window.goatcounter.count==="function")window.goatcounter.count({path:"/"+id,event:false})}catch(e){}}
-function go(id){cur=id;setTimeout(()=>gcView(id),0);if(NI[id])openSec=NI[id].sec.id;history.replaceState(null,"",location.pathname+(id==="resumo"?"":"?p="+id));render();closeDrawer();window.scrollTo(0,0)}
+// v15: histórico do app — o botão Voltar do celular fecha detalhe/menu/notícia e volta de página até o Resumo; só sai do app no Resumo
+const HS=()=>history.state||{};
+const pURL=id=>location.pathname+(id==="resumo"?"":"?p="+id);
+if("scrollRestoration" in history)history.scrollRestoration="manual";
+function hpush(st,url){seed();const c=HS(),i=c.i||0;if(c.dw){history.replaceState({...st,i},"",url);return}
+ history.replaceState({...c,y:window.scrollY},"");history.pushState({...st,i:i+1},"",url)}
+function showPage(id,y){cur=id;setTimeout(()=>gcView(id),0);if(NI[id])openSec=NI[id].sec.id;render();window.scrollTo(0,y||0)}
+function go(id){seed();const c=HS();
+ if(id===cur){if(c.dw)history.back();else closeDrawer();return}
+ if(id==="resumo"&&(c.i||0)>0){history.go(-c.i);return}
+ hpush({p:id},pURL(id));closeDrawer();showPage(id,0)}
+function applyState(st){
+ const p=st.p&&(st.p==="resumo"||st.p==="fontes"||NI[st.p])?st.p:"resumo";
+ if(p!==cur)showPage(p,st.y);
+ if(st.d&&I[st.d]){if(dk!==st.d||!document.getElementById("det").classList.contains("on"))showDet(st.d)}else if(document.getElementById("det").classList.contains("on"))hideDet();
+ if(st.n!=null&&NEWS.items[st.n]){if(!NSH.classList.contains("on"))openNews(st.n)}else if(NSH.classList.contains("on"))closeNews(false);
+ if(st.dw&&!wide()){drawer();DW.classList.add("on");OV.classList.add("on");document.body.style.overflow="hidden"}else closeDrawer()}
+window.addEventListener("popstate",e=>{let st=e.state;if(!st){const q=new URLSearchParams(location.search).get("p"),h=location.hash.slice(1);st={p:q||"resumo",d:I[h]?h:null}}applyState(st)});
+// semeia o Resumo por baixo de um link direto (?p=… ou #item) só no 1º toque, para o Chrome/Brave não pular a entrada
+let needSeed=false;
+function seed(){if(!needSeed)return;if(navigator.userActivation&&!navigator.userActivation.isActive)return;needSeed=false;
+ const st=HS();let i=0;history.replaceState({p:"resumo",i:0},"",location.pathname);
+ if(st.p&&st.p!=="resumo")history.pushState({p:st.p,i:++i},"",pURL(st.p));
+ if(st.d)history.pushState({p:st.p,d:st.d,i:++i},"",pURL(st.p)+"#"+st.d);
+ if(st.n!=null)history.pushState({p:st.p,n:st.n,i:++i},"",pURL(st.p)+"#n")}
+["pointerup","keydown","mousedown","touchend"].forEach(t=>window.addEventListener(t,seed,true));
 
 // ---------------- gaveta: abrir/fechar e gestos ----------------
 const DW=document.getElementById("drawer"),OV=document.getElementById("ov");
 const wide=()=>matchMedia("(min-width:1024px)").matches;
-function openDrawer(){if(wide()){drawer();return}drawer();DW.classList.add("on");OV.classList.add("on");document.body.style.overflow="hidden"}
+function openDrawer(){if(wide()){drawer();return}drawer();DW.classList.add("on");OV.classList.add("on");document.body.style.overflow="hidden";if(!HS().dw)hpush({...HS(),dw:1},location.pathname+location.search+location.hash)}
+function userCloseDrawer(){if(HS().dw)history.back();else closeDrawer()}
 function closeDrawer(){DW.classList.remove("on");OV.classList.remove("on");DW.style.transform="";OV.style.opacity="";if(!document.getElementById("det").classList.contains("on"))document.body.style.overflow=""}
 let tx=null,ty=0,t0=0,mode=null,dx=0;
 const W=()=>DW.getBoundingClientRect().width;
@@ -528,16 +553,17 @@ document.addEventListener("touchmove",e=>{if(tx==null)return;const t=e.touches[0
  DW.style.transform=`translateX(${p-w}px)`;OV.style.opacity=(p/w).toFixed(3)},{passive:true});
 document.addEventListener("touchend",()=>{if(tx==null)return;const w=W(),fast=Math.abs(dx)/(Date.now()-t0)>0.5;DW.classList.remove("drag");OV.classList.remove("drag");tx=null;
  if(mode==="open"){DW.style.transform="";OV.style.opacity="";(dx>w/3||(fast&&dx>30))?openDrawer():closeDrawer()}
- else if(mode==="close"){DW.style.transform="";OV.style.opacity="";(-dx>w/3||(fast&&dx<-30))?closeDrawer():openDrawer()}
+ else if(mode==="close"){DW.style.transform="";OV.style.opacity="";(-dx>w/3||(fast&&dx<-30))?userCloseDrawer():openDrawer()}
  else if(mode==="open?")OV.classList.remove("on")});
 
 // ---------------- detalhe ----------------
 let dk=null,per=30;
 let lastFocus=null;
-function openDet(k){lastFocus=document.activeElement;dk=k;saz=false;per=I[k].freq==="mensal"?365:I[k].freq==="semanal"?90:30;closeDrawer();document.getElementById("det").classList.add("on");document.body.style.overflow="hidden";renderDet();history.pushState({d:k},"","#"+k);document.querySelector("#det .back").focus()}
-function closeDet(){document.getElementById("det").classList.remove("on");document.body.style.overflow="";dk=null;if(location.hash)history.back();if(lastFocus&&lastFocus.focus)try{lastFocus.focus()}catch(e){}}
-document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(NSH.classList.contains("on"))closeNews();else if(document.getElementById("det").classList.contains("on"))closeDet();else if(DW.classList.contains("on"))closeDrawer()});
-window.addEventListener("popstate",()=>{document.getElementById("det").classList.remove("on");document.body.style.overflow=""});
+function showDet(k){lastFocus=document.activeElement;dk=k;saz=false;per=I[k].freq==="mensal"?365:I[k].freq==="semanal"?90:30;closeDrawer();document.getElementById("det").classList.add("on");document.body.style.overflow="hidden";renderDet();document.querySelector("#det .back").focus()}
+function openDet(k){const c=HS();if(c.d===k&&dk===k)return;if(c.d)history.replaceState({...c,d:k},"",pURL(cur)+"#"+k);else hpush({p:cur,d:k},pURL(cur)+"#"+k);showDet(k)}
+function hideDet(){document.getElementById("det").classList.remove("on");if(!NSH.classList.contains("on"))document.body.style.overflow="";dk=null;if(lastFocus&&lastFocus.focus)try{lastFocus.focus()}catch(e){}}
+function closeDet(){if(HS().d){history.back();return}hideDet()}
+document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(NSH.classList.contains("on"))closeNews();else if(document.getElementById("det").classList.contains("on"))closeDet();else if(DW.classList.contains("on"))userCloseDrawer()});
 // ---------------- gráfico v7: períodos longos (hist/<chave>.json sob demanda), toque/mouse mostra valor e data, sazonal ----------------
 const CW=400,CHH=250,PL=6,PR=64,PT=14,PB=26,MAXPTS=600;
 // v13: texto do gráfico com tamanho real ~12–13px em qualquer largura (o SVG escala com a tela)
@@ -630,7 +656,11 @@ function detSrc(x){const c=x.cr;if(!c)return `<div class="note">Fonte: ${x.src}.
  return `<div class="note">Fonte: ${SL(c)}${LIC(c)}.${b3v}${x.pp?" Variação em pontos percentuais (p.p.).":""}${x.key==="selic"&&x.lastchg?` Última mudança: ${x.lastchg[1]>0?"+":""}${fmt(x.lastchg[1],2)} p.p. a partir de ${fd(x.lastchg[0])}.`:""}</div>`}
 render();themeBtns();
 matchMedia("(prefers-color-scheme: dark)").addEventListener&&matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{if(dk)renderDet()});
-if(location.hash&&I[location.hash.slice(1)]){const k=location.hash.slice(1);history.replaceState(null,"",location.pathname+location.search);openDet(k)}
+(()=>{const h=location.hash.slice(1),c=history.state;
+ if(c&&c.i!=null){applyState(c);return}
+ const d=I[h]?h:null;
+ if(cur==="resumo"&&!d){history.replaceState({p:"resumo",i:0},"",location.pathname);return}
+ history.replaceState({p:cur,d,i:0},"",pURL(cur)+(d?"#"+d:""));needSeed=true;if(d)showDet(d)})();
 function NUPD(){const u=NEWS&&NEWS.updated;return u&&u.length>=16?u.slice(8,10)+"/"+u.slice(5,7)+" "+u.slice(11,16):"—"}
 function hdr(){const t=`Cotações ${CUPD} · Notícias ${NUPD()}`,e=document.getElementById("hd");e.textContent=t;
  e.title=`Cotações de ${fd(REF)}, atualizadas em ${UPD||"—"} · Notícias atualizadas em ${NUPD()} (horário de Brasília)`;document.getElementById("dwd").textContent=t}
