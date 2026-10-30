@@ -1,16 +1,27 @@
 {
- "ref": "2026-10-29",
- "updated": "30/10/2026 17:20",
+ "ref": "2026-10-30",
+ "updated": "30/10/2026 19:38",
  "alerts": [
   {
    "key": "ice_suco",
    "name": "Suco de laranja (FCOJ)",
    "sub": "ICE Nova York · nov/26",
-   "value": 128.55,
+   "value": 115.35,
    "unit": "centavos de US$/lb",
    "dec": 2,
-   "chg_pct": -7.22,
-   "date": "2026-10-29",
+   "chg_pct": -10.27,
+   "date": "2026-10-30",
+   "freq": "diária"
+  },
+  {
+   "key": "laranja_ind",
+   "name": "Laranja indústria",
+   "sub": "SP · a prazo · média 5 dias",
+   "value": 28.42,
+   "unit": "R$/cx 40,8 kg",
+   "dec": 2,
+   "chg_pct": 4.14,
+   "date": "2026-10-30",
    "freq": "diária"
   },
   {
@@ -25,58 +36,25 @@
    "freq": "diária"
   },
   {
-   "key": "cacau_es",
-   "name": "Cacau",
-   "sub": "Espírito Santo · convencional",
-   "value": 1142.0,
-   "unit": "R$/sc",
-   "dec": 2,
-   "chg_pct": -2.89,
-   "date": "2026-10-29",
-   "freq": "diária"
-  },
-  {
-   "key": "cacau_ba",
-   "name": "Cacau",
-   "sub": "Bahia · convencional",
-   "value": 286.0,
-   "unit": "R$/@",
-   "dec": 2,
-   "chg_pct": -2.72,
-   "date": "2026-10-29",
-   "freq": "diária"
-  },
-  {
-   "key": "vaca_SP",
-   "name": "Vaca gorda",
-   "sub": "São Paulo",
-   "value": 359.58,
-   "unit": "R$/@",
-   "dec": 2,
-   "chg_pct": 2.56,
-   "date": "2026-10-28",
-   "freq": "diária"
+   "key": "etanol_hid",
+   "name": "Etanol hidratado",
+   "sub": "São Paulo · usinas · semanal",
+   "value": 2.8135,
+   "unit": "R$/litro",
+   "dec": 4,
+   "chg_pct": 2.68,
+   "date": "2026-10-30",
+   "freq": "semanal"
   },
   {
    "key": "sorgo_go",
    "name": "Sorgo",
    "sub": "Rio Verde (GO) · Comigo",
-   "value": 42.5,
+   "value": 43.5,
    "unit": "R$/sc 60 kg",
    "dec": 2,
-   "chg_pct": 2.41,
-   "date": "2026-10-28",
-   "freq": "diária"
-  },
-  {
-   "key": "cacau_ny",
-   "name": "Cacau",
-   "sub": "ICE Nova York · dez/26",
-   "value": 5456.0,
-   "unit": "US$/t",
-   "dec": 0,
-   "chg_pct": -2.17,
-   "date": "2026-10-28",
+   "chg_pct": 2.35,
+   "date": "2026-10-30",
    "freq": "diária"
   }
  ]
