@@ -1,6 +1,6 @@
 {
  "ref": "2026-10-29",
- "updated": "30/10/2026 09:57",
+ "updated": "30/10/2026 09:58",
  "alerts": [
   {
    "key": "ice_suco",
@@ -65,6 +65,17 @@
    "unit": "R$/sc 60 kg",
    "dec": 2,
    "chg_pct": 2.41,
+   "date": "2026-10-28",
+   "freq": "diária"
+  },
+  {
+   "key": "cacau_ny",
+   "name": "Cacau",
+   "sub": "ICE Nova York · dez/26",
+   "value": 5456.0,
+   "unit": "US$/t",
+   "dec": 0,
+   "chg_pct": -2.17,
    "date": "2026-10-28",
    "freq": "diária"
   }
