@@ -1,7 +1,7 @@
 {
-  "name": "Informativo Agro",
-  "short_name": "Agro",
-  "description": "Cotações diárias do agro: grãos, proteína animal, boi por estado, café, B3, dólar e Chicago.",
+  "name": "AgroN — Informativo do agronegócio",
+  "short_name": "AgroN",
+  "description": "Cotações diárias com fonte e data — boi, suínos, frango, ovos, leite, tilápia, grãos, feijão, café, cana, cacau, insumos, B3, dólar e Chicago — e notícias do agro.",
   "lang": "pt-BR",
   "id": "./",
   "start_url": "./",

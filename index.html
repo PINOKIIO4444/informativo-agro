@@ -6,14 +6,14 @@
 <meta name="theme-color" content="#1E8C47" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121814" media="(prefers-color-scheme: dark)">
 <meta name="color-scheme" content="light dark">
-<title>Informativo diário do agro</title>
-<meta name="description" content="Cotações diárias e notícias do agro: proteína animal, agricultura e mercado — boi, suínos, frango, ovos, leite, grãos, café, cana, cacau, laranja, B3, dólar e Chicago.">
+<title>AgroN — Seu informativo diário do agronegócio</title>
+<meta name="description" content="Cotações diárias com fonte e data — boi, suínos, frango, ovos, leite, tilápia, grãos, feijão, café, cana, cacau, insumos, B3, dólar e Chicago — e notícias do agro.">
 <link rel="canonical" href="https://pinokiio4444.github.io/informativo-agro/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AgroN">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="AgroN — Seu informativo diário do agronegócio">
-<meta property="og:description" content="Cotações diárias com fonte e data: boi por estado, grãos, café, leite, suínos, B3, dólar e Chicago — e as principais notícias do agro.">
+<meta property="og:description" content="Cotações diárias com fonte e data — boi, suínos, frango, ovos, leite, tilápia, grãos, feijão, café, cana, cacau, insumos, B3, dólar e Chicago — e notícias do agro.">
 <meta property="og:url" content="https://pinokiio4444.github.io/informativo-agro/">
 <meta property="og:image" content="https://pinokiio4444.github.io/informativo-agro/og-image.jpg?v=3">
 <meta property="og:image:secure_url" content="https://pinokiio4444.github.io/informativo-agro/og-image.jpg?v=3">
@@ -23,9 +23,9 @@
 <meta property="og:image:alt" content="AgroN — Seu informativo diário do agronegócio">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AgroN — Seu informativo diário do agronegócio">
-<meta name="twitter:description" content="Cotações diárias com fonte e data: boi por estado, grãos, café, leite, B3, dólar e Chicago — e notícias do agro.">
+<meta name="twitter:description" content="Cotações diárias com fonte e data — boi, suínos, frango, ovos, leite, tilápia, grãos, feijão, café, cana, cacau, insumos, B3, dólar e Chicago — e notícias do agro.">
 <meta name="twitter:image" content="https://pinokiio4444.github.io/informativo-agro/og-image.jpg?v=3">
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="manifest" href="manifest.webmanifest?v=18">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -33,8 +33,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Agro">
-<meta name="application-name" content="Informativo Agro">
+<meta name="apple-mobile-web-app-title" content="AgroN">
+<meta name="application-name" content="AgroN">
 <script>try{var t=localStorage.getItem("tema");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
 :root{--us:#1F5FA8;--ic2o:.5;--g:#1E8C47;--g2:#17703C;--gl:#7DC24B;--bg:#F4F6F1;--card:#fff;--tx:#1d261f;--mu:#5c6859;--ln:#e4e9e0;--up:#178a3e;--dn:#c62828;--upb:#e6f4ea;--dnb:#fdecea;
@@ -229,6 +229,11 @@ header h1,header .d{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sazb.on{background:var(--g);border-color:var(--g);color:#fff}
 .leg{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;margin:8px 2px 0;font-weight:600}
 @media(min-width:1024px){.chart{cursor:crosshair}}
+/*v18: contraste (verde de alta e botão ativo) e subtítulo do nome*/
+:root{--up:#13703a;--gon:#1f7a43}
+:root[data-theme=dark]{--up:#5fd08a}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--up:#5fd08a}}
+.theme button.on,.chip.on,.sazb.on{background:var(--gon);border-color:var(--gon)}.ufs button.on{background:var(--gon);border-color:var(--gon)}#nsh .go{background:var(--gon)}
+header h1 .tg{font-size:12.5px;font-weight:500;color:var(--mu)}
 </style>
 </head>
 <body>
@@ -237,7 +242,7 @@ header h1,header .d{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 <div class="wrap">
 <div class="top">
 <header><button class="menu" id="mbtn" aria-label="Abrir menu" onclick="openDrawer()"><img src="logo.svg" alt=""><span class="hb"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></span></button>
-<div><h1>Informativo diário do agro</h1><div class="d" id="hd"></div></div></header>
+<div><h1>AgroN<span class="tg"> · Seu informativo diário do agronegócio</span></h1><div class="d" id="hd"></div></div></header>
 </div>
 <div id="main"></div>
 <footer id="foot"></footer>
@@ -245,7 +250,7 @@ header h1,header .d{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 <div id="ov" onclick="userCloseDrawer()"></div>
 <aside id="drawer" aria-label="Menu">
- <div class="dwh"><img src="logo.svg" alt=""><div><b>Informativo do agro</b><small id="dwd"></small></div></div>
+ <div class="dwh"><img src="logo.svg" alt=""><div><b>AgroN</b><small id="dwd"></small></div></div>
  <div class="dwb" id="dwb"></div>
  <div class="dwf"><div class="theme" role="group" aria-label="Tema"><button onclick="setTheme('auto')" id="th_auto">Automático</button><button onclick="setTheme('light')" id="th_light">Claro</button><button onclick="setTheme('dark')" id="th_dark">Escuro</button></div>Nenhum valor é estimado. Créditos e licenças em Fontes.</div>
 </aside>
@@ -369,8 +374,9 @@ const PLACE={suinos:1,frango:1,ovos:1,leite:1,tilapia:1,sorgo:1,trigo:1,arroz:1,
 
 // ---------------- estado da navegação ----------------
 const QP=new URLSearchParams(location.search);
+const PALIAS={pecuaria:"boi",agricultura:"soja",mercado:"dolar",noticias:"n_agro"},pA=q=>q&&PALIAS[q]?PALIAS[q]:q; // v18: seções do menu abrem o 1º item
 const OLD={graos:"soja",pecuaria:"boi",estado:"boi",cafe:"cafe",b3:"b3",chicago:"chicago",outros:"cana"};
-let cur=QP.get("p")&&(QP.get("p")==="resumo"||QP.get("p")==="fontes"||NI[QP.get("p")])?QP.get("p"):(OLD[QP.get("tab")]||"resumo");
+let cur=pA(QP.get("p"))&&(pA(QP.get("p"))==="resumo"||pA(QP.get("p"))==="fontes"||NI[pA(QP.get("p"))])?pA(QP.get("p")):(OLD[QP.get("tab")]||"resumo");
 let openSec=NI[cur]?NI[cur].sec.id:null;
 
 function row(x,sw){const n=sw?subX(x):x.name,s=sw?ud(x):subX(x);return `<a class="row" href="#${x.key}" onclick="return nav(event,()=>openDet('${x.key}'))" aria-label="${esc(x.name+" "+x.sub)}: ${esc(mt(x.v,x.dec,x,1))}, ${esc(ud(x))}, ${pctX(x)}, em ${fd(x.d)}. Abrir detalhes"><div><div class="n">${n}${x.calc?'<span class="calc">calculado</span>':""}${ktag(x,1)}</div><div class="s">${s}${stale(x)}</div>${x.cr?`<div class="fs">Fonte: ${esc(x.cr[0])}</div>`:""}</div>${spark(x.h)}
@@ -536,7 +542,7 @@ function applyState(st){
  if(st.d&&I[st.d]){if(dk!==st.d||!document.getElementById("det").classList.contains("on"))showDet(st.d)}else if(document.getElementById("det").classList.contains("on"))hideDet();
  if(st.n!=null&&NEWS.items[st.n]){if(!NSH.classList.contains("on"))openNews(st.n)}else if(NSH.classList.contains("on"))closeNews(false);
  if(st.dw&&!wide()){drawer();DW.classList.add("on");OV.classList.add("on");document.body.style.overflow="hidden"}else closeDrawer()}
-window.addEventListener("popstate",e=>{let st=e.state;if(!st){const q=new URLSearchParams(location.search).get("p"),h=location.hash.slice(1);st={p:q||"resumo",d:I[h]?h:null}}applyState(st)});
+window.addEventListener("popstate",e=>{let st=e.state;if(!st){const q=pA(new URLSearchParams(location.search).get("p")),h=location.hash.slice(1);st={p:q||"resumo",d:I[h]?h:null}}applyState(st)});
 // semeia o Resumo por baixo de um link direto (?p=… ou #item) só no 1º toque, para o Chrome/Brave não pular a entrada
 let needSeed=false;
 function seed(){if(!needSeed)return;if(navigator.userActivation&&!navigator.userActivation.isActive)return;needSeed=false;
