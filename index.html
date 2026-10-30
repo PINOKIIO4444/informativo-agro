@@ -176,7 +176,7 @@ nav.chips::-webkit-scrollbar{display:none}
 .ni .m{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:6px;font-size:12px;color:var(--mu)}
 .ni .m b{color:var(--tx);font-weight:600}
 .tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:999px;padding:1px 7px;text-transform:uppercase;letter-spacing:.04em}
-.tag.agro{color:#17703C;background:#e6f4ea}.tag.mercado{color:#1d4ed8;background:#e8eefc}.tag.politica{color:#8a3b00;background:#fdeee2}
+.tag.agro{color:#17703C;background:#e6f4ea}.ni .en{font-size:10.5px;font-weight:700;color:var(--mu);border:1px solid var(--ln);border-radius:999px;padding:0 6px}nav.chips.sub{padding-top:0}nav.chips.sub .chip{padding:5px 11px;font-size:12.5px}.nsrc{margin-top:8px}.nsrc summary{cursor:pointer;font-weight:600;color:var(--tx)}#nsh .tb{font-size:13px;color:var(--mu);margin-top:10px;line-height:1.45}#nsh .tb a{color:var(--tx)}#nsh .orig{font-size:12.5px;color:var(--mu);margin-top:4px;font-style:italic}.tag.mercado{color:#1d4ed8;background:#e8eefc}.tag.politica{color:#8a3b00;background:#fdeee2}
 :root[data-theme=dark] .tag{filter:brightness(.85) saturate(1.2)}@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .tag{filter:brightness(.85) saturate(1.2)}}
 .rs{font-size:11px;color:var(--g2);font-weight:700}
 .nmore{display:block;text-align:center;font-size:14px;font-weight:700;color:var(--g2);padding:11px;border-top:1px solid var(--ln);cursor:pointer;background:var(--sub)}
@@ -485,24 +485,33 @@ function when(p){const d=new Date(p),n=new Date(),hm=d.toLocaleTimeString("pt-BR
  return d.toLocaleDateString("pt-BR",{timeZone:"America/Sao_Paulo",day:"2-digit",month:"2-digit"})+", "+hm}
 function full(p){const d=new Date(p);return d.toLocaleDateString("pt-BR",{timeZone:"America/Sao_Paulo",weekday:"long",day:"2-digit",month:"2-digit"})+" às "+d.toLocaleTimeString("pt-BR",{timeZone:"America/Sao_Paulo",hour:"2-digit",minute:"2-digit"})}
 const newsOf=c=>NEWS.items.map((x,i)=>Object.assign({i},x)).filter(x=>x.c===c);
-function nrow(x){return `<button class="ni" onclick="openNews(${x.i})" aria-label="${esc(x.t)} — ${esc(x.s)}, ${when(x.p)}${x.r?". Ver resumo":""}"><div class="h">${esc(x.t)}</div><div class="m"><b>${esc(x.s)}</b>· ${when(x.p)} <span class="tag ${x.c}">${NTAG[x.c]}</span>${x.r?'<span class="rs">· resumo</span>':""}</div></button>`}
+const NSUB=()=>NEWS.subs||{};
+const ntag=x=>x.b&&NSUB()[x.b]?NSUB()[x.b]:NTAG[x.c];
+function nrow(x){return `<button class="ni" onclick="openNews(${x.i})" aria-label="${esc(x.t)} — ${esc(x.s)}, ${when(x.p)}${x.l?", original em inglês":""}${x.r?". Ver resumo":""}"><div class="h">${esc(x.t)}</div><div class="m"><b>${esc(x.s)}</b>· ${when(x.p)} <span class="tag ${x.c}">${esc(ntag(x))}</span>${x.l?'<span class="en">EN</span>':""}${x.r?'<span class="rs">· resumo</span>':""}</div></button>`}
 function lastAgro(){const seen=new Set(),xs=[];for(const x of newsOf("agro")){if(!seen.has(x.s)){seen.add(x.s);xs.push(x)}if(xs.length===3)break}if(!xs.length)return "";
  return `<h2>Últimas do agro</h2><div class="nl">`+xs.map(nrow).join("")+`<a class="nmore" href="?p=n_agro" onclick="return nav(event,()=>go('n_agro'))">Ver todas as notícias ${ico("seta","sm")}</a></div>`}
-function newsPage(it){const s=it.sec,xs=newsOf(it.news);
+let NSF="";  // filtro de subtema (só na tela; não cria entrada no histórico)
+function nsub(b){NSF=NSF===b?"":b;render()}
+function newsPage(it){const s=it.sec,all=newsOf(it.news);
+ const subs=it.news==="agro"?Object.keys(NSUB()).filter(k=>all.some(x=>x.b===k)):[];if(!subs.includes(NSF))NSF="";
+ const xs=NSF?all.filter(x=>x.b===NSF):all;
  let h=`<div class="crumb"><div class="sec2">${s.label}</div><div class="ttl">${ico(it.ic,"tt")}${it.label}</div></div>
  <nav class="chips" id="chips">`+s.items.map(o=>`<a class="chip ${o.id===it.id?"on":""}" href="?p=${o.id}" onclick="return nav(event,()=>go('${o.id}'))" ${o.id===it.id?'aria-current="page"':""} style="text-decoration:none">${o.label}</a>`).join("")+`</nav>`;
+ if(subs.length)h+=`<nav class="chips sub" aria-label="Filtrar por tema">`+[["","Todas"]].concat(subs.map(k=>[k,NSUB()[k]])).map(([k,l])=>`<button class="chip ${NSF===k?"on":""}" aria-pressed="${NSF===k}" onclick="nsub('${k}')">${esc(l)}</button>`).join("")+`</nav>`;
  h+=xs.length?`<div class="nl">`+xs.map(nrow).join("")+`</div>`:`<div class="nl"><div class="none" style="padding:14px">Nenhuma notícia nas últimas 48 horas.</div></div>`;
- h+=`<div class="note">Manchetes dos feeds públicos de ${[...new Set(xs.map(x=>x.s))].join(", ")||"—"}. Toque numa notícia para ver o resumo; a matéria completa abre no site do veículo.${NEWS.updated?` Atualizado ${when(NEWS.updated)}.`:""}</div>`;
+ const vs=[...new Set(all.map(x=>x.s))].sort((a,b)=>a.localeCompare(b,"pt"));
+ h+=`<div class="note">Manchetes de ${vs.length} veículos (feeds públicos). Toque para ver o resumo; a matéria abre no site original.${NEWS.updated?` Atualizado ${when(NEWS.updated)}.`:""}${vs.length?`<details class="nsrc"><summary>Ver veículos</summary>${vs.map(esc).join(", ")}.</details>`:""}</div>`;
  return h}
 const NOV=document.getElementById("nov"),NSH=document.getElementById("nsh");
 function openNews(i){const x=NEWS.items[i];if(!x)return;
- document.getElementById("nbody").innerHTML=`<span class="tag ${x.c}">${NCAT[x.c]}</span><h3>${esc(x.t)}</h3><div class="m"><b>${esc(x.s)}</b> · ${full(x.p)}</div>`+
+ document.getElementById("nbody").innerHTML=`<span class="tag ${x.c}">${esc(x.b&&NSUB()[x.b]?NCAT[x.c]+" · "+NSUB()[x.b]:NCAT[x.c])}</span><h3>${esc(x.t)}</h3>`+(x.l&&x.to?`<div class="orig">Original em inglês: “${esc(x.to)}”</div>`:"")+`<div class="m"><b>${esc(x.s)}</b> · ${full(x.p)}</div>`+
  (x.r?`<div class="sl">Resumo</div><div class="sm">${esc(x.r)}</div>`:"")+
- `<a class="go" href="${esc(x.u)}" target="_blank" rel="noopener noreferrer">Ler na íntegra no ${esc(x.s)} ↗</a>`+
+ `<a class="go" href="${esc(x.u)}" target="_blank" rel="noopener noreferrer">Ler na íntegra no ${esc(x.s)}${x.l?" (em inglês)":""} ↗</a>`+
+ (x.o&&x.o.length?`<div class="tb">Também em: ${x.o.map(o=>o&&o.u?`<a href="${esc(o.u)}" target="_blank" rel="noopener noreferrer">${esc(o.s)}</a>`:esc(o&&o.s||o)).join(", ")}</div>`:"")+
  `<div class="disc">${x.r?"Resumo escrito pelo Informativo com base no texto publicado pelo veículo. ":""}A matéria completa é do ${esc(x.s)} e abre no site original.</div>`;
  closeDrawer();NSH.scrollTop=0;NOV.classList.add("on");NSH.classList.add("on");document.body.style.overflow="hidden";if(HS().n!==i)hpush({p:cur,n:i},"#n");NSH.querySelector(".x").focus()}
 function closeNews(back=true){if(back&&HS().n!=null){history.back();return}NOV.classList.remove("on");NSH.classList.remove("on");if(!document.getElementById("det").classList.contains("on"))document.body.style.overflow=""}
-fetch("news.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.items&&j.updated!==NEWS.updated){NEWS=j;if(!NSH.classList.contains("on"))render()}}).catch(()=>{});
+fetch("news_v2.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null).then(j=>j&&j.items?j:fetch("news.json",{cache:"no-store"}).then(r=>r.ok?r.json():null)).then(j=>{if(j&&j.items&&j.updated!==NEWS.updated){NEWS=j;if(!NSH.classList.contains("on"))render()}}).catch(()=>{});
 
 function render(){
  document.getElementById("main").innerHTML=cur==="resumo"?resumo():cur==="fontes"?fontes():product(NI[cur]);
