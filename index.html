@@ -338,7 +338,7 @@ const NAV=[
   {id:"mandioca",label:"Mandioca",ic:"mandioca",g:[["Raiz · semanal",["mandioca_nop","mandioca_ass","mandioca_esm"]]]}]},
  {id:"mercado",label:"Mercado",ic:"mercado",items:[
   {id:"dolar",label:"Dólar e euro",ic:"dolar",g:[["Dólar",["usd","fut_dolar"]],["Euro",["eur"],1]]},
-  {id:"juros",label:"Juros e inflação",ic:"juros",g:[["Juros",["selic"],1],["Inflação · mensal",["ipca_m","ipca_12"],1]],note:"juros",req:"selic"},
+  {id:"juros",label:"Juros e inflação",ic:"juros",g:[["Juros",["selic"],1],["Inflação · IPCA (IBGE) · mensal",["ipca_m","ipca_12"],1]],note:"juros",req:"selic"},
   {id:"ibov",label:"Ibovespa",ic:"ibov",g:[["",["ibov"]]]},
   {id:"b3",label:"B3 futuros",ic:"b3",g:[["Futuros agro",["fut_boi","fut_milho","fut_soja","fut_cafe"]],["Câmbio",["fut_dolar"]]],note:"b3"},
   {id:"chicago",label:"Chicago (CBOT)",ic:"chicago",g:[["",["cbot_soja","cbot_milho","cbot_farelo","cbot_oleo","cbot_trigo"]]],note:"chicago"},
@@ -400,16 +400,22 @@ function estado(){
 
 const LIC=c=>c&&c[3]?` · licença <a href="${c[4]}" target="_blank" rel="noopener">${c[3]}</a>`:"";
 const SL=c=>c[2]?`<a href="${esc(c[2])}" target="_blank" rel="noopener">${esc(c[1])} ↗</a>`:esc(c[1]);
-function pageSrc(ks,est,rep){const G={},O=[],seen={};const add=(c,nm)=>{if(!c||!c[2]||seen[c[2]])return;seen[c[2]]=1;if(!G[c[1]]){G[c[1]]={c,l:[]};O.push(c[1])}G[c[1]].l.push([nm,c[2]])};
- ks.forEach(k=>{const x=I[k];if(x.calc)(x.cin||[]).forEach(c=>add(c,x.name));else add(x.cr,x.name)});
- if(est){add((I.boi_SP||{}).cr,"boi por estado");if(DATA.scot&&DATA.scot.date)add(["Scot","Scot Consultoria (via Notícias Agrícolas)","https://www.noticiasagricolas.com.br/cotacoes/boi-gordo/boi-gordo-scot-consultoria"],"boi Scot")}
- if(rep)add(["Scot","Scot Consultoria (via Notícias Agrícolas)","https://www.noticiasagricolas.com.br/cotacoes/boi-gordo"],"reposição");
- const calc=ks.some(k=>I[k].calc);
- const out=O.map(n=>{const g=G[n];return g.l.length===1?SL(g.c)+LIC(g.c):`${esc(n)}: `+g.l.map(([nm,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(nm.toLowerCase())} ↗</a>`).join(", ")+LIC(g.c)});
+function pageSrc(ks,est,rep){const G={},O=[],U={};const add=(c,nm,sub)=>{if(!c||!c[2])return;
+  if(U[c[2]]){if(sub&&!U[c[2]].s.includes(sub))U[c[2]].s.push(sub);return}
+  if(!G[c[1]]){G[c[1]]={c,l:[]};O.push(c[1])}const e={nm,u:c[2],s:sub?[sub]:[]};U[c[2]]=e;G[c[1]].l.push(e)};
+ const sh=x=>(x.sub||"").split(" · ")[0];
+ ks.filter(has).forEach(k=>{const x=I[k];if(x.calc)(x.cin||[]).forEach(c=>add(c,x.name));else add(x.cr,x.name,sh(x))});
+ if(est){if(DATA.items.some(x=>x.cat==="estado"&&x.v!=null))add((I.boi_SP||{}).cr,"boi por estado");
+  if(DATA.scot&&DATA.scot.date&&(DATA.scot.rows||[]).length)add(["Scot","Scot Consultoria (via Notícias Agrícolas)","https://www.noticiasagricolas.com.br/cotacoes/boi-gordo/boi-gordo-scot-consultoria"],"boi Scot")}
+ if(rep&&DATA.repos&&DATA.repos.date)add(["Scot","Scot Consultoria (via Notícias Agrícolas)","https://www.noticiasagricolas.com.br/cotacoes/boi-gordo"],"reposição");
+ const calc=ks.some(k=>has(k)&&I[k].calc);
+ const out=O.map(n=>{const g=G[n],cnt={};g.l.forEach(e=>{const t=e.nm.toLowerCase();cnt[t]=(cnt[t]||0)+1});
+  const lb=e=>{const t=e.nm.toLowerCase();return cnt[t]>1&&e.s.length?`${t} (${e.s.join(", ")})`:t};
+  return g.l.length===1?SL(g.c)+LIC(g.c):`${esc(n)}: `+g.l.map(e=>`<a href="${esc(e.u)}" target="_blank" rel="noopener">${esc(lb(e))} ↗</a>`).join(", ")+LIC(g.c)});
  return out.length?`<div class="src"><b>Fontes desta página:</b> ${out.join(" · ")}${calc?". Itens marcados “calculado” são calculados com dados do Informativo a partir dessas fontes":""}.</div>`:""}
 const NOTES={cafe:"Atenção à moeda: o indicador físico do CEPEA é em reais por saca de 60 kg (R$); o futuro da B3 é cotado em dólares por saca de 60 kg (US$). Os valores são os publicados por cada fonte, sem conversão.",
  cacau:"Mercado físico em reais (R$), cada estado na unidade publicada (BA por arroba, ES por saca, PA por quilo). A bolsa de Nova York (ICE) é em dólares por tonelada (US$/t). Sem conversão.",
- b3:"Moedas: boi e milho em reais (R$); soja e café em dólares (US$); dólar futuro em reais por dólar. Futuros: preço de fechamento do pregão (sai até as 19h30), no contrato de referência: o vencimento mais próximo a partir do mês seguinte. A troca para o contrato seguinte acontece no 1º dia útil do mês de vencimento e fica marcada no gráfico. Pode diferir alguns centavos do ajuste oficial da B3.",
+ b3:"Moedas: boi e milho em reais (R$); soja e café em dólares (US$); dólar futuro em reais por dólar. Futuros: preço de fechamento do pregão (sai até as 19h30), no contrato de referência: o vencimento mais próximo a partir do mês seguinte. A troca para o contrato seguinte acontece no 1º dia útil do mês de vencimento e fica marcada no gráfico. Pode diferir alguns centavos do ajuste oficial da B3. A variação (%) é a publicada pela B3, calculada sobre o preço de referência do pregão anterior; por isso pode diferir um pouco da conta feita com o fechamento anterior.",
  chicago:"Bolsa de Chicago (CBOT/CME), contrato de referência (vencimento mais próximo a partir do mês seguinte). Preços em dólar, como publicados. A troca de contrato fica marcada no gráfico.",
  juros:"Selic: meta definida pelo Copom, em % ao ano; só muda nas reuniões do Copom. IPCA (IBGE): variação no mês e acumulado em 12 meses; a data é o mês de referência. Nas taxas, a variação é mostrada em pontos percentuais (p.p.), não em %.",
  brent:"Petróleo Brent à vista (FOB Europa), publicado pela EIA (governo dos EUA) em dólares por barril. A EIA divulga com alguns dias úteis de defasagem; por isso a data costuma ser de alguns dias atrás. Referência para o custo do diesel.",
@@ -527,10 +533,10 @@ function sample(h,rl){if(h.length<=MAXPTS)return [h,1];const k=Math.ceil(h.lengt
  return [h.filter((z,i)=>i%k===0||i===h.length-1||keep.has(z[0])),k]}
 let CX=null;
 function chart(h,rl,dec){rl=rl||[];CH=null;if(h.length<2)return "<div class='note'>Histórico insuficiente.</div>";
- const V=cvars(),p=h.map(x=>x[1]),mn=Math.min(...p),mx=Math.max(...p),r=(mx-mn)||1;
- const X=i=>PL+i/(h.length-1)*(CW-PL-PR),Y=v=>PT+(1-(v-mn)/r)*(CHH-PT-PB);
+ const V=cvars(),p=h.map(x=>x[1]),mn=Math.min(...p),mx=Math.max(...p),fl=mx===mn,lo=fl?mn-1:mn,r=fl?2:(mx-mn);
+ const X=i=>PL+i/(h.length-1)*(CW-PL-PR),Y=v=>PT+(1-(v-lo)/r)*(CHH-PT-PB);
  const pts=h.map((x,i)=>`${X(i).toFixed(1)},${Y(x[1]).toFixed(1)}`).join(" ");
- let g="";[mn,(mn+mx)/2,mx].forEach(v=>{g+=`<line x1="${PL}" x2="${CW-PR}" y1="${Y(v)}" y2="${Y(v)}" stroke="${V.gr}"/><text x="${CW-PR+6}" y="${Y(v)+4}" font-size="11" fill="${V.mu}">${fmt(v,v>=1000?0:2)}</text>`});
+ let g="";(fl?[mn]:[mn,(mn+mx)/2,mx]).forEach(v=>{g+=`<line x1="${PL}" x2="${CW-PR}" y1="${Y(v)}" y2="${Y(v)}" stroke="${V.gr}"/><text x="${CW-PR+6}" y="${Y(v)+4}" font-size="11" fill="${V.mu}">${fmt(v,v>=1000?0:2)}</text>`});
  rl.forEach(r=>{const i=h.findIndex(z=>z[0]===r[0]);if(i>0){const x=X(i).toFixed(1);g+=`<line x1="${x}" x2="${x}" y1="${PT}" y2="${CHH-PB}" stroke="#c9a227" stroke-dasharray="4 3"/>`+(rl.length<=3?`<text x="${x}" y="${PT+9}" font-size="10" fill="#c9a227" text-anchor="middle">troca</text>`:"")}});
  g+=`<text x="${PL}" y="${CHH-6}" font-size="12" fill="${V.mu}">${fd(h[0][0])}</text><text x="${CW-PR}" y="${CHH-6}" font-size="12" fill="${V.mu}" text-anchor="end">${fd(h[h.length-1][0])}</text>`;
  CH={t:"l",h,X,Y,dec};
@@ -590,7 +596,8 @@ function renderDet(){const x=I[dk];CX=x;document.getElementById("dtitle").textCo
  </div>${detSrc(x)}`}
 function detSrc(x){const c=x.cr;if(!c)return `<div class="note">Fonte: ${x.src}.</div>`;
  if(x.calc)return `<div class="note"><b>Calculado com dados do Informativo</b> (não é cotação publicada): ${esc(x.src.replace(/^Calculado com dados do Informativo:\s*/,""))}. Dados de origem: ${(x.cin||[]).map(z=>SL(z)+LIC(z)).join(" · ")}.</div>`;
- return `<div class="note">Fonte: ${SL(c)}${LIC(c)}.${x.pp?" Variação em pontos percentuais (p.p.).":""}${x.key==="selic"&&x.lastchg?` Última mudança: ${x.lastchg[1]>0?"+":""}${fmt(x.lastchg[1],2)} p.p. a partir de ${fd(x.lastchg[0])}.`:""}</div>`}
+ const b3v=c&&c[0]==="B3"&&x.contract?" Variação (%) publicada pela B3, sobre o preço de referência do pregão anterior.":"";
+ return `<div class="note">Fonte: ${SL(c)}${LIC(c)}.${b3v}${x.pp?" Variação em pontos percentuais (p.p.).":""}${x.key==="selic"&&x.lastchg?` Última mudança: ${x.lastchg[1]>0?"+":""}${fmt(x.lastchg[1],2)} p.p. a partir de ${fd(x.lastchg[0])}.`:""}</div>`}
 render();themeBtns();
 matchMedia("(prefers-color-scheme: dark)").addEventListener&&matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{if(dk)renderDet()});
 if(location.hash&&I[location.hash.slice(1)]){const k=location.hash.slice(1);history.replaceState(null,"",location.pathname+location.search);openDet(k)}
