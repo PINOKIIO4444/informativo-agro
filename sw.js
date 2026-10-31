@@ -1,5 +1,5 @@
-// Service worker do AgroN (v23): rede primeiro (dados sempre frescos), cache só como reserva offline + alertas push.
-const CACHE = "informativo-agro-v23";
+// Service worker do AgroN (v24): rede primeiro (dados sempre frescos), cache só como reserva offline + alertas push.
+const CACHE = "informativo-agro-v24";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./logo.svg",
   "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png", "./favicon.png", "./badge-96.png"];
 self.addEventListener("install", e => {

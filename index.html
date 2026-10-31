@@ -406,6 +406,7 @@ const PLACE={suinos:1,frango:1,ovos:1,leite:1,tilapia:1,sorgo:1,trigo:1,arroz:1,
 
 // ---------------- estado da navegação ----------------
 const FX22=true; // v22: página e item de menu "Alertas no celular"
+const FX24=true; // v24: alertas com inscrição automática (receptor)
 const FX23=true; // v23: botão "Instalar" na barra do topo; um toque abre a instalação do Chrome; some quando instalado
 const QP=new URLSearchParams(location.search);
 const PALIAS={pecuaria:"boi",agricultura:"soja",mercado:"dolar",noticias:"n_agro"},pA=q=>q&&PALIAS[q]?PALIAS[q]:q; // v18: seções do menu abrem o 1º item
@@ -746,6 +747,7 @@ function ficha(x,hd){const c=x.cr,rows=[];const R=(a,b)=>rows.push(`<dt>${a}</dt
 
 // v22: convites no celular (Web Push padrão), às 6h e após a atualização das 19h30. O site só gera a inscrição deste aparelho; quem envia é o computador do
 // Informativo (alerts.py), com a chave privada VAPID que nunca vai para o site nem para o repositório.
+const RX="https://agron-alertas.pinokiio4444.workers.dev";  // v24: receptor das inscrições (só escrita, sem segredo); vazio = modo antigo com código
 const CVH="6h",VAPID="BLElK-_tkLzuPsH7dElCi8WYeJd5YRvBZDopgL1O4oZkCRg1fx3FdmxcE7z5GzIcxekhEUtC147LHokRuiUazhk";
 const isIOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
 const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
@@ -762,17 +764,30 @@ async function alInit(){const E=document.getElementById("alst");if(!E)return;
  let reg;try{reg=await navigator.serviceWorker.ready}catch(e){}
  const sub=reg&&await reg.pushManager.getSubscription().catch(()=>null);
  if(!sub){E.innerHTML=`<button class="alb" onclick="alOn(this)">${ico("alerta")} Ativar alertas</button><p style="margin-top:8px;font-size:12.5px;color:var(--mu)">O celular vai pedir permissão para mostrar notificações.</p><p id="alerr" class="warn"></p>`;return}
+ const fim=`<div class="albs"><button class="alb2" onclick="alDemo()">Ver um convite de exemplo</button></div><button class="alx" onclick="alOff(this)">Desativar alertas neste aparelho</button>`;
+ if(RX){let ok=true;try{await rxSync(sub,true)}catch(e){ok=false}
+  E.innerHTML=ok?`<p class="ok">${ico("alerta")} Alertas ativados neste aparelho</p>`+fim
+   :`<p class="warn"><b>Não foi possível concluir o cadastro.</b> Verifique a internet.</p><div class="albs"><button class="alb2" onclick="this.disabled=true;alInit()">Tentar de novo</button></div>`;return}
  const c=subCode(sub);
  E.innerHTML=`<p class="ok">${ico("alerta")} Alertas ativados neste aparelho</p><p><b>Último passo:</b> envie o código abaixo no chat do Grok Bot. Só o computador do Informativo, com a chave dele, consegue mandar alertas para este aparelho.</p>
  <label class="vh" for="alcode">Código deste aparelho</label><textarea id="alcode" class="alc" readonly onfocus="this.select()">${c}</textarea>
- <div class="albs"><button class="alb2" onclick="alCopy()">Copiar código</button>${navigator.share?`<button class="alb2" onclick="navigator.share({text:document.getElementById('alcode').value}).catch(()=>{})">Compartilhar</button>`:""}</div>
- <div class="albs"><button class="alb2" onclick="alDemo()">Ver um convite de exemplo</button></div><button class="alx" onclick="alOff()">Desativar alertas neste aparelho</button>`}
+ <div class="albs"><button class="alb2" onclick="alCopy()">Copiar código</button>${navigator.share?`<button class="alb2" onclick="navigator.share({text:document.getElementById('alcode').value}).catch(()=>{})">Compartilhar</button>`:""}</div>`+fim}
 async function alOn(b){b.disabled=true;const er=document.getElementById("alerr");
  try{const p=await Notification.requestPermission();if(p!=="granted"){alInit();return}
   const reg=await navigator.serviceWorker.ready;await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(VAPID)});alInit()}
  catch(e){b.disabled=false;if(er)er.innerHTML=`Não foi possível ativar (${esc(e.message||e.name)}).`}}
 function alCopy(){const t=document.getElementById("alcode");t.select();(navigator.clipboard?navigator.clipboard.writeText(t.value):Promise.reject()).catch(()=>document.execCommand("copy"));const b=event.target;b.textContent="Copiado ✓";setTimeout(()=>b.textContent="Copiar código",2000)}
-async function alOff(){const reg=await navigator.serviceWorker.ready,s=await reg.pushManager.getSubscription();if(s)await s.unsubscribe();alInit()}
+async function alOff(b){if(b)b.disabled=true;const reg=await navigator.serviceWorker.ready,s=await reg.pushManager.getSubscription();
+ if(s){if(RX){const j=s.toJSON();try{await rxPost("/v1/unsub",{endpoint:j.endpoint,keys:{auth:j.keys.auth}})}catch(e){}try{localStorage.removeItem("agron_rx")}catch(e){}}await s.unsubscribe()}alInit()}
+// v24: cadastro automático no receptor. Envia só endpoint + chaves públicas da inscrição (nenhum dado pessoal).
+// Repetido no máximo 1x por dia ao abrir o AgroN (sem custo se já cadastrado), para refazer o cadastro se o celular trocar a inscrição.
+async function rxPost(path,body){const r=await fetch(RX+path,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(body),credentials:"omit",cache:"no-store"});
+ if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}
+async function rxSync(sub,force){if(!RX||!sub)return;const j=sub.toJSON(),d=new Date().toISOString().slice(0,10),k=j.endpoint.slice(-24)+"|"+d;
+ let v=null;try{v=localStorage.getItem("agron_rx")}catch(e){}if(!force&&v===k)return;
+ await rxPost("/v1/sub",{endpoint:j.endpoint,keys:{p256dh:j.keys.p256dh,auth:j.keys.auth}});try{localStorage.setItem("agron_rx",k)}catch(e){}}
+if(RX&&"serviceWorker" in navigator&&"PushManager" in window&&"Notification" in window&&Notification.permission==="granted")
+ addEventListener("load",()=>setTimeout(()=>navigator.serviceWorker.ready.then(r=>r.pushManager.getSubscription()).then(s=>rxSync(s,false)).catch(()=>{}),1500));
 // exemplo local, com os últimos dados reais já carregados na página (não passa por servidor)
 async function alDemo(){const x=I.boi,u=I.usd;const reg=await navigator.serviceWorker.ready,n=[x&&x.v!=null?`Boi ${mt(x.v,x.dec,x)} (${fds(x.d)})`:"",u&&u.v!=null?`Dólar ${mt(u.v,u.dec,u)} (${fds(u.d)})`:""].filter(Boolean).join(" · ");
  reg.showNotification("AgroN · exemplo",{body:"Assim chega o convite."+(n?"\n"+n:""),icon:"icon-192.png",badge:"badge-96.png",tag:"agron-exemplo",data:{url:"?p=resumo"}})}
