@@ -328,6 +328,17 @@ summary:focus-visible,[tabindex]:not([tabindex="-1"]):focus-visible,.di:focus-vi
  .dwi:not(:has(.hinst:not([hidden]))){padding-bottom:0}
 }
 @media(prefers-reduced-motion:reduce){#drawer,#ov{transition:none}}
+
+/* v34: com a folha "Instalar" aberta no iPhone/iPad, as barras do AgroN saem da tela (a de baixo desce, a do topo sobe) e a seta
+   aponta para a borda da tela, onde fica a barra do navegador; a faixa da seta fica mais escura no fundo */
+#bnav,.top{transition:transform .25s ease,opacity .2s ease,visibility 0s}
+body.ishon #bnav{transform:translateY(calc(100% + 32px));opacity:0;visibility:hidden;transition:transform .25s ease,opacity .2s ease,visibility 0s .25s}
+body.ishon .top{transform:translateY(-100%);opacity:0;visibility:hidden;transition:transform .25s ease,opacity .2s ease,visibility 0s .25s}
+#ish{bottom:calc(56px + env(safe-area-inset-bottom))}
+#ish.tp{top:calc(56px + env(safe-area-inset-top))}
+#iov.on.bt{background:linear-gradient(to top,rgba(15,20,16,.92) 0,rgba(15,20,16,.92) calc(56px + env(safe-area-inset-bottom)),rgba(15,20,16,.45) calc(110px + env(safe-area-inset-bottom)))}
+#iov.on.tp{background:linear-gradient(to bottom,rgba(15,20,16,.92) 0,rgba(15,20,16,.92) calc(56px + env(safe-area-inset-top)),rgba(15,20,16,.45) calc(110px + env(safe-area-inset-top)))}
+@media(prefers-reduced-motion:reduce){#bnav,.top,body.ishon #bnav,body.ishon .top{transition:none}}
 </style>
 </head>
 <body>
@@ -954,8 +965,11 @@ function instRefresh(){{const i=document.getElementById("ish");if(instOK()&&i&&i
 addEventListener("beforeinstallprompt",e=>{e.preventDefault();BIP=e;lss("agron_inst_ok","0");instRefresh()});
 addEventListener("appinstalled",()=>{BIP=null;lss("agron_inst_ok","1");instRefresh()});
 function instTap(){if(!BIP){if(isIOS){openInst();return}go("instalar");return}
- if(DW.classList.contains("on")){if(HS().dw)history.back();else closeDrawer()}instPrompt()}
-async function instPrompt(){const e=BIP;if(!e){go("instalar");return}BIP=null;e.prompt();
+ // v34: chama prompt() primeiro, ainda dentro do toque, e não navega no histórico enquanto a janela do Chrome está aberta;
+ // o menu fecha na hora (só visual) e a entrada do menu no histórico sai depois que a janela fecha
+ const m=DW.classList.contains("on");if(m)closeDrawer();const p=instPrompt();
+ if(m&&HS().dw)Promise.resolve(p).then(()=>{if(HS().dw&&!DW.classList.contains("on"))history.back()})}
+async function instPrompt(){const e=BIP;if(!e){go("instalar");return}BIP=null;try{e.prompt()}catch(_){go("instalar");return}
  try{const c=await e.userChoice;if(c&&c.outcome==="accepted")lss("agron_inst_ok","1")}catch(_){}instRefresh()}
 // aviso de uma linha no Resumo: só quando o Chrome oferece a instalação de um toque, só na 1ª sessão em que aparece; × não volta mais
 function instAviso(){if(!INST_AV||!BIP||instOK()||lsg("agron_inst_x"))return"";
@@ -983,12 +997,16 @@ function iosSteps(){const SH=`${ico("compartilhar")}<b>Compartilhar</b>`,K=t=>`<
  return{pos,h:`<ol class="ist"><li><span>${s1}</span></li><li><span>Toque em ${ico("adicionar")}<b>Adicionar à Tela de Início</b> e depois em <b>Adicionar</b>.<small>Se não aparecer, role a lista de opções.</small></span></li></ol>`}}
 function instCopy(b){const u=location.origin+location.pathname;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>{b.lastChild.textContent=" Link copiado"},()=>{b.lastChild.textContent=" "+u})}
 const ISH=document.getElementById("ish"),IOV=document.getElementById("iov");let iFocus=null;
-function openInst(push=true){if(!isIOS)return;const st=iosSteps();ISH.className="on "+st.pos;
+function openInst(push=true){if(!isIOS)return;const st=iosSteps();if(DW.classList.contains("on")&&!HS().dw)closeDrawer();ISH.className="on "+st.pos;
  document.getElementById("ibody").innerHTML=`<h3 id="isht">${ico("instalar")}Instalar o AgroN</h3>${st.h}<p class="isn">Depois, abra o AgroN pelo ícone na Tela de Início. Os alertas no iPhone e no iPad só funcionam assim (iOS 16.4 ou mais novo).</p>`;
  IOV.classList.add("on");document.body.style.overflow="hidden";iFocus=document.activeElement;
+ IOV.classList.toggle("tp",/\btp\b/.test(st.pos));IOV.classList.toggle("bt",st.pos!=="na"&&!/\btp\b/.test(st.pos));instBars(true);
  if(push){const c=HS();if(c.dw){closeDrawer();history.replaceState({...c,dw:0,is:1},"")}else if(!c.is)hpush({...c,is:1},location.pathname+location.search+location.hash)}
+ document.body.style.overflow="hidden"; // v34: trava a rolagem depois de fechar o menu (antes o menu destravava)
  ISH.focus()}
-function closeInst(back=true){if(back&&HS().is){history.back();return}if(!ISH.classList.contains("on"))return;ISH.className="";IOV.classList.remove("on");
+// v34: esconde/devolve as barras do AgroN (fora do alcance do toque e do Tab) enquanto a folha está aberta
+function instBars(h){document.body.classList.toggle("ishon",h);for(const e of [document.getElementById("bnav"),document.querySelector(".top")])if(e){if(h)e.setAttribute("inert","");else e.removeAttribute("inert")}}
+function closeInst(back=true){if(back&&HS().is){history.back();return}if(!ISH.classList.contains("on"))return;ISH.className="";IOV.classList.remove("on","tp","bt");instBars(false);
  if(!document.getElementById("det").classList.contains("on")&&!NSH.classList.contains("on"))document.body.style.overflow="";
  const u=e=>e&&document.contains(e)&&!e.hidden&&!e.closest("[inert]")&&e.getClientRects().length>0,f=[iFocus,document.getElementById("hinst"),document.getElementById("bmais"),document.getElementById("mbtn")].find(u);if(f)try{f.focus()}catch(e){}}
 document.addEventListener("keydown",e=>{if(!ISH.classList.contains("on"))return;
@@ -996,7 +1014,7 @@ document.addEventListener("keydown",e=>{if(!ISH.classList.contains("on"))return;
  if(e.key==="Tab"){const f=[...ISH.querySelectorAll("button,a[href]")];if(!f.length)return;const a=f[0],z=f[f.length-1];
   if(e.shiftKey&&(document.activeElement===a||document.activeElement===ISH)){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}},true);
 // v33: no celular o botão Instalar fica no topo do menu (mesmo botão, mesma detecção da v31)
-const FX33=true,MQ33=matchMedia("(max-width:720px)");
+const FX34=true,FX33=true,MQ33=matchMedia("(max-width:720px)");
 function placeInst(){const h=document.getElementById("hinst"),d=document.getElementById("dwi"),hd=document.querySelector(".top header");if(!h||!d||!hd)return;
  const to=MQ33.matches?d:hd;if(h.parentNode!==to)to.appendChild(h)}
 placeInst();MQ33.addEventListener&&MQ33.addEventListener("change",placeInst);
