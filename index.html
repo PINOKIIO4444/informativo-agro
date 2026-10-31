@@ -285,6 +285,29 @@ summary:focus-visible,[tabindex]:not([tabindex="-1"]):focus-visible,.di:focus-vi
 .nst{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:22px 14px;color:var(--mu);font-size:14px}.nst b{color:var(--tx);font-weight:600}.rt{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--ln);background:var(--card);color:var(--g2);border-radius:10px;padding:9px 14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}.rt .ico{width:18px;height:18px;color:var(--g2)}.nsk{display:block;padding:12px 14px;border-bottom:1px solid var(--ln)}.nsk i{display:block;height:12px;border-radius:6px;background:var(--ln);margin:6px 0}.nsk i+i{width:45%;height:9px}.hrt{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;justify-content:space-between}@media (prefers-reduced-motion:no-preference){.nsk i{animation:nskp 1.4s ease-in-out infinite}@keyframes nskp{50%{opacity:.45}}}
 .nshare{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:10px;border:1px solid var(--ln);background:var(--card);color:var(--g2);border-radius:12px;padding:11px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit}.nshare .ico{width:18px;height:18px;color:var(--g2)}.ni.hl{background:color-mix(in srgb,var(--gl) 22%,transparent);box-shadow:inset 3px 0 0 var(--gl);transition:background 1.2s ease}.nlg{margin:0 0 10px;padding:10px 12px;border-radius:10px;border:1px solid var(--ln);background:var(--card);color:var(--mu);font-size:13.5px}
 .alpv{margin:14px 2px 4px;font-size:13px;color:var(--mu)}.alpv summary{font-size:13.5px;padding:4px 0}.alpv p{margin:6px 0 0;line-height:1.45}
+
+/* v32: barra de navegação inferior no celular (até 720px): item ativo sobe num círculo verde, com recorte na barra */
+#bnav{display:none}
+@media(max-width:720px){
+ #bnav{display:block;position:fixed;left:0;right:0;bottom:0;z-index:15;height:calc(64px + env(safe-area-inset-bottom));pointer-events:none}
+ #bnav .bg{position:absolute;left:0;top:0;width:100%;height:64px;overflow:visible;filter:drop-shadow(0 -2px 8px rgba(0,0,0,.10))}
+ #bnav .bg path{fill:var(--card)}
+ #bnav .bg .eg{fill:none;stroke:var(--ln);stroke-width:1}
+ #bnav .sa{position:absolute;left:0;right:0;top:63px;bottom:0;background:var(--card)}
+ #bnav .bl{position:absolute;left:0;right:0;top:0;height:64px;display:flex;margin:0;padding:0;pointer-events:auto}
+ #bnav .bi{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;padding:0 2px 9px;margin:0;color:var(--mu);text-decoration:none;font-size:11px;font-weight:600;line-height:1.1;font-family:inherit;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none;border-radius:14px}
+ #bnav .bi .ico{width:24px;height:24px;transition:opacity .2s,transform .3s}
+ #bnav .bi .lb{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+ #bnav .bi[aria-current]{color:var(--g2);font-weight:700}
+ #bnav .bi[aria-current] .ico{opacity:0;transform:translateY(-12px)}
+ #bnav .bi:focus-visible{box-shadow:inset 0 0 0 2px var(--g2)}
+ #bnav .fab{position:absolute;top:-24px;left:-26px;width:52px;height:52px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(30,140,71,.35);pointer-events:none;will-change:transform}
+ #bnav .fab .ico{width:26px;height:26px;--ic2o:.55}
+ #bnav.nofab .fab{display:none}
+ .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
+ .menu .hb{display:none}
+}
+@media(max-width:720px) and (prefers-reduced-motion:reduce){#bnav .bi .ico{transition:none}}
 </style>
 </head>
 <body>
@@ -298,6 +321,13 @@ summary:focus-visible,[tabindex]:not([tabindex="-1"]):focus-visible,.di:focus-vi
 <div id="main"></div>
 <footer id="foot"></footer>
 </div>
+<nav id="bnav" aria-label="Navegação principal"><svg class="bg" aria-hidden="true" focusable="false"><path class="sf"/><path class="eg"/></svg><div class="sa"></div><span class="fab" aria-hidden="true"></span><div class="bl">
+<a class="bi" data-g="resumo" href="./" onclick="return nav(event,()=>bnGo('resumo'))"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-home"/></svg><span class="lb">Resumo</span></a>
+<a class="bi" data-g="pecuaria" href="?p=boi" onclick="return nav(event,()=>bnGo('pecuaria'))" aria-label="Pecuária (proteína animal)"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-boi"/></svg><span class="lb">Pecuária</span></a>
+<a class="bi" data-g="agricultura" href="?p=soja" onclick="return nav(event,()=>bnGo('agricultura'))"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-agricultura"/></svg><span class="lb">Agricultura</span></a>
+<a class="bi" data-g="noticias" href="?p=n_agro" onclick="return nav(event,()=>bnGo('noticias'))"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-noticias"/></svg><span class="lb">Notícias</span></a>
+<button class="bi" data-g="mais" id="bmais" type="button" aria-label="Mais: abrir o menu completo" aria-controls="drawer" aria-haspopup="true" aria-expanded="false" onclick="bnMais(this)"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg><span class="lb">Mais</span></button>
+</div></nav>
 
 <div id="ov" onclick="userCloseDrawer()"></div>
 <aside id="drawer" aria-label="Menu">
@@ -614,9 +644,33 @@ function loadNews(retry){const rf=retry&&document.activeElement&&document.active
  fetch("news_v2.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null).then(j=>j&&j.items?j:fetch("news.json",{cache:"no-store"}).then(r=>r.ok?r.json():null)).then(done,()=>done(null))}
 loadNews();
 
+// v32: barra inferior (celular). 4 destinos fixos + "Mais" (abre o menu). O ativo segue a página atual, inclusive links diretos
+const FX32=true;
+const BNG=["resumo","pecuaria","agricultura","noticias"],BNL={};
+let BNX=null,BNA=0;
+const bnGrp=()=>cur==="resumo"?"resumo":NI[cur]&&BNG.includes(NI[cur].sec.id)?NI[cur].sec.id:"mais";
+const bnTo=g=>g==="resumo"?"resumo":BNL[g]&&NI[BNL[g]]?BNL[g]:NAV.find(s=>s.id===g).items[0].id;
+function bnGo(g){if(bnGrp()===g){window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});closeDrawer();return}go(bnTo(g))}
+function bnMais(b){window.__dwo=b;openDrawer()}
+function bnPath(w,x){const R=62,c=37,D=36;
+ const a=Math.max(0,x-R),b=Math.min(w,x+R);
+ const top=`M0 0H${a.toFixed(1)}C${(x-c).toFixed(1)} 0 ${(x-c+4).toFixed(1)} ${D} ${x.toFixed(1)} ${D}C${(x+c-4).toFixed(1)} ${D} ${(x+c).toFixed(1)} 0 ${b.toFixed(1)} 0H${w}`;
+ return [top+`V64H0Z`,top]}
+function bnDraw(x){const B=document.getElementById("bnav");if(!B)return;const w=B.clientWidth,P=B.querySelectorAll(".bg path"),F=B.querySelector(".fab");
+ B.querySelector(".bg").setAttribute("viewBox",`0 0 ${w} 64`);const p=bnPath(w,x);P[0].setAttribute("d",p[0]);P[1].setAttribute("d",p[1]);F.style.transform=`translateX(${x.toFixed(1)}px)`;B.dataset.x=x.toFixed(1)}
+function bnSync(){const B=document.getElementById("bnav");if(!B)return;const g=bnGrp();if(g!=="resumo"&&g!=="mais")BNL[g]=cur;
+ let el=null;B.querySelectorAll(".bi").forEach(a=>{const on=a.dataset.g===g;if(on){a.setAttribute("aria-current","page");el=a}else a.removeAttribute("aria-current");
+  if(a.tagName==="A"&&a.dataset.g!=="resumo")a.setAttribute("href","?p="+bnTo(a.dataset.g))});
+ const F=B.querySelector(".fab");F.innerHTML=ico(g==="resumo"?"home":g==="pecuaria"?"boi":g==="agricultura"?"agricultura":g==="noticias"?"noticias":"menu");
+ if(!B.clientWidth){BNX=null;return}
+ const r=el.getBoundingClientRect(),t=r.left+r.width/2-B.getBoundingClientRect().left;B.dataset.t=t.toFixed(1);
+ if(BNX==null||matchMedia("(prefers-reduced-motion:reduce)").matches){cancelAnimationFrame(BNA);BNX=t;bnDraw(t);return}
+ const x0=BNX,t0=performance.now();cancelAnimationFrame(BNA);if(Math.abs(t-x0)<.5){bnDraw(t);return}
+ const st=n=>{const k=Math.min(1,(n-t0)/300),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;BNX=x0+(t-x0)*e;bnDraw(BNX);if(k<1)BNA=requestAnimationFrame(st)};BNA=requestAnimationFrame(st)}
+window.addEventListener("resize",()=>{BNX=null;bnSync()});
 function render(){
  document.getElementById("main").innerHTML=cur==="resumo"?resumo():cur==="fontes"?fontes():cur==="alertas"?alertas():cur==="instalar"?instalar():product(NI[cur]);
- drawer();foot();
+ drawer();foot();if(FX32)bnSync();
  const b=document.querySelector("#chips .chip.on");if(b){const C=document.getElementById("chips");C.scrollLeft=b.offsetLeft-C.offsetLeft-(C.clientWidth-b.offsetWidth)/2}
 }
 function gcView(id){try{if(window.goatcounter&&typeof window.goatcounter.count==="function")window.goatcounter.count({path:"/"+id,event:false})}catch(e){}}
@@ -983,7 +1037,8 @@ if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.s
   // abriu o menu: foco no primeiro item
   if(o.dw&&!was.dw&&!o.det&&!o.n){const f=foc(DW)[0];if(f)f.focus()}
   // fechou o menu sem abrir outra camada: foco volta ao botão do menu
-  if(!o.dw&&was.dw&&!w&&!o.det&&!o.n&&lost(DW))MB.focus();
+  if(!o.dw&&was.dw){const q=window.__dwo;window.__dwo=null;if(!w&&!o.det&&!o.n&&lost(DW))(q&&vis(q)?q:MB).focus()}
+  {const bm=document.getElementById("bmais");if(bm)bm.setAttribute("aria-expanded",String(!w&&o.dw))}
   // fechou a notícia: foco volta para onde estava (a notícia tocada)
   if(!o.n&&was.n){const c=top();if(lost(NSH))back(c&&c!==NSH?(c.contains(outN)?outN:foc(c)[0]):outN,c?foc(c)[0]||MB:MB)}
   // fechou o detalhe e o foco ficou perdido (ex.: veio de um item do menu, que agora está inert)
