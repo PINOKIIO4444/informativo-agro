@@ -268,6 +268,7 @@ header h1 .tg{font-size:12.5px;font-weight:500;color:var(--mu)}
 .cfx{margin-top:10px;border:1px solid var(--cfb);border-radius:10px;padding:8px 10px;font-size:13px}
 .cfx summary{cursor:pointer;font-weight:600;color:var(--cfc)}
 .cfx p{margin:6px 0 0;color:var(--mu);line-height:1.45}
+summary:focus-visible,[tabindex]:not([tabindex="-1"]):focus-visible,.di:focus-visible{outline:3px solid var(--gl);outline-offset:2px;border-radius:10px}#drawer :focus-visible{outline-offset:-3px} /* v27: anel de foco do teclado */
 </style>
 </head>
 <body>
@@ -861,5 +862,59 @@ function foot(){document.getElementById("foot").innerHTML=(cur==="fontes"?"":`<a
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js",{scope:"./"}).catch(()=>{});});}
 </script>
 <script data-goatcounter="https://informativo-agro.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+// v27: teclado e foco. Menu fechado fora da ordem do Tab (inert), aria-expanded no botão do menu, foco preso no menu
+// aberto, no detalhe e na notícia; Esc fecha e devolve o foco; o botão de período do gráfico mantém o foco.
+(()=>{
+ const MB=document.getElementById("mbtn"),DET=document.getElementById("det");
+ const FOC='a[href],button:not([disabled]),summary,input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])';
+ const vis=e=>e.getClientRects().length>0&&!e.closest("[inert]")&&!e.closest("details:not([open]) > :not(summary)");
+ const foc=c=>[...c.querySelectorAll(FOC)].filter(vis);
+ const isOpen={dw:()=>!wide()&&DW.classList.contains("on"),det:()=>DET.classList.contains("on"),n:()=>NSH.classList.contains("on")};
+ const top=()=>isOpen.n()?NSH:isOpen.det()?DET:isOpen.dw()?DW:null;   // camada de cima recebe o foco
+ MB.setAttribute("aria-controls","drawer"); MB.setAttribute("aria-haspopup","true");
+ let was={dw:false,det:false,n:false},outN=null,outDet=null;
+ // última posição do foco fora de cada camada (para devolver ao fechar)
+ document.addEventListener("focusin",e=>{const t=e.target;if(!NSH.contains(t))outN=t;if(!DET.contains(t)&&!NSH.contains(t)&&!(isOpen.dw()&&DW.contains(t)))outDet=t},true);
+ const back=(el,fb)=>{const ok=el&&el.isConnected&&vis(el);(ok?el:fb).focus({preventScroll:!ok?false:true})};
+ const lost=c=>{const a=document.activeElement;return !a||a===document.body||c.contains(a)||!!a.closest("[inert]")};
+ function sync(){
+  const w=wide(),o={dw:isOpen.dw(),det:isOpen.det(),n:isOpen.n()};
+  if(w){DW.inert=false;MB.removeAttribute("aria-expanded")}else{DW.inert=!o.dw;MB.setAttribute("aria-expanded",String(o.dw))}
+  NSH.inert=!o.n;NSH.setAttribute("aria-hidden",String(!o.n));
+  if(o.n){const h=NSH.querySelector("#nbody h3");if(h){h.id="ntitle";NSH.setAttribute("aria-labelledby","ntitle");NSH.removeAttribute("aria-label")}}
+  // abriu a notícia: foco no Fechar (openNews tenta antes de o inert sair)
+  if(o.n&&!was.n){const x=NSH.querySelector(".x");if(x)x.focus()}
+  // abriu o menu: foco no primeiro item
+  if(o.dw&&!was.dw&&!o.det&&!o.n){const f=foc(DW)[0];if(f)f.focus()}
+  // fechou o menu sem abrir outra camada: foco volta ao botão do menu
+  if(!o.dw&&was.dw&&!w&&!o.det&&!o.n&&lost(DW))MB.focus();
+  // fechou a notícia: foco volta para onde estava (a notícia tocada)
+  if(!o.n&&was.n){const c=top();if(lost(NSH))back(c&&c!==NSH?(c.contains(outN)?outN:foc(c)[0]):outN,c?foc(c)[0]||MB:MB)}
+  // fechou o detalhe e o foco ficou perdido (ex.: veio de um item do menu, que agora está inert)
+  if(!o.det&&was.det&&!o.n){setTimeout(()=>{if(lost(DET))back(outDet,MB)},0)}
+  was=o;
+ }
+ new MutationObserver(sync).observe(DW,{attributes:true,attributeFilter:["class"]});
+ new MutationObserver(sync).observe(NSH,{attributes:true,attributeFilter:["class"]});
+ new MutationObserver(sync).observe(DET,{attributes:true,attributeFilter:["class"]});
+ matchMedia("(min-width:1024px)").addEventListener("change",sync); sync();
+ // Tab preso na camada aberta (notícia > detalhe > menu)
+ document.addEventListener("keydown",e=>{if(e.key!=="Tab")return;const c=top();if(!c)return;const f=foc(c);if(!f.length){e.preventDefault();return}
+  const a=document.activeElement,i=f.indexOf(a);
+  if(!c.contains(a)||i<0){e.preventDefault();(e.shiftKey?f[f.length-1]:f[0]).focus();return}
+  if(e.shiftKey&&i===0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}},true);
+ // foco que escapa (clique programático, leitor de tela) volta para a camada aberta
+ document.addEventListener("focusin",e=>{const c=top();if(c&&!c.contains(e.target)){const f=foc(c);if(f.length)f[0].focus()}});
+ // detalhe redesenhado (período, sazonal, registros, histórico que chegou): o foco fica no mesmo botão
+ const RD=renderDet;
+ renderDet=function(){const a=document.activeElement;let key=null;
+  if(a&&DET.contains(a)&&a!==DET){const L=[...DET.querySelectorAll(FOC)];key={i:L.indexOf(a),t:a.textContent.trim(),g:a.getAttribute("aria-label")||"",tag:a.tagName}}
+  const r=RD.apply(this,arguments);
+  if(key&&!DET.contains(document.activeElement)){const L=[...DET.querySelectorAll(FOC)],same=x=>x.tagName===key.tag&&x.textContent.trim()===key.t&&(x.getAttribute("aria-label")||"")===key.g;
+   const el=(L[key.i]&&same(L[key.i]))?L[key.i]:L.find(same);if(el)el.focus({preventScroll:true})}
+  return r};
+})();
+</script>
 </body>
 </html>
