@@ -271,6 +271,7 @@ header h1 .tg{font-size:12.5px;font-weight:500;color:var(--mu)}
 summary:focus-visible,[tabindex]:not([tabindex="-1"]):focus-visible,.di:focus-visible{outline:3px solid var(--gl);outline-offset:2px;border-radius:10px}#drawer :focus-visible{outline-offset:-3px} /* v27: anel de foco do teclado */
 .nst{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:22px 14px;color:var(--mu);font-size:14px}.nst b{color:var(--tx);font-weight:600}.rt{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--ln);background:var(--card);color:var(--g2);border-radius:10px;padding:9px 14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}.rt .ico{width:18px;height:18px;color:var(--g2)}.nsk{display:block;padding:12px 14px;border-bottom:1px solid var(--ln)}.nsk i{display:block;height:12px;border-radius:6px;background:var(--ln);margin:6px 0}.nsk i+i{width:45%;height:9px}.hrt{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;justify-content:space-between}@media (prefers-reduced-motion:no-preference){.nsk i{animation:nskp 1.4s ease-in-out infinite}@keyframes nskp{50%{opacity:.45}}}
 .nshare{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:10px;border:1px solid var(--ln);background:var(--card);color:var(--g2);border-radius:12px;padding:11px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit}.nshare .ico{width:18px;height:18px;color:var(--g2)}.ni.hl{background:color-mix(in srgb,var(--gl) 22%,transparent);box-shadow:inset 3px 0 0 var(--gl);transition:background 1.2s ease}.nlg{margin:0 0 10px;padding:10px 12px;border-radius:10px;border:1px solid var(--ln);background:var(--card);color:var(--mu);font-size:13.5px}
+.alpv{margin:14px 2px 4px;font-size:13px;color:var(--mu)}.alpv summary{font-size:13.5px;padding:4px 0}.alpv p{margin:6px 0 0;line-height:1.45}
 </style>
 </head>
 <body>
@@ -673,14 +674,23 @@ function cvars(){const cs=getComputedStyle(document.documentElement),g=(n,d)=>cs
 function sample(h,rl){if(h.length<=MAXPTS)return [h,1];const k=Math.ceil(h.length/MAXPTS),keep=new Set((rl||[]).map(r=>r[0]));
  return [h.filter((z,i)=>i%k===0||i===h.length-1||keep.has(z[0])),k]}
 let CX=null;
+/*v30: escala do gráfico com passos redondos (1-2-2,5-5), 4 a 6 marcas; datas curtas que não se sobrepõem*/
+function niceY(mn,mx){const raw=(mx-mn)/4,e=Math.pow(10,Math.floor(Math.log10(raw))),f=raw/e,m=f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10,st=m*e;
+ const lo=Math.floor(mn/st+1e-9)*st,hi=Math.ceil(mx/st-1e-9)*st,t=[];for(let v=lo;v<=hi+st/2;v+=st)t.push(+v.toFixed(10));
+ return {lo,hi,t,dec:Math.max(0,Math.min(4,-Math.floor(Math.log10(st)+1e-9)+(m===2.5?1:0)))}}
+function xLab(h){const a=h[0][0],b=h[h.length-1][0],span=(new Date(b)-new Date(a))/864e5,mo=CX&&CX.freq==="mensal"||span>120;
+ const f=s=>mo?MES[+s.slice(5,7)-1]+"/"+s.slice(2,4):s.slice(8,10)+"/"+s.slice(5,7),w=(mo?6:5)*FZ()*.6+10,n=h.length;
+ for(let k=Math.min(4,n);k>=2;k--){if((CW-PL-PR)/(k-1)>=w){const out=[];for(let j=0;j<k;j++){const i=Math.round(j*(n-1)/(k-1)),t=f(h[i][0]);if(out.length&&out[out.length-1][1]===t){if(j===k-1)out[out.length-1]=[i,t,"end"];continue}out.push([i,t,j===0?"start":j===k-1?"end":"middle"])}return out}}
+ return [[0,f(a),"start"],[n-1,f(b),"end"]]}
 function chart(h,rl,dec){rl=rl||[];CH=null;if(h.length<2)return "<div class='note'>Histórico insuficiente.</div>";
- const V=cvars(),p=h.map(x=>x[1]),mn=Math.min(...p),mx=Math.max(...p),fl=mx===mn,lo=fl?mn-1:mn,r=fl?2:(mx-mn);
- const X=i=>PL+i/(h.length-1)*(CW-PL-PR),Y=v=>PT+(1-(v-lo)/r)*(CHH-PT-PB);
+ const V=cvars(),p=h.map(x=>x[1]),mn=Math.min(...p),mx=Math.max(...p),fl=mx===mn,ny=fl?null:niceY(mn,mx),lo=fl?mn-1:ny.lo,r=fl?2:(ny.hi-ny.lo),pt=PT+10,fz=FZ().toFixed(1);
+ const X=i=>PL+i/(h.length-1)*(CW-PL-PR),Y=v=>pt+(1-(v-lo)/r)*(CHH-pt-PB);
  const pts=h.map((x,i)=>`${X(i).toFixed(1)},${Y(x[1]).toFixed(1)}`).join(" ");
- let g="";(fl?[mn]:[mn,(mn+mx)/2,mx]).forEach(v=>{g+=`<line x1="${PL}" x2="${CW-PR}" y1="${Y(v)}" y2="${Y(v)}" stroke="${V.gr}"/><text x="${CW-PR+6}" y="${Y(v)+4}" font-size="${FZ().toFixed(1)}" fill="${V.mu}">${fmt(v,v>=1000?0:2)}</text>`});
- rl.forEach(r=>{const i=h.findIndex(z=>z[0]===r[0]);if(i>0){const x=X(i).toFixed(1);g+=`<line x1="${x}" x2="${x}" y1="${PT}" y2="${CHH-PB}" stroke="#c9a227" stroke-dasharray="4 3"/>`+(rl.length<=3?`<text x="${x}" y="${PT+9}" font-size="10" fill="#c9a227" text-anchor="middle">troca</text>`:"")}});
- g+=`<text x="${PL}" y="${CHH-6}" font-size="${FZ().toFixed(1)}" fill="${V.mu}">${cfd(h[0][0])}</text><text x="${CW-PR}" y="${CHH-6}" font-size="${FZ().toFixed(1)}" fill="${V.mu}" text-anchor="end">${cfd(h[h.length-1][0])}</text>`;
- CH={t:"l",h,X,Y,dec};
+ let g=CX?`<text x="${CW-2}" y="${PT-2}" font-size="${(FZ()*.85).toFixed(1)}" fill="${V.mu}" text-anchor="end">${esc(cuP(cu(CX))+cuS(cu(CX)))}</text>`:"";
+ (fl?[mn]:ny.t).forEach(v=>{g+=`<line x1="${PL}" x2="${CW-PR}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" stroke="${V.gr}"/><text x="${CW-PR+6}" y="${(Y(v)+4).toFixed(1)}" font-size="${fz}" fill="${V.mu}">${fmt(v,fl?(v>=1000?0:2):ny.dec)}</text>`});
+ rl.forEach(r=>{const i=h.findIndex(z=>z[0]===r[0]);if(i>0){const x=X(i).toFixed(1);g+=`<line x1="${x}" x2="${x}" y1="${pt}" y2="${CHH-PB}" stroke="#c9a227" stroke-dasharray="4 3"/>`+(rl.length<=3?`<text x="${x}" y="${pt+9}" font-size="10" fill="#c9a227" text-anchor="middle">troca</text>`:"")}});
+ xLab(h).forEach(([i,t,a])=>{g+=`<text class="xl" x="${X(i).toFixed(1)}" y="${CHH-6}" font-size="${fz}" fill="${V.mu}" text-anchor="${a}">${t}</text>`});
+ CH={t:"l",h,X,Y,dec,pt};
  return `<svg viewBox="0 0 ${CW} ${CHH}" role="img" aria-label="Gráfico de ${fd(h[0][0])} a ${fd(h[h.length-1][0])}. Toque ou passe o mouse para ver valor e data">${g}<polygon points="${X(0)},${CHH-PB} ${pts} ${X(h.length-1)},${CHH-PB}" fill="${V.c}" opacity=".08"/><polyline points="${pts}" fill="none" stroke="${V.c}" stroke-width="2.2" stroke-linejoin="round"/><g class="xh"></g></svg>`}
 const doy=s=>(Date.UTC(+s.slice(0,4),+s.slice(5,7)-1,+s.slice(8,10))-Date.UTC(+s.slice(0,4),0,1))/864e5;
 function sazYears(full){const Y0=+full[full.length-1][0].slice(0,4),out=[];
@@ -702,7 +712,7 @@ function ptr(e){if(!CH)return;if(e.type==="pointermove"&&e.pointerType!=="mouse"
   CH.yrs.forEach(([y,p],i)=>{let b=null,bd=1e9;p.forEach(q=>{const d=Math.abs(q[0]-t);if(d<bd){bd=d;b=q}});
    if(b&&bd<=6){dots+=`<circle cx="${CH.X(b[0])}" cy="${CH.Y(b[1])}" r="4" fill="${CH.col(i)}" stroke="${V.card}" stroke-width="2"/>`;html+=`<div><i style="background:${CH.col(i)}"></i>${y}: <b>${CX?mv(b[1],CH.dec,CX,1):fmt(b[1],CH.dec)}</b> <span>${fds(b[2])}</span></div>`}});
   if(!html)html=`<span>sem cotação nesta época</span>`}
- xh.innerHTML=`<line x1="${px}" x2="${px}" y1="${PT}" y2="${CHH-PB}" stroke="${V.mu}" stroke-width="1" stroke-dasharray="3 3"/>`+dots;
+ xh.innerHTML=`<line x1="${px}" x2="${px}" y1="${CH.pt||PT}" y2="${CHH-PB}" stroke="${V.mu}" stroke-width="1" stroke-dasharray="3 3"/>`+dots;
  tip.innerHTML=html;tip.hidden=false;tip.style.left=Math.max(18,Math.min(82,px/CW*100))+"%"}
 function ptrOut(e){if(e.pointerType!=="mouse")return;const box=e.currentTarget,t=box.querySelector(".tip"),x=box.querySelector(".xh");if(t)t.hidden=true;if(x)x.innerHTML=""}
 function renderDet(){const x=I[dk];CX=x;document.getElementById("dtitle").textContent=x.name;loadHist(dk);
@@ -797,6 +807,7 @@ const u8=b=>{const p="=".repeat((4-b.length%4)%4),r=atob((b+p).replace(/-/g,"+")
 function alertas(){const A=(u,t)=>`<a href="${u}" target="_blank" rel="noopener">${t} ↗</a>`;
  let h=`<div class="crumb"><div class="ttl">${ico("alerta","tt")}Alertas no celular</div></div><section class="al2" aria-live="polite"><div class="bd" id="alst">Verificando este aparelho…</div></section>`;
  h+=`<h2>Quando chega</h2><div class="list"><div class="note" style="border:0">Segunda a sexta, no máximo duas vezes por dia: <b>às ${CVH}</b>, um lembrete para abrir o AgroN, e <b>depois da atualização das 19h30</b>, avisando que as cotações do dia chegaram. Fins de semana e feriados nacionais: nada. Tocar abre o Resumo.</div></div>`;
+ h+=`<details class="nsrc alpv"><summary>Privacidade</summary><p>Guardamos só o endereço de notificação deste aparelho (com as chaves que cifram os avisos) e a data do cadastro. Desativar apaga o cadastro. Visitas ao site são contadas sem cookies (GoatCounter).</p></details>`;
  setTimeout(alInit,0);return h}
 async function alInit(){const E=document.getElementById("alst");if(!E)return;
  if(!("serviceWorker" in navigator)||!("PushManager" in window)||!("Notification" in window)){
