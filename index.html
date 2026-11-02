@@ -2,6 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://agron-alertas.pinokiio4444.workers.dev https://informativo-agro.goatcounter.com; img-src 'self' data: https://informativo-agro.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1E8C47" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121814" media="(prefers-color-scheme: dark)">
@@ -273,7 +275,7 @@ header h1,header .d{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /*v18: contraste (verde de alta e botão ativo) e subtítulo do nome*/
 :root{--up:#13703a;--gon:#1f7a43}
 :root[data-theme=dark]{--up:#5fd08a}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--up:#5fd08a}}
-.theme button.on,.chip.on,.sazb.on{background:var(--gon);border-color:var(--gon)}.ufs button.on{background:var(--gon);border-color:var(--gon)}#nsh .go{background:var(--gon)}
+.theme button.on,.chip.on,.sazb.on{background:var(--gon);border-color:var(--gon)}.ufs button.on{background:var(--gon);border-color:var(--gon)}#nsh .go{background:var(--gon)}#nsh .go.off{opacity:.55;cursor:default}
 header h1 .tg{font-size:12.5px;font-weight:500;color:var(--mu)}
 .cft{display:block;margin-top:3px;font-size:10.5px;font-weight:600;color:var(--cfc);background:var(--cfb);border-radius:999px;padding:1px 7px;white-space:nowrap;width:max-content;margin-left:auto}
 .cft.in{display:inline;margin:0;padding:1px 7px}
@@ -616,6 +618,7 @@ function product(it){
 let NEWS=(DATA.news&&DATA.news.items)?DATA.news:{updated:null,items:[]};
 const NCAT={agro:"Agro",mercado:"Mercado e negócios",politica:"Política"},NTAG={agro:"Agro",mercado:"Mercado",politica:"Política"};
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+const hs=u=>{u=String(u==null?"":u).trim();return /^https:\/\/[^\s"'<>\\]+$/i.test(u)?u:""};   // v37: só links https:// (notícias e fontes)
 const dkey=d=>d.toLocaleDateString("sv-SE",{timeZone:"America/Sao_Paulo"});
 function when(p){const d=new Date(p),n=new Date(),hm=d.toLocaleTimeString("pt-BR",{timeZone:"America/Sao_Paulo",hour:"2-digit",minute:"2-digit"});
  const m=Math.round((n-d)/6e4);if(m>=0&&m<60)return m<=1?"agora":`há ${m} min`;
@@ -653,9 +656,9 @@ const NOV=document.getElementById("nov"),NSH=document.getElementById("nsh");
 function openNews(i){const x=NEWS.items[i];if(!x)return;
  document.getElementById("nbody").innerHTML=`<span class="tag ${x.c}">${esc(x.b&&NSUB()[x.b]?NCAT[x.c]+" · "+NSUB()[x.b]:NCAT[x.c])}</span><h3>${esc(x.t)}</h3>`+(x.l&&x.to?`<div class="orig">Original em inglês: “${esc(x.to)}”</div>`:"")+`<div class="m"><b>${esc(x.s)}</b> · ${full(x.p)}</div>`+
  (x.r?`<div class="sl">Resumo</div><div class="sm">${esc(x.r)}</div>`:"")+
- `<a class="go" href="${esc(x.u)}" target="_blank" rel="noopener noreferrer">Ler na íntegra no ${esc(x.s)}${x.l?" (em inglês)":""} ↗</a>`+
+ (hs(x.u)?`<a class="go" href="${esc(hs(x.u))}" target="_blank" rel="noopener noreferrer">Ler na íntegra no ${esc(x.s)}${x.l?" (em inglês)":""} ↗</a>`:`<span class="go off" aria-disabled="true">Link original indisponível</span>`)+
  `<button class="nshare" type="button" onclick="shareNews(${i},this)">${ico("link")}<span>${navigator.share?"Compartilhar":"Copiar link"}</span></button><span class="sr" role="status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></span>`+
- (x.o&&x.o.length?`<div class="tb">Também em: ${x.o.map(o=>o&&o.u?`<a href="${esc(o.u)}" target="_blank" rel="noopener noreferrer">${esc(o.s)}</a>`:esc(o&&o.s||o)).join(", ")}</div>`:"")+
+ (x.o&&x.o.length?`<div class="tb">Também em: ${x.o.map(o=>o&&hs(o.u)?`<a href="${esc(hs(o.u))}" target="_blank" rel="noopener noreferrer">${esc(o.s)}</a>`:esc(o&&o.s||o)).join(", ")}</div>`:"")+
  `<div class="disc">${x.r?"Resumo escrito pelo Informativo com base no texto publicado pelo veículo. ":""}A matéria completa é do ${esc(x.s)} e abre no site original.</div>`;
  closeDrawer();NSH.scrollTop=0;NOV.classList.add("on");NSH.classList.add("on");document.body.style.overflow="hidden";{const c=HS();if(c.n!==i&&c.ni!==nid(x.u))hpush({p:cur,n:i,ni:nid(x.u)},nURL35(x))}NSH.querySelector(".x").focus()}
 function shareNews(i,b){const x=NEWS.items[i];if(!x)return;const url=nlink(x),lb=b.querySelector("span"),st=b.nextElementSibling;
@@ -850,7 +853,7 @@ function renderDet0(){const x=I[dk];CX=x;document.getElementById("dtitle").textC
  if(saz){const yrs=sazYears(hd);ch=sazChart(yrs,x.dec);
   legend=`<div class="leg">`+yrs.map(([y],i)=>`<span><i style="background:${CH.col(i)}"></i>${y}${i===0?" (atual)":""}</span>`).join("")+`</div><div class="note">Cada linha é um ano, do 1º de janeiro a 31 de dezembro, com as cotações publicadas. Toque no gráfico para comparar a mesma época.</div>`}
  else{const [smp,k]=sample(sub,rl);ch=chart(smp,rl,x.dec);if(k>1)extra=`<div class="note">Período longo: o gráfico desenha 1 a cada ${k} registros (valores reais); mínimo e máximo abaixo usam todos.</div>`}
- document.getElementById("dbody").innerHTML=`<div style="color:var(--mu);font-size:13.5px">${subX(x,1)} · ${ud(x)}${cub(x)}${ktag(x)}${x.cr&&x.cr[2]?` · <a class="dsl" href="${esc(x.cr[2])}" target="_blank" rel="noopener">${esc(x.cr[0])} ↗</a>`:""}</div>
+ document.getElementById("dbody").innerHTML=`<div style="color:var(--mu);font-size:13.5px">${subX(x,1)} · ${ud(x)}${cub(x)}${ktag(x)}${x.cr&&hs(x.cr[2])?` · <a class="dsl" href="${esc(hs(x.cr[2]))}" target="_blank" rel="noopener">${esc(x.cr[0])} ↗</a>`:""}</div>
  <div class="big">${mv(x.v,x.dec,x)}</div><div>${pl0(x)} <span style="color:var(--mu);font-size:13px">${x.cf?'<span class="cft in">em conferência</span> · ':x.gd&&x.chg!=null?"desde "+fds(x.gd)+" · ":""}${x.freq==="mensal"?"ref.":x.freq==="semanal"?"semana até":"em"} ${fdm(x,x.d)}${x.st?' <span class="late">(atrasado)</span>':""}${x.pv!=null?` · anterior ${mt(x.pv,x.dec,x,1)} (${fdm(x,x.pd,1)}${x.pc&&x.pc!==x.contract?", "+x.pc:""})`:""}</span></div>${x.cf?`<details class="cfx"><summary>Em conferência: por que a variação não aparece</summary>${x.cf.map(m=>`<p>${esc(m)}</p>`).join("")}<p>O preço publicado foi mantido. A variação volta quando os números da fonte baterem; até lá o item fica fora dos alertas.</p></details>`:""}${roll35(x)?`<div class="roll"><b>Troca de contrato em ${fds(x.d)}:</b> ${esc(x.pc)} → ${esc(x.contract)}. O preço e a variação do dia são os publicados para ${esc(x.contract)}; o anterior (${fdm(x,x.pd,1)}) é do ${esc(x.pc)}.</div>`:""}
  <div class="seg"${saz?' style="opacity:.45"':""}>${PER.map(([d,l])=>`<button class="${d===per&&!saz?"on":""}" aria-pressed="${d===per&&!saz}" onclick="per=${d};saz=false;regN=30;renderDet()">${l}</button>`).join("")}</div>
  ${canSaz?`<button class="sazb ${saz?"on":""}" aria-pressed="${saz}" onclick="saz=!saz;renderDet()">${ico("ibov")} ${saz?"Voltar ao gráfico normal":"Sazonal: comparar com anos anteriores"}</button>`:""}
@@ -1072,7 +1075,7 @@ function fontes(){const A=(u,t)=>`<a href="${u}" target="_blank" rel="noopener">
 function foot(){document.getElementById("foot").innerHTML=(cur==="fontes"?"":`<a class="fl" href="?p=fontes" onclick="return nav(event,()=>go('fontes'))">${ico("fontes")}Fontes</a>`)+`<span class="fu">${upd()}</span>`}
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js",{scope:"./"}).catch(()=>{});});}
 </script>
-<script data-goatcounter="https://informativo-agro.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://informativo-agro.goatcounter.com/count" async src="https://gc.zgo.at/count.v4.js" crossorigin="anonymous" integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+"></script>
 <script>
 // v27: teclado e foco. Menu fechado fora da ordem do Tab (inert), aria-expanded no botão do menu, foco preso no menu
 // aberto, no detalhe e na notícia; Esc fecha e devolve o foco; o botão de período do gráfico mantém o foco.

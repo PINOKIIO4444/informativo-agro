@@ -1,0 +1,15 @@
+# AgroN (v37): nada disto pode ir para o repositório público do site
+*.xlsx
+*.xls
+*.csv.bak
+secrets/
+*.pem
+*.key
+*.bak*
+*.tgz
+*.tar.gz
+*.zip
+*.tmp
+.env
+.env.*
+.dev.vars
