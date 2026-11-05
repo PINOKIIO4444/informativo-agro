@@ -532,6 +532,21 @@ html.fx49 .dwf .tr49{display:block;font-size:12.5px;color:var(--mu);margin-top:8
  html.fx49 .chf49::before{left:0;background:linear-gradient(to right,var(--bg) 0%,var(--bg) 28%,transparent 92%)}
  html.fx49 .chf49::after{right:0;background:linear-gradient(to left,var(--bg) 0%,var(--bg) 28%,transparent 92%)}
  html.fx49 .chf49.l::before,html.fx49 .chf49.r::after{opacity:1}
+ /* v51 chip UI: alvos ~42px + verde suave (só chips; resto do app intacto) */
+ html.fx49 #main nav.chips .chip,html.fx49 .crumb nav.chips .chip{
+  min-height:42px;padding:10px 16px;font-size:14px;font-weight:650;line-height:1.2;
+  display:inline-flex;align-items:center;box-sizing:border-box;
+  border:1.5px solid #17703C;color:#17703C;background:rgba(23,112,60,.06);
+  -webkit-tap-highlight-color:transparent}
+ html.fx49 #main nav.chips .chip.on,html.fx49 .crumb nav.chips .chip.on,
+ html.fx49 #main nav.chips .chip[aria-current="page"],html.fx49 .crumb nav.chips .chip[aria-current="page"]{
+  background:#17703C;border-color:#17703C;color:#fff}
+ html.fx49 #main nav.chips.sub .chip{min-height:40px;padding:8px 14px;font-size:13.5px}
+ html.fx49[data-theme=dark] #main nav.chips .chip,html.fx49[data-theme=dark] .crumb nav.chips .chip{
+  border-color:#7fd19b;color:#7fd19b;background:rgba(127,209,155,.12)}
+ html.fx49[data-theme=dark] #main nav.chips .chip.on,html.fx49[data-theme=dark] .crumb nav.chips .chip.on,
+ html.fx49[data-theme=dark] #main nav.chips .chip[aria-current="page"]{
+  background:#2E9E57;border-color:#2E9E57;color:#fff}
  /* scrim acima da barra: o círculo não “come” a última linha visível no meio da rolagem */
  html.fx49 #bnav::before{content:"";position:absolute;left:-12px;right:-12px;bottom:100%;height:28px;pointer-events:none;
   background:linear-gradient(to top,var(--bg) 10%,transparent);z-index:0}
@@ -1400,16 +1415,20 @@ function bnSync(){const B=document.getElementById("bnav");if(!B)return;const g=b
  const st=n=>{const k=Math.min(1,(n-t0)/300),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;BNX=x0+(t-x0)*e;bnDraw(BNX);if(k<1)BNA=requestAnimationFrame(st)};BNA=requestAnimationFrame(st)}
 window.addEventListener("resize",()=>{BNX=null;bnSync()});
 function render(){
+ /* v51: guarda scroll dos chips antes do re-render (não volta pro início ao trocar filtro) */
+ const chipY={};document.querySelectorAll("#main nav.chips").forEach((C,i)=>{chipY[C.getAttribute("aria-label")||C.id||("c"+i)]=C.scrollLeft});
  document.getElementById("main").innerHTML=cur==="resumo"?resumo():cur==="fontes"?fontes():cur==="alertas"?alertas():cur==="instalar"?instalar():product(NI[cur]);
  drawer();foot();if(FX32)bnSync();
- const b=document.querySelector("#chips .chip.on");if(b){const C=document.getElementById("chips");C.scrollLeft=b.offsetLeft-C.offsetLeft-(C.clientWidth-b.offsetWidth)/2}
  if(FX48){const t=document.querySelector("#main .crumb .ttl");if(t&&t.tagName!=="H1"){const h1=document.createElement("h1");h1.className=t.className;h1.innerHTML=t.innerHTML;t.replaceWith(h1)}
-  document.querySelectorAll("#main nav.chips").forEach(C=>{
+  document.querySelectorAll("#main nav.chips").forEach((C,i)=>{
    let w=C.parentElement; if(!w||!w.classList.contains("chf49")){w=document.createElement("div");w.className="chf49";C.parentNode.insertBefore(w,C);w.appendChild(C)}
+   const k=C.getAttribute("aria-label")||C.id||("c"+i); if(chipY[k]!=null)C.scrollLeft=chipY[k];
    const f=()=>{const l=C.scrollLeft>2,r=C.scrollLeft+C.clientWidth<C.scrollWidth-3;C.classList.toggle("end48",!r);w.classList.toggle("l",l);w.classList.toggle("r",r)};
    f();C.addEventListener("scroll",f,{passive:true});
    try{new ResizeObserver(f).observe(C)}catch(e){}
   })}
+ /* só aproxima o chip ativo se estiver fora da área visível — não centraliza / não zera */
+ document.querySelectorAll("#main nav.chips .chip.on").forEach(b=>{try{b.scrollIntoView({inline:"nearest",block:"nearest",behavior:"auto"})}catch(e){}});
 }
 function gcView(id){try{if(window.goatcounter&&typeof window.goatcounter.count==="function")window.goatcounter.count({path:"/"+id,event:false})}catch(e){}}
 // v15: histórico do app — o botão Voltar do celular fecha detalhe/menu/notícia e volta de página até o Resumo; só sai do app no Resumo
