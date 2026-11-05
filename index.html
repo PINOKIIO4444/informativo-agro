@@ -643,6 +643,66 @@ html.fx49 .chl48{display:none} /* sem rótulo Editoria/Tema — uma fileira só 
   .mlpulse::before,.mlpulse::after{animation:none;opacity:.4}
   .mlpulse::after{opacity:.25}
 }
+/* v53.1 prévia — card de permissão (push) após 2 min */
+.pmov{position:fixed;inset:0;z-index:63;background:rgba(15,20,16,.4);display:none}
+.pmov.on{display:block}
+.pmc{position:fixed;left:12px;right:12px;top:50%;transform:translateY(-50%);z-index:64;background:var(--card);color:var(--tx);border:1px solid var(--ln);border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.22);padding:16px 16px 18px;max-width:420px;margin:0 auto;display:none;outline:none}
+.pmc.on{display:block}
+.pmc .x{position:absolute;right:10px;top:10px;width:36px;height:36px;border-radius:50%;border:1px solid var(--ln);background:var(--card);color:var(--tx);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pmc h3{font-size:16.5px;margin:2px 44px 8px 0;color:var(--tx);line-height:1.35}
+.pmc .pmn{font-size:14px;line-height:1.45;color:var(--tx);margin:0 0 8px}
+.pmc .pmp{font-size:12.5px;line-height:1.4;color:var(--mu);margin:0 0 14px}
+.pmc .pma{display:flex;gap:8px;flex-wrap:wrap}
+.pmc .pma button{flex:1;min-height:44px;min-width:120px;border-radius:12px;font:inherit;font-weight:700;font-size:14.5px;cursor:pointer;padding:10px 14px}
+.pmc .pmgo{border:0;background:#17703C;color:#fff}
+.pmc .pmgo:disabled{opacity:.55;cursor:default}
+.pmc .pmno{border:1px solid var(--ln);background:var(--card);color:var(--tx)}
+
+.pmc .pmface{display:flex;justify-content:center;margin:0 0 8px;min-height:84px;align-items:center}
+.pmc .pmbot{display:block;transform-origin:50% 70%;overflow:visible}
+.pmc .pmf-gaze{transform-origin:40px 51px}
+.pmc:not(.happy) .pmf-gaze{animation:pmlook 3.6s ease-in-out infinite}
+.pmc:not(.happy) .pmbot{animation:pmidle 3.6s ease-in-out infinite}
+.pmc .pmf-pupil{transition:cx .25s ease}
+.pmc.happy .pmbot{animation:pmbounce .75s cubic-bezier(.34,1.56,.64,1)}
+.pmc.happy .pmf-body{filter:brightness(1.08)}
+.pmc.happy .pmf-mouth{stroke-width:2.8}
+.pmc.happy .pmf-pupil{/* closed-happy eyes via scale */}
+.pmc.happy .pmf-eye{animation:pmwink .5s ease forwards; transform-box:fill-box; transform-origin:center}
+.pmc.happy .pmf-pupil{opacity:0}
+.pmc.happy .pmf-spark{opacity:1;animation:pmspark .7s ease}
+.pmc .pmok{display:none;text-align:center;font-size:14.5px;font-weight:650;color:#17703C;margin:0 0 4px}
+.pmc.happy .pmok{display:block}
+.pmc.happy .pmn,.pmc.happy #pmct,.pmc.happy #pma{display:none}
+.pmc.happy .x{display:none}
+@media(prefers-reduced-motion:reduce){
+  .pmc:not(.happy) .pmf-gaze,.pmc:not(.happy) .pmbot,.pmc.happy .pmbot,.pmc.happy .pmf-eye,.pmc.happy .pmf-spark{animation:none}
+}
+@keyframes pmlook{
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-3.5px)}
+  50%{transform:translateX(0)}
+  70%{transform:translateX(3.5px)}
+  85%{transform:translateX(0)}
+}
+@keyframes pmidle{
+  0%,100%{transform:rotate(0deg) translateY(0)}
+  20%{transform:rotate(-4deg) translateY(1px)}
+  50%{transform:rotate(0deg) translateY(0)}
+  70%{transform:rotate(4deg) translateY(1px)}
+  85%{transform:rotate(0deg) translateY(0)}
+}
+@keyframes pmbounce{0%{transform:scale(.9) rotate(0)}45%{transform:scale(1.1) rotate(-6deg)}70%{transform:scale(1.05) rotate(4deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes pmwink{0%{transform:scaleY(1)}55%{transform:scaleY(.15)}100%{transform:scaleY(.2)}}
+@keyframes pmspark{0%{opacity:0;transform:scale(.5)}45%{opacity:1;transform:scale(1.2)}100%{opacity:1;transform:scale(1)}}
+html.fx49[data-theme=dark] .pmc .pmf-body{fill:#1f6b3f}
+html.fx49[data-theme=dark] .pmc .pmok{color:#7fd19b}
+
+
+@media(min-width:721px){
+ .pmc{left:50%;right:auto;width:min(420px,calc(100vw - 32px));transform:translate(-50%,-50%)}
+}
+
 
 #mbtn.fb51{/* desktop wide: logo abre feedback */}
 #fbp{position:fixed;z-index:56;display:none;max-width:min(280px,calc(100vw - 24px));background:var(--card);color:var(--tx);border:1px solid var(--ln);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.18);padding:12px 14px 12px;font-size:14px;line-height:1.4}
@@ -717,6 +777,42 @@ html.fx49[data-theme=dark] #fbs .fbok b{color:#7fd19b}
 <div id="iov" onclick="closeInst()"></div>
 <div id="ish" role="dialog" aria-modal="true" aria-labelledby="isht" tabindex="-1"><button class="x" aria-label="Fechar" onclick="closeInst()"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button><div id="ibody"></div><svg class="iar" viewBox="0 0 24 44" aria-hidden="true"><path d="M12 3v36M4 31l8 8 8-8" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 <div id="fbp" role="dialog" aria-label="Convite de feedback" hidden><p>O que está achando? Dê seu feedback</p><button type="button" class="fbcta" onclick="fbOpenForm()">Escrever opinião</button></div>
+
+<!-- v53.1 prévia: convite de permissão (push) após 2 min -->
+<div id="pmov" class="pmov" hidden aria-hidden="true"></div>
+<div id="pmc" class="pmc" role="dialog" aria-modal="true" aria-labelledby="pmct" hidden>
+  <button type="button" class="x" onclick="pmClose()" aria-label="Fechar">✕</button>
+  <div class="pmface" id="pmface" aria-hidden="true">
+    <svg class="pmbot" viewBox="0 0 80 80" width="84" height="84" focusable="false">
+      <!-- corpo triângulo arredondado (estilo Grok Bot) -->
+      <path class="pmf-body" d="M40 6
+        C44 6 68 58 68 62
+        C68 70 56 74 40 74
+        C24 74 12 70 12 62
+        C12 58 36 6 40 6Z" fill="#17703C"/>
+      <path class="pmf-shine" d="M40 16 L54 58" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="5" stroke-linecap="round"/>
+      <g class="pmf-gaze">
+        <ellipse class="pmf-eye pmf-l" cx="30" cy="50" rx="5.4" ry="6" fill="#F4F7F2"/>
+        <ellipse class="pmf-eye pmf-r" cx="50" cy="50" rx="5.4" ry="6" fill="#F4F7F2"/>
+        <circle class="pmf-pupil pmf-pl" cx="30" cy="51" r="2.4" fill="#0E3D22"/>
+        <circle class="pmf-pupil pmf-pr" cx="50" cy="51" r="2.4" fill="#0E3D22"/>
+      </g>
+      <path class="pmf-mouth" d="M32 60 Q40 64 48 60" fill="none" stroke="#F4F7F2" stroke-width="2.5" stroke-linecap="round"/>
+      <g class="pmf-spark" opacity="0">
+        <path d="M40 4 l1.1 3.2 3.2 1.1-3.2 1.1L40 12.6l-1.1-3.2-3.2-1.1 3.2-1.1z" fill="#7fd19b"/>
+        <path d="M62 22 l.85 2.4 2.4.85-2.4.85L62 28.5l-.85-2.4-2.4-.85 2.4-.85z" fill="#7fd19b"/>
+        <path d="M18 22 l.85 2.4 2.4.85-2.4.85L18 28.5l-.85-2.4-2.4-.85 2.4-.85z" fill="#7fd19b"/>
+      </g>
+    </svg>
+  </div>
+  <h3 id="pmct">Quer receber informações do Agronegócio?</h3>
+  <p class="pmn">Clique em <b>Sim</b> e fique informado todos os dias.</p>
+  <p class="pmok" id="pmok" hidden>Oba! Vamos manter você por dentro.</p>
+  <div class="pma" id="pma">
+    <button type="button" class="pmgo" id="pmgo" onclick="pmActivate(this)">Sim</button>
+    <button type="button" class="pmno" onclick="pmLater()">Agora não</button>
+  </div>
+</div>
 <div id="fbov" onclick="fbClose()" hidden></div>
 <div id="fbs" role="dialog" aria-modal="true" aria-labelledby="fbst" tabindex="-1" hidden>
  <button type="button" class="x" aria-label="Fechar" onclick="fbClose()"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
@@ -1962,7 +2058,7 @@ if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.s
   return r};
 })();
 
-/* v52 feedback anônimo — puff no logo + form anônimo (stub localStorage; Worker /v1/feedback depois) */
+/* v54 feedback anônimo — puff + form; POST RX/v1/feedback + fallback localStorage */
 const FBP=()=>document.getElementById("fbp"),FBS=()=>document.getElementById("fbs"),FBOV=()=>document.getElementById("fbov"),FBTX=()=>document.getElementById("fbtx");
 function fbAnchor(){return document.getElementById("mlogo")||document.getElementById("mbtn")}
 function fbAnchorBox(){const a=fbAnchor(); if(!a)return null; const img=a.querySelector("img"); return img||a}
@@ -1994,9 +2090,14 @@ async function fbSend(){
   const t=FBTX(), send=document.getElementById("fbsend"); if(!t)return;
   const msg=(t.value||"").trim(); if(!msg){t.focus();return}
   if(send)send.disabled=true;
-  const payload={t:Date.now(),tz:"America/Sao_Paulo",msg:msg.slice(0,2000),ua:navigator.userAgent.slice(0,120),v:"fb53"};
+  const payload={t:Date.now(),tz:"America/Sao_Paulo",msg:msg.slice(0,2000),ua:navigator.userAgent.slice(0,120),v:"fb54"};
   try{const arr=JSON.parse(localStorage.getItem("agron_fb")||"[]"); arr.push(payload); localStorage.setItem("agron_fb",JSON.stringify(arr.slice(-40)))}catch(e){}
-  /* stub: futuro POST no Worker — ex. await fetch((window.__RX||"")+"/v1/feedback",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(payload)}) */
+  try{
+    const base=(typeof RX==="string"&&RX)?RX:"";
+    if(base){
+      await fetch(base+"/v1/feedback",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(payload),credentials:"omit",cache:"no-store",mode:"cors"});
+    }
+  }catch(e){}
   const s=FBS(); if(s)s.classList.add("thanks");
 }
 function fbBind(){
@@ -2010,6 +2111,85 @@ function fbBind(){
   document.addEventListener("keydown",e=>{if(e.key==="Escape")fbClose()});
 }
 fbBind();
+
+/* v54 — convite push após 2 min (sem geolocalização; requestPermission só no toque) */
+const PM_DELAY = (typeof window.__PERM_DELAY_MS === "number") ? window.__PERM_DELAY_MS : 120000;
+const PM_DAY_KEY = "agron_pm_day", PM_SESS_KEY = "agron_pm_sess";
+function pmIsStandalone(){
+  try{return !!(matchMedia("(display-mode: standalone)").matches || matchMedia("(display-mode: fullscreen)").matches || matchMedia("(display-mode: minimal-ui)").matches || navigator.standalone === true)}catch(e){return !!(navigator.standalone===true)}
+}
+function pmToday(){
+  try{return new Date().toLocaleDateString("en-CA",{timeZone:"America/Sao_Paulo"})}catch(e){return new Date().toISOString().slice(0,10)}
+}
+function pmShouldSchedule(){
+  if(!("Notification" in window)) return false;
+  if(Notification.permission === "granted" || Notification.permission === "denied") return false;
+  if(pmIsStandalone()){
+    try{if(localStorage.getItem(PM_DAY_KEY) === pmToday()) return false}catch(e){}
+    return true;
+  }
+  try{if(sessionStorage.getItem(PM_SESS_KEY) === "1") return false}catch(e){}
+  return true;
+}
+function pmMarkSeen(){
+  if(pmIsStandalone()){
+    try{localStorage.setItem(PM_DAY_KEY, pmToday())}catch(e){}
+  }else{
+    try{sessionStorage.setItem(PM_SESS_KEY, "1")}catch(e){}
+  }
+}
+function pmEls(){return {c:document.getElementById("pmc"), o:document.getElementById("pmov")}}
+function pmShow(){
+  if(!pmShouldSchedule() && !(window.__PERM_FORCE__)) return;
+  const {c,o}=pmEls(); if(!c||!o||c.classList.contains("on")) return;
+  pmMarkSeen();
+  c.classList.remove("happy"); const ok=document.getElementById("pmok"); if(ok) ok.hidden=true; const m=c.querySelector(".pmf-mouth"); if(m) m.setAttribute("d","M32 60 Q40 64 48 60");
+  const go=document.getElementById("pmgo"); if(go) go.disabled=false;
+  c.hidden=false; o.hidden=false; c.classList.add("on"); o.classList.add("on");
+  o.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  o.onclick=()=>pmClose();
+  if(go) go.focus();
+}
+function pmClose(){
+  const {c,o}=pmEls(); if(!c)return;
+  c.classList.remove("on","happy"); o.classList.remove("on"); c.hidden=true; o.hidden=true;
+  o.setAttribute("aria-hidden","true"); o.onclick=null;
+  if(!document.getElementById("det")?.classList.contains("on")&&!document.getElementById("drawer")?.classList.contains("on")&&!document.getElementById("fbs")?.classList.contains("on"))
+    document.body.style.overflow="";
+}
+function pmLater(){pmClose()}
+function pmCelebrate(){
+  const {c}=pmEls(); if(!c)return;
+  c.classList.add("happy"); const ok=document.getElementById("pmok"); if(ok) ok.hidden=false;
+  const m=c.querySelector(".pmf-mouth"); if(m) m.setAttribute("d","M28 58 Q40 70 52 58");
+}
+async function pmActivate(b){
+  if(b) b.disabled=true;
+  pmCelebrate();
+  const wait=matchMedia("(prefers-reduced-motion:reduce)").matches?450:1100;
+  try{
+    if(!("Notification" in window)){setTimeout(pmClose,wait);return}
+    const p=await Notification.requestPermission();
+    if(p!=="granted"){setTimeout(pmClose,wait);return}
+    if("serviceWorker" in navigator && "PushManager" in window){
+      try{
+        const reg=await navigator.serviceWorker.ready;
+        await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(VAPID)});
+        if(typeof RX==="string" && RX){const sub=await reg.pushManager.getSubscription(); try{await rxSync(sub,true)}catch(e){}}
+      }catch(e){/* permissão ok; inscrição pode falhar na prévia sem SW */}
+    }
+    setTimeout(pmClose, wait);
+  }catch(e){
+    setTimeout(pmClose, wait);
+  }
+}
+(function pmBoot(){
+  if(!pmShouldSchedule()) return;
+  const t=setTimeout(()=>{try{pmShow()}catch(e){}}, PM_DELAY);
+  addEventListener("pagehide",()=>clearTimeout(t),{once:true});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("pmc")?.classList.contains("on"))pmClose()});
+})();
 
 </script>
 </body>
