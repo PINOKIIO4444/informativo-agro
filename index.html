@@ -544,19 +544,42 @@ html.fx49 .list a.row .rl35{display:none!important}
 html.fx49 .list a.row .s .dt,html.fx49 .list a.row .s .late{display:none!important}
 html.fx49 .list a.row .v{font-size:17px;font-weight:700}
 html.fx49 .list.main49>a.row:first-of-type .v,html.fx49 a.row.main49 .v{font-size:22px}
-/* v49.2 — preço completo no celular (lista/produto); some a coluna de 64px do gráfico já oculto */
+/* v49.2 — preço completo (lista/produto): some a coluna de 64px do gráfico já oculto; mobile + desktop */
+html.fx49 .list:not(.rank)>a.row,html.fx49 .list:not(.rank)>.row,html.fx49 .list:not(.rank) a.row{
+ grid-template-columns:minmax(0,1fr) auto;column-gap:10px}
+html.fx49 .list:not(.rank) .row>div:empty,html.fx49 .list:not(.rank) a.row>div:empty{display:none!important}
+html.fx49 .list .row>.r,html.fx49 .list a.row>.r,html.fx49 .rank .row .r{
+ min-width:0;max-width:none;overflow:visible;justify-self:end}
+html.fx49 .list .row .v,html.fx49 .list a.row .v,html.fx49 .list .row .mvw,html.fx49 .list a.row .mvw,
+html.fx49 .rank .row .v,html.fx49 .rank .row .mvw{
+ overflow:visible;text-overflow:clip;white-space:nowrap;max-width:none}
+html.fx49 .list:not(.rank) .row>div:first-child,html.fx49 .list:not(.rank) a.row>div:first-child{min-width:0}
+html.fx49 .list:not(.rank) .row .n,html.fx49 .list:not(.rank) a.row .n{
+ display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
+html.fx49 .ex48{display:none!important}
+/* v50 — ranking Por estado: 3 colunas fixas (pos | nome+barra | preço); barras na mesma escala */
+html.fx49 .list.rank>a.row,html.fx49 .list.rank .row{
+ grid-template-columns:28px minmax(0,1fr) auto;column-gap:10px;align-items:center}
+html.fx49 .list.rank .pos{width:28px;min-width:28px;max-width:28px;justify-self:center}
+html.fx49 .list.rank .row>div:nth-child(2){min-width:0;overflow:hidden}
+html.fx49 .list.rank .bar{display:block;max-width:100%;box-sizing:border-box;margin-top:5px}
+html.fx49 .list.rank .n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;-webkit-line-clamp:unset}
 @media(max-width:720px){
- html.fx49 .list>a.row,html.fx49 .list>.row,html.fx49 .list a.row{
-  grid-template-columns:minmax(0,1fr) auto;column-gap:10px}
- html.fx49 .list .row>div:empty,html.fx49 .list a.row>div:empty{display:none!important}
- html.fx49 .list .row>.r,html.fx49 .list a.row>.r,html.fx49 .rank .row .r{
-  min-width:0;max-width:none;overflow:visible;justify-self:end}
- html.fx49 .list .row .v,html.fx49 .list a.row .v,html.fx49 .list .row .mvw,html.fx49 .list a.row .mvw,
- html.fx49 .rank .row .v,html.fx49 .rank .row .mvw{
-  overflow:visible;text-overflow:clip;white-space:nowrap;max-width:none}
- html.fx49 .list .row>div:first-child,html.fx49 .list a.row>div:first-child{min-width:0}
- html.fx49 .list .row .n,html.fx49 .list a.row .n{
-  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
+ html.fx49 .list.rank{padding-bottom:8px}
+ html.fx49 .list.rank>a.row:last-of-type,html.fx49 .list.rank>.row:last-of-type{margin-bottom:4px}
+ /* Explorar some no celular (menu já cobre); Fontes permanece */
+ html.fx49 .ex48{display:none!important}
+ html.fx49 .rs48f{display:block;margin:14px 2px 8px;font-size:14px;text-align:left}
+ html.fx49 .rs48f a{color:var(--g2);font-weight:700}
+ /* Indicador: pill não espreme "média de N praças" */
+ html.fx49 .i49a{flex-wrap:wrap;align-items:flex-start}
+ html.fx49 .i49a .t{flex:1 1 0;min-width:0}
+ html.fx49 .i49a .pill{flex:1 1 100%;margin-top:6px;align-self:flex-start}
+ /* barra: rótulo Agricultura em telas estreitas */
+ html.fx49 #bnav .bi .lb{font-size:10.5px;letter-spacing:-.01em}
+}
+@media(max-width:360px){
+ html.fx49 #bnav .bi .lb{font-size:10px;letter-spacing:-.02em}
 }
 
 html.fx49 .mo40{font-size:12px;font-weight:650}
