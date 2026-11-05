@@ -521,7 +521,20 @@ html.fx49 .nl49 .ni .m{font-size:12.5px;color:var(--mu)}
 html.fx49 .nl49 .ni .h{font-size:14.5px;line-height:1.35}
 html.fx49 .dwf .tr49{display:block;font-size:12.5px;color:var(--mu);margin-top:8px;line-height:1.4}
 @media(max-width:720px){
- html.fx49 .wrap{padding-bottom:calc(120px + 56px + env(safe-area-inset-bottom))}
+ /* v49.1: espaço sob o conteúdo — círculo verde sobe ~24px da barra (52px Ø); última linha e Fontes acima do círculo */
+ html.fx49 .wrap{padding-bottom:calc(148px + 64px + env(safe-area-inset-bottom))}
+ html.fx49{scroll-padding-bottom:calc(148px + 64px + env(safe-area-inset-bottom))}
+ /* fade lateral nos chips: overlay (a mask sozinha cortava no meio da palavra sem fade visível) */
+ html.fx49 .chf49{position:relative;margin:0 -14px}
+ html.fx49 .chf49>nav.chips{margin-left:0;margin-right:0;padding-left:14px;padding-right:14px;
+  -webkit-mask-image:none!important;mask-image:none!important}
+ html.fx49 .chf49::before,html.fx49 .chf49::after{content:"";position:absolute;top:0;bottom:0;width:56px;z-index:5;pointer-events:none;opacity:0;transition:opacity .15s}
+ html.fx49 .chf49::before{left:0;background:linear-gradient(to right,var(--bg) 0%,var(--bg) 28%,transparent 92%)}
+ html.fx49 .chf49::after{right:0;background:linear-gradient(to left,var(--bg) 0%,var(--bg) 28%,transparent 92%)}
+ html.fx49 .chf49.l::before,html.fx49 .chf49.r::after{opacity:1}
+ /* scrim acima da barra: o círculo não “come” a última linha visível no meio da rolagem */
+ html.fx49 #bnav::before{content:"";position:absolute;left:-12px;right:-12px;bottom:100%;height:28px;pointer-events:none;
+  background:linear-gradient(to top,var(--bg) 10%,transparent);z-index:0}
 }
 /* v49b: listas / produto / notícias / fontes / alertas */
 html.fx49 .sub40,html.fx49 .note.lst49x{display:none!important}
@@ -1353,7 +1366,12 @@ function render(){
  drawer();foot();if(FX32)bnSync();
  const b=document.querySelector("#chips .chip.on");if(b){const C=document.getElementById("chips");C.scrollLeft=b.offsetLeft-C.offsetLeft-(C.clientWidth-b.offsetWidth)/2}
  if(FX48){const t=document.querySelector("#main .crumb .ttl");if(t&&t.tagName!=="H1"){const h1=document.createElement("h1");h1.className=t.className;h1.innerHTML=t.innerHTML;t.replaceWith(h1)}
-  document.querySelectorAll("#main nav.chips").forEach(C=>{const f=()=>C.classList.toggle("end48",C.scrollLeft+C.clientWidth>=C.scrollWidth-2);f();C.addEventListener("scroll",f,{passive:true})})}
+  document.querySelectorAll("#main nav.chips").forEach(C=>{
+   let w=C.parentElement; if(!w||!w.classList.contains("chf49")){w=document.createElement("div");w.className="chf49";C.parentNode.insertBefore(w,C);w.appendChild(C)}
+   const f=()=>{const l=C.scrollLeft>2,r=C.scrollLeft+C.clientWidth<C.scrollWidth-3;C.classList.toggle("end48",!r);w.classList.toggle("l",l);w.classList.toggle("r",r)};
+   f();C.addEventListener("scroll",f,{passive:true});
+   try{new ResizeObserver(f).observe(C)}catch(e){}
+  })}
 }
 function gcView(id){try{if(window.goatcounter&&typeof window.goatcounter.count==="function")window.goatcounter.count({path:"/"+id,event:false})}catch(e){}}
 // v15: histórico do app — o botão Voltar do celular fecha detalhe/menu/notícia e volta de página até o Resumo; só sai do app no Resumo
