@@ -544,6 +544,21 @@ html.fx49 .list a.row .rl35{display:none!important}
 html.fx49 .list a.row .s .dt,html.fx49 .list a.row .s .late{display:none!important}
 html.fx49 .list a.row .v{font-size:17px;font-weight:700}
 html.fx49 .list.main49>a.row:first-of-type .v,html.fx49 a.row.main49 .v{font-size:22px}
+/* v49.2 — preço completo no celular (lista/produto); some a coluna de 64px do gráfico já oculto */
+@media(max-width:720px){
+ html.fx49 .list>a.row,html.fx49 .list>.row,html.fx49 .list a.row{
+  grid-template-columns:minmax(0,1fr) auto;column-gap:10px}
+ html.fx49 .list .row>div:empty,html.fx49 .list a.row>div:empty{display:none!important}
+ html.fx49 .list .row>.r,html.fx49 .list a.row>.r,html.fx49 .rank .row .r{
+  min-width:0;max-width:none;overflow:visible;justify-self:end}
+ html.fx49 .list .row .v,html.fx49 .list a.row .v,html.fx49 .list .row .mvw,html.fx49 .list a.row .mvw,
+ html.fx49 .rank .row .v,html.fx49 .rank .row .mvw{
+  overflow:visible;text-overflow:clip;white-space:nowrap;max-width:none}
+ html.fx49 .list .row>div:first-child,html.fx49 .list a.row>div:first-child{min-width:0}
+ html.fx49 .list .row .n,html.fx49 .list a.row .n{
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
+}
+
 html.fx49 .mo40{font-size:12px;font-weight:650}
 html.fx49 .rank .vs{display:none!important}
 html.fx49 .rank .note{display:none!important}
