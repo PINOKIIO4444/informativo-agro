@@ -10,6 +10,8 @@ QUANDO USAR daily.py (NÃO este script):
   - Precisa de dados do dia (planilha/coleta → data.json + embeds novos).
   - daily.py regenera site (index/data/alerts/assets) e pode push; use --no-push
     se só quiser gravar local. NÃO rode daily só por mudança de CSS/JS no template.
+  - daily.py e o site_template devem gravar o index SEM h e rolls em cada item.
+    Este fill também remove esses campos (a série fica em hist/<chave>.json).
 
 NÃO TOCAR (este script nunca mexe):
   - og-image.png / og-image.jpg, sw.js, data.json, alerts.json, news*.json,
@@ -29,6 +31,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import os
 import re
 import shutil
@@ -49,6 +52,34 @@ UNTOUCHABLE = ("sw.js", "og-image.png", "og-image.jpg")
 
 def log(msg: str) -> None:
     print(msg, flush=True)
+
+
+def omit_chart_series(html: str) -> str:
+    """Tira h e rolls de cada item em const DATA=.
+
+    A série do gráfico e as trocas de contrato ficam em hist/<chave>.json.
+    O restante do informativo (cotação, variação, fonte, alertas) permanece.
+    """
+    marker = "const DATA="
+    i = html.find(marker)
+    if i < 0:
+        return html
+    start = i + len(marker)
+    if start >= len(html) or html[start] != "{":
+        return html
+    try:
+        data, end = json.JSONDecoder().raw_decode(html, start)
+    except json.JSONDecodeError:
+        return html
+    items = data.get("items") if isinstance(data, dict) else None
+    if not isinstance(items, list):
+        return html
+    for it in items:
+        if isinstance(it, dict):
+            it.pop("h", None)
+            it.pop("rolls", None)
+    slim = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    return html[:start] + slim + html[end:]
 
 
 def load_template_name() -> str:
@@ -241,7 +272,7 @@ def main() -> int:
             "placeholders do template alvo ≠ tokens extraídos do index "
             f"({len(PLACEHOLDER.findall(tpl_new))} vs {len(toks)})"
         )
-    after = apply(tpl_new, vals)
+    after = omit_chart_series(apply(tpl_new, vals))
     if "PRIVATE" in after or "__DATA__" in after or "__SITE_URL__" in after:
         raise SystemExit("marcadores de template sobraram no HTML gerado")
 
