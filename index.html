@@ -1040,16 +1040,17 @@ function alrL48(g,adt){const cs=g.map(a=>a.chg_pct),mn=Math.min(...cs),mx=Math.m
  return `<a class="al" href="${pg?"?p="+pg.id:"#"+g[0].key}" onclick="return nav(event,()=>${act})" aria-label="Leite ao produtor, ${qual}, ${adt(g[0])}: ${g.length} referências mudaram, de ${sg(mn)} a ${sg(mx)}: ${esc(lst)}"><span class="ic ${k==="z"?"dn":k}">${ico(KI[g[0].key]||"ibov")}</span><div class="t">Leite ao produtor <small>${ne?ne+(ne===1?" estado":" estados"):""}${ne&&br?" e média Brasil":br&&!ne?"média Brasil":""} · ${adt(g[0])}</small></div><span class="pill ${k} rg48">${mn===mx?sg(mn):sg(mn)+" a "+sg(mx)}</span></a>`}
 
 /*v38: tabela da Scot por praça atrasada. Esperada: a do último dia útil (fins de semana e feriados nacionais fora), contando o dia de hoje
-  só depois das 20h de Brasília (a Scot publica por volta das 18h e o AgroN atualiza às 19h30). Se a data da última tabela foi lida na
-  página da Scot depois do dia esperado, vale ela (só a data; nenhum preço vem da Scot).*/
+  só depois das 20h de Brasília (a Scot publica por volta das 18h e o AgroN atualiza às 19h30). fonte = data lida na Scot primária
+  (só a data; nenhum preço vem da Scot). Se fonte é mais nova que a tabela do Notícias Agrícolas, o aviso cita essa data.
+  fonte igual à data do NA não conta como leitura da Scot: o coletor pode ter copiado a data do NA e, com fchk recente, o aviso antigo
+  se calava mesmo com a tabela atrás do dia esperado. Gravar a data da Scot primária em fonte continua no coletor, fora deste repositório.*/
 const ISO38=/^\d{4}-\d{2}-\d{2}$/;
 function bd38(iso,fer){const w=new Date(iso+"T12:00:00Z").getUTCDay();return w>0&&w<6&&!fer.has(iso)}
 function scotExp38(now,fer){const z=t=>new Date(now).toLocaleString("sv-SE",{timeZone:"America/Sao_Paulo",hour12:false}).slice(0,t);
  let k=z(10);const h=+z(13).slice(11);if(bd38(k,fer)&&h>=20)return k;
  let d=new Date(k+"T12:00:00Z");for(let n=0;n<30;n++){d=new Date(d-864e5);const i=d.toISOString().slice(0,10);if(bd38(i,fer))return i}return k}
 function scotLate38(sc,now){if(!sc||!ISO38.test(sc.date||"")||!(sc.rows||[]).length)return null;
- const fer=new Set(Array.isArray(sc.fer)?sc.fer:[]),e=scotExp38(now||Date.now(),fer),f=ISO38.test(sc.fonte||"")?sc.fonte:null,ck=String(sc.fchk||"").slice(0,10);
- if(f&&ck>=e)return f>sc.date?{f,e}:null;   // data lida na Scot no dia esperado ou depois: só avisa se a Scot tem tabela mais nova
+ const fer=new Set(Array.isArray(sc.fer)?sc.fer:[]),e=scotExp38(now||Date.now(),fer),f=ISO38.test(sc.fonte||"")?sc.fonte:null;
  if(f&&f>sc.date)return {f,e};
  return e>sc.date?{f:null,e}:null}
 /*v43: pesquisas estaduais do boi com levantamento PRÓPRIO de cada fonte (Incaper, IMEA, Epagri/Cepa, Emater/RS-Ascar).
@@ -1114,8 +1115,8 @@ function ind46t(b){const o=b.getAttribute("aria-expanded")!=="true",p=document.g
 function ind44r(){const G=DATA.ind44,u={unit:"R$/@"};
  if(FX49){const M=FX46?ind46max(G):null,t=M?M.top:[],ufs=t.map(x=>x.uf).join(" e "),nm=t.length===1?(I44N[t[0].k]||""):"";
   const mr=M?`<div class="i46m" role="note" aria-label="Maior preço: ${esc(ufs)}${nm?" ("+esc(nm)+")":""}, R$ ${fmt(M.v,2)} por arroba"><span class="b46">Maior preço</span><b>${esc(ufs)}</b>${nm?`<span>${esc(nm)}</span>`:""}<span class="i46v">${mv(M.v,2,u)}</span></div>`:"";
-  return `<h2>Indicador AgroN</h2><div class="i49"><a class="i49a" href="?p=boi" onclick="return nav(event,()=>go('boi'))" aria-label="Indicador AgroN da arroba do boi gordo: R$ ${fmt(G.v,2)} por arroba, média de ${G.n} praças. Abrir boi gordo"><div class="v">${mv(G.v,2,u)}</div><div class="t">Boi gordo · @<small>média de ${G.n} praças</small></div>${typeof G.chg==="number"?pill(G.chgp):`<span class="pill z">${ind44var(G,1)}</span>`}</a>${mr}<details class="i49d"><summary>Metodologia e fontes</summary><div class="i49b">Cálculo próprio do AgroN: média simples dos valores do dia das ${G.n} fontes oficiais${ufs48(G)?" ("+ufs48(G)+")":""}. Difere do boi gordo SP do cartão, que é só o CEPEA em São Paulo. Detalhe e tabela na página do boi.</div></details></div>`}
- return `<h2>Indicador AgroN</h2><div class="list ab42 i44r"><a class="al" href="?p=boi" onclick="return nav(event,()=>go('boi'))" aria-label="Indicador AgroN da arroba do boi gordo, cálculo próprio: R$ ${fmt(G.v,2)} por arroba em ${fd(G.date)}, média de ${G.n} fontes oficiais. Abrir boi gordo"><span class="ic">${ico("boi")}</span><div class="t">Boi gordo · @<small>${FX48?`média simples de ${G.n} fontes oficiais${ufs48(G)?" ("+ufs48(G)+")":""}`:`cálculo próprio · média de ${G.n} fontes oficiais`} · ${fd(G.date)}</small></div><div class="abv">${mv(G.v,2,u)}${FX48&&typeof G.chg!=="number"?`<small class="i48n">variação: ${ind44var(G,1)}</small>`:`<small>${ind44var(G,1)}</small>`}</div></a>${FX48?`<p class="i48x">Cálculo próprio do AgroN: média simples dos valores do dia das ${G.n} fontes oficiais que entram no cálculo${ufs48(G)?" ("+ufs48(G)+")":""}. Por isso difere do boi gordo SP acima, que é só o valor do CEPEA em São Paulo.</p>`:""}${FX46?ind46mr(G):""}</div>`}
+  return `<h2>Indicador AgroN</h2><div class="i49"><a class="i49a" href="?p=boi" onclick="return nav(event,()=>go('boi'))" aria-label="Indicador AgroN da arroba do boi gordo: R$ ${fmt(G.v,2)} por arroba, média de ${G.n} praças. Abrir boi gordo"><div class="v">${mv(G.v,2,u)}</div><div class="t">Boi gordo · @<small>média de ${G.n} praças</small></div>${typeof G.chg==="number"?pill(G.chgp):`<span class="pill z">${ind44var(G,1)}</span>`}</a>${mr}<details class="i49d"><summary>Metodologia e fontes</summary><div class="i49b">Cálculo próprio do AgroN: média simples dos valores publicados pelas ${G.n} fontes oficiais (data do indicador ou do dia útil anterior)${ufs48(G)?" ("+ufs48(G)+")":""}. Difere do boi gordo SP do cartão, que é só o CEPEA em São Paulo. Detalhe e tabela na página do boi.</div></details></div>`}
+ return `<h2>Indicador AgroN</h2><div class="list ab42 i44r"><a class="al" href="?p=boi" onclick="return nav(event,()=>go('boi'))" aria-label="Indicador AgroN da arroba do boi gordo, cálculo próprio: R$ ${fmt(G.v,2)} por arroba em ${fd(G.date)}, média de ${G.n} fontes oficiais. Abrir boi gordo"><span class="ic">${ico("boi")}</span><div class="t">Boi gordo · @<small>${FX48?`média simples de ${G.n} fontes oficiais${ufs48(G)?" ("+ufs48(G)+")":""}`:`cálculo próprio · média de ${G.n} fontes oficiais`} · ${fd(G.date)}</small></div><div class="abv">${mv(G.v,2,u)}${FX48&&typeof G.chg!=="number"?`<small class="i48n">variação: ${ind44var(G,1)}</small>`:`<small>${ind44var(G,1)}</small>`}</div></a>${FX48?`<p class="i48x">Cálculo próprio do AgroN: média simples dos valores publicados pelas ${G.n} fontes oficiais que entram no cálculo (data do indicador ou do dia útil anterior)${ufs48(G)?" ("+ufs48(G)+")":""}. Por isso difere do boi gordo SP acima, que é só o valor do CEPEA em São Paulo.</p>`:""}${FX46?ind46mr(G):""}</div>`}
 const ufs48=G=>(G.comp||[]).filter(c=>c&&c.uf).map(c=>c.uf).join(", ");
 function ind46mr(G){const M=ind46max(G);if(!M)return "";const t=M.top,ufs=t.map(x=>x.uf).join(" e "),nm=t.length===1?(I44N[t[0].k]||""):"";
  const ds=[...new Set(t.map(x=>fds(x.date)))].join(", "),sr=t.map(x=>x.src).join(" · ");
@@ -2013,35 +2014,47 @@ if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.s
  const FOC='a[href],button:not([disabled]),summary,input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])';
  const vis=e=>e.getClientRects().length>0&&!e.closest("[inert]")&&!e.closest("details:not([open]) > :not(summary)");
  const foc=c=>[...c.querySelectorAll(FOC)].filter(vis);
- const isOpen={dw:()=>!wide()&&DW.classList.contains("on"),det:()=>DET.classList.contains("on"),n:()=>NSH.classList.contains("on")};
- const top=()=>isOpen.n()?NSH:isOpen.det()?DET:isOpen.dw()?DW:null;   // camada de cima recebe o foco
+ const FBS=document.getElementById("fbs"),PMC=document.getElementById("pmc");
+ const layerOn=el=>!!(el&&el.classList.contains("on")&&!el.hidden);
+ const isOpen={dw:()=>!wide()&&DW.classList.contains("on"),det:()=>DET.classList.contains("on"),n:()=>NSH.classList.contains("on"),fb:()=>layerOn(FBS),pm:()=>layerOn(PMC)};
+ const top=()=>isOpen.pm()?PMC:isOpen.fb()?FBS:isOpen.n()?NSH:isOpen.det()?DET:isOpen.dw()?DW:null;   // convite push > feedback > notícia > detalhe > menu
  MB.setAttribute("aria-controls","drawer"); MB.setAttribute("aria-haspopup","true");
- let was={dw:false,det:false,n:false},outN=null,outDet=null;
+ let was={dw:false,det:false,n:false,fb:false,pm:false},outN=null,outDet=null;
  // última posição do foco fora de cada camada (para devolver ao fechar)
  document.addEventListener("focusin",e=>{const t=e.target;if(!NSH.contains(t))outN=t;if(!DET.contains(t)&&!NSH.contains(t)&&!(isOpen.dw()&&DW.contains(t)))outDet=t},true);
  const back=(el,fb)=>{const ok=el&&el.isConnected&&vis(el);(ok?el:fb).focus({preventScroll:!ok?false:true})};
  const lost=c=>{const a=document.activeElement;return !a||a===document.body||c.contains(a)||!!a.closest("[inert]")};
  function sync(){
-  const w=wide(),o={dw:isOpen.dw(),det:isOpen.det(),n:isOpen.n()};
+  const w=wide(),o={dw:isOpen.dw(),det:isOpen.det(),n:isOpen.n(),fb:isOpen.fb(),pm:isOpen.pm()};
+  const modal=o.pm?PMC:o.fb?FBS:null;
   if(w){DW.inert=false;MB.removeAttribute("aria-expanded")}else{DW.inert=!o.dw;MB.setAttribute("aria-expanded",String(o.dw))}
   NSH.inert=!o.n;NSH.setAttribute("aria-hidden",String(!o.n));
   if(o.n){const h=NSH.querySelector("#nbody h3");if(h){h.id="ntitle";NSH.setAttribute("aria-labelledby","ntitle");NSH.removeAttribute("aria-label")}}
+  const wrap=document.querySelector(".wrap"),bn=document.getElementById("bnav"),sq=document.getElementById("sqm40"),ish=document.getElementById("ish"),puff=document.getElementById("fbp");
+  const sqOn=!!(sq&&!sq.hidden),ishOn=!!(ish&&ish.classList.contains("on"));
+  if(modal){[wrap,bn,DW,DET,NSH,sq,ish,puff,FBS,PMC].forEach(el=>{if(el&&el!==modal)el.inert=true});modal.inert=false}
+  else if(was.fb||was.pm){if(wrap&&!sqOn)wrap.inert=false;if(bn&&!sqOn&&!ishOn)bn.inert=false;if(DET)DET.inert=false;if(sq&&!sqOn)sq.inert=false;if(ish&&!ishOn)ish.inert=false;if(puff)puff.inert=false;if(FBS)FBS.inert=false;if(PMC)PMC.inert=false;if(w)DW.inert=false;else DW.inert=!o.dw;NSH.inert=!o.n}
   // abriu a notícia: foco no Fechar (openNews tenta antes de o inert sair)
-  if(o.n&&!was.n){const x=NSH.querySelector(".x");if(x)x.focus()}
+  if(o.n&&!was.n&&!modal){const x=NSH.querySelector(".x");if(x)x.focus()}
   // abriu o menu: foco no primeiro item
-  if(o.dw&&!was.dw&&!o.det&&!o.n){const f=foc(DW)[0];if(f)f.focus()}
+  if(o.dw&&!was.dw&&!o.det&&!o.n&&!modal){const f=foc(DW)[0];if(f)f.focus()}
   // fechou o menu sem abrir outra camada: foco volta ao botão do menu
-  if(!o.dw&&was.dw){const q=window.__dwo;window.__dwo=null;if(!w&&!o.det&&!o.n&&lost(DW))(q&&vis(q)?q:MB).focus()}
+  if(!o.dw&&was.dw){const q=window.__dwo;window.__dwo=null;if(!w&&!o.det&&!o.n&&!modal&&lost(DW))(q&&vis(q)?q:MB).focus()}
   {const bm=document.getElementById("bmais");if(bm)bm.setAttribute("aria-expanded",String(!w&&o.dw))}
   // fechou a notícia: foco volta para onde estava (a notícia tocada)
   if(!o.n&&was.n){const c=top();if(lost(NSH))back(c&&c!==NSH?(c.contains(outN)?outN:foc(c)[0]):outN,c?foc(c)[0]||MB:MB)}
   // fechou o detalhe e o foco ficou perdido (ex.: veio de um item do menu, que agora está inert)
-  if(!o.det&&was.det&&!o.n){setTimeout(()=>{if(lost(DET))back(outDet,MB)},0)}
+  if(!o.det&&was.det&&!o.n&&!modal){setTimeout(()=>{if(lost(DET))back(outDet,MB)},0)}
+  if(!o.pm&&was.pm&&o.fb){const f=foc(FBS)[0];if(f)f.focus()}
+  else if(!o.pm&&was.pm&&PMC&&lost(PMC))MB.focus();
+  if(!o.fb&&was.fb&&FBS&&lost(FBS))back(document.getElementById("mlogo"),MB);
   was=o;
  }
  new MutationObserver(sync).observe(DW,{attributes:true,attributeFilter:["class"]});
  new MutationObserver(sync).observe(NSH,{attributes:true,attributeFilter:["class"]});
  new MutationObserver(sync).observe(DET,{attributes:true,attributeFilter:["class"]});
+ if(FBS)new MutationObserver(sync).observe(FBS,{attributes:true,attributeFilter:["class","hidden"]});
+ if(PMC)new MutationObserver(sync).observe(PMC,{attributes:true,attributeFilter:["class","hidden"]});
  matchMedia("(min-width:1024px)").addEventListener("change",sync); sync();
  // Tab preso na camada aberta (notícia > detalhe > menu)
  document.addEventListener("keydown",e=>{if(e.key!=="Tab")return;const c=top();if(!c)return;const f=foc(c);if(!f.length){e.preventDefault();return}
@@ -2080,10 +2093,14 @@ function fbOpenPuff(e){if(e){e.preventDefault();e.stopPropagation()}
 function fbClosePuff(){const p=FBP(); if(!p)return; p.classList.remove("on"); p.hidden=true;
   const a=fbAnchor(); if(a)a.setAttribute("aria-expanded","false"); document.removeEventListener("click",fbDocClose,true)}
 function fbDocClose(e){const p=FBP(),a=fbAnchor(); if(p&&!p.contains(e.target)&&a&&!a.contains(e.target))fbClosePuff()}
+function fbFormNote(){return document.querySelector("#fbs .fbform .fbn")}
+let FB_BASE="";
+function fbNote(t){const n=fbFormNote(); if(n)n.textContent=t}
 function fbOpenForm(){fbClosePuff(); const s=FBS(),o=FBOV(); if(!s)return;
   s.classList.remove("thanks"); s.hidden=false; s.classList.add("on"); o.hidden=false; o.classList.add("on");
   document.body.style.overflow="hidden"; const t=FBTX(); if(t){t.value=""; t.focus()}
-  const send=document.getElementById("fbsend"); if(send)send.disabled=false}
+  const send=document.getElementById("fbsend"); if(send){send.disabled=false; send.textContent="Enviar"}
+  if(FB_BASE)fbNote(FB_BASE)}
 function fbClose(){fbClosePuff(); const s=FBS(),o=FBOV(); if(!s)return;
   s.classList.remove("on","thanks"); s.hidden=true; o.classList.remove("on"); o.hidden=true;
   if(!document.getElementById("det")?.classList.contains("on")&&!document.getElementById("drawer")?.classList.contains("on"))
@@ -2091,18 +2108,29 @@ function fbClose(){fbClosePuff(); const s=FBS(),o=FBOV(); if(!s)return;
 async function fbSend(){
   const t=FBTX(), send=document.getElementById("fbsend"); if(!t)return;
   const msg=(t.value||"").trim(); if(!msg){t.focus();return}
-  if(send)send.disabled=true;
+  if(send){send.disabled=true; send.textContent="Enviando…"}
   const payload={t:Date.now(),tz:"America/Sao_Paulo",msg:msg.slice(0,2000),ua:navigator.userAgent.slice(0,120),v:"fb54"};
   try{const arr=JSON.parse(localStorage.getItem("agron_fb")||"[]"); arr.push(payload); localStorage.setItem("agron_fb",JSON.stringify(arr.slice(-40)))}catch(e){}
+  let ok=false;
   try{
     const base=(typeof RX==="string"&&RX)?RX:"";
-    if(base){
-      await fetch(base+"/v1/feedback",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(payload),credentials:"omit",cache:"no-store",mode:"cors"});
-    }
-  }catch(e){}
-  const s=FBS(); if(s)s.classList.add("thanks");
+    if(!base)throw new Error("sem receptor");
+    const res=await fetch(base+"/v1/feedback",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(payload),credentials:"omit",cache:"no-store",mode:"cors"});
+    ok=!!(res&&res.ok);
+  }catch(e){ok=false}
+  const s=FBS();
+  if(ok){
+    const b=s&&s.querySelector(".fbok b"); if(b)b.textContent="Enviado";
+    if(s)s.classList.add("thanks");
+    if(send){send.disabled=false; send.textContent="Enviar"}
+    return;
+  }
+  if(s)s.classList.remove("thanks");
+  if(send){send.disabled=false; send.textContent="Tentar de novo"; send.focus()}
+  fbNote("Não foi possível enviar. A mensagem continua neste aparelho. Toque em Tentar de novo.");
 }
 function fbBind(){
+  const n=fbFormNote(); if(n)FB_BASE=n.textContent;
   const m=document.getElementById("mlogo"); if(m) m.addEventListener("click",fbOpenPuff);
   const b=document.getElementById("mbtn");
   if(b){b.addEventListener("click",e=>{
@@ -2110,7 +2138,6 @@ function fbBind(){
   },true)}
   window.addEventListener("resize",()=>{if(FBP()?.classList.contains("on"))fbPlacePuff()});
   window.addEventListener("scroll",()=>{if(FBP()?.classList.contains("on"))fbPlacePuff()},{passive:true});
-  document.addEventListener("keydown",e=>{if(e.key==="Escape")fbClose()});
 }
 fbBind();
 
@@ -2190,8 +2217,14 @@ async function pmActivate(b){
   if(!pmShouldSchedule()) return;
   const t=setTimeout(()=>{try{pmShow()}catch(e){}}, PM_DELAY);
   addEventListener("pagehide",()=>clearTimeout(t),{once:true});
-  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.getElementById("pmc")?.classList.contains("on"))pmClose()});
 })();
+document.addEventListener("keydown",e=>{
+  if(e.key!=="Escape")return;
+  const pm=document.getElementById("pmc"), fb=document.getElementById("fbs"), puff=document.getElementById("fbp");
+  if(pm&&pm.classList.contains("on")&&!pm.hidden){e.preventDefault();e.stopImmediatePropagation();pmClose();return}
+  if(fb&&fb.classList.contains("on")&&!fb.hidden){e.preventDefault();e.stopImmediatePropagation();fbClose();return}
+  if(puff&&puff.classList.contains("on")&&!puff.hidden){e.preventDefault();e.stopImmediatePropagation();fbClosePuff()}
+},true);
 
 </script>
 </body>
