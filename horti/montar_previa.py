@@ -382,7 +382,9 @@ function hortiPage(it){
 
 
 def apply_ui(html: str, view) -> str:
-    if "/*HPE prévia Recife" in html:
+    # A página já tem a prévia. Rodar de novo não reabre a lista de 164 linhas
+    # nem troca a camada das praças pelo script antigo.
+    if "/*HPE prévia Recife" in html or "/*HPE prévia:" in html:
         return html
     view_js = "const HORTI_VIEW=" + json.dumps(view, ensure_ascii=False, separators=(",", ":")) + ";\nconst HORTI_KEYS=HORTI_VIEW.flatMap(g=>g[1].flatMap(p=>p[1]));\n"
     needle = "const NAV=["

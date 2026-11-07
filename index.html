@@ -79,6 +79,9 @@ nav.chips{padding:10px 14px;display:flex;gap:8px;overflow-x:auto;scrollbar-width
 nav.chips::-webkit-scrollbar{display:none}
 .chip{flex:none;border:1px solid var(--ln);background:var(--card);color:var(--tx);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer}
 .chip.on{background:var(--g);border-color:var(--g);color:#fff}
+.hq56{display:flex;align-items:center;gap:8px;margin:10px 0 0}
+.hq56 input{flex:1;min-width:0;width:100%;font:inherit;font-size:14.5px;color:var(--tx);background:var(--card);border:1px solid var(--ln);border-radius:999px;padding:8px 14px;min-height:40px}
+.hq56 input:focus-visible{outline:2px solid var(--g2);outline-offset:2px}
 .list{background:var(--card);border-radius:14px;border:1px solid var(--ln);margin-top:12px;overflow:hidden}
 .row{display:grid;grid-template-columns:1fr 64px auto;align-items:center;gap:10px;padding:12px;border-bottom:1px solid var(--ln);cursor:pointer}
 .row:last-child{border:0}.row:active{background:var(--act)}
@@ -912,39 +915,103 @@ const has=k=>I[k]&&I[k].v!=null;
 const UFS=["SP","MS","MG","GO","MT","PA","TO","RO","BA"],VACA=UFS.map(u=>"vaca_"+u),NOVI=UFS.map(u=>"novilha_"+u);
 const LEITE=["leite_brasil","leite_mg","leite_go","leite_sp","leite_pr","leite_sc","leite_rs","leite_ba","leite_rj","leite_es"];
 
-/*HPE prévia Recife (Ceasa-PE): segunda praça do hortifrúti. Não é coleta diária.*/
+/*HPE prévia: praças do relatório, cotação só onde o boletim já está no site. Não é coleta diária.*/
+let HORTI_Q="",HORTI_PRACA="",HORTI_CAT=null,HORTI_BOL=null,BOL_Q="",BOL_G="",BOL_SOSEM=false;
 function hortiLabel(){return DATA.items.some(x=>x&&x.pe)?"Hortifrúti":"Hortifrúti (Ceagesp)"}
+function hortiNorm(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()}
+function hortiPrecoNome(p){return (p&&p.preco_nome)||"comum"}
+function hortiFaixa(x){
+ const p=x.pe;if(!p)return "";
+ if(p.sem||x.v==null)return "sem cotação";
+ let s=`mín. ${fmt(p.min,x.dec)} · ${hortiPrecoNome(p)} ${fmt(p.comum,x.dec)} · máx. ${fmt(p.max,x.dec)}`;
+ if(p.calc&&p.rs_kg!=null)s+=` · ${fmt(p.rs_kg,2)}/kg calculado (peso publicado)`;
+ else if(x.unit==="R$/kg"&&!p.calc)s+=" · R$/kg da fonte";
+ return s}
+function hortiCasa(x){return x.pe?"recife":"sp"}
 function hortiRow(x){
- const pe=x.pe,mkt=pe?"Recife (Ceasa-PE)":"São Paulo (Ceagesp)";
+ const pe=x.pe,mkt=pe?(pe.praca||"Recife (Ceasa-PE)"):"São Paulo (Ceagesp)";
  const rot=pe&&pe.rotulo?pe.rotulo:"";
  const titulo=pe?(rot?"Recife · "+rot:"Recife"):"São Paulo (Ceagesp)";
  const bits=[];
- if(pe){if(pe.embalagem)bits.push(pe.embalagem);if(pe.procedencia)bits.push(pe.procedencia);bits.push(fds(x.d));if(pe.situacao)bits.push(String(pe.situacao).toLowerCase())}
+ if(pe){if(pe.classificacao)bits.push(pe.classificacao);if(pe.embalagem)bits.push(pe.embalagem);if(pe.procedencia)bits.push(pe.procedencia);bits.push(fds(x.d));if(pe.situacao)bits.push(String(pe.situacao).toLowerCase());if(pe.repeticoes>=5)bits.push("mesmo preço há "+pe.repeticoes+" pregões")}
  else{if(x.sub)bits.push(x.sub);bits.push(ud49(x));bits.push(fds(x.d))}
- let faixa="";
- if(pe){if(pe.sem||x.v==null)faixa="sem cotação";else faixa=`mín. ${fmt(pe.min,x.dec)} · comum ${fmt(pe.comum,x.dec)} · máx. ${fmt(pe.max,x.dec)}`+(pe.calc&&pe.rs_kg!=null?` · ${fmt(pe.rs_kg,2)}/kg calculado (peso publicado)`:"")}
+ const faixa=pe?hortiFaixa(x):"";
  const preco=x.v==null?"sem cotação":mt(x.v,x.dec,x,1);
  const aria=`${titulo}, ${mkt}, ${bits.join(", ")}: ${preco}${x.v==null?"":", "+pctX(x)}. Abrir detalhes`;
  return `<a class="row" href="#${x.key}" onclick="return nav(event,()=>openDet('${x.key}'))" aria-label="${esc(aria)}"><div><div class="n">${esc(titulo)}</div><div class="s">${esc(bits.join(" · "))}${faixa?` · ${esc(faixa)}`:""}</div></div><div class="r"><div class="v">${x.v==null?"—":mv(x.v,x.dec,x,1)}</div>${x.v==null?'<span class="pill z">—</span>':pl(x)}</div></a>`}
 function peLinha(x){
  const p=x.pe;if(!p)return "";
- const faixa=p.sem||x.v==null?"Sem cotação neste boletim.":`Mín. ${fmt(p.min,x.dec)} · comum ${fmt(p.comum,x.dec)} · máx. ${fmt(p.max,x.dec)}`;
- const kg=p.calc&&p.rs_kg!=null?`<div style="font-size:13px;color:var(--mu);margin:4px 0">${fmt(p.rs_kg,2)}/kg · calculado (peso publicado)</div>`:"";
- const bits=[p.rotulo,p.embalagem,p.procedencia,p.situacao?String(p.situacao).toLowerCase():""].filter(Boolean);
+ const nome=hortiPrecoNome(p);
+ const faixa=p.sem||x.v==null?"Sem cotação neste boletim.":`Mín. ${fmt(p.min,x.dec)} · ${nome} ${fmt(p.comum,x.dec)} · máx. ${fmt(p.max,x.dec)}`;
+ const kg=p.calc&&p.rs_kg!=null?`<div style="font-size:13px;color:var(--mu);margin:4px 0">${fmt(p.rs_kg,2)}/kg · calculado (peso publicado)</div>`:(x.unit==="R$/kg"&&!p.calc?`<div style="font-size:13px;color:var(--mu);margin:4px 0">R$/kg da fonte</div>`:"");
+ const bits=[p.rotulo,p.classificacao,p.embalagem,p.procedencia,p.situacao?String(p.situacao).toLowerCase():"",p.repeticoes>=5?"mesmo preço há "+p.repeticoes+" pregões":""].filter(Boolean);
  return `<div style="font-size:13px;color:var(--mu);margin:4px 0">${esc(faixa)}</div>${kg}<div style="font-size:13px;color:var(--mu);margin:4px 0">${esc(bits.join(" · "))}</div>`}
+function hortiCat(){
+ if(HORTI_CAT||HORTI_CAT===0)return;
+ HORTI_CAT=0;
+ fetch("horti/mercados.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error("http");return r.json()}).then(j=>{HORTI_CAT=j;if(cur==="horti")hortiPinta()}).catch(()=>{HORTI_CAT=null})}
+function hortiEscolhe(id){if(id&&!/^[a-z0-9-]{1,24}$/.test(id))return;HORTI_PRACA=id||"";hortiPinta()}
+function hortiLista(){
+ const q=hortiNorm(HORTI_Q).trim();
+ const praca=HORTI_PRACA;
+ const cat=HORTI_CAT&&HORTI_CAT.pracas;
+ if(praca&&praca!=="sp"&&praca!=="recife"){
+  const p=(cat||[]).find(z=>z.id===praca)||{nome:praca,orgao:"",nota:""};
+  return `<div class="note"><b>${esc(p.nome||praca)}</b>${p.orgao?" · "+esc(p.orgao):""}. Sem boletim nesta prévia. A coleta está desligada e nenhuma cotação de outra praça foi copiada para cá.${p.nota?" "+esc(p.nota):""} Acesso público não é licença.</div>`}
+ let h=`<div class="list${FX49?" main49":""}">`,n=0;
+ HORTI_VIEW.forEach(([grp,prods])=>{let gh="";
+  prods.forEach(([nome,ks])=>{let xs=ks.map(k=>I[k]).filter(Boolean);
+   if(praca)xs=xs.filter(x=>hortiCasa(x)===praca);
+   if(q)xs=xs.filter(x=>{const p=x.pe||{};const blob=hortiNorm([nome,x.name,x.sub,p.rotulo,p.variedade,p.classificacao,p.embalagem,p.procedencia,p.situacao,hortiCasa(x)==="recife"?"recife":"sao paulo ceagesp"].join(" "));return q.split(/\s+/).every(w=>blob.includes(w))});
+   if(!xs.length)return;
+   const pracas=new Set(xs.map(x=>x.pe?"Recife":"São Paulo"));
+   gh+=`<div class="sec">${esc(nome)}${pracas.size>1?" · por praça":""}</div>`;
+   xs.forEach(x=>{gh+=hortiRow(x);n++})});
+  if(gh)h+=`<div class="sec">${esc(grp)}</div>`+gh});
+ h+=`</div>`;
+ if(!n)h+=`<div class="note">Nada com esse filtro. São Paulo e Recife são as únicas praças com cotação nesta prévia.</div>`;
+ return h}
+function hortiPinta(){
+ const box=document.getElementById("hortilist");if(box)box.innerHTML=hortiLista();
+ const nav=document.getElementById("hortip");if(!nav)return;
+ const base=[{id:"",nome:"Com cotação"},{id:"sp",nome:"São Paulo",cotacoes:"sim"},{id:"recife",nome:"Recife",cotacoes:"sim"}];
+ const extra=(HORTI_CAT&&HORTI_CAT.pracas||[]).filter(p=>p.id!=="sp"&&p.id!=="recife");
+ nav.innerHTML=base.concat(extra).map(p=>{const on=(HORTI_PRACA||"")===(p.id||"");const sem=p.cotacoes&&p.cotacoes!=="sim";
+  return `<button type="button" class="chip${on?" on":""}" aria-pressed="${on}" onclick="hortiEscolhe('${p.id||""}')">${esc(p.nome)}${sem?" · sem boletim":""}</button>`}).join("")}
+function peBolLinha(r){
+ const nome=[r.produto,r.variedade&&r.variedade!=="-"?r.variedade:"",r.classificacao||""].filter(Boolean).join(" · ");
+ const meta=[r.embalagem,r.procedencia,r.situacao?String(r.situacao).toLowerCase():""].filter(Boolean).join(" · ");
+ const sem=!!(r.sem_cotacao||r.comum==null);
+ const nomePreco=r.preco_nome||"comum";
+ const fx=sem?"sem cotação":`mín. ${fmt(r.min,2)} · ${nomePreco} ${fmt(r.comum,2)} · máx. ${fmt(r.max,2)}`;
+ const kg=r.rs_kg_calculo&&String(r.rs_kg_calculo).startsWith("nativo")?" · R$/kg da fonte":(r.rs_kg_comum!=null&&r.rs_kg_calculo?" · "+fmt(r.rs_kg_comum,2)+"/kg calculado (peso publicado)":"");
+ return `<div class="row" style="cursor:default"><div><div class="n">${esc(nome)}</div><div class="s">${esc(meta)} · ${fds(r.data)}${esc(kg)}</div></div><div class="r"><div class="v">${sem?"—":fmt(r.comum,2)}</div><div class="s">${esc(fx)}</div></div></div>`}
+function peBolPinta(){
+ const b=document.getElementById("pebolb");if(!b||!HORTI_BOL)return;
+ const rows=HORTI_BOL,n=rows.length,com=rows.filter(r=>!r.sem_cotacao&&r.comum!=null).length;
+ const q=hortiNorm(BOL_Q).trim();
+ let xs=rows;
+ if(BOL_G)xs=xs.filter(r=>r.grupo===BOL_G);
+ if(BOL_SOSEM)xs=xs.filter(r=>r.sem_cotacao||r.comum==null);
+ if(q)xs=xs.filter(r=>q.split(/\s+/).every(w=>hortiNorm([r.produto,r.variedade,r.classificacao,r.embalagem,r.procedencia,r.situacao].join(" ")).includes(w)));
+ const ativo=!!(q||BOL_G||BOL_SOSEM);
+ const show=xs.slice(0,40);
+ const focado=document.activeElement&&document.activeElement.id==="bolq";
+ const pos=focado?document.activeElement.selectionStart:null;
+ const chip=(id,rot)=>`<button type="button" class="chip${BOL_G===id&&!BOL_SOSEM?" on":""}" aria-pressed="${BOL_G===id&&!BOL_SOSEM}" onclick="BOL_G='${id}';BOL_SOSEM=false;peBolPinta()">${rot}</button>`;
+ b.innerHTML=`<div class="note">Boletim de Recife em 06/11/2026: ${n} linhas, ${com} com preço. Cada linha é uma série. Sem cotação fica — e não entra na variação. As outras praças não estão neste arquivo.</div>
+ <div class="hq56"><label class="vh" for="bolq">Buscar no boletim de Recife</label><input id="bolq" type="search" enterkeyhint="search" placeholder="Produto, variedade, embalagem" value="${esc(BOL_Q)}" oninput="BOL_Q=this.value;peBolPinta()"></div>
+ <nav class="chips" aria-label="Filtrar o boletim de Recife">${chip("","Todos")}${chip("frutas","Frutas")}${chip("hortalicas","Hortaliças")}<button type="button" class="chip${BOL_SOSEM?" on":""}" aria-pressed="${BOL_SOSEM}" onclick="BOL_SOSEM=!BOL_SOSEM;if(BOL_SOSEM)BOL_G='';peBolPinta()">Sem cotação</button></nav>
+ <div id="bolres">${ativo?(show.length?`<div class="list" style="margin:0">${show.map(peBolLinha).join("")}</div>${xs.length>show.length?`<div class="note">${show.length} de ${xs.length}. Refine a busca para ver o resto.</div>`:`<div class="note">${xs.length} ${xs.length===1?"linha":"linhas"}.</div>`}`:`<div class="note">Nenhuma linha com esse filtro.</div>`):`<div class="note">Busque um produto ou escolha frutas ou hortaliças. As ${n} linhas não abrem de uma vez.</div>`}</div>`;
+ if(focado){const el=document.getElementById("bolq");if(el){el.focus();if(pos!=null)try{el.setSelectionRange(pos,pos)}catch(e){}}}}
 function peBol(el){
- if(!el.open)return;const b=document.getElementById("pebolb");if(!b||b.dataset.ok)return;
+ if(!el.open)return;const b=document.getElementById("pebolb");if(!b)return;
+ if(b.dataset.ok){peBolPinta();return}
  b.innerHTML='<div class="note">Carregando boletim…</div>';
  fetch("horti/ceasa-pe.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error("http");return r.json()}).then(j=>{
-  const rows=(j.registros||[]).filter(r=>r.data==="2026-11-06");
-  const n=rows.length,p=rows.filter(r=>!r.sem_cotacao&&r.comum!=null).length;
-  const body=rows.map(r=>{const nome=[r.produto,r.variedade&&r.variedade!=="-"?r.variedade:""].filter(Boolean).join(" · ");
-   const meta=[r.embalagem,r.procedencia,r.situacao?String(r.situacao).toLowerCase():""].filter(Boolean).join(" · ");
-   const sem=!!(r.sem_cotacao||r.comum==null);const fx=sem?"sem cotação":`mín. ${fmt(r.min,2)} · máx. ${fmt(r.max,2)}`;
-   return `<div class="row" style="cursor:default"><div><div class="n">${esc(nome)}</div><div class="s">${esc(meta)} · ${fds(r.data)}</div></div><div class="r"><div class="v">${sem?"—":fmt(r.comum,2)}</div><div class="s">${esc(fx)}</div></div></div>`}).join("");
-  b.dataset.ok="1";
-  b.innerHTML=`<div class="note">${n} linhas no boletim de 06/11/2026, ${p} com preço. Cada linha é uma série: produto, variedade, embalagem e procedência não se misturam. Sem cotação fica — e não entra na variação.</div><div class="list" style="margin:0;border:0;border-radius:0">${body}</div>`}).catch(()=>{b.innerHTML='<div class="note">Não foi possível abrir o boletim completo.</div>'})}
+  HORTI_BOL=(j.registros||[]).filter(r=>r.data==="2026-11-06");b.dataset.ok="1";peBolPinta()}).catch(()=>{b.innerHTML='<div class="note">Não foi possível abrir o boletim completo.</div>'})}
 function hortiPage(it){
+ hortiCat();
  const s=it.sec;
  const chips=`<nav class="chips sib49" id="chips">`+s.items.map(o=>`<a class="chip ${o.id===it.id?"on":""}" href="?p=${o.id}" onclick="return nav(event,()=>go('${o.id}'))" ${o.id===it.id?'aria-current="page"':""} style="text-decoration:none">${o.label}</a>`).join("")+`</nav>`;
  let h=FX49?`<div class="crumb prod49">${chips}<div class="ttl">${ico(it.ic,"tt")}${esc(it.label)}</div></div>`
@@ -952,15 +1019,13 @@ function hortiPage(it){
  if(!FX49)h+=`<div class="note">${NOTES.ceagesp}</div>`;
  const uh=hs("https://www.ceasape.org.br/cotacao/hortalicas?data=06/11/2026"),uf=hs("https://www.ceasape.org.br/cotacao/frutas?data=06/11/2026");
  const la=u=>u?`<a href="${esc(u)}" target="_blank" rel="noopener">`:"";
- h+=`<div class="note">Prévia da <b>Ceasa-PE</b>, boletim de 06/11/2026 (${la(uh)}hortaliças ↗</a> · ${la(uf)}frutas ↗</a>): 164 linhas, 140 com preço. A coleta diária não está ligada. Cada linha da lista é uma série — variedade, embalagem e procedência separadas. Onde a fonte não tem preço, aparece — e a linha fica fora da variação. Tomate (caixa 25–28 kg) e uva (caixa 14–18 kg) continuam em reais por caixa. R$/kg calculado só quando a embalagem traz um peso único, com o rótulo. Licença de republicação pendente: as páginas públicas não trazem termo de uso nem proibição, e isso não autoriza publicar.</div>`;
- h+=`<div class="list${FX49?" main49":""}">`;
- HORTI_VIEW.forEach(([grp,prods])=>{h+=`<div class="sec">${esc(grp)}</div>`;
-  prods.forEach(([nome,ks])=>{const xs=ks.map(k=>I[k]).filter(Boolean);if(!xs.length)return;
-   const pracas=new Set(xs.map(x=>x.pe?"Recife":"São Paulo"));
-   h+=`<div class="sec">${esc(nome)}${pracas.size>1?" · por praça":""}</div>`;
-   xs.forEach(x=>{h+=hortiRow(x)})})});
- h+=`</div><details class="ficha" id="pebol" ontoggle="peBol(this)"><summary>Boletim completo · Ceasa-PE 06/11/2026${ico("seta")}</summary><div id="pebolb"><div class="note">O arquivo traz as 164 linhas do dia, com mínimo, comum, máximo, embalagem, procedência e situação.</div></div></details>`;
+ h+=`<div class="note">Prévia com cotação de <b>São Paulo (Ceagesp)</b> e da <b>Ceasa-PE</b>, boletim de 06/11/2026 (${la(uh)}hortaliças ↗</a> · ${la(uf)}frutas ↗</a>): 164 linhas, 140 com preço. A coleta diária não está ligada. Cada linha é uma série — variedade, classificação, embalagem e procedência separadas. Onde a fonte não tem preço, aparece — e a linha fica fora da variação. Tomate (caixa 25–28 kg) e uva (caixa 14–18 kg) continuam em reais por caixa. R$/kg da fonte fica separado do R$/kg calculado, e este só existe com peso único e o rótulo. Licença de republicação pendente: acesso público não autoriza publicar.</div>`;
+ h+=`<div class="hq56"><label class="vh" for="hortiq">Buscar na prévia</label><input id="hortiq" type="search" enterkeyhint="search" placeholder="Produto, variedade, embalagem" value="${esc(HORTI_Q)}" oninput="HORTI_Q=this.value;var b=document.getElementById('hortilist');if(b)b.innerHTML=hortiLista()"></div>`;
+ h+=`<nav class="chips" id="hortip" aria-label="Praça"></nav><div id="hortilist"></div>`;
+ h+=`<details class="ficha" id="pebol" ontoggle="peBol(this)"><summary>Boletim de Recife · buscar nas 164 linhas${ico("seta")}</summary><div id="pebolb"><div class="note">O arquivo é só de Recife, com mínimo, comum, máximo, embalagem, procedência e situação. A lista abre pelo filtro.</div></div></details>`;
+ h+=`<div class="note" id="horticonab">Conab: contexto mensal e semanal, sempre com citação. O boletim não foi integrado, então não há média nem texto de mercado nesta prévia.</div>`;
  h+=pageSrc(keysOf(it));
+ queueMicrotask(hortiPinta);
  return h}
 const HORTI_VIEW=[["Legumes",[["Tomate",["cg_tomate","pe_tomate_extra","pe_tomate_especial","pe_tomate_primeira","pe_tomate_segunda"]],["Batata",["cg_batata","pe_batata_lavada_lisa"]],["Cebola",["cg_cebola","pe_cebola_pera","pe_cebola_roxa"]],["Cenoura",["cg_cenoura","pe_cenoura_primeira"]]]],["Verduras",[["Alface",["cg_alface","pe_alface_crespa"]],["Repolho",["cg_repolho","pe_repolho_hibrido"]]]],["Frutas",[["Banana nanica",["cg_banana_nanica"]],["Banana prata",["cg_banana_prata","pe_banana_prata"]],["Banana pacovan",["pe_banana_pacovan"]],["Laranja",["cg_laranja","pe_laranja_pera"]],["Mamão",["cg_mamao","pe_mamao_formosa"]],["Maçã",["cg_maca","pe_maca_gala"]],["Uva",["pe_uva_italia","pe_uva_nubia","pe_uva_vitoria","pe_uva_isabel"]],["Manga",["pe_manga_espada","pe_manga_rosa","pe_manga_tommy_g","pe_manga_tommy_p"]],["Melancia",["pe_melancia_grande","pe_melancia_pequena","pe_melancia_sem"]],["Melão",["pe_melao_espanhol","pe_melao_japones"]],["Tangerina",["pe_tangerina_cravo","pe_tangerina_verona","pe_tangerina_ponkan","pe_tangerina_murcott"]],["Limão",["pe_limao_taiti"]]]]];
 const HORTI_KEYS=HORTI_VIEW.flatMap(g=>g[1].flatMap(p=>p[1]));
@@ -1337,7 +1402,7 @@ const SYN40={animal:"animal animais proteina pecuaria carne carnes",boi:"boi gor
  suinos:"suino suinos porco porcos suinocultura carne suina",frango:"frango frangos galinha ave aves avicultura",ovos:"ovo ovos galinha granja",leite:"leite lacteo laticinio vaca leiteira",
  tilapia:"tilapia peixe peixes piscicultura pescado",soja:"soja grao graos farelo oleo",milho:"milho grao graos",sorgo:"sorgo grao graos",trigo:"trigo grao graos farinha",arroz:"arroz grao graos",
  feijao:"feijao carioca preto grao graos",algodao:"algodao pluma",cafe:"cafe arabica conilon robusta",cana:"cana acucar etanol alcool usina",cacau:"cacau chocolate",laranja:"laranja suco citros",
- mandioca:"mandioca aipim macaxeira fecula",amendoim:"amendoim",pimenta:"pimenta reino",borracha:"borracha seringueira latex",horti:"hortifruti horti fruta frutas verdura verduras legume legumes ceagesp recife ceasa-pe ceasape uva manga melancia melao tangerina limao",
+ mandioca:"mandioca aipim macaxeira fecula",amendoim:"amendoim",pimenta:"pimenta reino",borracha:"borracha seringueira latex",horti:"hortifruti horti fruta frutas verdura verduras legume legumes ceagesp recife ceasa-pe ceasape uva manga melancia melao tangerina limao campinas belo horizonte curitiba londrina maringa cascavel foz porto alegre goiania sao jose conab",
  dolar:"dolar cambio usd euro moeda ptax",juros:"juros selic inflacao ipca copom",ibov:"bolsa ibovespa acoes",b3:"b3 futuro futuros bolsa",chicago:"chicago cbot bolsa",ice:"nova york ice bolsa",
  petroleo:"petroleo brent",insumos:"insumos fertilizante fertilizantes adubo ureia potassio fosfato diesel combustivel",n_agro:"noticias agro",n_mercado:"noticias mercado negocios economia",n_politica:"noticias politica",
  resumo:"resumo inicio home hoje",fontes:"fontes licencas creditos",alertas:"alerta alertas notificacao celular aviso",instalar:"instalar app aplicativo"};
@@ -1854,10 +1919,13 @@ function ficha(x,hd){const c=x.cr,rows=[];const R=(a,b)=>rows.push(`<dt>${a}</dt
  if(!c)R("Fonte",esc(x.src));
  else if(x.calc)R("Fonte",`<b>Calculado com dados do Informativo</b> (não é cotação publicada): ${esc(x.src.replace(/^Calculado com dados do Informativo:\s*/,""))}. Dados de origem: ${(x.cin||[]).map(z=>SL(z)+LIC(z)).join(" · ")}`);
  else R("Fonte",SL(c)+LIC(c));
- if(x.pe){const p=x.pe;if(p.rotulo)R("Variedade",esc(p.rotulo));if(p.embalagem)R("Embalagem",esc(p.embalagem));if(p.procedencia)R("Procedência",esc(p.procedencia));if(p.situacao)R("Situação",esc(String(p.situacao).toLowerCase()));
-  R("Mínimo, comum e máximo",(p.sem||x.v==null)?"—":esc(fmt(p.min,x.dec)+" · "+fmt(p.comum,x.dec)+" · "+fmt(p.max,x.dec)));
+ if(x.pe){const p=x.pe;if(p.rotulo)R("Variedade",esc(p.rotulo));if(p.classificacao)R("Classificação",esc(p.classificacao));if(p.embalagem)R("Embalagem",esc(p.embalagem));if(p.procedencia)R("Procedência",esc(p.procedencia));if(p.situacao)R("Situação",esc(String(p.situacao).toLowerCase()));
+  const nome=p.preco_nome||"comum";
+  R("Mínimo, "+nome+" e máximo",(p.sem||x.v==null)?"—":esc(fmt(p.min,x.dec)+" · "+fmt(p.comum,x.dec)+" · "+fmt(p.max,x.dec)));
   if(p.calc&&p.rs_kg!=null)R("R$/kg",esc(fmt(p.rs_kg,2)+" · calculado (peso publicado)"));
-  R("Atualização","prévia do boletim de 06/11/2026; a coleta diária não está ligada. Licença de republicação pendente.")}
+  else if(x.unit==="R$/kg"&&!p.calc)R("R$/kg","da fonte");
+  if(p.repeticoes>=5)R("Repetição",esc("mesmo preço há "+p.repeticoes+" pregões. A data continua a do boletim, sem marca de atraso."));
+  R("Atualização","prévia do boletim de 06/11/2026; a coleta diária não está ligada. Licença de republicação pendente. Acesso público não é licença.")}
  const b3v=c&&c[0]==="B3"&&x.contract?"Variação (%) publicada pela B3, sobre o preço de referência do pregão anterior.":"";
  const ex=[b3v,x.pp?"Variação em pontos percentuais (p.p.).":"",x.key==="selic"&&x.lastchg?`Última mudança: ${x.lastchg[1]>0?"+":""}${fmt(x.lastchg[1],2)} p.p. a partir de ${fd(x.lastchg[0])}.`:""].filter(Boolean).join(" ");
  return `<details class="ficha"${fic?" open":""} ontoggle="fic=this.open"><summary>Sobre o indicador${ico("seta")}</summary><dl>${rows.join("")}</dl>${ex?`<div class="note">${ex}</div>`:""}</details>`}

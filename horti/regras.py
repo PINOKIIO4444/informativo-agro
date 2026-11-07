@@ -84,6 +84,99 @@ def unidade(embalagem: str | None, calculo: str | None):
     return "R$/emb.", f"reais por {emb}" if emb else "reais"
 
 
+def cotacao(x: str | None):
+    """Preço publicado. Zero, vazio, S/C e s/ cotação não são preço."""
+    if x is None:
+        return None
+    t = str(x).strip()
+    if not t:
+        return None
+    if re.fullmatch(r"s\s*/\s*c", t, re.I) or re.fullmatch(r"s\s*/\s*cota[cç][aã]o", t, re.I):
+        return None
+    if re.fullmatch(r"0+(?:[.,]0+)?", t):
+        return None
+    return brl(t) if t.upper().startswith("R$") else _numero(t)
+
+
+def _numero(t: str):
+    m = re.fullmatch(r"[\d.]+,\d{2}", t.strip())
+    if not m:
+        return None
+    v = float(t.replace(".", "").replace(",", "."))
+    return v if v > 0 else None
+
+
+def serie_generica(praca, produto, variedade, classificacao, embalagem, procedencia) -> str:
+    """Série que não mistura praça, variedade, classificação, embalagem nem procedência."""
+    return slug(
+        "|".join(
+            [
+                praca or "",
+                produto or "",
+                variedade or "",
+                classificacao or "",
+                embalagem or "",
+                procedencia or "",
+            ]
+        )
+    )
+
+
+def usar_cotacao(fonte: str | None, coluna: str | None = None) -> bool:
+    """A coluna do Ceagesp no Notícias Agrícolas sai atrasada e não entra."""
+    if (fonte or "") == "noticias_agricolas" and slug(coluna or "") in {"ceagesp", "sp", "sao-paulo"}:
+        return False
+    return True
+
+
+def papel_kg(embalagem: str | None, coluna_rs_kg, preco_embalagem):
+    """Separa o quilo da fonte do quilo calculado. Zero na coluna de kg não apaga a embalagem.
+
+    Faixa de peso não vira média. O preço da embalagem volta intacto.
+    """
+    nativo = coluna_rs_kg if isinstance(coluna_rs_kg, (int, float)) and coluna_rs_kg > 0 else None
+    if nativo is not None:
+        return {"nativo": nativo, "calculado": None, "texto": "nativo R$/kg", "preco": preco_embalagem}
+    valor, txt = rs_kg(preco_embalagem, embalagem)
+    if valor is None:
+        return {"nativo": None, "calculado": None, "texto": None, "preco": preco_embalagem}
+    if peso_exato(embalagem) == 1:
+        return {"nativo": valor, "calculado": None, "texto": txt, "preco": preco_embalagem}
+    return {"nativo": None, "calculado": valor, "texto": txt, "preco": preco_embalagem}
+
+
+def alerta(serie_nova, preco_novo, serie_base, preco_base, limiar: float = 10):
+    """Alerta só na mesma série, com os dois preços. Outra embalagem ou praça não entra."""
+    if not serie_nova or serie_nova != serie_base:
+        return None
+    v = variacao(preco_novo, preco_base)
+    if v is None or abs(v) < limiar:
+        return None
+    return v
+
+
+def repeticoes(fechamentos):
+    """Conta o mesmo preço no fim da série. Não marca a data como atrasada."""
+    if not fechamentos:
+        return {"n": 0, "atrasado": False, "data": None}
+    data, preco = fechamentos[-1]
+    if preco is None:
+        return {"n": 0, "atrasado": False, "data": data}
+    n = 0
+    for _d, p in reversed(fechamentos):
+        if p != preco:
+            break
+        n += 1
+    return {"n": n, "atrasado": False, "data": data}
+
+
+def licenca(termo_explicito: str | None):
+    """Acesso público não preenche a licença. Sem termo explícito, fica pendente."""
+    if termo_explicito and str(termo_explicito).strip():
+        return str(termo_explicito).strip()
+    return None
+
+
 def _extenso(emb: str, recipiente: str) -> str:
     has_kg = "KG" in emb.upper().replace(" ", "")
     m = re.search(r"(\d+(?:,\d+)?)\s*(?:-|A|a)\s*(\d+(?:,\d+)?)", emb, re.I)
