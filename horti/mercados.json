@@ -1,145 +1,336 @@
 {
-  "gerado_em": "2026-11-07",
-  "coleta_diaria": false,
-  "integracao_gerador": false,
-  "nota": "Catálogo das praças do relatório de 07/11/2026. Só São Paulo e Recife têm cotação nesta prévia. Acesso público não é licença. Nenhuma cotação foi copiada de uma praça para outra.",
-  "pracas": [
-    {
-      "id": "sp",
-      "nome": "São Paulo",
-      "orgao": "Ceagesp",
-      "uf": "SP",
-      "cotacoes": "sim",
-      "data": null,
-      "licenca": null,
-      "nota": "Cotações já publicadas no AgroN, pela leitura direta do boletim. A coluna do Ceagesp no Notícias Agrícolas não entra: ela sai um boletim atrasada."
-    },
-    {
-      "id": "recife",
-      "nome": "Recife",
-      "orgao": "Ceasa-PE",
-      "uf": "PE",
-      "cotacoes": "sim",
-      "data": "2026-11-06",
-      "licenca": null,
-      "nota": "Prévia do boletim de 06/11/2026. Licença de republicação pendente. A coleta diária está desligada."
-    },
-    {
-      "id": "campinas",
-      "nome": "Campinas",
-      "orgao": "Notícias Agrícolas",
-      "uf": "SP",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Aguardando o boletim. Quando entrar, preço repetido ganha o aviso de vários pregões iguais e a data continua a do fechamento, sem marca de atraso."
-    },
-    {
-      "id": "bh",
-      "nome": "Belo Horizonte",
-      "orgao": "Notícias Agrícolas",
-      "uf": "MG",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Aguardando o boletim. O site da CeasaMinas não está nesta prévia."
-    },
-    {
-      "id": "cwb",
-      "nome": "Curitiba",
-      "orgao": "Ceasa-PR",
-      "uf": "PR",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Uma das cinco unidades do Paraná. Aguardando o PDF."
-    },
-    {
-      "id": "londrina",
-      "nome": "Londrina",
-      "orgao": "Ceasa-PR",
-      "uf": "PR",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Uma das cinco unidades do Paraná. Aguardando o PDF."
-    },
-    {
-      "id": "maringa",
-      "nome": "Maringá",
-      "orgao": "Ceasa-PR",
-      "uf": "PR",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Uma das cinco unidades do Paraná. Aguardando o PDF."
-    },
-    {
-      "id": "cascavel",
-      "nome": "Cascavel",
-      "orgao": "Ceasa-PR",
-      "uf": "PR",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Uma das cinco unidades do Paraná. Aguardando o PDF."
-    },
-    {
-      "id": "foz",
-      "nome": "Foz do Iguaçu",
-      "orgao": "Ceasa-PR",
-      "uf": "PR",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Uma das cinco unidades do Paraná. Aguardando o PDF. Esta prévia não grava data de boletim."
-    },
-    {
-      "id": "poa",
-      "nome": "Porto Alegre",
-      "orgao": "Ceasa-RS",
-      "uf": "RS",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Aguardando o PDF. O preço central, quando chegar, fica com o nome que a fonte usar."
-    },
-    {
-      "id": "rj",
-      "nome": "Rio de Janeiro",
-      "orgao": "Ceasa-RJ",
-      "uf": "RJ",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Aguardando o PDF. O preço central da fonte se chama modal."
-    },
-    {
-      "id": "go",
-      "nome": "Goiânia",
-      "orgao": "Ceasa-GO",
-      "uf": "GO",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Aguardando o PDF. R$/kg zero em item de molho ou unidade não apaga o preço da embalagem."
-    },
-    {
-      "id": "sc",
-      "nome": "São José",
-      "orgao": "Ceasa-SC",
-      "uf": "SC",
-      "cotacoes": "nenhuma",
-      "data": null,
-      "licenca": null,
-      "nota": "Aguardando o PDF."
-    }
-  ],
-  "conab": {
-    "papel": "contexto",
-    "cotacoes": "nenhuma",
-    "data": null,
-    "licenca": null,
-    "nota": "Contexto mensal e semanal, com citação da fonte. O boletim não foi integrado, então esta prévia não traz média nem texto de mercado."
+ "gerado_em": "2026-11-07",
+ "coleta_diaria": false,
+ "integracao_gerador": false,
+ "nota": "Praças com boletim no pacote de 07/11/2026. Acesso público não é licença.",
+ "pracas": [
+  {
+   "id": "sp",
+   "nome": "São Paulo",
+   "orgao": "Ceagesp",
+   "uf": "SP",
+   "cotacoes": "sim",
+   "data": null,
+   "licenca": null,
+   "nota": "Cotações já publicadas no AgroN, pela leitura direta do boletim. A coluna do Ceagesp no Notícias Agrícolas não entra."
+  },
+  {
+   "id": "recife",
+   "nome": "Recife",
+   "orgao": "Ceasa-PE",
+   "uf": "PE",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2024-01-02",
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "campinas",
+   "nome": "Campinas",
+   "orgao": "Notícias Agrícolas",
+   "uf": "SP",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-10-23",
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "bh",
+   "nome": "Belo Horizonte",
+   "orgao": "Notícias Agrícolas",
+   "uf": "MG",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-10-23",
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "cwb",
+   "nome": "Curitiba",
+   "orgao": "Ceasa-PR",
+   "uf": "PR",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-10-26",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "8 dias no pacote. 27/10 não está no arquivo. Sem motivo inventado para a falta."
+  },
+  {
+   "id": "londrina",
+   "nome": "Londrina",
+   "orgao": "Ceasa-PR",
+   "uf": "PR",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-02",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "10 dias úteis no pacote, inclusive 02/11. Em 27/10 há dois PDFs; 127 pares iguais ficaram numa linha com proveniência extra e 129 pares divergentes estão na quarentena, fora do histórico."
+  },
+  {
+   "id": "maringa",
+   "nome": "Maringá",
+   "orgao": "Ceasa-PR",
+   "uf": "PR",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "cascavel",
+   "nome": "Cascavel",
+   "orgao": "Ceasa-PR",
+   "uf": "PR",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "foz",
+   "nome": "Foz do Iguaçu",
+   "orgao": "Ceasa-PR",
+   "uf": "PR",
+   "cotacoes": "sim",
+   "data": "2026-11-04",
+   "licenca": null,
+   "dias": [
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-03",
+    "2026-11-04"
+   ],
+   "manual": false,
+   "nota": "7 dias. 05/11 e 06/11 não estão no arquivo. A última data publicada é a do boletim."
+  },
+  {
+   "id": "poa",
+   "nome": "Porto Alegre",
+   "orgao": "Ceasa-RS",
+   "uf": "RS",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "rj",
+   "nome": "Rio de Janeiro",
+   "orgao": "Ceasa-RJ",
+   "uf": "RJ",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "go",
+   "nome": "Goiânia",
+   "orgao": "Ceasa-GO",
+   "uf": "GO",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-11-03",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "sc",
+   "nome": "São José",
+   "orgao": "Ceasa-SC",
+   "uf": "SC",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "df",
+   "nome": "Brasília SIMA",
+   "orgao": "Ceasa-DF",
+   "uf": "DF",
+   "cotacoes": "sim",
+   "data": "2026-11-05",
+   "licenca": null,
+   "dias": [
+    "2026-11-05"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "dfat",
+   "nome": "Brasília atacado",
+   "orgao": "Ceasa-DF (atacado)",
+   "uf": "DF",
+   "cotacoes": "sim",
+   "data": "2026-11-05",
+   "licenca": null,
+   "dias": [
+    "2026-11-05"
+   ],
+   "manual": false,
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+  },
+  {
+   "id": "vitoria",
+   "nome": "Vitória",
+   "orgao": "Ceasa-ES",
+   "uf": "ES",
+   "cotacoes": "sim",
+   "data": "2026-11-06",
+   "licenca": null,
+   "dias": [
+    "2026-11-05",
+    "2026-11-06"
+   ],
+   "manual": true,
+   "nota": "Dois dias lidos de PDF no navegador, fonte manual, sem coletor. Página pública: https://ceasa.es.gov.br/bancodedados. Siglas de situação não foram expandidas."
   }
+ ],
+ "conab": {
+  "cotacoes": "nenhuma",
+  "licenca": "Qualquer parte desta publicação pode ser reproduzida, desde que citada a fonte.",
+  "citacao": "CONAB - COMPANHIA NACIONAL DE ABASTECIMENTO. Boletim Hortigranjeiro, Brasília - DF, v. 12, n. 27, outubro, 2026.",
+  "url": "https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/hortigranjeiros-prohort/boletim-hortigranjeiro/2026/boletim-hortigranjeiro_outubro-2026",
+  "periodo": "setembro/2026",
+  "na_pagina": true,
+  "nota": "O boletim de outubro analisa setembro. O resumo semanal 41 é outro documento, de 04/11/2026, sobre outubro frente a setembro, e o texto extraído não traz frase de licença."
+ },
+ "hf_brasil": {
+  "registros": 0,
+  "cotacoes": "nenhuma",
+  "licenca": null,
+  "autorizacao_series": "pendente",
+  "nc": "CC BY-NC 4.0 não autoriza, sozinha, retransmitir a série",
+  "url": "https://www.hfbrasil.org.br/",
+  "na_pagina": true
+ }
 }

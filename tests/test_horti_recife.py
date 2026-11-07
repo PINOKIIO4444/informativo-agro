@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
+import unicodedata
 import unittest
 from pathlib import Path
 
@@ -151,10 +153,25 @@ class Pagina(unittest.TestCase):
             hist = json.loads((ROOT / "hist" / f"{it['key']}.json").read_text(encoding="utf-8"))
             self.assertEqual(hist["key"], it["key"])
             self.assertEqual(hist["rolls"], [])
+            boletim = json.loads((ROOT / "horti" / "boletins" / "recife.json").read_text(encoding="utf-8"))
+            def igual(a, b):
+                t = unicodedata.normalize("NFKD", str(a or "")).encode("ascii", "ignore").decode().lower()
+                u = unicodedata.normalize("NFKD", str(b or "")).encode("ascii", "ignore").decode().lower()
+                return re.sub(r"[^a-z0-9]+", " ", t).strip() == re.sub(r"[^a-z0-9]+", " ", u).strip()
             for dia, valor in hist["h"]:
                 self.assertIsInstance(valor, (int, float))
                 self.assertGreater(valor, 0)
-                rec = next(r for r in self.doc["registros"] if r["serie"] == p["serie"] and r["data"] == dia)
+                self.assertGreaterEqual(dia, "2026-10-01")
+                rec = next((r for r in self.doc["registros"] if r["serie"] == p["serie"] and r["data"] == dia), None)
+                if rec is None:
+                    rec = next(
+                        r for r in boletim["registros"]
+                        if r["data"] == dia
+                        and igual(r.get("produto"), it["name"])
+                        and igual(r.get("variedade"), p.get("variedade"))
+                        and igual(r.get("embalagem"), p.get("embalagem"))
+                        and igual(r.get("procedencia"), p.get("procedencia"))
+                    )
                 self.assertEqual(valor, rec["comum"])
         self.assertEqual(len(series), len(set(series)))
 

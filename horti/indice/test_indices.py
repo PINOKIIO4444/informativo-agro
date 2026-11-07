@@ -1,0 +1,26 @@
+"""Fixtures dos índices oficiais (baixados em 07/11/2026). Testa a resolução ano/mês, inclusive virada de mês e de ano.
+Não prova que os sites manterão o formato no futuro: só que o código resolve os índices como estão hoje."""
+import os, sys
+H = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, H); import indices as I
+F = []; fx = lambda n: open(os.path.join(H, 'fixtures', n), encoding='utf-8', errors='ignore').read()
+def ck(c, m): print(('OK   ' if c else 'FALHA ') + m); c or F.append(m)
+root = fx('rj_295.html')
+ck(I.rj_year_url(root, 2026).endswith('/node/600') and I.rj_year_url(root, 2025).endswith('/node/500'), 'RJ raiz -> ano 2026/2025')
+ck(I.rj_year_url(root, 2031) is None, 'RJ ano inexistente -> None (sem chute)')
+ck(I.rj_month_url(fx('rj_600.html'), 11).endswith('/node/661') and I.rj_month_url(fx('rj_600.html'), 10).endswith('/node/655'), 'RJ virada de mês out->nov 2026')
+ck(I.rj_month_url(fx('rj_500.html'), 12).endswith('/node/584') and I.rj_month_url(fx('rj_600.html'), 1).endswith('/node/601'), 'RJ virada de ano dez/2025 -> jan/2026')
+p = I.rj_pdfs(fx('rj_661.html')); ck('2026-11-06' in p and '2026-11-03' in p, 'RJ PDFs do mês por data do nome (grafias variam)')
+p10 = I.rj_pdfs(fx('rj_655.html')); ck('2026-10-01' in p10 and '2026-10-05' in p10, 'RJ outubro: nomes com "diario" sem acento também resolvem')
+sr = fx('sc_root.html')
+ck(I.sc_year_url(sr, 2026).endswith('/2026-1') and I.sc_year_url(sr, 2025).endswith('/2025'), 'SC raiz -> ano (sufixo -1 em 2026)')
+ck(I.sc_month_url(fx('sc_2026.html'), 11).endswith('/11-novembro-18') and I.sc_month_url(fx('sc_2026.html'), 10).endswith('/10-outubro-17'), 'SC virada de mês')
+ck(I.sc_month_url(fx('sc_2025.html'), 12).endswith('/12-dezembro-16') and I.sc_month_url(fx('sc_2026.html'), 1).endswith('/01-janeiro-18'), 'SC virada de ano')
+ck(set(I.sc_pdfs(fx('sc_2026_11.html'))) >= {'2026-11-05', '2026-11-06'} and set(I.sc_pdfs(fx('sc_2026_10.html'))) >= {'2026-10-02'}, 'SC PDFs por data')
+rs = fx('rs_page.html')
+ck(I.rs_month_folder(rs, 2026, 11).endswith('1dEPfz7Rxnf4mC8ysKhufxGDX5Tr2xTq-') and I.rs_month_folder(rs, 2026, 10) and I.rs_month_folder(rs, 2026, 10) != I.rs_month_folder(rs, 2026, 11), 'RS pasta do mês pelo bloco do ano')
+ck(I.rs_month_folder(rs, 2025, 12) is not None and I.rs_month_folder(rs, 2025, 12) != I.rs_month_folder(rs, 2026, 12 if I.rs_month_folder(rs, 2026, 12) else 11), 'RS dezembro/2025 distinto de 2026')
+ck(set(I.rs_files(fx('rs_folder_2026_11.html'))) >= {'2026-11-05', '2026-11-06'}, 'RS arquivos do mês por data')
+pr = fx('pr_2026.html'); n = I.pr_pdfs(pr, 2026, 11); o = I.pr_pdfs(pr, 2026, 10)
+ck(any(d == '2026-11-06' for d, _ in n) and any(d == '2026-10-30' for d, _ in o) and not any(d.startswith('2026-10') for d, _ in n), 'PR links por mês e dia (out e nov separados)')
+ck(I.go_pdf(2027, 1, 4).endswith('/2027/01/04-01-2027.pdf'), 'GO padrão de URL na virada de ano (padrão, não verificado no site para 2027)')
+sys.exit(1 if F else 0)

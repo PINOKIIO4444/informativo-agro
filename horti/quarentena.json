@@ -1,0 +1,3227 @@
+[
+ {
+  "serie": "ceasa-pr-londrina-abacate-avocado-cx-03-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    38.0,
+    50.0,
+    50.0
+   ],
+   [
+    27.0,
+    32.0,
+    32.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-abacate-breda-cx-20-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    70.0,
+    70.0,
+    135.0
+   ],
+   [
+    65.0,
+    70.0,
+    70.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-abacate-margarida-cx-20-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    40.0,
+    45.0,
+    45.0
+   ],
+   [
+    35.0,
+    35.0,
+    40.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-ameixa-preta-importada-cx-10kg-sp-esp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    165.0,
+    175.0,
+    175.0
+   ],
+   [
+    155.0,
+    155.0,
+    165.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-ameixa-vermelha-importada-cx-10kg-sp-esp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    165.0,
+    175.0,
+    175.0
+   ],
+   [
+    155.0,
+    155.0,
+    165.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-banana-caturra-primeira-cx-20-kg-pr-sc",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    55.0,
+    60.0,
+    60.0
+   ],
+   [
+    50.0,
+    50.0,
+    55.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-banana-maca-primeira-cx-20-kg-sc-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    130.0,
+    130.0
+   ],
+   [
+    100.0,
+    120.0,
+    120.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-banana-ouro-cx-06kg-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    60.0,
+    70.0,
+    70.0
+   ],
+   [
+    70.0,
+    110.0,
+    110.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-banana-prata-cx-20-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    80.0,
+    100.0,
+    100.0
+   ],
+   [
+    100.0,
+    100.0,
+    130.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-coco-seco-sc-14kg-sp-ba",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    68.0,
+    70.0,
+    70.0
+   ],
+   [
+    66.0,
+    66.0,
+    70.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-kiwi-importado-importado-cx-10kg-chi-ita",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    230.0,
+    230.0,
+    245.0
+   ],
+   [
+    260.0,
+    280.0,
+    280.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-laranja-bahia-grauda-cx-20-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    90.0,
+    95.0,
+    95.0
+   ],
+   [
+    95.0,
+    95.0,
+    100.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-laranja-lima-grauda-cx-20-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    94.0,
+    94.0,
+    100.0
+   ],
+   [
+    85.0,
+    98.0,
+    98.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-laranja-lima-media-cx-20-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    75.0,
+    75.0,
+    100.0
+   ],
+   [
+    60.0,
+    60.0,
+    65.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-limao-rosa-cx-20kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    50.0,
+    50.0,
+    60.0
+   ],
+   [
+    40.0,
+    50.0,
+    50.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-limao-siciliano-cx-15kg-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    130.0,
+    140.0,
+    140.0
+   ],
+   [
+    115.0,
+    125.0,
+    125.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-limao-tahiti-graudo-cx-23-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    200.0,
+    210.0,
+    210.0
+   ],
+   [
+    125.0,
+    130.0,
+    130.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-limao-tahiti-medio-cx-23-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    180.0,
+    190.0,
+    190.0
+   ],
+   [
+    80.0,
+    100.0,
+    100.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-maca-fuji-cat-1-tp-80-a-100-cx-18-kg-sc-rs",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    130.0,
+    130.0,
+    140.0
+   ],
+   [
+    95.0,
+    100.0,
+    100.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-maca-fuji-cat-2-tp-80-a-100-cx-18-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    85.0,
+    95.0,
+    95.0
+   ],
+   [
+    75.0,
+    85.0,
+    85.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-maca-gala-cat-1-tp-80-a-100-cx-18-kg-rs-sc",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    140.0,
+    140.0,
+    150.0
+   ],
+   [
+    125.0,
+    140.0,
+    140.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-mamao-formosa-maduro-01kg-sp-ba",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    6.0,
+    6.3,
+    6.3
+   ],
+   [
+    4.8,
+    5.0,
+    5.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-mamao-formosa-maduro-cx-15kg-es-sp-ba",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    90.0,
+    95.0,
+    95.0
+   ],
+   [
+    72.0,
+    75.0,
+    75.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-mamao-papaya-havai-24-cx-10kg-es-sp-ba",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    85.0,
+    85.0,
+    100.0
+   ],
+   [
+    55.0,
+    65.0,
+    65.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-manga-espada-rosa-cx-06kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    100.0,
+    120.0
+   ],
+   [
+    75.0,
+    80.0,
+    80.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-manga-palmer-cx-20-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    80.0,
+    90.0,
+    90.0
+   ],
+   [
+    80.0,
+    80.0,
+    90.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-manga-tommy-atkins-cx-10kg-sp-pe-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    35.0,
+    35.0,
+    50.0
+   ],
+   [
+    30.0,
+    32.0,
+    32.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-manga-tommy-atkins-cx-20-kg-sp-pe-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    60.0,
+    60.0,
+    65.0
+   ],
+   [
+    60.0,
+    65.0,
+    65.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-maracuja-azedo-cx-11kg-sp-pr-ba",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    140.0,
+    140.0,
+    145.0
+   ],
+   [
+    95.0,
+    100.0,
+    100.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-melancia-redonda-01kg-ms-go-to",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    1.8,
+    2.2,
+    2.2
+   ],
+   [
+    2.0,
+    2.2,
+    2.2
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-melao-amarelo-rei-5-7-und-cx-10kg-ba-pe",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    120.0,
+    120.0,
+    125.0
+   ],
+   [
+    110.0,
+    125.0,
+    125.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-melao-morango-tipo-1-cx-1-2-kg-pr-mg",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    35.0,
+    40.0,
+    40.0
+   ],
+   [
+    30.0,
+    30.0,
+    35.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-nectarina-importada-importada-cx-09kg-sp-esp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    150.0,
+    160.0,
+    160.0
+   ],
+   [
+    180.0,
+    180.0,
+    200.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pera-importada-d-anjou-tp-80-a-100-cx-18-kg-arg-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    200.0,
+    200.0,
+    210.0
+   ],
+   [
+    180.0,
+    200.0,
+    200.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pera-importada-portuguesa-cx-10kg-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    170.0,
+    215.0,
+    215.0
+   ],
+   [
+    170.0,
+    180.0,
+    180.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pera-importada-williams-tp-80-a-100-cx-18-kg-esp-arg",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    240.0,
+    240.0,
+    260.0
+   ],
+   [
+    220.0,
+    220.0,
+    250.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pera-nacional-yari-cx-20kg-sc-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    80.0,
+    100.0,
+    100.0
+   ],
+   [
+    70.0,
+    80.0,
+    80.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pessego-importado-importado-cx-09kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    170.0,
+    200.0,
+    200.0
+   ],
+   [
+    165.0,
+    170.0,
+    170.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pessego-nacional-nacional-cx-10kg-rs-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    90.0,
+    90.0,
+    100.0
+   ],
+   [
+    150.0,
+    165.0,
+    165.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pessego-nacional-nacional-cx-18-kg-rs-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    180.0,
+    180.0,
+    200.0
+   ],
+   [
+    270.0,
+    270.0,
+    360.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pinhao-pitaia-c-12un-cx-04kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    122.0,
+    128.0,
+    128.0
+   ],
+   [
+    182.0,
+    182.0,
+    200.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pinhao-tamara-fresca-fresca-cx-05kg",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    290.0,
+    290.0,
+    330.0
+   ],
+   [
+    280.0,
+    325.0,
+    325.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-tangerina-importada-importada-cx-10kg-sp-esp-uru",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    90.0,
+    90.0,
+    100.0
+   ],
+   [
+    120.0,
+    120.0,
+    130.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-tangerina-cravo-cx-20-kg-sp-sc",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    90.0,
+    100.0,
+    100.0
+   ],
+   [
+    100.0,
+    100.0,
+    115.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-tangerina-mimosa-mexirica-comum-cx-20-kg-sp-rs",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    130.0,
+    130.0,
+    140.0
+   ],
+   [
+    100.0,
+    100.0,
+    125.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-tangerina-monten-bergam-grande-cx-20-kg-sp-rs",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    130.0,
+    130.0,
+    140.0
+   ],
+   [
+    90.0,
+    100.0,
+    100.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-tangerina-murkote-grauda-cx-23-kg-sp-pr-rs",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    95.0,
+    100.0,
+    100.0
+   ],
+   [
+    75.0,
+    75.0,
+    85.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-tangerina-murkote-media-cx-23-kg-sp-pr-rs",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    75.0,
+    85.0,
+    85.0
+   ],
+   [
+    65.0,
+    65.0,
+    70.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-uva-benitake-nacional-cx-08kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    80.0,
+    86.0,
+    86.0
+   ],
+   [
+    86.0,
+    86.0,
+    92.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-uva-crinson-importada-cx-09kg-sp-chi-arg",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    225.0,
+    230.0,
+    230.0
+   ],
+   [
+    230.0,
+    260.0,
+    260.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-uva-italia-nacional-cx-08kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    80.0,
+    86.0,
+    86.0
+   ],
+   [
+    86.0,
+    86.0,
+    92.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-uva-niagara-rosada-cx-08kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    110.0,
+    110.0
+   ],
+   [
+    96.0,
+    96.0,
+    100.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-uva-preta-nacional-cx-08kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    88.0,
+    88.0,
+    96.0
+   ],
+   [
+    80.0,
+    84.0,
+    84.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-uva-thompson-nacional-cx-05kg-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    80.0,
+    85.0,
+    85.0
+   ],
+   [
+    75.0,
+    80.0,
+    80.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-uva-vitoria-nacional-cx-05kg-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    75.0,
+    80.0,
+    80.0
+   ],
+   [
+    65.0,
+    65.0,
+    70.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-atemoia-15-unid-15-unid-cx-03-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    65.0,
+    65.0,
+    80.0
+   ],
+   [
+    42.0,
+    56.0,
+    56.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-atemoia-cacau-10-a-12-un-cx-10kg-ba-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    145.0,
+    150.0,
+    150.0
+   ],
+   [
+    100.0,
+    100.0,
+    130.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-figo-roxo-cx-1-5kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    75.0,
+    84.0,
+    84.0
+   ],
+   [
+    60.0,
+    70.0,
+    70.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-goiaba-vermelha-cx-20kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    110.0,
+    110.0,
+    115.0
+   ],
+   [
+    110.0,
+    120.0,
+    120.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-goiaba-graviola-cx-08kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    114.0,
+    114.0,
+    125.0
+   ],
+   [
+    88.0,
+    88.0,
+    100.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-goiaba-jaca-01kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    2.0,
+    2.0,
+    2.5
+   ],
+   [
+    2.0,
+    2.0,
+    4.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-goiaba-kinkan-cx-02-kg-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    70.0,
+    88.0,
+    88.0
+   ],
+   [
+    60.0,
+    60.0,
+    65.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-nespera-cx-04kg-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    90.0,
+    90.0,
+    100.0
+   ],
+   [
+    100.0,
+    125.0,
+    125.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-physalis-pinha-fruta-do-conde-cx-03-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    70.0,
+    78.0,
+    78.0
+   ],
+   [
+    45.0,
+    45.0,
+    55.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-abobora-menina-paulista-sc-20kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    100.0,
+    120.0
+   ],
+   [
+    60.0,
+    60.0,
+    70.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-abobora-seca-pescoco-01kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    3.5,
+    3.5,
+    3.9
+   ],
+   [
+    3.8,
+    4.0,
+    4.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-abobrinha-branca-extra-a-cx-20-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    35.0,
+    35.0,
+    40.0
+   ],
+   [
+    18.0,
+    18.0,
+    20.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-abobrinha-branca-extra-aa-cx-20-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    70.0,
+    70.0,
+    80.0
+   ],
+   [
+    35.0,
+    35.0,
+    40.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-abobrinha-verde-extra-a-cx-20-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    20.0,
+    25.0,
+    25.0
+   ],
+   [
+    18.0,
+    20.0,
+    20.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-abobrinha-verde-extra-aa-cx-20-kg-sp-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    50.0,
+    50.0,
+    60.0
+   ],
+   [
+    35.0,
+    40.0,
+    40.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-berinjela-extra-a-extra-a-cx-12kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    35.0,
+    40.0,
+    40.0
+   ],
+   [
+    15.0,
+    20.0,
+    20.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-berinjela-extra-aa-extra-aa-cx-12kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    70.0,
+    80.0,
+    80.0
+   ],
+   [
+    30.0,
+    40.0,
+    40.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-berinjela-caxi-cx-16-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    60.0,
+    70.0,
+    70.0
+   ],
+   [
+    70.0,
+    70.0,
+    80.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-chuchu-extra-a-extra-a-cx-20-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    22.0,
+    22.0,
+    25.0
+   ],
+   [
+    18.0,
+    20.0,
+    20.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-chuchu-extra-aa-extra-aa-cx-20-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    45.0,
+    45.0,
+    50.0
+   ],
+   [
+    35.0,
+    40.0,
+    40.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-jilo-bj-450g-0-45kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    4.0,
+    5.0,
+    5.0
+   ],
+   [
+    4.3,
+    5.0,
+    5.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-jilo-primeira-primeira-cx-16-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    100.0,
+    120.0
+   ],
+   [
+    70.0,
+    70.0,
+    80.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pepino-aodai-salada-extra-a-cx-20-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    35.0,
+    40.0,
+    40.0
+   ],
+   [
+    20.0,
+    20.0,
+    25.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pepino-aodai-salada-extra-aa-cx-20-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    70.0,
+    80.0,
+    80.0
+   ],
+   [
+    40.0,
+    40.0,
+    50.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pepino-japones-extra-a-cx-20-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    40.0,
+    40.0,
+    45.0
+   ],
+   [
+    20.0,
+    20.0,
+    25.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pepino-japones-extra-aa-cx-20-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    80.0,
+    80.0,
+    90.0
+   ],
+   [
+    40.0,
+    40.0,
+    50.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pimenta-americana-cx-12kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    80.0,
+    80.0,
+    90.0
+   ],
+   [
+    50.0,
+    50.0,
+    60.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pimenta-cambuci-cx-12kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    120.0,
+    120.0
+   ],
+   [
+    90.0,
+    90.0,
+    100.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pimenta-dedo-de-moca-ardida-cx-10kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    120.0,
+    120.0
+   ],
+   [
+    120.0,
+    150.0,
+    150.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pimentao-amarelo-extra-aa-cx-12kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    100.0,
+    110.0
+   ],
+   [
+    50.0,
+    50.0,
+    60.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pimentao-colorido-extra-aa-cx-12kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    100.0,
+    110.0
+   ],
+   [
+    50.0,
+    50.0,
+    60.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pimentao-verde-extra-a-cx-12kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    40.0,
+    40.0,
+    45.0
+   ],
+   [
+    20.0,
+    25.0,
+    25.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pimentao-verde-extra-aa-cx-12kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    80.0,
+    80.0,
+    90.0
+   ],
+   [
+    40.0,
+    50.0,
+    50.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-pimentao-vermelho-extra-aa-cx-12kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    100.0,
+    110.0
+   ],
+   [
+    50.0,
+    50.0,
+    60.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-quiabo-primeira-primeira-cx-15kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    100.0,
+    120.0
+   ],
+   [
+    120.0,
+    120.0,
+    140.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-quiabo-segunda-segunda-cx-15kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    50.0,
+    50.0,
+    60.0
+   ],
+   [
+    60.0,
+    60.0,
+    70.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-tomate-cereja-cx-20-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    120.0,
+    130.0,
+    130.0
+   ],
+   [
+    160.0,
+    160.0,
+    180.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-tomate-saladete-extra-a-cx-20-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    100.0,
+    110.0
+   ],
+   [
+    60.0,
+    60.0,
+    65.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-tomate-saladete-extra-aa-cx-20-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    200.0,
+    200.0,
+    210.0
+   ],
+   [
+    120.0,
+    120.0,
+    130.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-vagem-macarrao-extra-a-cx-15kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    70.0,
+    75.0,
+    75.0
+   ],
+   [
+    60.0,
+    65.0,
+    65.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-vagem-macarrao-extra-aa-cx-15kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    140.0,
+    150.0,
+    150.0
+   ],
+   [
+    120.0,
+    130.0,
+    130.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-alho-importado-roxo-tp-5-cx-10kg-arg",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    200.0,
+    200.0,
+    210.0
+   ],
+   [
+    140.0,
+    160.0,
+    160.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-alho-importado-roxo-tp-6-a-7-cx-10kg-arg",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    210.0,
+    220.0,
+    220.0
+   ],
+   [
+    190.0,
+    195.0,
+    195.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-alho-nacional-roxo-tp-5-cx-10kg",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    170.0,
+    170.0,
+    180.0
+   ],
+   [
+    165.0,
+    170.0,
+    170.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-alho-nacional-roxo-tp-6-a-7-cx-10kg-go-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    220.0,
+    220.0,
+    280.0
+   ],
+   [
+    195.0,
+    215.0,
+    215.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-batata-casca-rosada-especial-sc-25kg-sp-mg",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    130.0,
+    130.0,
+    140.0
+   ],
+   [
+    110.0,
+    110.0,
+    120.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-batata-comum-especial-sc-25kg-sp-go",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    110.0,
+    120.0,
+    120.0
+   ],
+   [
+    90.0,
+    95.0,
+    95.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-batata-comum-mista-boneca-sc-25kg-sp-sc-go",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    80.0,
+    100.0,
+    100.0
+   ],
+   [
+    65.0,
+    70.0,
+    70.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-batata-comum-primeirinha-sc-25kg-sp-sc-go",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    90.0,
+    90.0,
+    110.0
+   ],
+   [
+    90.0,
+    90.0,
+    100.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-batata-doce-branca-extra-cx-20-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    100.0,
+    120.0
+   ],
+   [
+    100.0,
+    120.0,
+    120.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-batata-doce-roxa-extra-cx-20-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    55.0,
+    55.0,
+    60.0
+   ],
+   [
+    55.0,
+    60.0,
+    60.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-beterraba-cara-extra-a-cx-20-kg-pr-sp",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    100.0,
+    130.0
+   ],
+   [
+    70.0,
+    80.0,
+    80.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-cebola-pera-nacional-sc-20kg-sp-ba-mg",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    120.0,
+    130.0,
+    130.0
+   ],
+   [
+    90.0,
+    95.0,
+    95.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-cebola-roxa-sc-20kg-ba-sc",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    160.0,
+    180.0,
+    180.0
+   ],
+   [
+    110.0,
+    110.0,
+    125.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-cenoura-comum-extra-a-cx-20-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    30.0,
+    30.0,
+    35.0
+   ],
+   [
+    32.0,
+    32.0,
+    35.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-cenoura-comum-extra-aa-cx-20-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    55.0,
+    55.0,
+    60.0
+   ],
+   [
+    65.0,
+    65.0,
+    70.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-inhame-taia-primeira-primeira-cx-20-kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    100.0,
+    110.0,
+    110.0
+   ],
+   [
+    120.0,
+    120.0,
+    125.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-nabo-rabanete-dz-de-macos-cx-12kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    55.0,
+    55.0,
+    60.0
+   ],
+   [
+    40.0,
+    50.0,
+    50.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-alface-americana-bandeja-c-2un-bj-500g-0-50kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    6.0,
+    6.5,
+    6.5
+   ],
+   [
+    5.5,
+    6.5,
+    6.5
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-alface-americana-media-cx-7-5kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    40.0,
+    40.0,
+    55.0
+   ],
+   [
+    25.0,
+    25.0,
+    30.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-alface-crespa-grande-cx-07kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    40.0,
+    40.0,
+    45.0
+   ],
+   [
+    20.0,
+    25.0,
+    25.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-alface-hidroponico-media-cx-15-un-07kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    40.0,
+    40.0,
+    45.0
+   ],
+   [
+    20.0,
+    25.0,
+    25.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-alface-roxa-grande-cx-07kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    35.0,
+    35.0,
+    40.0
+   ],
+   [
+    20.0,
+    25.0,
+    25.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-almeirao-pao-de-acucar-maco-mc-400g-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    2.5,
+    2.5,
+    2.9
+   ],
+   [
+    1.7,
+    1.7,
+    2.7
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-couve-brocolo-bj-250g-0-25kg-pr-rs",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    5.0,
+    6.0,
+    6.0
+   ],
+   [
+    6.0,
+    6.0,
+    7.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-couve-brocolo-americana-duzia-dz-06kg-pr-rs",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    60.0,
+    72.0,
+    72.0
+   ],
+   [
+    72.0,
+    72.0,
+    84.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-couve-chinesa-grande-grande-eg-8-un-15kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    25.0,
+    30.0,
+    30.0
+   ],
+   [
+    25.0,
+    25.0,
+    30.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-couve-flor-grande-grande-dz-24kg-pr-rs",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    60.0,
+    66.0,
+    66.0
+   ],
+   [
+    84.0,
+    84.0,
+    96.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-couve-flor-media-media-dz-20kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    30.0,
+    33.0,
+    33.0
+   ],
+   [
+    42.0,
+    42.0,
+    48.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-couve-flor-couve-manteiga-maco-mc-400g-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    2.5,
+    2.5,
+    2.91
+   ],
+   [
+    1.7,
+    1.7,
+    2.1
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-couve-flor-escarola-chicoria-cx-07kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    30.0,
+    30.0,
+    40.0
+   ],
+   [
+    20.0,
+    20.0,
+    25.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-repolho-roxo-grande-medio-eg-25kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    40.0,
+    40.0,
+    45.0
+   ],
+   [
+    25.0,
+    25.0,
+    30.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-repolho-verde-grande-eg-25kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    25.0,
+    25.0,
+    30.0
+   ],
+   [
+    20.0,
+    25.0,
+    25.0
+   ]
+  ]
+ },
+ {
+  "serie": "ceasa-pr-londrina-repolho-verde-medio-eg-25kg-pr",
+  "data": "2026-10-27",
+  "motivo": "mesma serie+data em dois boletins oficiais com precos diferentes; nao escolhido",
+  "arquivos": [
+   "outubro27102026.pdf",
+   "setembro27092026.pdf"
+  ],
+  "sha256": [
+   "760f03a2e4ba1f94a0ea7c5832a62063dcc91b2e46c459be5abb5ab60ad355bd",
+   "55b7dbc16c1bff598b616897f050045387b0128c2b811e385c60a7f076f2f3a6"
+  ],
+  "precos": [
+   [
+    12.0,
+    12.0,
+    15.0
+   ],
+   [
+    12.0,
+    12.0,
+    12.0
+   ]
+  ]
+ }
+]

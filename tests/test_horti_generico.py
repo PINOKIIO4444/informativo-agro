@@ -82,33 +82,41 @@ class Conta(unittest.TestCase):
 
 
 class Catalogo(unittest.TestCase):
-    def test_so_sp_e_recife_tem_cotacao(self):
+    def test_pracas_do_pacote(self):
         doc = json.loads((ROOT / "horti" / "mercados.json").read_text(encoding="utf-8"))
         self.assertFalse(doc["coleta_diaria"])
         self.assertFalse(doc["integracao_gerador"])
         ids = [p["id"] for p in doc["pracas"]]
         self.assertEqual(
             ids,
-            ["sp", "recife", "campinas", "bh", "cwb", "londrina", "maringa", "cascavel", "foz", "poa", "rj", "go", "sc"],
+            ["sp", "recife", "campinas", "bh", "cwb", "londrina", "maringa", "cascavel", "foz", "poa", "rj", "go", "sc", "df", "dfat", "vitoria"],
         )
         por = {p["id"]: p for p in doc["pracas"]}
         self.assertEqual(por["recife"]["data"], "2026-11-06")
         self.assertIsNone(por["recife"]["licenca"])
         self.assertIsNone(por["sp"]["data"])
+        self.assertEqual(por["foz"]["data"], "2026-11-04")
+        self.assertEqual(por["vitoria"]["dias"], ["2026-11-05", "2026-11-06"])
+        self.assertNotIn("2026-10-27", por["cwb"]["dias"])
+        self.assertIn("2026-11-02", por["londrina"]["dias"])
+        self.assertEqual(len(por["londrina"]["dias"]), 10)
         for p in doc["pracas"]:
             self.assertNotIn("v", p)
             self.assertNotIn("comum", p)
             self.assertNotIn("min", p)
-            if p["id"] not in {"sp", "recife"}:
-                self.assertEqual(p["cotacoes"], "nenhuma")
-                self.assertIsNone(p["data"])
-                self.assertIsNone(p["licenca"])
+            self.assertIsNone(p["licenca"])
+            if p["id"] != "sp":
+                self.assertEqual(p["cotacoes"], "sim")
+                self.assertIsNotNone(p["data"])
         self.assertEqual(doc["conab"]["cotacoes"], "nenhuma")
-        self.assertIsNone(doc["conab"]["data"])
-        self.assertIsNone(doc["conab"]["licenca"])
+        self.assertIsNone(doc["conab"].get("data"))
+        self.assertIn("citada a fonte", doc["conab"]["licenca"])
+        self.assertEqual(doc["conab"]["periodo"], "setembro/2026")
+        self.assertEqual(doc["hf_brasil"]["registros"], 0)
+        self.assertEqual(doc["hf_brasil"]["autorizacao_series"], "pendente")
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("function hortiPinta()", html)
-        self.assertIn("Sem boletim nesta prévia", html)
+        self.assertIn("Cotações do pacote de 07/11/2026", html)
         self.assertIn("R$/kg da fonte", html)
         self.assertIn("mesmo preço há ", html)
         self.assertIn("Acesso público não é licença", html)
