@@ -217,8 +217,10 @@ class Pagina(unittest.TestCase):
         diff = subprocess.check_output(["git", "diff", "--name-only", "origin/main"], cwd=ROOT, text=True)
         for nome in ("news.json", "news_v2.json", "data.json", "alerts.json", "og-image.jpg"):
             self.assertNotIn(nome, diff.split())
-        deleted = subprocess.check_output(["git", "diff", "--name-only", "--diff-filter=D", "origin/main"], cwd=ROOT, text=True)
-        self.assertIn("og-image.png", deleted.split())
+        self.assertFalse((ROOT / "og-image.png").exists())
+        self.assertTrue((ROOT / "og-image.jpg").is_file())
+        added = subprocess.check_output(["git", "diff", "--name-only", "--diff-filter=A", "origin/main"], cwd=ROOT, text=True)
+        self.assertNotIn("og-image.png", added.split())
 
 
 if __name__ == "__main__":
