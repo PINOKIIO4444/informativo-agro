@@ -1,0 +1,145 @@
+{
+  "gerado_em": "2026-11-07",
+  "coleta_diaria": false,
+  "integracao_gerador": false,
+  "nota": "Catálogo das praças do relatório de 07/11/2026. Só São Paulo e Recife têm cotação nesta prévia. Acesso público não é licença. Nenhuma cotação foi copiada de uma praça para outra.",
+  "pracas": [
+    {
+      "id": "sp",
+      "nome": "São Paulo",
+      "orgao": "Ceagesp",
+      "uf": "SP",
+      "cotacoes": "sim",
+      "data": null,
+      "licenca": null,
+      "nota": "Cotações já publicadas no AgroN, pela leitura direta do boletim. A coluna do Ceagesp no Notícias Agrícolas não entra: ela sai um boletim atrasada."
+    },
+    {
+      "id": "recife",
+      "nome": "Recife",
+      "orgao": "Ceasa-PE",
+      "uf": "PE",
+      "cotacoes": "sim",
+      "data": "2026-11-06",
+      "licenca": null,
+      "nota": "Prévia do boletim de 06/11/2026. Licença de republicação pendente. A coleta diária está desligada."
+    },
+    {
+      "id": "campinas",
+      "nome": "Campinas",
+      "orgao": "Notícias Agrícolas",
+      "uf": "SP",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Aguardando o boletim. Quando entrar, preço repetido ganha o aviso de vários pregões iguais e a data continua a do fechamento, sem marca de atraso."
+    },
+    {
+      "id": "bh",
+      "nome": "Belo Horizonte",
+      "orgao": "Notícias Agrícolas",
+      "uf": "MG",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Aguardando o boletim. O site da CeasaMinas não está nesta prévia."
+    },
+    {
+      "id": "cwb",
+      "nome": "Curitiba",
+      "orgao": "Ceasa-PR",
+      "uf": "PR",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Uma das cinco unidades do Paraná. Aguardando o PDF."
+    },
+    {
+      "id": "londrina",
+      "nome": "Londrina",
+      "orgao": "Ceasa-PR",
+      "uf": "PR",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Uma das cinco unidades do Paraná. Aguardando o PDF."
+    },
+    {
+      "id": "maringa",
+      "nome": "Maringá",
+      "orgao": "Ceasa-PR",
+      "uf": "PR",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Uma das cinco unidades do Paraná. Aguardando o PDF."
+    },
+    {
+      "id": "cascavel",
+      "nome": "Cascavel",
+      "orgao": "Ceasa-PR",
+      "uf": "PR",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Uma das cinco unidades do Paraná. Aguardando o PDF."
+    },
+    {
+      "id": "foz",
+      "nome": "Foz do Iguaçu",
+      "orgao": "Ceasa-PR",
+      "uf": "PR",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Uma das cinco unidades do Paraná. Aguardando o PDF. Esta prévia não grava data de boletim."
+    },
+    {
+      "id": "poa",
+      "nome": "Porto Alegre",
+      "orgao": "Ceasa-RS",
+      "uf": "RS",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Aguardando o PDF. O preço central, quando chegar, fica com o nome que a fonte usar."
+    },
+    {
+      "id": "rj",
+      "nome": "Rio de Janeiro",
+      "orgao": "Ceasa-RJ",
+      "uf": "RJ",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Aguardando o PDF. O preço central da fonte se chama modal."
+    },
+    {
+      "id": "go",
+      "nome": "Goiânia",
+      "orgao": "Ceasa-GO",
+      "uf": "GO",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Aguardando o PDF. R$/kg zero em item de molho ou unidade não apaga o preço da embalagem."
+    },
+    {
+      "id": "sc",
+      "nome": "São José",
+      "orgao": "Ceasa-SC",
+      "uf": "SC",
+      "cotacoes": "nenhuma",
+      "data": null,
+      "licenca": null,
+      "nota": "Aguardando o PDF."
+    }
+  ],
+  "conab": {
+    "papel": "contexto",
+    "cotacoes": "nenhuma",
+    "data": null,
+    "licenca": null,
+    "nota": "Contexto mensal e semanal, com citação da fonte. O boletim não foi integrado, então esta prévia não traz média nem texto de mercado."
+  }
+}
