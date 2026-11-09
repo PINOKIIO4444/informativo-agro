@@ -8,7 +8,7 @@ from __future__ import annotations
 import json
 import re
 import unicodedata
-from datetime import date, timedelta
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -233,12 +233,10 @@ def quilos(r):
     return None, None
 
 
-def media(pontos, fim, dias):
-    limite = date.fromisoformat(fim) - timedelta(days=dias - 1)
-    sel = [v for d, v in pontos if date.fromisoformat(d) >= limite]
-    if not sel:
-        return None, 0
-    return round(sum(sel) / len(sel), 4), len(sel)
+def media(pontos, fim, _dias=None):
+    """Semana e mês civis da data da cotação. O terceiro argumento ficou obsoleto."""
+    civ = regras.medias_civis(pontos, fim)
+    return civ
 
 
 def item_de(mid, nome_praca, r, pontos, pid_forcado=None):
@@ -255,8 +253,8 @@ def item_de(mid, nome_praca, r, pontos, pid_forcado=None):
         nome = nome_produto(r)
         pid = next(s[0] for s in SPECS if s[1] == nome)
     key = f"hf_{mid}_{pid}"
-    wk, wkn = media(precos, ultima_data, 7)
-    mo, mon = media(precos, ultima_data, 31)
+    civ = media(precos, ultima_data)
+    wk, wkn, mo, mon = civ["wk"], civ["wkn"], civ["mo"], civ["mon"]
     iguais = None
     if r.get("repeticoes") is not None and not r.get("sem_cotacao"):
         iguais = int(r["repeticoes"]) + 1
@@ -674,11 +672,59 @@ def patch_index(itens, head, rev):
     html_path.write_text(html, encoding="utf-8")
 
 
+def _json_campo(valor):
+    return json.dumps(valor, ensure_ascii=False, separators=(",", ":"))
+
+
+def substituir_campos(html: str, key: str, campos: dict) -> str:
+    """Troca só os campos pedidos de um item do DATA. Não mexe no preço do dia."""
+    if not campos:
+        return html
+    i = html.find("const DATA=")
+    if i < 0:
+        raise SystemExit("DATA ausente")
+    dec = json.JSONDecoder()
+    _data, end = dec.raw_decode(html, i + len("const DATA="))
+    pos = html.find("[", i) + 1
+    alvo = None
+    while pos < end:
+        while pos < end and html[pos] in " \n\r\t,":
+            pos += 1
+        if pos >= end or html[pos] == "]":
+            break
+        obj, pos2 = dec.raw_decode(html, pos)
+        if obj.get("key") == key:
+            alvo = (pos, pos2, obj)
+            break
+        pos = pos2
+    if alvo is None:
+        raise SystemExit(f"item {key} não está no DATA")
+    a, b, obj = alvo
+    raw = html[a:b]
+    for campo, valor in campos.items():
+        if campo in ("v", "d", "pd", "pv", "pc", "chg"):
+            raise SystemExit(f"não alterar o preço do dia ({campo})")
+        pat = re.compile(rf'"{campo}":(?:null|-?\d+(?:\.\d+)?|"(?:[^"\\]|\\.)*")')
+        achados = pat.findall(raw)
+        if len(achados) != 1:
+            raise SystemExit(f"{key} campo {campo} apareceu {len(achados)} vezes")
+        raw = pat.sub(f'"{campo}":{_json_campo(valor)}', raw, count=1)
+    novo = json.loads(raw)
+    for campo in ("v", "d", "pd", "pv", "pc", "chg", "key", "unit", "src"):
+        if obj.get(campo) != novo.get(campo):
+            raise SystemExit(f"{key} mudou {campo}")
+    if "h" in novo or "rolls" in novo:
+        raise SystemExit(f"{key} passou a levar série no DATA")
+    return html[:a] + raw + html[b:]
+
+
 def estender_hist_recife(rows):
     """Alonga o gráfico das 33 séries já publicadas com os dias válidos do mesmo produto. Não troca o preço de 06/11."""
-    html = (ROOT / "index.html").read_text(encoding="utf-8")
+    html_path = ROOT / "index.html"
+    html = html_path.read_text(encoding="utf-8")
     i = html.find("const DATA=")
     data, _end = json.JSONDecoder().raw_decode(html, i + len("const DATA="))
+    ajustes = []
     for it in data["items"]:
         if not it.get("pe"):
             continue
@@ -705,6 +751,15 @@ def estender_hist_recife(rows):
         (ROOT / "hist" / f"{it['key']}.json").write_text(
             json.dumps(hist, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8"
         )
+        civ = regras.medias_civis(hist["h"], it.get("d") or recentes[-1][0])
+        ajustes.append((it["key"], {
+            "wk": civ["wk"], "wkn": civ["wkn"], "mo": civ["mo"], "mon": civ["mon"],
+            "first": civ["first"], "n": civ["n"],
+        }))
+    for key, campos in ajustes:
+        html = substituir_campos(html, key, campos)
+    if ajustes:
+        html_path.write_text(html, encoding="utf-8")
 
 
 if __name__ == "__main__":

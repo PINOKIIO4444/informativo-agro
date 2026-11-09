@@ -12,7 +12,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from regras import peso_exato, rs_kg, unidade, variacao
+from regras import medias_civis, peso_exato, rs_kg, unidade, variacao
 
 ROOT = Path(__file__).resolve().parents[1]
 DIA = "2026-11-06"
@@ -99,8 +99,7 @@ def _item(key, produto, rotulo, hoje, ontem):
     for dia, rec in ((ANTE, ontem), (DIA, hoje)):
         if rec and not rec["sem_cotacao"] and rec["comum"] is not None:
             pts.append([dia, rec["comum"]])
-    vals = [p[1] for p in pts]
-    media = round(sum(vals) / len(vals), 4) if vals else None
+    civ = medias_civis(pts, DIA)
     sub = "Recife"
     if rotulo:
         sub += " · " + rotulo
@@ -123,10 +122,10 @@ def _item(key, produto, rotulo, hoje, ontem):
         "pv": prev,
         "pc": None,
         "chg": variacao(comum, prev),
-        "wk": media,
-        "wkn": len(vals),
-        "mo": media,
-        "mon": len(vals),
+        "wk": civ["wk"],
+        "wkn": civ["wkn"],
+        "mo": civ["mo"],
+        "mon": civ["mon"],
         "yad": None,
         "yav": None,
         "yac": None,

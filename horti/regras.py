@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from datetime import date, timedelta
 
 
 def brl(x: str | None):
@@ -175,6 +176,54 @@ def licenca(termo_explicito: str | None):
     if termo_explicito and str(termo_explicito).strip():
         return str(termo_explicito).strip()
     return None
+
+
+def medias_civis(pontos, data, rolls=None):
+    """Média da semana e do mês da data da cotação.
+
+    Semana = segunda a domingo que contém essa data. Mês = o mês civil dela.
+    Entra só o dia que tem preço. Dia faltante não é estimado. Troca de contrato
+    limita a média ao contrato dessa data.
+    """
+    vazio = {"wk": None, "wkn": 0, "mo": None, "mon": 0, "first": None, "n": 0}
+    if not pontos:
+        return vazio
+    primeiro = pontos[0][0]
+    vazio["first"] = primeiro
+    vazio["n"] = len(pontos)
+    if not data:
+        return vazio
+    corte = ""
+    for r in rolls or []:
+        if r and r[0] <= data and r[0] > corte:
+            corte = r[0]
+    mesmos = []
+    for p in pontos:
+        d, v = p[0], p[1]
+        if v is None or d > data:
+            continue
+        if corte and d < corte:
+            continue
+        mesmos.append((d, v))
+    D = date.fromisoformat(data)
+    ini = D - timedelta(days=D.weekday())
+    fim = ini + timedelta(days=6)
+    sem = [v for d, v in mesmos if ini.isoformat() <= d <= fim.isoformat()]
+    mes = [v for d, v in mesmos if d[:7] == data[:7]]
+
+    def avg(xs):
+        if not xs:
+            return None
+        return round(sum(xs) / len(xs), 4)
+
+    return {
+        "wk": avg(sem),
+        "wkn": len(sem),
+        "mo": avg(mes),
+        "mon": len(mes),
+        "first": primeiro,
+        "n": len(pontos),
+    }
 
 
 def _extenso(emb: str, recipiente: str) -> str:
