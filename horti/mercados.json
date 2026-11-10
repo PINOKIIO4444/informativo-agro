@@ -1,6 +1,6 @@
 {
- "gerado_em": "2026-11-07",
- "coleta_diaria": false,
+ "gerado_em": "2026-11-10",
+ "coleta_diaria": true,
  "integracao_gerador": false,
  "nota": "Praças com boletim no pacote de 07/11/2026. Acesso público não é licença.",
  "pracas": [
@@ -34,7 +34,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-10",
+   "coleta_diaria": true
   },
   {
    "id": "campinas",
@@ -57,7 +59,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-10",
+   "coleta_diaria": true
   },
   {
    "id": "bh",
@@ -80,7 +84,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-10",
+   "coleta_diaria": true
   },
   {
    "id": "cwb",
@@ -101,7 +107,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "8 dias no pacote. 27/10 não está no arquivo. Sem motivo inventado para a falta."
+   "nota": "8 dias no pacote. 27/10 não está no arquivo. Sem motivo inventado para a falta.",
+   "ultima": "2026-11-10",
+   "coleta_diaria": true
   },
   {
    "id": "londrina",
@@ -146,7 +154,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-10",
+   "coleta_diaria": true
   },
   {
    "id": "cascavel",
@@ -168,7 +178,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-10",
+   "coleta_diaria": true
   },
   {
    "id": "foz",
@@ -210,7 +222,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-10",
+   "coleta_diaria": true
   },
   {
    "id": "rj",
@@ -247,7 +261,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-10",
+   "coleta_diaria": true
   },
   {
    "id": "sc",
@@ -269,7 +285,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-10",
+   "coleta_diaria": true
   },
   {
    "id": "df",
@@ -283,7 +301,9 @@
     "2026-11-05"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-10",
+   "coleta_diaria": true
   },
   {
    "id": "dfat",
@@ -297,7 +317,9 @@
     "2026-11-05"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-09",
+   "coleta_diaria": true
   },
   {
    "id": "vitoria",
@@ -312,7 +334,8 @@
     "2026-11-06"
    ],
    "manual": true,
-   "nota": "Dois dias lidos de PDF no navegador, fonte manual, sem coletor. Página pública: https://ceasa.es.gov.br/bancodedados. Siglas de situação não foram expandidas."
+   "nota": "Dois dias lidos de PDF no navegador, fonte manual, sem coletor. Página pública: https://ceasa.es.gov.br/bancodedados. Siglas de situação não foram expandidas.",
+   "coleta_diaria": false
   }
  ],
  "conab": {
