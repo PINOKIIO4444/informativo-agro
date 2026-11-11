@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-10",
+ "gerado_em": "2026-11-11",
  "coleta_diaria": true,
  "integracao_gerador": false,
  "nota": "Praças com boletim no pacote de 07/11/2026. Acesso público não é licença.",
@@ -35,7 +35,7 @@
    ],
    "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-10",
+   "ultima": "2026-11-11",
    "coleta_diaria": true
   },
   {
@@ -60,7 +60,7 @@
    ],
    "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-10",
+   "ultima": "2026-11-11",
    "coleta_diaria": true
   },
   {
@@ -85,7 +85,7 @@
    ],
    "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-10",
+   "ultima": "2026-11-11",
    "coleta_diaria": true
   },
   {
@@ -108,7 +108,7 @@
    ],
    "manual": false,
    "nota": "8 dias no pacote. 27/10 não está no arquivo. Sem motivo inventado para a falta.",
-   "ultima": "2026-11-10",
+   "ultima": "2026-11-11",
    "coleta_diaria": true
   },
   {
@@ -132,7 +132,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "10 dias úteis no pacote, inclusive 02/11. Em 27/10 há dois PDFs; 127 pares iguais ficaram numa linha com proveniência extra e 129 pares divergentes estão na quarentena, fora do histórico."
+   "nota": "10 dias úteis no pacote, inclusive 02/11. Em 27/10 há dois PDFs; 127 pares iguais ficaram numa linha com proveniência extra e 129 pares divergentes estão na quarentena, fora do histórico.",
+   "ultima": "2026-11-11",
+   "coleta_diaria": true
   },
   {
    "id": "maringa",
@@ -179,7 +181,7 @@
    ],
    "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-10",
+   "ultima": "2026-11-11",
    "coleta_diaria": true
   },
   {
@@ -200,7 +202,9 @@
     "2026-11-04"
    ],
    "manual": false,
-   "nota": "7 dias. 05/11 e 06/11 não estão no arquivo. A última data publicada é a do boletim."
+   "nota": "7 dias. 05/11 e 06/11 não estão no arquivo. A última data publicada é a do boletim.",
+   "ultima": "2026-11-11",
+   "coleta_diaria": true
   },
   {
    "id": "poa",
@@ -223,7 +227,7 @@
    ],
    "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-10",
+   "ultima": "2026-11-11",
    "coleta_diaria": true
   },
   {
@@ -245,7 +249,9 @@
     "2026-11-06"
    ],
    "manual": false,
-   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada."
+   "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
+   "ultima": "2026-11-11",
+   "coleta_diaria": true
   },
   {
    "id": "go",
@@ -286,7 +292,7 @@
    ],
    "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-10",
+   "ultima": "2026-11-11",
    "coleta_diaria": true
   },
   {
