@@ -749,6 +749,7 @@ html.fx49[data-theme=dark] #fbs .fbok b{color:#7fd19b}
 #agov{position:fixed;inset:0;background:rgba(15,20,16,.34);z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
 #agov.on{opacity:1;pointer-events:auto}
 body.agopen #bnav{z-index:46}
+body.agopen #bnav .bl{top:-36px;height:100px;padding-top:36px}
 #agfan{position:absolute;left:50%;bottom:calc(100% + 38px);z-index:3;display:flex;align-items:flex-end;justify-content:center;gap:14px;width:max-content;max-width:calc(100vw - 12px);transform:translateX(-50%);pointer-events:none}
 #agfan[hidden]{display:none}
 #agfan button{pointer-events:auto;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:12px;min-width:48px;min-height:72px;margin:0;padding:0;border:0;background:none;color:var(--tx);font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;opacity:0;transform:translateY(28px) scale(.5);transform-origin:50% 130%;transition:transform .2s cubic-bezier(.2,.85,.2,1),opacity .16s}
@@ -1801,8 +1802,8 @@ const BNG=["resumo","pecuaria","agricultura","noticias"],BNL={};
 let BNX=null,BNA=0;
 const bnGrp=()=>cur==="resumo"?"resumo":NI[cur]&&BNG.includes(NI[cur].sec.id)?NI[cur].sec.id:"mais";
 const bnTo=g=>g==="resumo"?"resumo":BNL[g]&&NI[BNL[g]]?BNL[g]:NAV.find(s=>s.id===g).items[0].id;
-function bnGo(g){if(bnGrp()===g){window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});closeDrawer();return}go(bnTo(g))}
-function bnMais(b){window.__dwo=b;openDrawer()}
+function bnGo(g){if(bnGrp()===g){if(document.body.classList.contains("agopen"))agroFanUserClose();window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});closeDrawer();return}go(bnTo(g))}
+function bnMais(b){if(document.body.classList.contains("agopen"))agroFanHide();window.__dwo=b;openDrawer()}
 function bnPath(w,x){if(FX41)return bnPath41(w,x);const R=62,c=37,D=36;
  const a=Math.max(0,x-R),b=Math.min(w,x+R);
  const top=`M0 0H${a.toFixed(1)}C${(x-c).toFixed(1)} 0 ${(x-c+4).toFixed(1)} ${D} ${x.toFixed(1)} ${D}C${(x+c-4).toFixed(1)} ${D} ${(x+c).toFixed(1)} 0 ${b.toFixed(1)} 0H${w}`;
