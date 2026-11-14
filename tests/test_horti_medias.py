@@ -9,8 +9,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 import sys
 
-sys.path.insert(0, str(ROOT / "horti"))
-import regras  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _comum import medias_civis  # noqa: E402  (14/11: horti/regras.py saiu do repositório em 09/11)
 
 
 def _data():
@@ -18,6 +18,13 @@ def _data():
     i = html.find("const DATA=")
     obj, _ = json.JSONDecoder().raw_decode(html, i + len("const DATA="))
     return html, {it["key"]: it for it in obj["items"]}
+
+
+def _ref():
+    html = (ROOT / "index.html").read_text(encoding="utf-8")
+    i = html.find("const DATA=")
+    obj, _ = json.JSONDecoder().raw_decode(html, i + len("const DATA="))
+    return obj["ref"]
 
 
 def _medias_js(html: str) -> str:
@@ -33,64 +40,38 @@ class MediasCivis(unittest.TestCase):
     def setUpClass(cls):
         cls.html, cls.itens = _data()
 
-    def test_tomate_curitiba_mes_e_preco_do_dia(self):
-        x = self.itens["hf_cwb_tomate"]
-        self.assertEqual(x["v"], 260.0)
-        self.assertEqual(x["d"], "2026-11-06")
-        self.assertEqual(x["mo"], 232.5)
-        self.assertEqual(x["mon"], 4)
-        self.assertEqual(x["wk"], 232.5)
-        self.assertEqual(x["wkn"], 4)
-
-    def test_foz_semana_so_com_os_dias_da_semana(self):
-        x = self.itens["hf_foz_tomate"]
-        self.assertEqual(x["v"], 260.0)
-        self.assertEqual(x["d"], "2026-11-04")
-        self.assertEqual(x["wk"], 260.0)
-        self.assertEqual(x["wkn"], 2)
-
-    def test_recife_detalhe_sai_do_historico(self):
-        x = self.itens["pe_tomate_extra"]
-        hist = json.loads((ROOT / "hist" / "pe_tomate_extra.json").read_text(encoding="utf-8"))
-        self.assertEqual(x["v"], 220.0)
-        self.assertEqual(x["first"], hist["h"][0][0])
-        self.assertEqual(x["n"], len(hist["h"]))
-        self.assertEqual(x["first"], "2026-10-26")
-        self.assertEqual(x["n"], 8)
-        self.assertEqual(x["mon"], 4)
-        self.assertEqual(x["mo"], 210.0)
-        oito = [
-            k for k, it in self.itens.items()
-            if k.startswith("pe_") and it.get("n") == 8 and it.get("first") == "2026-10-26"
-        ]
-        self.assertEqual(len(oito), 21)
-
-    def test_soja_e_ceagesp_continuam_iguais(self):
-        soja = self.itens["soja"]
-        self.assertEqual(soja["wk"], 158.625)
-        self.assertEqual(soja["wkn"], 4)
-        self.assertEqual(soja["mo"], 158.625)
-        self.assertEqual(soja["mon"], 4)
-        self.assertEqual(soja["n"], 1709)
-        self.assertEqual(soja["first"], "2020-01-02")
-        self.assertEqual(soja["v"], 158.52)
-        cg = self.itens["cg_tomate"]
-        self.assertEqual(cg["wk"], 14.165)
-        self.assertEqual(cg["wkn"], 2)
-        self.assertEqual(cg["mo"], 14.165)
-        self.assertEqual(cg["mon"], 2)
-        self.assertEqual(cg["v"], 14.44)
+    def test_medias_do_hortifruti_saem_do_hist(self):
+        """Semana/mês civis (referência do informativo ou data da série, a mais recente), só com dias que têm preço;
+        o preço do dia não muda."""
+        self.ref = _ref()
+        n = 0
+        for k, x in self.itens.items():
+            if not k.startswith(("pe_", "hf_")) or not x.get("d"):
+                continue
+            hist = json.loads((ROOT / "hist" / f"{k}.json").read_text(encoding="utf-8"))
+            if not hist["h"]:
+                continue
+            n += 1
+            self.assertEqual(hist["rolls"], [])
+            self.assertEqual(x["first"], hist["h"][0][0], k)
+            self.assertEqual(x["n"], len(hist["h"]), k)
+            civ = medias_civis(hist["h"], max(x["d"], self.ref))   # referência do informativo ou da série, a mais recente
+            self.assertEqual((x.get("wkn"), x.get("mon")), (civ["wkn"], civ["mon"]), k)
+            for campo in ("wk", "mo"):
+                if civ[campo] is None:
+                    self.assertIsNone(x.get(campo), k)
+                else:
+                    self.assertAlmostEqual(x[campo], civ[campo], places=3, msg=k)
+            if x.get("v") is not None:
+                ultimo = dict(hist["h"]).get(x["d"])
+                self.assertEqual(x["v"], ultimo, k)
+        self.assertGreater(n, 100)
 
     def test_conta_recusa_dia_de_fora(self):
         pontos = [["2026-10-30", 50], ["2026-11-01", 100], ["2026-11-03", 200], ["2026-11-06", 400]]
-        civ = regras.medias_civis(pontos, "2026-11-06")
-        self.assertEqual(civ["wkn"], 2)
-        self.assertEqual(civ["wk"], 300)
-        self.assertEqual(civ["mon"], 3)
+        civ = medias_civis(pontos, "2026-11-06")
+        self.assertEqual((civ["wkn"], civ["wk"], civ["mon"]), (2, 300, 3))
         self.assertAlmostEqual(civ["mo"], 700 / 3, places=4)
-        cwb = json.loads((ROOT / "hist" / "hf_cwb_tomate.json").read_text(encoding="utf-8"))
-        mes = regras.medias_civis(cwb["h"], "2026-11-06")
-        self.assertEqual((mes["mo"], mes["mon"]), (232.5, 4))
 
     def test_brasilia_duplicada_permanece(self):
         self.assertIn("hf_df_tomate", self.itens)

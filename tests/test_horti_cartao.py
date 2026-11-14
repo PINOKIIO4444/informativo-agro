@@ -122,7 +122,7 @@ process.stdout.write(JSON.stringify({
         self.assertIn("PR, SP, GO", doc["detalhe"])
         self.assertIn("EXTRA A", doc["detalhe"])
         self.assertIn("calculado (peso publicado)", doc["detalhe"])
-        self.assertIn("firme", doc["detalhe"])
+        self.assertRegex(doc["detalhe"], r"· (firme|estável|fraco|forte|em alta|em baixa)")   # situação do boletim do dia (14/11: era «firme» fixo de 06/11)
         self.assertIn("cx 20 kg", doc["detalhe"])
 
 
