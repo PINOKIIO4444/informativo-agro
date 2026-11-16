@@ -363,6 +363,8 @@ summary:focus-visible,[tabindex]:not([tabindex="-1"]):focus-visible,.di:focus-vi
 .creg summary .ico.sm{width:14px;height:14px;color:var(--mu);transition:transform .2s ease}
 .creg details[open] summary .ico.sm{transform:rotate(90deg)}
 .creg .rb{background:var(--sub);border-top:1px solid var(--ln);padding:0 0 10px}
+.nmore49{display:block;width:100%;margin:10px 0 4px;padding:12px;border:1px solid var(--ln);border-radius:12px;background:var(--card);color:var(--g2,var(--tx));font:inherit;font-weight:600;cursor:pointer;min-height:44px}
+.creg .cregh{padding:10px 12px 2px}.creg .cregh svg{width:100%;height:auto;display:block}.creg .cregh .hn{font-size:12.5px;color:var(--mu);margin-top:4px}.creg .rb .cn{font-size:12.5px;color:var(--mu)} /* 16/11 histórico do café por região */
 .creg .rb p{font-size:12.5px;color:var(--mu);line-height:1.5;margin:0;padding:8px 12px 0}
 .creg .cregsrc{display:block;font-size:12.5px;color:var(--mu);padding:8px 12px 12px;line-height:1.45}.creg .cregsrc a{color:var(--g2);font-weight:600}
 .creg .cav{color:var(--wb,#b45309);background:var(--wbg,rgba(180,83,9,.08));border-radius:8px;margin:8px 12px 0;padding:8px 10px;font-size:12.5px;line-height:1.45}
@@ -1496,6 +1498,19 @@ function agroNav(e){if(e&&(e.ctrlKey||e.metaKey||e.shiftKey||e.button===1))retur
   if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&(i<0||i===f.length-1)){e.preventDefault();f[0].focus()}})})();
 
 
+/*16/11: histórico do café por região ao abrir o cartão — hist/<chave>.json pelo mesmo loadHist (validação hOK38), gráfico SVG leve*/
+const CREGHK={cccv:"cccv_conilon_78",cooabriel:"cooabriel_7",cccmg:"cccmg_6_dura",aiba:"aiba_cafe",cocapec:"cocapec_6_duro",emater_ro:"emater_ro_nbo",cepea_robusta:"cepea_robusta"};
+function cregChart(h){const W=340,H=118,L=4,R=58,T=10,B=20,p=h.map(x=>x[1]),mn=Math.min(...p),mx=Math.max(...p),V=cvars(),fl=mx===mn,r=fl?1:mx-mn,lo=fl?mn-.5:mn;
+ const X=i=>L+i/(h.length-1)*(W-L-R),Y=v=>T+(1-(v-lo)/r)*(H-T-B),pts=h.map((x,i)=>X(i).toFixed(1)+","+Y(x[1]).toFixed(1)).join(" "),n=h.length-1;
+ const yl=(fl?[mn]:[mx,mn]).map(v=>`<line x1="${L}" x2="${W-R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" stroke="${V.gr}"/><text x="${W-R+5}" y="${(Y(v)+4).toFixed(1)}" font-size="11" fill="${V.mu}">${fmt(v,v>=1000?0:2)}</text>`).join("");
+ return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Histórico de ${fd(h[0][0])} a ${fd(h[n][0])}: mínimo R$ ${fmt(mn,2)}, máximo R$ ${fmt(mx,2)}">${yl}<polygon points="${X(0)},${H-B} ${pts} ${X(n)},${H-B}" fill="${V.c}" opacity=".08"/><polyline points="${pts}" fill="none" stroke="${V.c}" stroke-width="2" stroke-linejoin="round"/><circle cx="${X(n).toFixed(1)}" cy="${Y(h[n][1]).toFixed(1)}" r="3.5" fill="${V.c}"/><text x="${L}" y="${H-5}" font-size="11" fill="${V.mu}">${fds(h[0][0])}</text><text x="${W-R}" y="${H-5}" font-size="11" fill="${V.mu}" text-anchor="end">${fds(h[n][0])}</text></svg>`}
+function cregTog(el,k){if(!el.open)return;const box=el.querySelector(".cregh");if(!box)return;let n=0;
+ const draw=()=>{const H=HIST[k];if(H==="loading"&&n++<60){setTimeout(draw,200);return}
+  if(!H||typeof H!=="object"){box.innerHTML=`<div class="hn">Histórico indisponível agora.</div>`;return}
+  const h=H.h.filter(x=>typeof x[1]==="number");
+  box.innerHTML=h.length<2?`<div class="hn">Histórico guardado desde ${h.length?fd(h[0][0]):"—"}; o gráfico aparece a partir do 2º registro.</div>`
+   :cregChart(h)+`<div class="hn">${h.length} registros de ${fds(h[0][0])} a ${fds(h[h.length-1][0])}</div>`};
+ if(!HIST[k])loadHist(k);draw()}
 function cafeReg(){const G=DATA.cafe_reg;if(!G||!(G.cards||[]).length)return "";
  const A=(u,t)=>{const h=typeof hs==="function"?hs(u):u;return h?`<a href="${esc(h)}" target="_blank" rel="noopener">${esc(t)} ↗</a>`:esc(t)};
  const card=it=>{
@@ -1520,7 +1535,9 @@ function cafeReg(){const G=DATA.cafe_reg;if(!G||!(G.cards||[]).length)return "";
     }).join("")+`</table>`;
   }
   const aria=`${esc(it.nome)}, ${esc(it.tipo)}: ${it.v==null?"sem valor":"R$ "+fmt(it.v,2)} ${it.periodo?"na semana de "+fd(it.periodo.ini)+" a "+fd(it.periodo.fim):"em "+fd(it.d)}. Toque para os detalhes`;
-  return `<details id="creg_${esc(it.key)}"><summary aria-label="${aria}"><div><div class="n">${esc(it.nome)}${av}</div><div class="s">${esc(it.tipo)}</div></div><div class="r"><div class="v">${v}</div>${ch}<div class="s">${fds(it.d)}${kept}</div></div>${ico("seta","sm")}</summary><div class="rb"><p>${esc(it.tipo_completo||it.tipo)}</p>${tipoOk}${unitOk}${cond}${ant}${cav}${outros}${med}${lic}<p class="cregsrc">Fonte: ${A(it.url,it.fonte_lab||it.fonte)}${it.url&&typeof hs==="function"&&!hs(it.url)?`<br><span style="overflow-wrap:anywhere">${esc(it.url)}</span><br>(o site da fonte só abre em http, por isso o endereço vai sem link)`:""}</p></div></details>`};
+  /*16/11: cartão enxuto (fonte/praça, preço com unidade, variação, data curta); tipo, ressalvas, condições e fonte só no detalhe, com o histórico em gráfico*/
+  const hk=it.hk||CREGHK[it.key]||"",sub=it.praca?`<div class="s">${esc(it.tipo)}</div>`:"",keptD=it.kept?`<p>Mantido o último valor válido: a leitura mais recente da fonte falhou.</p>`:"";
+  return `<details id="creg_${esc(it.key)}"${hk?` ontoggle="cregTog(this,'${esc(hk)}')"`:""}><summary aria-label="${aria}"><div><div class="n">${esc(it.nome)}</div>${sub}</div><div class="r"><div class="v">${v}</div>${ch}<div class="s">${fds(it.d)}</div></div>${ico("seta","sm")}</summary><div class="rb">${hk?`<div class="cregh" aria-live="polite"></div>`:""}<p><b>${esc(it.tipo_completo||it.tipo)}</b></p>${tipoOk}${it.unit_declarada?"":unitOk}${ant}${keptD}${cav}${outros}${med}${cond.replace("<p>","<p class=\"cn\">")}${lic}<p class="cregsrc">Fonte: ${A(it.url,it.fonte_lab||it.fonte)}${it.url&&typeof hs==="function"&&!hs(it.url)?`<br><span style="overflow-wrap:anywhere">${esc(it.url)}</span><br>(o site da fonte só abre em http, por isso o endereço vai sem link)`:""}</p></div></details>`};
  return `<div class="list r43 creg" id="cafereg"><div class="sec">Café por região</div>${G.cards.map(card).join("")}</div>`}
 
 function product(it){
@@ -1732,7 +1749,9 @@ function ngrp49(k){if(k.length===1)return nrow49(k[0]);const [a,...o]=k;return `
 function lastAgro49(){const seen=new Set(),ks=[];for(const k of nclu48(newsOf("agro"))){if(!seen.has(k[0].s)){seen.add(k[0].s);ks.push(k)}if(ks.length===3)break}if(!ks.length)return "";
  return `<h2>Últimas do agro</h2><div class="nl nl49">`+ks.map(ngrp49).join("")+`<a class="nmore" href="?p=n_agro" onclick="return nav(event,()=>go('n_agro'))">Ver todas as notícias ${ico("seta","sm")}</a></div>`}
 let NSF="";  // filtro de subtema (só na tela; não cria entrada no histórico)
-function nsub(b){NSF=NSF===b?"":b;render()}
+let NLIM49=20;
+function nMore49(){const n=document.querySelectorAll("#main .nl > *").length;NLIM49+=20;render();const it=document.querySelectorAll("#main .nl > *")[n];if(it){const f=it.querySelector("a,button")||it;f.focus({preventScroll:true})}}
+function nsub(b){NSF=NSF===b?"":b;NLIM49=20;render()}
 const NF49=[["","Todas"],["pecuaria","Pecuária"],["graos","Grãos"],["leite","Leite"],["suinos_aves","Suínos e aves"],["cana","Cana"],["mercado","Mercado"],["politica","Política"],["intl","Internacional"]];
 function nfil49(k){
  if(!k)return NEWS.items||[];
@@ -1750,7 +1769,8 @@ function newsPage(it){const s=it.sec;
  <nav class="chips" id="chips" aria-label="Filtro">`+NF49.map(([k,l])=>`<button class="chip ${NSF===k?"on":""}" aria-pressed="${NSF===k}" onclick="nsub('${k}')">${esc(l)}</button>`).join("")+`</nav>`;
   if(NLMISS===it.id&&NST==="ok")h+=`<div class="nlg" role="status">Esta notícia não está mais na lista.</div>`;
   const pend=!(NEWS.items||[]).length&&NST!=="ok";
-  h+=xs.length?`<div class="nl${!NSF?" todas49":""}">`+nclu48(xs).map(ngrpPage49).join("")+`</div>`:NST==="loading"&&!(NEWS.items||[]).length?`<div class="nl" aria-busy="true"><div class="nst" role="status" tabindex="-1">Carregando…</div>${'<span class="nsk" aria-hidden="true"><i></i><i></i></span>'.repeat(4)}</div>`:NST==="err"&&!(NEWS.items||[]).length?`<div class="nl"><div class="nst" role="alert" tabindex="-1"><b>Não foi possível carregar as notícias.</b><button class="rt" id="nretry" onclick="loadNews(1)">${ico("recarregar")}Tentar de novo</button></div></div>`:`<div class="nl"><div class="none" style="padding:14px">Nenhuma notícia neste filtro.</div></div>`;
+  const cl49=nclu48(xs),mais=cl49.length-NLIM49;   /*16/11: lista longa mostra 20 grupos; "Carregar mais" traz mais 20*/
+  h+=xs.length?`<div class="nl${!NSF?" todas49":""}">`+cl49.slice(0,NLIM49).map(ngrpPage49).join("")+`</div>`+(mais>0?`<button type="button" class="nmore49" onclick="nMore49()">Carregar mais notícias (${mais})</button>`:""):NST==="loading"&&!(NEWS.items||[]).length?`<div class="nl" aria-busy="true"><div class="nst" role="status" tabindex="-1">Carregando…</div>${'<span class="nsk" aria-hidden="true"><i></i><i></i></span>'.repeat(4)}</div>`:NST==="err"&&!(NEWS.items||[]).length?`<div class="nl"><div class="nst" role="alert" tabindex="-1"><b>Não foi possível carregar as notícias.</b><button class="rt" id="nretry" onclick="loadNews(1)">${ico("recarregar")}Tentar de novo</button></div></div>`:`<div class="nl"><div class="none" style="padding:14px">Nenhuma notícia neste filtro.</div></div>`;
   return h}
  const all=newsOf(it.news);
  const subs=it.news==="agro"?Object.keys(NSUB()).filter(k=>all.some(x=>x.b===k)):[];if(!subs.includes(NSF))NSF="";
@@ -1787,7 +1807,9 @@ function goNewsLink(){if(!NL||NST!=="ok")return;const id=NL;NL=null;
  if(k<0){if(!NI[cur]||!NI[cur].news){cur="n_agro";openSec=NI[cur].sec.id}NLMISS=cur;history.replaceState({...HS(),p:cur},"",pURL(cur)+"#n-"+id);render();return}
  const pg=npage(NEWS.items[k].c);if(pg!==cur){cur=pg;openSec=NI[cur].sec.id;history.replaceState({...HS(),p:cur},"",pURL(cur)+"#n-"+id);render()}
  if(NSF&&NEWS.items[k].b!==NSF){NSF="";render()}
- const el=document.querySelector('#main .ni[data-nid="'+id+'"]')||document.querySelector('#main .nal48 [data-nid="'+id+'"]');
+ const q=()=>document.querySelector('#main .ni[data-nid="'+id+'"]')||document.querySelector('#main .nal48 [data-nid="'+id+'"]');
+ if(!q()&&typeof NLIM49==="number"){NLIM49=1e4;render()}   /*16/11: notícia do link além das 20 primeiras: abre a lista toda*/
+ const el=q();
  if(el){el.scrollIntoView({block:"center"});el.classList.add("hl");el.focus({preventScroll:true});setTimeout(()=>el.classList.remove("hl"),2400)}
  /*v35: o link abre a própria notícia (o Voltar fecha e fica na lista, com a linha destacada)*/
  const i0=HS().i||0;history.replaceState({p:cur,n:k,ni:id,i:i0},"",nURL35(NEWS.items[k]));if(!i0)needSeed=true;openNews(k)}
@@ -1897,7 +1919,7 @@ const pURL=id=>location.pathname+(id==="resumo"?"":"?p="+id);
 if("scrollRestoration" in history)history.scrollRestoration="manual";
 function hpush(st,url){seed();const c=HS(),i=c.i||0;if(c.dw||c.sq||c.ag){history.replaceState({...st,i},"",url);return}
  history.replaceState({...c,y:window.scrollY},"");history.pushState({...st,i:i+1},"",url)}
-function showPage(id,y){if(id!==cur)NLMISS=null;cur=id;setTimeout(()=>gcView(id),0);if(NI[id])openSec=NI[id].sec.id;render();window.scrollTo(0,y||0)}
+function showPage(id,y){if(id!==cur){NLMISS=null;NLIM49=20}cur=id;setTimeout(()=>gcView(id),0);if(NI[id])openSec=NI[id].sec.id;render();window.scrollTo(0,y||0)}
 function go(id){seed();const c=HS();
  if(id===cur){if(c.ag){agroFanUserClose();return}if(c.dw)history.back();else closeDrawer();return}
  if(id==="resumo"&&(c.i||0)>0){history.go(-c.i);return}

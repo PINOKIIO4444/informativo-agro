@@ -13,3 +13,5 @@ secrets/
 .env
 .env.*
 .dev.vars
+__pycache__/
+*.pyc

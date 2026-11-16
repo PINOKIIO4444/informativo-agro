@@ -85,18 +85,15 @@ class Delta(unittest.TestCase):
         self.assertGreater(len([r for r in rows if r["produto"].upper() in {"PINHAO", "PINHÃO"}]), 0)
         self.assertFalse(any("ver backfill_log.json" in json.dumps(r, ensure_ascii=False) for r in rows))
 
-    @unittest.expectedFailure
     def test_flor_nao_entra(self):
-        """Bug conhecido (14/11/2026): desde 10/11 o coletor diário (fora do repositório) deixa passar flores
-        (ORQUIDEA) no boletim de Curitiba; o pacote auditado de 07/11 tirava. Não aparece em DATA."""
+        """Corrigido em 16/11/2026: flores, orquídeas e plantas ornamentais do Ceasa-PR ficam fora dos boletins."""
         rows = [r for doc in self.boletins.values() for r in doc["registros"]]
         self.assertFalse(any("ORQUIDEA" in r["produto"].upper() for r in rows))
 
-    @unittest.expectedFailure
     def test_pitaia_nao_vira_pinhao(self):
         """Bug conhecido (14/11/2026): desde 10/11 o coletor diário (fora do repositório) grava Pitaia (cx 4 kg) como
         produto «Pinhão» com variedade PITAIA em cwb, londrina e foz. Não aparece em DATA. Quando o coletor for
-        corrigido este teste passa e o expectedFailure deve sair."""
+        corrigido (16/11/2026) este teste passa."""
         rows = [r for doc in self.boletins.values() for r in doc["registros"]]
         pinhao = [r for r in rows if r["produto"].upper() in {"PINHAO", "PINHÃO"}]
         self.assertTrue(all("PITAIA" not in (r.get("variedade") or "").upper() for r in pinhao))
