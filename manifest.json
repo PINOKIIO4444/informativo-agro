@@ -1,0 +1,55 @@
+{
+ "arquivos": {
+  "http://www.emater.ro.gov.br/ematerro/wp-content/uploads/2026/10/20261013-10-1a-semana-de-outubro-2026.pdf": {
+   "bytes": 157164,
+   "http": 200,
+   "obtido_em": "2026-11-18T23:55:29+00:00",
+   "path": "pdf/2026/10/20261013-10-1a-semana-de-outubro-2026.pdf",
+   "sha256": "19e32a07cbfa5ad80c5d6d133d320144b8d3bdda4f7d8f6097630dc2ed9cfed3"
+  },
+  "http://www.emater.ro.gov.br/ematerro/wp-content/uploads/2026/10/20261019-10out-2a-semana-de-outubro_2026.pdf": {
+   "bytes": 193361,
+   "http": 200,
+   "obtido_em": "2026-11-18T23:55:29+00:00",
+   "path": "pdf/2026/10/20261019-10out-2a-semana-de-outubro_2026.pdf",
+   "sha256": "21d9b93c31746037b7fdb4fe3bfc743bbfd8446f6aaff620a03c1108c383b41d"
+  },
+  "http://www.emater.ro.gov.br/ematerro/wp-content/uploads/2026/10/20261026-10-3a-semana-de-outubro_2026.pdf": {
+   "bytes": 145405,
+   "http": 200,
+   "obtido_em": "2026-11-18T23:55:29+00:00",
+   "path": "pdf/2026/10/20261026-10-3a-semana-de-outubro_2026.pdf",
+   "sha256": "dee2ef4682c55ad2c342ebb85ca2df4ec8765e5d3a38adce2124438c24ee5689"
+  },
+  "http://www.emater.ro.gov.br/ematerro/wp-content/uploads/2026/11/20261103-10-4a-semana-de-outubro_2026.pdf": {
+   "bytes": 147698,
+   "http": 200,
+   "obtido_em": "2026-11-18T23:55:29+00:00",
+   "path": "pdf/2026/11/20261103-10-4a-semana-de-outubro_2026.pdf",
+   "sha256": "57df1bf2671cf8677c20ff95b7771a27cf703e871eb7fc2c226c53980d978668"
+  },
+  "http://www.emater.ro.gov.br/ematerro/wp-content/uploads/2026/11/20261109-11-1a-semana-de-novembro_2026.pdf": {
+   "bytes": 145915,
+   "http": 200,
+   "obtido_em": "2026-11-18T23:55:29+00:00",
+   "path": "pdf/2026/11/20261109-11-1a-semana-de-novembro_2026.pdf",
+   "sha256": "8f0b2cfc54194d8a7f6499c3dfafe6942b4ac3139bc76a16e5749353e72ef365"
+  },
+  "http://www.emater.ro.gov.br/ematerro/wp-content/uploads/2026/11/20261117-11-2a-semana-de-novembro_2026.pdf": {
+   "bytes": 142429,
+   "http": 200,
+   "obtido_em": "2026-11-18T23:55:29+00:00",
+   "path": "pdf/2026/11/20261117-11-2a-semana-de-novembro_2026.pdf",
+   "sha256": "27156cf7352d481e7aed0620bcbd8cb54ba618eaf768352d90f70f7ab9871f7a"
+  }
+ },
+ "fonte": "Emater-RO — Pesquisa Semanal de Preços (cópia sem alteração)",
+ "lista": {
+  "bytes": 117166,
+  "http": 200,
+  "obtido_em": "2026-11-18T23:55:29+00:00",
+  "path": "lista.html",
+  "sha256": "38fd8c62fb38e08ecad8913ed75f5914e1782b17097a9575a8ee8c815324510e",
+  "url": "http://www.emater.ro.gov.br/ematerro/pesquisa-de-preco/"
+ }
+}
