@@ -1,0 +1,39 @@
+# Espelho da Pesquisa Semanal de Preços da Emater-RO para o card "RO · Emater-RO" do AgroN.
+# Grava só no branch espelho-emater-ro (o site, no main, não é tocado e o Pages não rebuilda).
+name: espelho-emater-ro
+on:
+  schedule:
+    # 09:40, 13:40 e 18:40 (Brasília), seg-sex; o boletim sai seg/ter e o AgroN roda 19:30
+    - cron: '40 12,16,21 * * 1-5'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: espelho-emater-ro
+  cancel-in-progress: false
+jobs:
+  espelho:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+          path: main
+      - name: Checkout do branch espelho (cria órfão na 1ª vez)
+        run: |
+          git init -q espelho && cd espelho
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth 1 origin espelho-emater-ro; then git checkout -q -B espelho-emater-ro FETCH_HEAD;
+          else git checkout -q --orphan espelho-emater-ro; fi
+      - name: Copiar listagem e PDFs da Emater-RO
+        run: python3 main/.github/scripts/espelho_emater_ro.py espelho
+      - name: Commit se mudou
+        run: |
+          cd espelho
+          git config user.name "agron-espelho"
+          git config user.email "agron-espelho@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "sem mudança"; exit 0; fi
+          git commit -q -m "Espelho Emater-RO $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q origin HEAD:espelho-emater-ro
