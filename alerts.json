@@ -1,5 +1,138 @@
 {
- "ref": "2026-11-18",
- "updated": "19/11/2026 09:30",
- "alerts": []
+ "ref": "2026-11-19",
+ "updated": "19/11/2026 19:47",
+ "alerts": [
+  {
+   "key": "cacau_pa",
+   "name": "Cacau",
+   "sub": "Pará · convencional",
+   "value": 17.0,
+   "unit": "R$/kg",
+   "dec": 2,
+   "chg_pct": 6.25,
+   "date": "2026-11-19",
+   "freq": "diária"
+  },
+  {
+   "key": "ice_acucar",
+   "name": "Açúcar nº 11",
+   "sub": "ICE Nova York · mar/27",
+   "value": 17.16,
+   "unit": "centavos de US$/lb",
+   "dec": 2,
+   "chg_pct": -4.88,
+   "date": "2026-11-19",
+   "freq": "diária"
+  },
+  {
+   "key": "cacau_ny",
+   "name": "Cacau",
+   "sub": "ICE Nova York · dez/26",
+   "value": 5063.0,
+   "unit": "US$/t",
+   "dec": 0,
+   "chg_pct": 4.46,
+   "date": "2026-11-19",
+   "freq": "diária"
+  },
+  {
+   "key": "suino_mg",
+   "name": "Suíno vivo",
+   "sub": "Minas Gerais (posto)",
+   "value": 5.53,
+   "unit": "R$/kg",
+   "dec": 2,
+   "chg_pct": -4.16,
+   "date": "2026-11-19",
+   "freq": "diária"
+  },
+  {
+   "key": "mandioca_ass",
+   "name": "Mandioca (raiz)",
+   "sub": "Assis (SP) · posto fecularia",
+   "value": 530.32,
+   "unit": "R$/t",
+   "dec": 2,
+   "chg_pct": 2.79,
+   "date": "2026-11-13",
+   "freq": "semanal"
+  },
+  {
+   "key": "suino_rs",
+   "name": "Suíno vivo",
+   "sub": "Rio Grande do Sul (a retirar)",
+   "value": 4.89,
+   "unit": "R$/kg",
+   "dec": 2,
+   "chg_pct": -2.78,
+   "date": "2026-11-19",
+   "freq": "diária"
+  },
+  {
+   "key": "cacau_es",
+   "name": "Cacau",
+   "sub": "Espírito Santo · convencional",
+   "value": 1127.0,
+   "unit": "R$/sc",
+   "dec": 2,
+   "chg_pct": 2.64,
+   "date": "2026-11-19",
+   "freq": "diária"
+  },
+  {
+   "key": "cacau_ba",
+   "name": "Cacau",
+   "sub": "Bahia · convencional",
+   "value": 282.0,
+   "unit": "R$/@",
+   "dec": 2,
+   "chg_pct": 2.55,
+   "date": "2026-11-19",
+   "freq": "diária"
+  },
+  {
+   "key": "farelo_rondonopolis",
+   "name": "Farelo de soja",
+   "sub": "Rondonópolis (MT) · BCSP",
+   "value": 2000.0,
+   "unit": "R$/t",
+   "dec": 2,
+   "chg_pct": -2.44,
+   "date": "2026-11-19",
+   "freq": "diária"
+  },
+  {
+   "key": "suino_sc",
+   "name": "Suíno vivo",
+   "sub": "Santa Catarina (a retirar)",
+   "value": 4.89,
+   "unit": "R$/kg",
+   "dec": 2,
+   "chg_pct": -2.4,
+   "date": "2026-11-19",
+   "freq": "diária"
+  },
+  {
+   "key": "ice_suco",
+   "name": "Suco de laranja (FCOJ)",
+   "sub": "ICE Nova York · jan/27",
+   "value": 132.55,
+   "unit": "centavos de US$/lb",
+   "dec": 2,
+   "chg_pct": 2.32,
+   "date": "2026-11-19",
+   "freq": "diária"
+  },
+  {
+   "key": "etanol_anid",
+   "name": "Etanol anidro",
+   "sub": "São Paulo · usinas · semanal",
+   "value": 3.5412,
+   "unit": "R$/litro",
+   "dec": 4,
+   "chg_pct": 2.28,
+   "date": "2026-11-19",
+   "freq": "semanal"
+  }
+ ]
 }
