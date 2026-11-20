@@ -12,7 +12,7 @@
   "variedade": "PRIMEIRA",
   "classificacao": null,
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -20,7 +20,7 @@
   "id": "campinas",
   "produto": "tomate",
   "serie": "noticias-agricolas-campinas-tomate-longa-vida-debora-extra-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 13.0,
   "min": null,
   "max": null,
@@ -36,7 +36,7 @@
   "id": "campinas",
   "produto": "batata",
   "serie": "noticias-agricolas-campinas-batata-agatha-primeira-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 3.0,
   "min": null,
   "max": null,
@@ -52,7 +52,7 @@
   "id": "campinas",
   "produto": "cebola",
   "serie": "noticias-agricolas-campinas-cebola-amarela-mineira-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": null,
   "min": null,
   "max": null,
@@ -68,7 +68,7 @@
   "id": "campinas",
   "produto": "cenoura",
   "serie": "noticias-agricolas-campinas-cenoura-extra-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 2.5,
   "min": null,
   "max": null,
@@ -84,7 +84,7 @@
   "id": "campinas",
   "produto": "alface",
   "serie": "noticias-agricolas-campinas-alface-crespa-extra-18-24-un-preco",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 3.75,
   "min": null,
   "max": null,
@@ -100,7 +100,7 @@
   "id": "campinas",
   "produto": "banana",
   "serie": "noticias-agricolas-campinas-banana-nanica-prata-nanica-extra-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 3.33,
   "min": null,
   "max": null,
@@ -116,7 +116,7 @@
   "id": "campinas",
   "produto": "limao",
   "serie": "noticias-agricolas-campinas-limao-tahiti-extra-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 9.5,
   "min": null,
   "max": null,
@@ -132,7 +132,7 @@
   "id": "campinas",
   "produto": "mamao",
   "serie": "noticias-agricolas-campinas-mamao-formosa-extra-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 7.5,
   "min": null,
   "max": null,
@@ -148,7 +148,7 @@
   "id": "bh",
   "produto": "tomate",
   "serie": "noticias-agricolas-belo-horizonte-tomate-longa-vida-extra-a-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 9.0,
   "min": null,
   "max": null,
@@ -164,7 +164,7 @@
   "id": "bh",
   "produto": "batata",
   "serie": "noticias-agricolas-belo-horizonte-batata-agatha-primeira-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 2.0,
   "min": null,
   "max": null,
@@ -180,7 +180,7 @@
   "id": "bh",
   "produto": "cebola",
   "serie": "noticias-agricolas-belo-horizonte-cebola-amarela-mineira-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 8.0,
   "min": null,
   "max": null,
@@ -196,7 +196,7 @@
   "id": "bh",
   "produto": "cenoura",
   "serie": "noticias-agricolas-belo-horizonte-cenoura-extra-a-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 2.0,
   "min": null,
   "max": null,
@@ -212,7 +212,7 @@
   "id": "bh",
   "produto": "alface",
   "serie": "noticias-agricolas-belo-horizonte-alface-crespa-primeira-dz-preco-dz",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 30.0,
   "min": null,
   "max": null,
@@ -228,7 +228,7 @@
   "id": "bh",
   "produto": "banana",
   "serie": "noticias-agricolas-belo-horizonte-banana-nanica-prata-nanica-climatizada-1a-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 2.5,
   "min": null,
   "max": null,
@@ -244,7 +244,7 @@
   "id": "bh",
   "produto": "limao",
   "serie": "noticias-agricolas-belo-horizonte-limao-tahiti-extra-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 9.5,
   "min": null,
   "max": null,
@@ -260,7 +260,7 @@
   "id": "bh",
   "produto": "mamao",
   "serie": "noticias-agricolas-belo-horizonte-mamao-formosa-extra-preco-r-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 5.0,
   "min": null,
   "max": null,
@@ -420,8 +420,8 @@
   "id": "londrina",
   "produto": "tomate",
   "serie": "ceasa-pr-londrina-tomate-longa-vida-extra-aa-cx-20-kg-pr",
-  "data": "2026-11-19",
-  "comum": 100.0,
+  "data": "2026-11-20",
+  "comum": null,
   "min": 220.0,
   "max": 220.0,
   "embalagem": "cx 20 kg",
@@ -436,8 +436,8 @@
   "id": "londrina",
   "produto": "batata",
   "serie": "ceasa-pr-londrina-batata-comum-especial-sc-25kg-sp-go",
-  "data": "2026-11-19",
-  "comum": 120.0,
+  "data": "2026-11-20",
+  "comum": 130.0,
   "min": 100.0,
   "max": 110.0,
   "embalagem": "sc 25kg",
@@ -452,8 +452,8 @@
   "id": "londrina",
   "produto": "cebola",
   "serie": "ceasa-pr-londrina-cebola-branca-nacional-sc-20kg-sp-mg",
-  "data": "2026-11-19",
-  "comum": 200.0,
+  "data": "2026-11-20",
+  "comum": 190.0,
   "min": 180.0,
   "max": 200.0,
   "embalagem": "sc 20kg",
@@ -468,7 +468,7 @@
   "id": "londrina",
   "produto": "cenoura",
   "serie": "ceasa-pr-londrina-cenoura-comum-extra-a-cx-20-kg-pr",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 28.0,
   "min": 30.0,
   "max": 35.0,
@@ -484,7 +484,7 @@
   "id": "londrina",
   "produto": "alface",
   "serie": "ceasa-pr-londrina-alface-crespa-grande-cx-07kg-pr",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 30.0,
   "min": 40.0,
   "max": 45.0,
@@ -500,7 +500,7 @@
   "id": "londrina",
   "produto": "banana",
   "serie": "ceasa-pr-londrina-banana-prata-cx-20-kg-sp-pr",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 100.0,
   "min": 100.0,
   "max": 115.0,
@@ -516,7 +516,7 @@
   "id": "londrina",
   "produto": "limao",
   "serie": "ceasa-pr-londrina-limao-tahiti-graudo-cx-23-kg-sp-pr",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 120.0,
   "min": 200.0,
   "max": 240.0,
@@ -532,7 +532,7 @@
   "id": "londrina",
   "produto": "mamao",
   "serie": "ceasa-pr-londrina-mamao-formosa-maduro-cx-15kg-es-sp-ba",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 95.0,
   "min": 90.0,
   "max": 95.0,
@@ -548,7 +548,7 @@
   "id": "londrina",
   "produto": "pimentao",
   "serie": "ceasa-pr-londrina-pimentao-verde-extra-a-cx-12kg-pr-sp",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 40.0,
   "min": 35.0,
   "max": 40.0,
@@ -564,7 +564,7 @@
   "id": "maringa",
   "produto": "tomate",
   "serie": "ceasa-pr-maringa-tomate-longa-vida-extra-aa-cx-20-kg-pr-sp",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 181.0,
   "min": 255.0,
   "max": 272.0,
@@ -580,7 +580,7 @@
   "id": "maringa",
   "produto": "batata",
   "serie": "ceasa-pr-maringa-batata-comum-especial-sc-25kg-pr-rs",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 120.0,
   "min": 110.0,
   "max": 115.0,
@@ -596,7 +596,7 @@
   "id": "maringa",
   "produto": "cebola",
   "serie": "ceasa-pr-maringa-cebola-branca-nacional-sc-20kg-sp-arg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 200.0,
   "min": 200.0,
   "max": 205.0,
@@ -612,7 +612,7 @@
   "id": "maringa",
   "produto": "cenoura",
   "serie": "ceasa-pr-maringa-cenoura-comum-extra-a-cx-20-kg-pr",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 35.0,
   "min": 35.0,
   "max": 40.0,
@@ -628,7 +628,7 @@
   "id": "maringa",
   "produto": "alface",
   "serie": "ceasa-pr-maringa-alface-crespa-medio-cx-06kg-pr-sc",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 46.0,
   "min": 46.0,
   "max": 50.0,
@@ -644,7 +644,7 @@
   "id": "maringa",
   "produto": "banana",
   "serie": "ceasa-pr-maringa-banana-prata-cx-20-kg-sc-mg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 90.0,
   "min": 90.0,
   "max": 100.0,
@@ -660,7 +660,7 @@
   "id": "maringa",
   "produto": "limao",
   "serie": "ceasa-pr-maringa-limao-tahiti-graudo-cx-23-kg-sp",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 170.0,
   "min": 200.0,
   "max": 210.0,
@@ -676,7 +676,7 @@
   "id": "maringa",
   "produto": "mamao",
   "serie": "ceasa-pr-maringa-mamao-formosa-maduro-cx-15kg-es-sp",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 90.0,
   "min": 110.0,
   "max": 115.0,
@@ -692,7 +692,7 @@
   "id": "maringa",
   "produto": "pimentao",
   "serie": "ceasa-pr-maringa-pimentao-verde-extra-a-cx-12kg-pr",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 55.0,
   "min": 50.0,
   "max": 55.0,
@@ -716,7 +716,7 @@
   "variedade": "LONGA VIDA",
   "classificacao": "EXTRA A",
   "repeticoes": 4,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -732,7 +732,7 @@
   "variedade": "COMUM",
   "classificacao": "ESPECIAL",
   "repeticoes": 5,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -748,7 +748,7 @@
   "variedade": "PERA",
   "classificacao": "NACIONAL",
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 1
  },
  {
@@ -764,7 +764,7 @@
   "variedade": "COMUM",
   "classificacao": "EXTRA AA",
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -780,7 +780,7 @@
   "variedade": "CRESPA",
   "classificacao": "MEDIO",
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -796,7 +796,7 @@
   "variedade": "PRATA",
   "classificacao": null,
   "repeticoes": 6,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -812,7 +812,7 @@
   "variedade": "TAHITI",
   "classificacao": "MEDIO",
   "repeticoes": 7,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -828,7 +828,7 @@
   "variedade": "FORMOSA",
   "classificacao": "MADURO",
   "repeticoes": 5,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -844,7 +844,7 @@
   "variedade": "VERDE",
   "classificacao": "EXTRA AA",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -860,7 +860,7 @@
   "variedade": "LONGA VIDA",
   "classificacao": "EXTRA AA",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -876,7 +876,7 @@
   "variedade": "COMUM",
   "classificacao": "ESPECIAL",
   "repeticoes": 7,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -892,7 +892,7 @@
   "variedade": "BRANCA",
   "classificacao": "NACIONAL",
   "repeticoes": 7,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -908,7 +908,7 @@
   "variedade": "COMUM",
   "classificacao": "EXTRA AA",
   "repeticoes": 7,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -924,7 +924,7 @@
   "variedade": "CRESPA",
   "classificacao": "GRANDE",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -940,7 +940,7 @@
   "variedade": "PRATA",
   "classificacao": null,
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -956,7 +956,7 @@
   "variedade": "TAHITI",
   "classificacao": "GRAUDO",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -972,7 +972,7 @@
   "variedade": "FORMOSA",
   "classificacao": "MADURO",
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -988,7 +988,7 @@
   "variedade": "VERDE",
   "classificacao": "EXTRA AA",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -996,8 +996,8 @@
   "id": "poa",
   "produto": "tomate",
   "serie": "ceasa-rs-porto-alegre-tomate-longa-vida-kg",
-  "data": "2026-11-19",
-  "comum": 13.5,
+  "data": "2026-11-20",
+  "comum": 13.0,
   "min": 12.5,
   "max": 18.0,
   "embalagem": "KG",
@@ -1012,7 +1012,7 @@
   "id": "poa",
   "produto": "batata",
   "serie": "ceasa-rs-porto-alegre-batata-branca-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 4.8,
   "min": 3.2,
   "max": 4.6,
@@ -1028,7 +1028,7 @@
   "id": "poa",
   "produto": "cebola",
   "serie": "ceasa-rs-porto-alegre-cebola-nacional-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 7.0,
   "min": 5.0,
   "max": 7.0,
@@ -1044,7 +1044,7 @@
   "id": "poa",
   "produto": "cenoura",
   "serie": "ceasa-rs-porto-alegre-cenoura-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 4.0,
   "min": 4.0,
   "max": 4.5,
@@ -1060,7 +1060,7 @@
   "id": "poa",
   "produto": "alface",
   "serie": "ceasa-rs-porto-alegre-alface-crespa-dz",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 12.0,
   "min": 15.0,
   "max": 18.0,
@@ -1076,7 +1076,7 @@
   "id": "poa",
   "produto": "banana",
   "serie": "ceasa-rs-porto-alegre-banana-prata-branca-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 3.0,
   "min": 2.5,
   "max": 6.5,
@@ -1092,7 +1092,7 @@
   "id": "poa",
   "produto": "limao",
   "serie": "ceasa-rs-porto-alegre-limao-taiti-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 7.78,
   "min": 6.67,
   "max": 11.11,
@@ -1108,7 +1108,7 @@
   "id": "poa",
   "produto": "mamao",
   "serie": "ceasa-rs-porto-alegre-mamao-formosa-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 7.69,
   "min": 7.0,
   "max": 9.5,
@@ -1124,7 +1124,7 @@
   "id": "poa",
   "produto": "pimentao",
   "serie": "ceasa-rs-porto-alegre-pimentao-vermelho-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 20.0,
   "min": 15.0,
   "max": 200.0,
@@ -1148,7 +1148,7 @@
   "variedade": null,
   "classificacao": "Extra AA",
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1164,7 +1164,7 @@
   "variedade": null,
   "classificacao": "Especial",
   "repeticoes": 4,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1180,7 +1180,7 @@
   "variedade": null,
   "classificacao": "Sc 20 kg",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1196,7 +1196,7 @@
   "variedade": null,
   "classificacao": "Cx 20 kg",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1212,7 +1212,7 @@
   "variedade": null,
   "classificacao": "Extra",
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1228,7 +1228,7 @@
   "variedade": null,
   "classificacao": "Extra",
   "repeticoes": 5,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1244,7 +1244,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1260,7 +1260,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 7,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1276,7 +1276,7 @@
   "variedade": null,
   "classificacao": "Extra A",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1436,7 +1436,7 @@
   "variedade": null,
   "classificacao": "Extra A",
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1452,7 +1452,7 @@
   "variedade": null,
   "classificacao": "Especial Lavada",
   "repeticoes": 4,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1468,7 +1468,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1484,7 +1484,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1500,7 +1500,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1516,7 +1516,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1532,7 +1532,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 6,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1548,7 +1548,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1564,7 +1564,7 @@
   "variedade": null,
   "classificacao": "Extra A",
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -2004,7 +2004,7 @@
   "id": "poa",
   "produto": "revisao",
   "serie": "ceasa-rs-porto-alegre-jabuticaba-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 40.0,
   "max": 40.0,
   "st": false,
@@ -2015,7 +2015,7 @@
   "id": "poa",
   "produto": "revisao",
   "serie": "ceasa-rs-porto-alegre-kinkan-kg",
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "comum": 10.0,
   "max": 40.0,
   "st": false,
