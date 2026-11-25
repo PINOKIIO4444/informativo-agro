@@ -4,7 +4,7 @@
   "id": "recife",
   "produto": "pimentao",
   "serie": "ceasa-pe-recife-pimentao-verde-primeira-cx-13a14-pe-pb",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 80.0,
   "min": 80.0,
   "max": 100.0,
@@ -12,7 +12,7 @@
   "variedade": "PRIMEIRA",
   "classificacao": null,
   "repeticoes": 3,
-  "st": true,
+  "st": false,
   "dias": 9
  },
  {
@@ -276,15 +276,15 @@
   "id": "cwb",
   "produto": "tomate",
   "serie": "ceasa-pr-curitiba-tomate-longa-vida-extra-a-cx-20-kg-pr-sp-go",
-  "data": "2026-11-24",
-  "comum": 230.0,
+  "data": "2026-11-25",
+  "comum": 240.0,
   "min": 250.0,
   "max": 260.0,
   "embalagem": "cx 20 kg",
   "variedade": "LONGA VIDA",
   "classificacao": "EXTRA A",
   "repeticoes": 1,
-  "st": true,
+  "st": false,
   "dias": 8
  },
  {
@@ -292,15 +292,15 @@
   "id": "cwb",
   "produto": "batata",
   "serie": "ceasa-pr-curitiba-batata-comum-especial-sc-25kg-pr",
-  "data": "2026-11-24",
-  "comum": 110.0,
+  "data": "2026-11-25",
+  "comum": 120.0,
   "min": 90.0,
   "max": 100.0,
   "embalagem": "sc 25kg",
   "variedade": "COMUM",
   "classificacao": "ESPECIAL",
   "repeticoes": 5,
-  "st": true,
+  "st": false,
   "dias": 8
  },
  {
@@ -308,7 +308,7 @@
   "id": "cwb",
   "produto": "cebola",
   "serie": "ceasa-pr-curitiba-cebola-pera-nacional-sc-20kg-pr-mg-sp",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 150.0,
   "min": 140.0,
   "max": 145.0,
@@ -316,7 +316,7 @@
   "variedade": "PERA",
   "classificacao": "NACIONAL",
   "repeticoes": 1,
-  "st": true,
+  "st": false,
   "dias": 8
  },
  {
@@ -324,7 +324,7 @@
   "id": "cwb",
   "produto": "cenoura",
   "serie": "ceasa-pr-curitiba-cenoura-comum-extra-a-cx-20-kg-pr-sc",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 30.0,
   "min": 35.0,
   "max": 40.0,
@@ -332,7 +332,7 @@
   "variedade": "COMUM",
   "classificacao": "EXTRA A",
   "repeticoes": 2,
-  "st": true,
+  "st": false,
   "dias": 8
  },
  {
@@ -340,7 +340,7 @@
   "id": "cwb",
   "produto": "alface",
   "serie": "ceasa-pr-curitiba-alface-crespa-grande-cx-07kg-pr",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 25.0,
   "min": 30.0,
   "max": 35.0,
@@ -348,7 +348,7 @@
   "variedade": "CRESPA",
   "classificacao": "GRANDE",
   "repeticoes": 6,
-  "st": true,
+  "st": false,
   "dias": 8
  },
  {
@@ -356,7 +356,7 @@
   "id": "cwb",
   "produto": "banana",
   "serie": "ceasa-pr-curitiba-banana-prata-cx-20-kg-pr",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 70.0,
   "min": 75.0,
   "max": 80.0,
@@ -364,7 +364,7 @@
   "variedade": "PRATA",
   "classificacao": null,
   "repeticoes": 8,
-  "st": true,
+  "st": false,
   "dias": 8
  },
  {
@@ -372,7 +372,7 @@
   "id": "cwb",
   "produto": "limao",
   "serie": "ceasa-pr-curitiba-limao-tahiti-graudo-cx-23-kg-pr",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 150.0,
   "min": 220.0,
   "max": 230.0,
@@ -380,7 +380,7 @@
   "variedade": "TAHITI",
   "classificacao": "GRAUDO",
   "repeticoes": 2,
-  "st": true,
+  "st": false,
   "dias": 8
  },
  {
@@ -388,7 +388,7 @@
   "id": "cwb",
   "produto": "mamao",
   "serie": "ceasa-pr-curitiba-mamao-formosa-maduro-cx-15kg-pr",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 100.0,
   "min": 90.0,
   "max": 100.0,
@@ -396,7 +396,7 @@
   "variedade": "FORMOSA",
   "classificacao": "MADURO",
   "repeticoes": 8,
-  "st": true,
+  "st": false,
   "dias": 8
  },
  {
@@ -404,7 +404,7 @@
   "id": "cwb",
   "produto": "pimentao",
   "serie": "ceasa-pr-curitiba-pimentao-verde-extra-a-cx-12kg-pr-sp",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 80.0,
   "min": 65.0,
   "max": 70.0,
@@ -412,7 +412,7 @@
   "variedade": "VERDE",
   "classificacao": "EXTRA A",
   "repeticoes": 5,
-  "st": true,
+  "st": false,
   "dias": 8
  },
  {
@@ -420,15 +420,15 @@
   "id": "londrina",
   "produto": "tomate",
   "serie": "ceasa-pr-londrina-tomate-longa-vida-extra-aa-cx-20-kg-pr",
-  "data": "2026-11-24",
-  "comum": null,
+  "data": "2026-11-25",
+  "comum": 200.0,
   "min": 220.0,
   "max": 220.0,
   "embalagem": "cx 20 kg",
   "variedade": "LONGA VIDA",
   "classificacao": "EXTRA AA",
   "repeticoes": 5,
-  "st": true,
+  "st": false,
   "dias": 6
  },
  {
@@ -436,15 +436,15 @@
   "id": "londrina",
   "produto": "batata",
   "serie": "ceasa-pr-londrina-batata-comum-especial-sc-25kg-sp-go",
-  "data": "2026-11-24",
-  "comum": 130.0,
+  "data": "2026-11-25",
+  "comum": 140.0,
   "min": 100.0,
   "max": 110.0,
   "embalagem": "sc 25kg",
   "variedade": "COMUM",
   "classificacao": "ESPECIAL",
   "repeticoes": 8,
-  "st": true,
+  "st": false,
   "dias": 9
  },
  {
@@ -452,7 +452,7 @@
   "id": "londrina",
   "produto": "cebola",
   "serie": "ceasa-pr-londrina-cebola-branca-nacional-sc-20kg-sp-mg",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 190.0,
   "min": 180.0,
   "max": 200.0,
@@ -460,7 +460,7 @@
   "variedade": "BRANCA",
   "classificacao": "NACIONAL",
   "repeticoes": 11,
-  "st": true,
+  "st": false,
   "dias": 10
  },
  {
@@ -468,15 +468,15 @@
   "id": "londrina",
   "produto": "cenoura",
   "serie": "ceasa-pr-londrina-cenoura-comum-extra-a-cx-20-kg-pr",
-  "data": "2026-11-24",
-  "comum": 28.0,
+  "data": "2026-11-25",
+  "comum": 25.0,
   "min": 30.0,
   "max": 35.0,
   "embalagem": "cx 20 kg",
   "variedade": "COMUM",
   "classificacao": "EXTRA A",
   "repeticoes": 8,
-  "st": true,
+  "st": false,
   "dias": 9
  },
  {
@@ -484,7 +484,7 @@
   "id": "londrina",
   "produto": "alface",
   "serie": "ceasa-pr-londrina-alface-crespa-grande-cx-07kg-pr",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 30.0,
   "min": 40.0,
   "max": 45.0,
@@ -492,7 +492,7 @@
   "variedade": "CRESPA",
   "classificacao": "GRANDE",
   "repeticoes": 8,
-  "st": true,
+  "st": false,
   "dias": 9
  },
  {
@@ -500,15 +500,15 @@
   "id": "londrina",
   "produto": "banana",
   "serie": "ceasa-pr-londrina-banana-prata-cx-20-kg-sp-pr",
-  "data": "2026-11-24",
-  "comum": 100.0,
+  "data": "2026-11-25",
+  "comum": 115.0,
   "min": 100.0,
   "max": 115.0,
   "embalagem": "cx 20 kg",
   "variedade": "PRATA",
   "classificacao": null,
   "repeticoes": 11,
-  "st": true,
+  "st": false,
   "dias": 9
  },
  {
@@ -516,15 +516,15 @@
   "id": "londrina",
   "produto": "limao",
   "serie": "ceasa-pr-londrina-limao-tahiti-graudo-cx-23-kg-sp-pr",
-  "data": "2026-11-24",
-  "comum": 120.0,
+  "data": "2026-11-25",
+  "comum": 100.0,
   "min": 200.0,
   "max": 240.0,
   "embalagem": "cx 23 kg",
   "variedade": "TAHITI",
   "classificacao": "GRAUDO",
   "repeticoes": 8,
-  "st": true,
+  "st": false,
   "dias": 9
  },
  {
@@ -532,7 +532,7 @@
   "id": "londrina",
   "produto": "mamao",
   "serie": "ceasa-pr-londrina-mamao-formosa-maduro-cx-15kg-es-sp-ba",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 95.0,
   "min": 90.0,
   "max": 95.0,
@@ -540,7 +540,7 @@
   "variedade": "FORMOSA",
   "classificacao": "MADURO",
   "repeticoes": 8,
-  "st": true,
+  "st": false,
   "dias": 9
  },
  {
@@ -548,7 +548,7 @@
   "id": "londrina",
   "produto": "pimentao",
   "serie": "ceasa-pr-londrina-pimentao-verde-extra-a-cx-12kg-pr-sp",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 50.0,
   "min": 35.0,
   "max": 40.0,
@@ -556,7 +556,7 @@
   "variedade": "VERDE",
   "classificacao": "EXTRA A",
   "repeticoes": 8,
-  "st": true,
+  "st": false,
   "dias": 9
  },
  {
@@ -852,15 +852,15 @@
   "id": "foz",
   "produto": "tomate",
   "serie": "ceasa-pr-foz-do-iguacu-tomate-longa-vida-extra-aa-cx-20-kg-pr-sc-sp",
-  "data": "2026-11-24",
-  "comum": 290.0,
+  "data": "2026-11-25",
+  "comum": 275.0,
   "min": 260.0,
   "max": 270.0,
   "embalagem": "cx 20 kg",
   "variedade": "LONGA VIDA",
   "classificacao": "EXTRA AA",
   "repeticoes": 2,
-  "st": true,
+  "st": false,
   "dias": 7
  },
  {
@@ -868,7 +868,7 @@
   "id": "foz",
   "produto": "batata",
   "serie": "ceasa-pr-foz-do-iguacu-batata-comum-especial-sc-25kg-pr-sp",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 120.0,
   "min": 120.0,
   "max": 125.0,
@@ -876,7 +876,7 @@
   "variedade": "COMUM",
   "classificacao": "ESPECIAL",
   "repeticoes": 7,
-  "st": true,
+  "st": false,
   "dias": 7
  },
  {
@@ -884,7 +884,7 @@
   "id": "foz",
   "produto": "cebola",
   "serie": "ceasa-pr-foz-do-iguacu-cebola-branca-nacional-sc-20kg-pr",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 140.0,
   "min": 140.0,
   "max": 143.0,
@@ -892,7 +892,7 @@
   "variedade": "BRANCA",
   "classificacao": "NACIONAL",
   "repeticoes": 7,
-  "st": true,
+  "st": false,
   "dias": 7
  },
  {
@@ -900,7 +900,7 @@
   "id": "foz",
   "produto": "cenoura",
   "serie": "ceasa-pr-foz-do-iguacu-cenoura-comum-extra-aa-cx-20-kg-pr-sc",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 55.0,
   "min": 55.0,
   "max": 60.0,
@@ -908,7 +908,7 @@
   "variedade": "COMUM",
   "classificacao": "EXTRA AA",
   "repeticoes": 7,
-  "st": true,
+  "st": false,
   "dias": 7
  },
  {
@@ -916,7 +916,7 @@
   "id": "foz",
   "produto": "alface",
   "serie": "ceasa-pr-foz-do-iguacu-alface-crespa-grande-cx-07kg-pr-sp",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 45.0,
   "min": 65.0,
   "max": 70.0,
@@ -924,7 +924,7 @@
   "variedade": "CRESPA",
   "classificacao": "GRANDE",
   "repeticoes": 2,
-  "st": true,
+  "st": false,
   "dias": 7
  },
  {
@@ -932,7 +932,7 @@
   "id": "foz",
   "produto": "banana",
   "serie": "ceasa-pr-foz-do-iguacu-banana-prata-cx-20-kg-sc",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 90.0,
   "min": 90.0,
   "max": 95.0,
@@ -940,7 +940,7 @@
   "variedade": "PRATA",
   "classificacao": null,
   "repeticoes": 2,
-  "st": true,
+  "st": false,
   "dias": 7
  },
  {
@@ -948,15 +948,15 @@
   "id": "foz",
   "produto": "limao",
   "serie": "ceasa-pr-foz-do-iguacu-limao-tahiti-graudo-cx-23-kg-pr-sp",
-  "data": "2026-11-24",
-  "comum": 130.0,
+  "data": "2026-11-25",
+  "comum": 110.0,
   "min": 120.0,
   "max": 130.0,
   "embalagem": "cx 23 kg",
   "variedade": "TAHITI",
   "classificacao": "GRAUDO",
   "repeticoes": 2,
-  "st": true,
+  "st": false,
   "dias": 7
  },
  {
@@ -964,7 +964,7 @@
   "id": "foz",
   "produto": "mamao",
   "serie": "ceasa-pr-foz-do-iguacu-mamao-formosa-maduro-cx-15kg-sp-ba",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 120.0,
   "min": 120.0,
   "max": 135.0,
@@ -972,7 +972,7 @@
   "variedade": "FORMOSA",
   "classificacao": "MADURO",
   "repeticoes": 3,
-  "st": true,
+  "st": false,
   "dias": 7
  },
  {
@@ -980,7 +980,7 @@
   "id": "foz",
   "produto": "pimentao",
   "serie": "ceasa-pr-foz-do-iguacu-pimentao-verde-extra-aa-cx-12kg-pr-sc",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 95.0,
   "min": 85.0,
   "max": 90.0,
@@ -988,7 +988,7 @@
   "variedade": "VERDE",
   "classificacao": "EXTRA AA",
   "repeticoes": 2,
-  "st": true,
+  "st": false,
   "dias": 7
  },
  {
