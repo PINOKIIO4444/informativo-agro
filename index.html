@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://agron-alertas.pinokiio4444.workers.dev https://informativo-agro.goatcounter.com; img-src 'self' data: https://informativo-agro.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; connect-src 'self' https://agron-alertas.pinokiio4444.workers.dev https://informativo-agro.goatcounter.com https://economia.awesomeapi.com.br; img-src 'self' data: https://informativo-agro.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1E8C47" media="(prefers-color-scheme: light)">
@@ -534,6 +534,7 @@ html.fx49 .tile .u{font-size:12px;margin:2px 0 4px}
 html.fx49 .tile .s{font-size:12px;line-height:1.25;margin-top:1px}
 html.fx49 .tile .v{font-size:20px;margin-top:8px}
 html.fx49 .tile .pill{margin-top:2px}
+html.fx49 .fxliveR{margin-top:10px}html.fx49 .fxliveR[hidden]{display:none!important}
 html.fx49 .tile svg.spark49,html.fx49 .tile .sl30,html.fx49 .tile .t2,html.fx49 .tile .s2,html.fx49 .tr48{display:none!important}
 html.fx49 .i49{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:12px;margin-top:4px}
 html.fx49 .i49a{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
@@ -1174,7 +1175,7 @@ const NAV=[
   {id:"borracha",label:"Borracha natural",ic:"borracha",g:[["SP · mensal"+(FX47?"":" · IEA"),["borracha_53"]]],note:"borracha",req:"borracha_53"},
   {id:"horti",label:hortiLabel(),ic:"horti",g:[["",HORTI_KEYS]],note:"ceagesp",req:"cg_tomate",horti:true}]},
  {id:"mercado",label:"Mercado",ic:"mercado",items:[
-  {id:"dolar",label:"Dólar e euro",ic:"dolar",g:[["Dólar",["usd","fut_dolar"]],["Euro",["eur"],1]]},
+  {id:"dolar",label:"Dólar e euro",ic:"dolar",g:[["Dólar",["usd","usd_live","fut_dolar"]],["Euro",["eur"],1]]},
   {id:"juros",label:"Juros e inflação",ic:"juros",g:[["Juros",["selic"],1],["Inflação · IPCA"+(FX47?"":" (IBGE)")+" · mensal",["ipca_m","ipca_12"],1]],note:"juros",req:"selic"},
   {id:"ibov",label:"Ibovespa",ic:"ibov",g:[["",["ibov"]]]},
   {id:"b3",label:"B3 futuros",ic:"b3",g:[["Futuros agro",["fut_boi","fut_milho","fut_soja","fut_cafe"]],["Câmbio",["fut_dolar"]]],note:"b3"},
@@ -1183,7 +1184,7 @@ const NAV=[
   {id:"petroleo",label:"Petróleo (Brent)",ic:"petroleo",g:[["",["brent"]]],note:"brent",req:"brent"},
   {id:"insumos",label:"Insumos e fertilizantes",ic:"fertilizante",g:[["Fertilizantes · preço internacional · mensal",["wb_ureia","wb_dap","wb_kcl","wb_rocha"],1],["Relação de troca · mensal",["troca_soja_ureia","troca_soja_kcl","troca_soja_dap"],1],["Diesel"+(FX47?"":" · ANP")+" · semanal",["diesel_s10","diesel_s500"],1]],note:"insumos"}]}];
 NAV.forEach(s=>{s.items=s.items.filter(it=>!it.req||I[it.req])});
-const KI={};NAV.forEach(s=>s.items.forEach(it=>(it.g||[]).forEach(g=>g[1].forEach(k=>{if(!KI[k])KI[k]=it.ic}))));KI.fut_dolar="dolar";KI.usd="dolar";KI.ibov="ibov";KI.eur="euro";KI.selic=KI.ipca_m=KI.ipca_12="juros";KI.brent="petroleo";KI.diesel_s10=KI.diesel_s500="diesel";
+const KI={};NAV.forEach(s=>s.items.forEach(it=>(it.g||[]).forEach(g=>g[1].forEach(k=>{if(!KI[k])KI[k]=it.ic}))));KI.fut_dolar="dolar";KI.usd="dolar";KI.usd_live="dolar";KI.ibov="ibov";KI.eur="euro";KI.selic=KI.ipca_m=KI.ipca_12="juros";KI.brent="petroleo";KI.diesel_s10=KI.diesel_s500="diesel";
 const NI={};NAV.forEach(s=>s.items.forEach(it=>{it.sec=s;NI[it.id]=it}));
 const keysOf=it=>(it.g||[]).flatMap(g=>g[1]);
 const avail=it=>it.news||it.ov?true:keysOf(it).some(has)||(it.leite&&DATA.leite&&DATA.leite.date)||(it.repos&&DATA.repos&&DATA.repos.date);
@@ -1233,7 +1234,7 @@ function resumo(){
   if(FX49){const pr=praça49(x),un=ud49(x);
    return `<a class="tile${pg?" go":""}" href="${pg?"?p="+pg:"#"+k}" onclick="return nav(event,()=>${act})" aria-label="${esc(x.name)}, ${esc(pr)}: ${esc(mt(x.v,x.dec,x,1))}, ${esc(un)}, ${pctX(x)}. ${lab}"><div class="n">${ico(KI[k],"sm")}${pg==="cafe"?"Café":esc(x.name)}${pg?`<span class="chev" aria-hidden="true">${ico("seta","sm")}</span>`:""}</div><div class="s">${esc(pr)}</div><div class="v">${mv(x.v,x.dec,x,1)}</div><div class="u">${esc(un)}</div>${pl(x)}</a>`}
   return `<a class="tile${pg?" go":""}" href="${pg?"?p="+pg:"#"+k}" onclick="return nav(event,()=>${act})" aria-label="${esc(x.name)}, ${esc(x.sub)}: ${esc(mt(x.v,x.dec,x,1))}, ${esc(ud(x))}, ${pctX(x)}, em ${fd(x.d)}${c2?`; ${esc(c2.name)}: ${esc(mt(c2.v,c2.dec,c2,1))}, ${pctX(c2)}`:""}. ${lab}"><div class="n">${ico(KI[k],"sm")}${pg==="cafe"?"Café":esc(x.name)}${pg?`<span class="chev" aria-hidden="true">${ico("seta","sm")}</span>`:""}</div><div class="s">${esc(x.sub)}${stale(x)}</div>
-${pg==="cafe"?'<div class="s2">Arábica</div>':""}<div class="v">${mv(x.v,x.dec,x,1)}</div><div class="u">${ud(x)}</div>${pl(x)}${c2?`<div class="t2"><span class="s2">Conilon${c2.d!==x.d?" · "+fds(c2.d):""}</span><span class="t2v">${mv(c2.v,c2.dec,c2,1)} ${pl(c2)}</span></div>`:""}${spark(x.h)}<div class="sl30" aria-hidden="true">${FX48?"últimos 30 pregões":"tendência · 30 pregões"}</div>${x.cr&&!FX47?`<div class="fs">Fonte: ${esc(x.cr[0])}</div>`:""}</a>`}).join("")+`</div>`+(FX48&&!FX49?`<p class="tr48">Nenhum valor é estimado. Cada valor tem fonte e data.</p>`:"");
+${pg==="cafe"?'<div class="s2">Arábica</div>':""}<div class="v">${mv(x.v,x.dec,x,1)}</div><div class="u">${ud(x)}</div>${pl(x)}${c2?`<div class="t2"><span class="s2">Conilon${c2.d!==x.d?" · "+fds(c2.d):""}</span><span class="t2v">${mv(c2.v,c2.dec,c2,1)} ${pl(c2)}</span></div>`:""}${spark(x.h)}<div class="sl30" aria-hidden="true">${FX48?"últimos 30 pregões":"tendência · 30 pregões"}</div>${x.cr&&!FX47?`<div class="fs">Fonte: ${esc(x.cr[0])}</div>`:""}</a>`}).join("")+`</div><div id="fxliveR" class="list fxliveR" hidden></div>`+(FX48&&!FX49?`<p class="tr48">Nenhum valor é estimado. Cada valor tem fonte e data.</p>`:"");
  if(FX42)h+=`<div id="ab42">${ab42()}</div>`;
  if(FX44&&ind44ok())h+=ind44r();
  // alertas: exatamente a lista do gerador (alerts.json / resumo da noite), cada um com a própria data
@@ -1250,7 +1251,7 @@ ${pg==="cafe"?'<div class="s2">Arábica</div>':""}<div class="v">${mv(x.v,x.dec,
  h+=(FX48?"":exH)+`<div class="hint">Dica: arraste a tela para a direita (ou toque no logo) para abrir o menu.</div></div>`;
  if(FX48)h+=`<div class="rs48d ex48">${exH}</div><p class="rs48f"><a href="?p=fontes" onclick="return nav(event,()=>go('fontes'))">Fontes e licenças ›</a></p><div class="rs48d">`;
  if(FX47)h+=pageSrc([...SUM,...al.map(a=>a.key)].filter((k,i,A)=>I[k]&&A.indexOf(k)===i),false,false,add=>{
-  if(FX42&&abOn42()&&I.usd)add(I.usd.cr,"dólar · 1º boletim (abertura)");
+  if(FX42&&abOn42()&&I.usd)add(I.usd.cr,"dólar · 1º boletim (abertura)");if(I.usd_live)add(I.usd_live.cr,"dólar comercial ao vivo");
   if(FX44&&ind44ok())DATA.ind44.comp.forEach(c=>c&&c.url&&add([c.src,c.src,c.url].concat(c.lic&&c.lic[0]?[c.lic[0],c.lic[1]]:[]),"Indicador AgroN, "+c.uf))});
  if(FX48)h+=`</div>`;
  return h}
@@ -1636,6 +1637,7 @@ function sqIdx40(){if(SQX40&&SQXN40===NEWS)return SQX40;const L=[],KP={},PG={};
   if(PG[p]!=null&&nz40(x.name)===nz40(NI[p].label)&&!L[PG[p]].v){const e=L[PG[p]];e.v=mt(x.v,x.dec,x);e.sub+=" · "+subX(x);e.f={k:x.key};return}   // mesmo nome da página: uma sugestão só, com o valor
   add(x.name,subX(x)+" · "+ud(x)+(st?" · Datagro":""),st||cnt[x.name]>1?1:2,p,NI[p].ic,{k:x.key},(SYN40[p]||"")+(st?" estado":""),mt(x.v,x.dec,x))});
  if(DATA.items.some(x=>x.cat==="estado"&&x.v!=null))add("Boi gordo por estado","Datagro · ranking dos estados · R$/@",2,"boi","boi",{e:"est40"},"boi gordo estado estados datagro ranking uf");
+ if(I.usd_live&&I.usd_live.v!=null)add(I.usd_live.name,I.usd_live.sub+" · "+ud(I.usd_live),2,"dolar","dolar",{k:"usd_live"},"dolar cambio usd comercial ao vivo awesomeapi",mt(I.usd_live.v,4,I.usd_live));
  const sc=DATA.scot;if(sc&&sc.date&&sc.rows&&sc.rows.length){add("Boi por praça (Scot)",`Scot Consultoria · ${sc.rows.length} praças · ${fd(sc.date)}`,2,"boi","boi",{sp:-1},"boi gordo vaca praca pracas scot regiao");
   sc.rows.forEach((r,i)=>add(r.praca.replace(/\s*\(kg\)/i,""),`Boi por praça · Scot · ${fd(sc.date)}`,1,"boi","boi",{sp:i},"boi vaca praca scot",(/\(kg\)/i.test(r.praca)?"R$ "+fmt(r.vista,2)+"/kg":"R$ "+fmt(r.vista,2)+"/@")))}
  const R=DATA.repos;if(R&&R.date&&NI.reposicao){const seen={};R.cats.forEach(([id,grp,lab])=>{const b=lab.replace(/\s*\(.*$/,"").trim(),bk=nz40(b);if(seen[bk])return;seen[bk]=1;
@@ -1936,6 +1938,7 @@ if(NI[cur]&&NI[cur].sec&&NI[cur].sec.id==="agricultura")agroLembra(cur);
   })}
  /* só aproxima o chip ativo se estiver fora da área visível — não centraliza / não zera */
  document.querySelectorAll("#main nav.chips .chip.on").forEach(b=>{try{b.scrollIntoView({inline:"nearest",block:"nearest",behavior:"auto"})}catch(e){}});
+ if(typeof fxLivePaint==="function")fxLivePaint();
 }
 function gcView(id){try{if(window.goatcounter&&typeof window.goatcounter.count==="function")window.goatcounter.count({path:"/"+id,event:false})}catch(e){}}
 // v15: histórico do app — o botão Voltar do celular fecha detalhe/menu/notícia e volta de página até o Resumo; só sai do app no Resumo
@@ -1994,7 +1997,7 @@ document.addEventListener("touchend",()=>{if(tx==null)return;const w=W(),fast=Ma
 // ---------------- detalhe ----------------
 let dk=null,per=30;
 let lastFocus=null;
-function showDet(k){lastFocus=document.activeElement;dk=k;saz=false;reg=false;regN=30;fic=false;per=I[k].freq==="mensal"?365:I[k].freq==="semanal"?90:30;closeDrawer();document.getElementById("det").classList.add("on");document.body.style.overflow="hidden";renderDet();document.querySelector("#det .back").focus()}
+function showDet(k){if(k==="usd_live"&&!(I[k]&&I[k].v!=null))return;lastFocus=document.activeElement;dk=k;saz=false;reg=false;regN=30;fic=false;per=I[k].freq==="mensal"?365:I[k].freq==="semanal"?90:30;closeDrawer();document.getElementById("det").classList.add("on");document.body.style.overflow="hidden";renderDet();document.querySelector("#det .back").focus()}
 function openDet(k){const c=HS();if(c.d===k&&dk===k)return;if(c.d)history.replaceState({...c,d:k},"",pURL(cur)+"#"+k);else hpush({p:cur,d:k},pURL(cur)+"#"+k);showDet(k)}
 function hideDet(){document.getElementById("det").classList.remove("on");if(!NSH.classList.contains("on"))document.body.style.overflow="";dk=null;if(lastFocus&&lastFocus.focus)try{lastFocus.focus()}catch(e){}}
 function closeDet(){if(HS().d){history.back();return}hideDet()}
@@ -2081,7 +2084,7 @@ function mediasCivis(pontos,data,rolls){
  const m=mesmos.filter(p=>p[0].slice(0,7)===mes);
  const avg=xs=>xs.length?Math.round(xs.reduce((s,p)=>s+Number(p[1]),0)/xs.length*1e6)/1e6:null;
  return {wk:avg(sem),wkn:sem.length,mo:avg(m),mon:m.length,first:pontos[0][0],n:pontos.length}}
-function renderDet(){try{renderDet0()}catch(e){if(HIST[dk]&&typeof HIST[dk]==="object"){HIST[dk]="err";HBAD[dk]=1;renderDet0()}else throw e}}
+function renderDet(){if(dk==="usd_live"){renderDetLive();return}try{renderDet0()}catch(e){if(HIST[dk]&&typeof HIST[dk]==="object"){HIST[dk]="err";HBAD[dk]=1;renderDet0()}else throw e}}
 function renderDet0(){const x=I[dk];CX=x;document.getElementById("dtitle").textContent=x.name;loadHist(dk);
  const H0=HIST[dk],ok=H0&&typeof H0==="object";const hd=ok?H0.h:(Array.isArray(x.h)&&x.h.length&&Array.isArray(x.h[0])?x.h:[]),rolls=ok?H0.rolls:(x.rolls||[]);
  const ancC=/^(pe|hf)_/.test(x.key||"")&&DATA&&DATA.ref&&DATA.ref>(x.d||"")?DATA.ref:x.d;const civ=hd.length&&x.freq!=="mensal"&&x.freq!=="semanal"?mediasCivis(hd,ancC,rolls):null;const wkC=civ?civ.wk:x.wk,wknC=civ?civ.wkn:x.wkn,moC=civ?civ.mo:x.mo,monC=civ?civ.mon:x.mon;
@@ -2349,6 +2352,7 @@ function fontes(){const A=(u,t)=>{const h=hs(u);return h?`<a href="${esc(h)}" ta
   +(FX44?fi49(A("https://celepar7.pr.gov.br/sima/cotdiat.asp","DERAL/SEAB-PR"),"boi no PR",null)
   +fi49(A("https://portal.sistemafamasul.com.br/cotacoes-online","Sistema Famasul"),"boi em MS",null)
   +fi49(`<a href="?p=boi" onclick="return nav(event,()=>go('boi'))">Indicador AgroN</a>`,"média das fontes oficiais do boi",null):"")
+  +fi49(A("https://docs.awesomeapi.com.br/api-de-moedas","AwesomeAPI"),"dólar comercial ao vivo, no navegador (não é PTAX)",null)
   +`</div>`;
   h+=`<h2>Como os valores são mostrados</h2><div class="list fsl">`+fi("Onde não houve publicação aparece “—”. Nenhum valor é estimado.")+(FX48?fi("“O que mudou”: dado novo acima de 2% (hortifrúti Ceagesp: 10%)."):"")+`</div>`;
   h+=`<h2>Notícias</h2><div class="list fsl">`+fi("Feeds públicos dos veículos listados. A matéria abre no site original.")+`</div>`;
@@ -2366,12 +2370,67 @@ function fontes(){const A=(u,t)=>{const h=hs(u);return h?`<a href="${esc(h)}" ta
   fi(`Cepea/Esalq: licença ${A("https://www.cepea.org.br/br/licenca-de-uso-de-dados.aspx","CC BY-NC 4.0")}`,"uso não comercial, com crédito ao Cepea")+
   fi(`Banco Mundial (Pink Sheet): licença ${A("https://creativecommons.org/licenses/by/4.0/deed.pt-br","CC BY 4.0")}`)+
   fi("U.S. Energy Information Administration (EIA): domínio público")+
-  fi("Futuros da B3, CBOT e ICE: republicados pelo Notícias Agrícolas","ICE Nova York: dados de Investing.com republicados pelo Notícias Agrícolas")+(FX42?fi("Dólar do 1º boletim do dia (quadro das 10h no Resumo): PTAX boletim de abertura, Banco Central do Brasil","só nos dias úteis; o PTAX de fechamento substitui às 19h30"):"")+`</div>`;
+  fi("Futuros da B3, CBOT e ICE: republicados pelo Notícias Agrícolas","ICE Nova York: dados de Investing.com republicados pelo Notícias Agrícolas")+(FX42?fi("Dólar do 1º boletim do dia (quadro das 10h no Resumo): PTAX boletim de abertura, Banco Central do Brasil","só nos dias úteis; o PTAX de fechamento substitui às 19h30"):"")+fi("Dólar comercial ao vivo: AwesomeAPI (economia.awesomeapi.com.br), buscado no navegador","não substitui a PTAX do Banco Central, que continua sendo a referência oficial")+`</div>`;
  h+=`<h2>Como os valores são mostrados</h2><div class="list fsl">`+fi("Onde não houve publicação aparece “—”. Nenhum valor é estimado.")+fi("Itens marcados “calculado” são contas feitas com dados publicados do mesmo dia (ou do mesmo mês).")+(FX48?fi("“O que mudou” (no Resumo): entra o dado novo que variou mais de 2% em relação ao valor anterior da mesma fonte; no hortifrúti do Ceagesp, mais de 10%.","Cada linha mostra a data do próprio dado. Quando o leite ao produtor de vários estados muda na mesma referência mensal, aparece uma linha só, com a faixa das variações."):"")+`</div>`;
  h+=`<h2>Notícias</h2><div class="list fsl">`+fi("Manchetes e links dos feeds públicos de Canal Rural, Globo Rural, Notícias Agrícolas, Agrolink, Estadão, g1, Valor, InfoMoney, Exame, Folha, CNN Brasil e Poder360.","Os resumos são do Informativo; a matéria completa abre no site do veículo.")+`</div>`;
  h+=`<h2>Ícones</h2><div class="list fsl">`+fi(`Desenhos próprios do Informativo; ícones de interface: Tabler Icons (MIT) — <a href="LICENSES-icones.txt">licença</a>`)+`</div>`;
  return h}
 function foot(){document.getElementById("foot").innerHTML=(cur==="fontes"?"":`<a class="fl" href="?p=fontes" onclick="return nav(event,()=>go('fontes'))">${ico("fontes")}Fontes</a>`)+(FX48?(hdr(),""):`<span class="fu">${upd()}</span>`)}
+/* dólar comercial ao vivo: o navegador busca a cotação; o cartão PTAX e o DATA não mudam; usd_live nunca entra em DATA */
+var FXLIVE=true;
+const FXLIVE_URL="https://economia.awesomeapi.com.br/json/last/USD-BRL";
+const FXLIVE_DOC="https://docs.awesomeapi.com.br/api-de-moedas";
+const FXLIVE_MS=60000,FXLIVE_STALE=48*3600*1000,FXLIVE_SKEW=5*60*1000,FXLIVE_CAP=15*60*1000;
+let FXLIVE_T=null,FXLIVE_FAIL=0;
+function fxLiveBRT(ms){const s=new Date(ms).toLocaleString("sv-SE",{timeZone:"America/Sao_Paulo",hour12:false});return{d:s.slice(0,10),hm:s.slice(11,16)}}
+function fxLiveNum(v){if(v==null||v==="")return NaN;const n=Number(String(v).replace(",","."));return n}
+function fxLiveParse(j){
+ const o=j&&j.USDBRL;if(!o||o.code!=="USD"||o.codein!=="BRL")return null;
+ const ask=fxLiveNum(o.ask);if(!isFinite(ask)||ask<2||ask>15)return null;
+ let bid=null;if(o.bid!=null&&o.bid!==""){bid=fxLiveNum(o.bid);if(!isFinite(bid)||bid<2||bid>15)return null}
+ let chg=null;if(o.pctChange!=null&&o.pctChange!==""){const p=fxLiveNum(o.pctChange);if(!isFinite(p)||Math.abs(p)>20)return null;chg=p}
+ let ms=null;const ts=Number(o.timestamp);if(isFinite(ts)&&ts>1e9)ms=ts<1e12?ts*1000:ts;
+ if(typeof o.create_date==="string"&&/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(o.create_date)){
+  const msc=Date.parse(o.create_date.replace(" ","T")+"-03:00");
+  if(isFinite(msc)){if(ms==null)ms=msc;else if(Math.abs(ms-msc)>15*60*1000)return null}
+ }
+ if(ms==null||!isFinite(ms))return null;
+ const now=Date.now();if(ms>now+FXLIVE_SKEW)return null;if(now-ms>FXLIVE_STALE)return null;
+ const t=fxLiveBRT(ms);return{ask,bid,chg,ms,d:t.d,hm:t.hm}
+}
+function fxLiveItem(p){const today=hoje49(),when=p.d===today?p.hm:fds(p.d)+" "+p.hm;
+ return{key:"usd_live",name:"Dólar comercial (ao vivo)",unit:"R$/US$",dec:4,cat:"b3",src:"AwesomeAPI",sub:"AwesomeAPI · "+when,d:p.d,v:p.ask,chg:p.chg,st:false,live:true,hm:p.hm,bid:p.bid,ms:p.ms,when:when,cr:["AwesomeAPI","AwesomeAPI · cotação comercial USD/BRL",FXLIVE_DOC,null,null]}}
+function fxLiveExpire(){if(I.usd_live&&I.usd_live.ms!=null&&Date.now()-I.usd_live.ms>FXLIVE_STALE){delete I.usd_live;return true}return false}
+function fxLivePaint(){
+ if(!FXLIVE)return;fxLiveExpire();const x=I.usd_live;
+ const slot=document.getElementById("fxliveR");
+ if(slot){slot.innerHTML=x?row(x,false,false):"";slot.hidden=!x}
+ const exist=document.querySelector('#main a.row[href="#usd_live"]');
+ if(x){const html=row(x,false,false);if(exist&&!(slot&&slot.contains(exist)))exist.outerHTML=html;else if(!exist&&cur==="dolar"){const usd=document.querySelector('#main a.row[href="#usd"]');if(usd)usd.insertAdjacentHTML("afterend",html)}}
+ else if(exist&&!(slot&&slot.contains(exist)))exist.remove();
+ if(dk==="usd_live"){if(x){document.getElementById("dtitle").textContent=x.name;document.getElementById("dbody")&&renderDetLive()}else if(document.getElementById("det").classList.contains("on"))hideDet()}
+ SQX40=null
+}
+function renderDetLive(){
+ const x=I.usd_live;if(!x){hideDet();return}CX=x;document.getElementById("dtitle").textContent=x.name;
+ const when=x.d===hoje49()?x.hm:fd(x.d)+" às "+x.hm;
+ const compra=x.bid!=null?`<div class="kpi"><div class="l">Compra</div><div class="x">${mv(x.bid,4,x)}</div></div>`:"";
+ document.getElementById("dbody").innerHTML=`<div style="color:var(--mu);font-size:13.5px">${esc(x.sub)} · ${esc(ud(x))}${x.cr&&hs(x.cr[2])?` · <a class="dsl" href="${esc(hs(x.cr[2]))}" target="_blank" rel="noopener">${esc(x.cr[0])} ↗</a>`:""}</div>
+ <div class="big">${mv(x.v,x.dec,x)}</div><div>${pl0(x)} <span style="color:var(--mu);font-size:13px">às ${esc(when)} (horário de Brasília)</span></div>
+ <div class="kpis">${compra}<div class="kpi"><div class="l">Venda</div><div class="x">${mv(x.v,4,x)}</div></div></div>
+ ${detSrc(x)}
+ <div class="note">Cotação comercial ao vivo, buscada no seu navegador a cada 60 segundos enquanto esta aba está aberta. Não é a PTAX do Banco Central, que continua sendo a referência oficial do AgroN (cartão Dólar PTAX). A fonte só informa o valor do momento; esta ficha não tem gráfico de histórico. Nenhum valor é estimado: se a busca falhar, permanece o último valor válido com o horário, ou o cartão some.</div>`
+}
+function fxLiveOk(p){I.usd_live=fxLiveItem(p);KI.usd_live="dolar";FXLIVE_FAIL=0;fxLivePaint();const st=HS();if((st.d==="usd_live"||location.hash==="#usd_live")&&dk!=="usd_live")showDet("usd_live")}
+function fxLiveFail(){FXLIVE_FAIL++;fxLivePaint()}
+function fxLiveWait(){return FXLIVE_FAIL?Math.min(FXLIVE_CAP,FXLIVE_MS*Math.pow(2,Math.min(8,FXLIVE_FAIL))):FXLIVE_MS}
+async function fxLiveFetch(){if(document.visibilityState==="hidden")return;
+ try{const r=await fetch(FXLIVE_URL,{cache:"no-store",mode:"cors"});if(!r.ok){fxLiveFail();return}
+  const j=await r.json(),p=fxLiveParse(j);if(!p){fxLiveFail();return}fxLiveOk(p)}catch(e){fxLiveFail()}}
+function fxLiveArm(){clearTimeout(FXLIVE_T);FXLIVE_T=null;if(document.visibilityState!=="visible")return;FXLIVE_T=setTimeout(()=>{fxLiveFetch().finally(fxLiveArm)},fxLiveWait())}
+function fxLiveStart(){if(!FXLIVE)return;fxLiveFetch().finally(fxLiveArm);
+ document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){FXLIVE_FAIL=Math.min(FXLIVE_FAIL,1);fxLiveFetch().finally(fxLiveArm)}else{clearTimeout(FXLIVE_T);FXLIVE_T=null}})}
+if(FXLIVE)fxLiveStart();
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js",{scope:"./"}).catch(()=>{});});}
 </script>
 <script data-goatcounter="https://informativo-agro.goatcounter.com/count" async src="https://gc.zgo.at/count.v4.js" crossorigin="anonymous" integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+"></script>
