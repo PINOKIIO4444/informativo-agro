@@ -33,7 +33,6 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
    "ultima": "2026-11-25",
    "coleta_diaria": true
@@ -58,9 +57,8 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-24",
+   "ultima": "2026-11-25",
    "coleta_diaria": true
   },
   {
@@ -83,9 +81,8 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-24",
+   "ultima": "2026-11-25",
    "coleta_diaria": true
   },
   {
@@ -106,7 +103,6 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "8 dias no pacote. 27/10 não está no arquivo. Sem motivo inventado para a falta.",
    "ultima": "2026-11-25",
    "coleta_diaria": true
@@ -131,7 +127,6 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "10 dias úteis no pacote, inclusive 02/11. Em 27/10 há dois PDFs; 127 pares iguais ficaram numa linha com proveniência extra e 129 pares divergentes estão na quarentena, fora do histórico.",
    "ultima": "2026-11-25",
    "coleta_diaria": true
@@ -155,7 +150,6 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
    "ultima": "2026-11-24",
    "coleta_diaria": true
@@ -179,7 +173,6 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
    "ultima": "2026-11-25",
    "coleta_diaria": true
@@ -201,7 +194,6 @@
     "2026-11-03",
     "2026-11-04"
    ],
-   "manual": false,
    "nota": "7 dias. 05/11 e 06/11 não estão no arquivo. A última data publicada é a do boletim.",
    "ultima": "2026-11-25",
    "coleta_diaria": true
@@ -225,9 +217,8 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-24",
+   "ultima": "2026-11-25",
    "coleta_diaria": true
   },
   {
@@ -248,7 +239,6 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
    "ultima": "2026-11-24",
    "coleta_diaria": true
@@ -266,9 +256,8 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-13",
+   "ultima": "2026-11-24",
    "coleta_diaria": true
   },
   {
@@ -290,9 +279,8 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
-   "ultima": "2026-11-24",
+   "ultima": "2026-11-25",
    "coleta_diaria": true
   },
   {
@@ -306,7 +294,6 @@
    "dias": [
     "2026-11-05"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
    "ultima": "2026-11-24",
    "coleta_diaria": true
@@ -322,7 +309,6 @@
    "dias": [
     "2026-11-05"
    ],
-   "manual": false,
    "nota": "Só os dias presentes no pacote. Lacuna não é preenchida. Licença não confirmada. Coleta desligada.",
    "ultima": "2026-11-23",
    "coleta_diaria": true
@@ -339,9 +325,9 @@
     "2026-11-05",
     "2026-11-06"
    ],
-   "manual": true,
    "nota": "Dois dias lidos de PDF no navegador, fonte manual, sem coletor. Página pública: https://ceasa.es.gov.br/bancodedados. Siglas de situação não foram expandidas.",
-   "coleta_diaria": false
+   "coleta_diaria": true,
+   "ultima": "2026-11-25"
   }
  ],
  "conab": {
