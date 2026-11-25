@@ -14,10 +14,11 @@ Só stdlib."""
 import datetime as dt, hashlib, html.parser, json, os, re, sys, time, urllib.parse, urllib.request
 
 LISTA = 'http://www.emater.ro.gov.br/ematerro/pesquisa-de-preco/'
-HOST = 'emater.ro.gov.br'
+HOSTS = {'emater.ro.gov.br', 'www.emater.ro.gov.br'}   # auditfix 25/11: host exato (antes: qualquer nome terminado em emater.ro.gov.br)
 UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 AgroN-espelho (+https://agronbr.com.br/)'
 MANTER = 6          # PDFs mais novos mantidos no espelho
 MAX_PDF = 15 << 20  # 15 MB
+RECONFERIR = 3      # auditfix 25/11: os N PDFs mais novos são baixados de novo a cada rodada (revisão na mesma URL)
 
 
 def get(url, tries=3):
@@ -58,7 +59,7 @@ def pdfs_da_lista(html_text):
     for href, txt in p.out:
         u = urllib.parse.urljoin(LISTA, href)
         pu = urllib.parse.urlparse(u)
-        if not pu.netloc.lower().endswith(HOST) or not pu.path.lower().endswith('.pdf'):
+        if pu.scheme not in ('http', 'https') or pu.netloc.lower() not in HOSTS or not pu.path.lower().endswith('.pdf'):
             continue
         m = re.search(r'semana\s*[–—-]\s*(\d{2})/(\d{2})/(\d{4})', txt, re.I)
         if not m:
@@ -97,24 +98,36 @@ def main(dest):
     man['lista'] = dict(url=LISTA, path='lista.html', sha256=hashlib.sha256(raw).hexdigest(),
                         bytes=len(raw), obtido_em=agora, http=st)
     novos = [u for u, _ in lista[:MANTER]]
-    for u in novos:
+    for i, u in enumerate(novos):
         ent = man['arquivos'].get(u)
-        if ent and os.path.exists(os.path.join(dest, ent['path'])):
-            continue  # boletim publicado não muda; não rebaixa
+        tem = bool(ent and os.path.exists(os.path.join(dest, ent['path'])))
+        if tem and i >= RECONFERIR:
+            continue  # boletim antigo: não rebaixa
         try:
             st, b = get(u)
         except Exception as e:
-            print(f'PDF não baixado {u}: {e}', file=sys.stderr)
+            print(f'PDF não baixado {u}: {e}' + (' (mantida a cópia anterior)' if tem else ''), file=sys.stderr)
             continue
         if st != 200 or not b.startswith(b'%PDF') or len(b) > MAX_PDF:
-            print(f'PDF recusado {u} (HTTP {st}, {len(b)} bytes)', file=sys.stderr)
+            print(f'PDF recusado {u} (HTTP {st}, {len(b)} bytes)' + (' (mantida a cópia anterior)' if tem else ''), file=sys.stderr)
+            continue
+        sha = hashlib.sha256(b).hexdigest()
+        if tem and sha == ent.get('sha256'):
+            ent['conferido_em'] = agora   # mesma versão: só registra a conferência
             continue
         p = caminho(u)
         os.makedirs(os.path.dirname(os.path.join(dest, p)), exist_ok=True)
-        with open(os.path.join(dest, p), 'wb') as f:
+        tmp = os.path.join(dest, p) + '.tmp'
+        with open(tmp, 'wb') as f:
             f.write(b)
-        man['arquivos'][u] = dict(path=p, sha256=hashlib.sha256(b).hexdigest(), bytes=len(b), obtido_em=agora, http=st)
-        print(f'copiado {p} ({len(b)} bytes)')
+        os.replace(tmp, os.path.join(dest, p))
+        novo = dict(path=p, sha256=sha, bytes=len(b), obtido_em=agora, http=st)
+        if tem:   # a Emater trocou o PDF na mesma URL: guarda o rastro da versão anterior
+            novo['revisoes'] = (ent.get('revisoes') or []) + [dict(sha256=ent.get('sha256'), obtido_em=ent.get('obtido_em'))]
+            print(f'revisado {p} ({len(b)} bytes; sha256 anterior {str(ent.get("sha256"))[:12]})')
+        else:
+            print(f'copiado {p} ({len(b)} bytes)')
+        man['arquivos'][u] = novo
     for u in [u for u in man['arquivos'] if u not in novos]:  # poda: só os MANTER mais novos
         p = os.path.join(dest, man['arquivos'].pop(u)['path'])
         if os.path.exists(p):
