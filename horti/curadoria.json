@@ -12,7 +12,7 @@
   "variedade": "PRIMEIRA",
   "classificacao": null,
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -28,7 +28,7 @@
   "variedade": "Longa Vida/Débora Extra",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -44,7 +44,7 @@
   "variedade": "Agatha Primeira",
   "classificacao": null,
   "repeticoes": 10,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -60,7 +60,7 @@
   "variedade": "Amarela Mineira",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -76,7 +76,7 @@
   "variedade": "Extra",
   "classificacao": null,
   "repeticoes": 10,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -92,7 +92,7 @@
   "variedade": "Crespa Extra / 18-24 UN",
   "classificacao": null,
   "repeticoes": 10,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -108,7 +108,7 @@
   "variedade": "Nanica-Extra",
   "classificacao": null,
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -124,7 +124,7 @@
   "variedade": "Extra",
   "classificacao": null,
   "repeticoes": 10,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -140,7 +140,7 @@
   "variedade": "Formosa-Extra",
   "classificacao": null,
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -156,7 +156,7 @@
   "variedade": "Longa Vida/Extra A",
   "classificacao": null,
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -172,7 +172,7 @@
   "variedade": "Agatha Primeira",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -188,7 +188,7 @@
   "variedade": "Amarela Mineira",
   "classificacao": null,
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -204,7 +204,7 @@
   "variedade": "Extra A",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -220,7 +220,7 @@
   "variedade": "Crespa Primeira / Dz",
   "classificacao": null,
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -236,7 +236,7 @@
   "variedade": "Nanica Climatizada 1ª",
   "classificacao": null,
   "repeticoes": 10,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -252,7 +252,7 @@
   "variedade": "Extra",
   "classificacao": null,
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -268,7 +268,7 @@
   "variedade": "Formosa Extra",
   "classificacao": null,
   "repeticoes": 7,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -284,7 +284,7 @@
   "variedade": "LONGA VIDA",
   "classificacao": "EXTRA A",
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -300,7 +300,7 @@
   "variedade": "COMUM",
   "classificacao": "ESPECIAL",
   "repeticoes": 5,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -316,7 +316,7 @@
   "variedade": "PERA",
   "classificacao": "NACIONAL",
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -332,7 +332,7 @@
   "variedade": "COMUM",
   "classificacao": "EXTRA A",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -348,7 +348,7 @@
   "variedade": "CRESPA",
   "classificacao": "GRANDE",
   "repeticoes": 6,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -364,7 +364,7 @@
   "variedade": "PRATA",
   "classificacao": null,
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -380,7 +380,7 @@
   "variedade": "TAHITI",
   "classificacao": "GRAUDO",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -396,7 +396,7 @@
   "variedade": "FORMOSA",
   "classificacao": "MADURO",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -412,7 +412,7 @@
   "variedade": "VERDE",
   "classificacao": "EXTRA A",
   "repeticoes": 5,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -428,7 +428,7 @@
   "variedade": "LONGA VIDA",
   "classificacao": "EXTRA AA",
   "repeticoes": 5,
-  "st": false,
+  "st": true,
   "dias": 6
  },
  {
@@ -444,7 +444,7 @@
   "variedade": "COMUM",
   "classificacao": "ESPECIAL",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -460,7 +460,7 @@
   "variedade": "BRANCA",
   "classificacao": "NACIONAL",
   "repeticoes": 11,
-  "st": false,
+  "st": true,
   "dias": 10
  },
  {
@@ -476,7 +476,7 @@
   "variedade": "COMUM",
   "classificacao": "EXTRA A",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -492,7 +492,7 @@
   "variedade": "CRESPA",
   "classificacao": "GRANDE",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -508,7 +508,7 @@
   "variedade": "PRATA",
   "classificacao": null,
   "repeticoes": 11,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -524,7 +524,7 @@
   "variedade": "TAHITI",
   "classificacao": "GRAUDO",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -540,7 +540,7 @@
   "variedade": "FORMOSA",
   "classificacao": "MADURO",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -556,7 +556,7 @@
   "variedade": "VERDE",
   "classificacao": "EXTRA A",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -572,7 +572,7 @@
   "variedade": "LONGA VIDA",
   "classificacao": "EXTRA AA",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 2
  },
  {
@@ -588,7 +588,7 @@
   "variedade": "COMUM",
   "classificacao": "ESPECIAL",
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -604,7 +604,7 @@
   "variedade": "BRANCA",
   "classificacao": "NACIONAL",
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -620,7 +620,7 @@
   "variedade": "COMUM",
   "classificacao": "EXTRA A",
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -636,7 +636,7 @@
   "variedade": "CRESPA",
   "classificacao": "MEDIO",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -652,7 +652,7 @@
   "variedade": "PRATA",
   "classificacao": null,
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -668,7 +668,7 @@
   "variedade": "TAHITI",
   "classificacao": "GRAUDO",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -684,7 +684,7 @@
   "variedade": "FORMOSA",
   "classificacao": "MADURO",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -700,7 +700,7 @@
   "variedade": "VERDE",
   "classificacao": "EXTRA A",
   "repeticoes": 6,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -708,7 +708,7 @@
   "id": "cascavel",
   "produto": "tomate",
   "serie": "ceasa-pr-cascavel-tomate-longa-vida-extra-a-cx-20-kg-pr-mg-go",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 180.0,
   "min": 200.0,
   "max": 210.0,
@@ -724,8 +724,8 @@
   "id": "cascavel",
   "produto": "batata",
   "serie": "ceasa-pr-cascavel-batata-comum-especial-sc-25kg-pr-sp",
-  "data": "2026-11-24",
-  "comum": 140.0,
+  "data": "2026-11-25",
+  "comum": 130.0,
   "min": 120.0,
   "max": 130.0,
   "embalagem": "sc 25kg",
@@ -740,8 +740,8 @@
   "id": "cascavel",
   "produto": "cebola",
   "serie": "ceasa-pr-cascavel-cebola-pera-nacional-sc-20kg-pr-sp-mg",
-  "data": "2026-11-24",
-  "comum": 156.0,
+  "data": "2026-11-25",
+  "comum": 160.0,
   "min": 140.0,
   "max": 144.0,
   "embalagem": "sc 20kg",
@@ -756,7 +756,7 @@
   "id": "cascavel",
   "produto": "cenoura",
   "serie": "ceasa-pr-cascavel-cenoura-comum-extra-aa-cx-20-kg-pr",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 74.0,
   "min": 76.0,
   "max": 78.0,
@@ -772,7 +772,7 @@
   "id": "cascavel",
   "produto": "alface",
   "serie": "ceasa-pr-cascavel-alface-crespa-medio-cx-06kg-pr",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 72.0,
   "min": 72.0,
   "max": 72.0,
@@ -788,7 +788,7 @@
   "id": "cascavel",
   "produto": "banana",
   "serie": "ceasa-pr-cascavel-banana-prata-cx-20-kg-pr-sc",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 130.0,
   "min": 120.0,
   "max": 130.0,
@@ -804,7 +804,7 @@
   "id": "cascavel",
   "produto": "limao",
   "serie": "ceasa-pr-cascavel-limao-tahiti-medio-cx-23-kg-pr-sp",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 173.0,
   "min": 219.0,
   "max": 230.0,
@@ -820,7 +820,7 @@
   "id": "cascavel",
   "produto": "mamao",
   "serie": "ceasa-pr-cascavel-mamao-formosa-maduro-cx-15kg-pr-mg-es",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 150.0,
   "min": 150.0,
   "max": 165.0,
@@ -836,7 +836,7 @@
   "id": "cascavel",
   "produto": "pimentao",
   "serie": "ceasa-pr-cascavel-pimentao-verde-extra-aa-cx-12kg-pr-sp",
-  "data": "2026-11-24",
+  "data": "2026-11-25",
   "comum": 144.0,
   "min": 132.0,
   "max": 144.0,
@@ -860,7 +860,7 @@
   "variedade": "LONGA VIDA",
   "classificacao": "EXTRA AA",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -876,7 +876,7 @@
   "variedade": "COMUM",
   "classificacao": "ESPECIAL",
   "repeticoes": 7,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -892,7 +892,7 @@
   "variedade": "BRANCA",
   "classificacao": "NACIONAL",
   "repeticoes": 7,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -908,7 +908,7 @@
   "variedade": "COMUM",
   "classificacao": "EXTRA AA",
   "repeticoes": 7,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -924,7 +924,7 @@
   "variedade": "CRESPA",
   "classificacao": "GRANDE",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -940,7 +940,7 @@
   "variedade": "PRATA",
   "classificacao": null,
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -956,7 +956,7 @@
   "variedade": "TAHITI",
   "classificacao": "GRAUDO",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -972,7 +972,7 @@
   "variedade": "FORMOSA",
   "classificacao": "MADURO",
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -988,7 +988,7 @@
   "variedade": "VERDE",
   "classificacao": "EXTRA AA",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 7
  },
  {
@@ -1004,7 +1004,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1020,7 +1020,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1036,7 +1036,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1052,7 +1052,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1068,7 +1068,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 5,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1084,7 +1084,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1100,7 +1100,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 4,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1116,7 +1116,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1132,7 +1132,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1148,7 +1148,7 @@
   "variedade": null,
   "classificacao": "Extra AA",
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1164,7 +1164,7 @@
   "variedade": null,
   "classificacao": "Especial",
   "repeticoes": 4,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1180,7 +1180,7 @@
   "variedade": null,
   "classificacao": "Sc 20 kg",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1196,7 +1196,7 @@
   "variedade": null,
   "classificacao": "Cx 20 kg",
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1212,7 +1212,7 @@
   "variedade": null,
   "classificacao": "Extra",
   "repeticoes": 3,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1228,7 +1228,7 @@
   "variedade": null,
   "classificacao": "Extra",
   "repeticoes": 5,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1244,7 +1244,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1260,7 +1260,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 7,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1276,7 +1276,7 @@
   "variedade": null,
   "classificacao": "Extra A",
   "repeticoes": 2,
-  "st": false,
+  "st": true,
   "dias": 8
  },
  {
@@ -1305,6 +1305,22 @@
   "min": 90.0,
   "max": 105.0,
   "embalagem": "SC 50,00 kg",
+  "variedade": null,
+  "classificacao": "1",
+  "repeticoes": 2,
+  "st": true,
+  "dias": 3
+ },
+ {
+  "key": "hf_go_batata_sc25",
+  "id": "go",
+  "produto": "batata",
+  "serie": "ceasa-go-goiania-batata-lisa-achati-binj-1-sc-25-00-kg-cod76",
+  "data": "2026-11-13",
+  "comum": 155.0,
+  "min": 130.0,
+  "max": 160.0,
+  "embalagem": "SC 25,00 kg",
   "variedade": null,
   "classificacao": "1",
   "repeticoes": 2,
@@ -1436,7 +1452,7 @@
   "variedade": null,
   "classificacao": "Extra A",
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1452,7 +1468,7 @@
   "variedade": null,
   "classificacao": "Especial Lavada",
   "repeticoes": 4,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1468,7 +1484,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 8,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1484,7 +1500,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1500,7 +1516,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1516,7 +1532,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1532,7 +1548,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 6,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1548,7 +1564,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1564,7 +1580,7 @@
   "variedade": null,
   "classificacao": "Extra A",
   "repeticoes": 9,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -1580,7 +1596,7 @@
   "variedade": "EXTRA",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 1
  },
  {
@@ -1596,7 +1612,7 @@
   "variedade": "EXTRA",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 1
  },
  {
@@ -1612,7 +1628,7 @@
   "variedade": "NACIONAL",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 1
  },
  {
@@ -1628,7 +1644,7 @@
   "variedade": "EXTRA",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 1
  },
  {
@@ -1644,7 +1660,7 @@
   "variedade": "LISA/CRESPA",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 1
  },
  {
@@ -1660,7 +1676,7 @@
   "variedade": null,
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 1
  },
  {
@@ -1676,7 +1692,7 @@
   "variedade": "TAHITI GRAÚDO/EXTRA",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 1
  },
  {
@@ -1692,7 +1708,7 @@
   "variedade": "FORMOSA",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 1
  },
  {
@@ -1708,7 +1724,7 @@
   "variedade": "EXTRA",
   "classificacao": null,
   "repeticoes": 1,
-  "st": false,
+  "st": true,
   "dias": 1
  },
  {
@@ -2007,7 +2023,7 @@
   "data": "2026-11-24",
   "comum": 40.0,
   "max": 40.0,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
@@ -2018,7 +2034,7 @@
   "data": "2026-11-24",
   "comum": 10.0,
   "max": 40.0,
-  "st": false,
+  "st": true,
   "dias": 9
  },
  {
