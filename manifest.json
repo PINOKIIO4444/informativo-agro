@@ -23,7 +23,7 @@
   },
   "http://www.emater.ro.gov.br/ematerro/wp-content/uploads/2026/11/20261109-11-1a-semana-de-novembro_2026.pdf": {
    "bytes": 145915,
-   "conferido_em": "2026-11-25T21:58:36+00:00",
+   "conferido_em": "2026-11-26T21:55:07+00:00",
    "http": 200,
    "obtido_em": "2026-11-18T23:55:29+00:00",
    "path": "pdf/2026/11/20261109-11-1a-semana-de-novembro_2026.pdf",
@@ -31,7 +31,7 @@
   },
   "http://www.emater.ro.gov.br/ematerro/wp-content/uploads/2026/11/20261117-11-2a-semana-de-novembro_2026.pdf": {
    "bytes": 142429,
-   "conferido_em": "2026-11-25T21:58:36+00:00",
+   "conferido_em": "2026-11-26T21:55:07+00:00",
    "http": 200,
    "obtido_em": "2026-11-18T23:55:29+00:00",
    "path": "pdf/2026/11/20261117-11-2a-semana-de-novembro_2026.pdf",
@@ -39,7 +39,7 @@
   },
   "http://www.emater.ro.gov.br/ematerro/wp-content/uploads/2026/11/20261123-11-3a-semana-de-novembro_2026.pdf": {
    "bytes": 155325,
-   "conferido_em": "2026-11-25T21:58:36+00:00",
+   "conferido_em": "2026-11-26T21:55:07+00:00",
    "http": 200,
    "obtido_em": "2026-11-24T00:21:46+00:00",
    "path": "pdf/2026/11/20261123-11-3a-semana-de-novembro_2026.pdf",
@@ -50,7 +50,7 @@
  "lista": {
   "bytes": 117344,
   "http": 200,
-  "obtido_em": "2026-11-25T21:58:36+00:00",
+  "obtido_em": "2026-11-26T21:55:07+00:00",
   "path": "lista.html",
   "sha256": "9526f1f612473c4c2589569bf99a558dbeec33da3f099da0bd848f68769e53a7",
   "url": "http://www.emater.ro.gov.br/ematerro/pesquisa-de-preco/"
