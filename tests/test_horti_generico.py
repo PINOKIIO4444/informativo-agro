@@ -16,7 +16,8 @@ class Catalogo(unittest.TestCase):
         self.assertEqual([p["id"] for p in doc["pracas"]], PRACAS)
         por = {p["id"]: p for p in doc["pracas"]}
         self.assertIsNone(por["sp"]["data"])
-        self.assertFalse(por["vitoria"]["coleta_diaria"])   # Vitória: leitura manual, sem coletor
+        self.assertTrue(por["vitoria"]["coleta_diaria"])   # Vitória: coletor diário desde 25/11/2026 (antes leitura manual)
+        self.assertFalse(por["vitoria"].get("manual"))
         self.assertNotIn("2026-10-27", por["cwb"]["dias"])
         self.assertIn("2026-11-02", por["londrina"]["dias"])
         for p in doc["pracas"]:

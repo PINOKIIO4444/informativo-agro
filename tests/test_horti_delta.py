@@ -71,9 +71,14 @@ class Delta(unittest.TestCase):
 
     def test_vitoria_e_manual_e_hf_nao_entra(self):
         es = self.boletins["vitoria"]
-        self.assertEqual(es["datas"], ["2026-11-05", "2026-11-06"])
-        self.assertTrue(all(r["manual"] for r in es["registros"]))
-        self.assertTrue(all(r["url_publica"] == "https://ceasa.es.gov.br/bancodedados" for r in es["registros"]))
+        # 25/11/2026: Ceasa-ES ganhou coletor diário (grade pública). 05 e 06/11 seguem como leitura manual do PDF;
+        # os dias seguintes vêm do coletor (sem marca manual). Lacunas não são preenchidas.
+        self.assertLessEqual({"2026-11-05", "2026-11-06"}, set(es["datas"]))
+        manuais = [r for r in es["registros"] if r["data"] in ("2026-11-05", "2026-11-06")]
+        self.assertTrue(manuais and all(r["manual"] for r in manuais))
+        self.assertTrue(all(r["url_publica"] == "https://ceasa.es.gov.br/bancodedados" for r in manuais))
+        coletados = [r for r in es["registros"] if r["data"] > "2026-11-06"]
+        self.assertTrue(all(not r.get("manual") and r["fonte"] == "Ceasa-ES" for r in coletados))
         self.assertFalse(any(p.suffix == ".pdf" for p in (ROOT / "horti").rglob("*")))
         fontes = {r["fonte"] for doc in self.boletins.values() for r in doc["registros"]}
         self.assertFalse(any("hf" in f.lower() or "cepea" in f.lower() for f in fontes))
